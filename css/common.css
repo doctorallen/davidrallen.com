@@ -1,24 +1,49 @@
-p{
-	font-family:"Helvetica",sans-serif;
+#left{
+	text-align: right;
+	width: 300px;
+	float: left;
+	margin-right: 50px; 
 }
-#main-wrapper, body{
+#right{
+	width: 600px;
+	float: right;
+
+}
+html, body{
+	font-family:Arial, Helvetica,sans-serif;
+}
+#footer-wrapper{
+	height: 30px;
+	width: 950px;
+	margin: 0 auto 0 auto;
+	position: relative;
+	padding: 20px;
+	margin-top: -70px;
+	outline-style: dashed;
+	outline-width: 2px;
+	outline-color: #0070C0;
+	outline-offset: 5px;
+}
+#main{
+	width: 950px;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
-	width: 980px;
 	height: 100%;
-	margin: auto;	
+	margin: 0 auto 0 auto;
+	overflow: auto;
+	padding-bottom: 100px;
 }
 .alignCenter{
-text-align:center;
+	text-align:center;
 }
 #navbar {height: 3.5em;
 	width:500px;
 	margin-left: auto;
 	margin-right: auto;
-  font: 19px Helvetica,sans-serif; 
-  overflow: hidden;
+  	font-size: 1.1em; 
+  	overflow: hidden;
 
  }
   
@@ -40,7 +65,7 @@ text-align:center;
   .portfolio #navbar #portfolio a,
   .about #navbar #about a,
   .contact #navbar #contact a{
-	color: #ff5500;
+	color: #0070C0;
 	}
 a {text-decoration: none;}
 
@@ -52,55 +77,86 @@ a:link, a:visited {
 }
 
 html body a:hover {
-	color: #000; 
-	background-color: #F4F2E4;
-	border-bottom: 1px solid #9A8E51;
+	color: #0070C0;
+	border-bottom: 1px solid #0070C0;
 }
 #navbar ul,ol{
-list-style:none;
+	list-style:none;
 }
+.contact{
+	list-style: none;
+}
+
+span.footer{
+	position: absolute;
+	width: 950px;
+	color: #404040;
+	text-align: center;
+	font-size: 1.2em;
+	margin 0 auto 0 auto;
+}
+
+
 span.head{
-color: #004499;
-font-weight: bold;
-font-family:"Helvetica",sans-serif;
+	color: #0070C0;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+span.right-head{
+	color: #0070C0;
+	float: right;
+	font-weight: bold;
+	font-size: 1.2em;
+	right:80px;
+
+}
+
+span.right-location{
+	color: #616158;
+	font-style: italic;
+	float: right;
+	right:80px;
+
+}
+.profile{
+	list-style: none;
+}
+.school-name{
+	color: #616158;
+	font-weight: bold;
+}
+.normal{
+	color: #616158;
+}
+.award{
+	font-style: italic;
+	color: #616158;
 }
 span.add{
-color: #333;
-font-weight: bold;
-font-size:.9em;
-font-family:"Helvetica",sans-serif;
+	color: #333;
+	font-weight: bold;
+	font-size:.9em;
 }
 span.name1{
-color: #777;
-font-size: 3em;
-font-family:"Helvetica",sans-serif;
-text-shadow: 2px 2px 2px #4d4d4d;
-filter: dropshadow(color=#4d4d4d, offx=0, offy=0);
+	color: #0070C0;
+	font-size: 3em;
 }
 span.name2{
-color: #333;
-font-size: 3em;
-font-family:"Helvetica",sans-serif;
-text-shadow: 2px 2px 2px #4d4d4d;
-filter: dropshadow(color=#4d4d4d, offx=0, offy=0);
+	color: #404040;
+	font-size: 3em;
 }
 h1{
-color:#00bbff;
+	color:#616158;
 }
 h2{
- color:#ff5500;
+	 color:#404040;
 }
 div.skill{
-  margin-bottom:20px;
-  margin-left:20px;
-  margin-right:20px;
-  overflow:hidden;
-  border-top:1px solid #ccc;
-  border-bottom:1px solid #ccc;
+	  overflow:hidden;
 }
 li{
-  font-size:.9em;
-font-family:"Helvetica",sans-serif;
+	  font-size:.9em;
 }
 .bar{
 	width:300px;
@@ -112,7 +168,13 @@ font-family:"Helvetica",sans-serif;
 	right:80px;
 	color: #333;
 	font-weight: bold;
-	font-family:"Helvetica",sans-serif;
 	background-color: #ccc;
+}
+.job-title{
+	color: #616158;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 1.1em;
+
 }
 

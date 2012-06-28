@@ -1,145 +1,133 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <?php include('includes/header.html'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<div id="container">
-		<div id="center" class="column">
+<div id="main">
+	<div id="left">
+		<span class="name1">DAVID</span> <span class="name2"> ALLEN</span>                              
+				
+				<ul class="contact">
+					 <li><span>drallen1@plymouth.edu</span></li>
+					 <li><span>(603) 236-6988</span></li>
+					 <li><span>Plymouth, NH 03264<span></li>   
+				  </ul>        
+					
+												   
+			    <h2>Proficiencies</h2>
+				 
+					<div class="skill">
+					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, Java, VB .NET, C#, XNA</p>
+					</div>
+					<div class="skill">
+					<span class="head">Databases</span><p>MySQL, Access</p>
+					</div>
+					<div class="skill">
+					<span class="head">Frameworks</span><p>MVC Using: PHP/Klein Routing, Smarty/HTML5, and MySQL</p>
+					</div>
+					<div class="skill">
+					<span class="head">Software</span><p>Git, VIM, Adobe Photoshop</p>
+					</div>
+					<div class="skill">
+					<span class="head">Operating Systems</span><p>Windows, Mac OSX, Linux, VMware vSphere, XenServer</p>
+					</div>
+					<div class="skill">
+					<span class="head">Web Administration</span><p>LAMP Server(Linux, Apache, MySQL, PHP), PERL, CCNA</p>
+					</div>
 
-     <span class="name1">DAVID</span> <span class="name2"> ALLEN</span>                              
-		<h2>Contact</h2>    
-		
-			<ul id="contact">
-				<li><span class="head">Cell:</span>(603)236-6988</li>
-                <li><span class="head">E-mail:</span>drallen1@plymouth.edu</li>
-                <li><span class="head">Address:</span> 26 Carpenter Park Road, Plymouth, New Hampshire 03264</li>   
-            </ul>        
+				<h2>Web Portfolio</h2>
+						<ul class="profile">
+							<li><a href="http://stackoverflow.com/users/984383" target="blank">Stack Overflow</a></li>
+							<li><a href="https://github.com/drallen1" target="blank">Github</a></li>
+							<li><a href="http://coderwall.com/drallen1" target="blank">Coderwall</a></li>
+						</ul>
 			
-         <h2>Objective</h2>   
-		 
-           <p>
-           To obtain a position that will further my career and my understanding of the Information Technology world.
-          </p>
-                                            
-         <h2>Key Skills</h2>
-		 
-           <p>
-            Proficient or familiar with an extensive array of programming languages, concepts and programs, including:
-           </p>
-			<div class="skill">
-			<span class="head">System Administration:</span> Active Directory, Linux/Unix Administration, Networking fundamentals, 
-			Virtual Desktop Infrastructure, VMware Veeam, Citrix XenDesktop, PERL, Windows Server 2008;
-			</div>
-			<div class="skill">
-			<span class="head">Communication/Leadership:</span> Public Speaking, Leadership Seminars, Group Leader, 
-			</div>
-			<div class="skill">
-			<span class="head">Web Development:</span> PHP, MYSQL, Smarty, MVC Frameworks, RESTful APIs,  XHTML, jQuery, CSS, Javascript, VIM;
-			</div>
-			<div class="skill">
-			<span class="head">Application Design:</span> C#, C++, XNA, Java, VB.NET, Visual Basic;
-			</div>
-			<div class="skill">
-			<span class="head">Other proficient software:</span> Photoshop, Excel, Access, Powerpoint, Flash, Windows (XP,Vista,7), MAC OS X
-			</div>
-		
 
-                                                
-            <h2>Education</h2>
-                                   
-            <div class="school">                                   
-				<span class="head">Bachelor of Science in Information Technology - 2012 </span>
-				<span class="right">2010 to 2012</span><br>                                        
-				<span class="add">Plymouth State University, Plymouth, NH - Magna Cum Laude - GPA 3.52</span><br>
-				<span class="add">Top 20 Senior Award, Outstanding Student in Information Technology Award</span>
-             </div>
-						                                                
-             <h2>Work Experience</h2>
-			 
-			<div class="job">
-              		<span class="head">Junior Developer</span>      
-				<span class="right">Full-time Job</span><br>			  
-              		<span class="add">Plymouth State University, Plymouth, NH</span>                                     
-			    <span class="right">May 2012 to Current</span>
-                 <ul>
-					 <li>Designed and developed an open source full-scale equipment reservation web application system;</li>
-					 <li>Used MVC Frameworks, code was peer reviewed, system designed for 5000+ users;</li>
-				 </ul>
-               </div> 
-
-			<div class="job">
-              		<span class="head">Computer Science Undergraduate Fellow</span>      
-				<span class="right">Internship</span><br>			  
-              		<span class="add">Plymouth State University, Plymouth, NH</span>                                     
-			    <span class="right">May 2011 to Current</span>
-                 <ul>
-					 <li>Worked closely with professors and students with creating and offering support for lab assignments;</li>
-					 <li>Maintained and updated networking equipment and computers for computer science labs;</li>
-				 </ul>
-               </div> 
-			   
-			   <div class="job">
-				<span class="head">Information Desk Consultant (Photoshop, Flash)</span>
-				<span class="right">Part-time job</span><br>
-				<span class="add">Plymouth State University, Plymouth, NH</span>
-				<span class="right">September 2010 to Current</span>
-                <ul>
-					<li>Media Presentation Center (Photoshop, Flash, Apple Software);</li>
-					<li>Call Center Support for over 400 faculty and staff and over 4000 students;</li>
-				</ul>
-				</div>
-				
-				<div class="job">
-				<span class="head">Systems Support Intern (VDI, Xen Desktop, Veeam)</span>
-				<span class="right">Internship</span><br>
-				<span class="add">Plymouth State University, Plymouth, NH</span>
-				<span class="right">February 2011 to May 2011</span>
-				<ul>
-					<li>Worked as lead in researching and testing virtual desktop infrastructure services;</li>
-					<li>Wrote up technical documentation on how to install and manage tested services;</li>
-				</ul>
-				</div>
-				
-                <div class="job">
-				<span class="head">TechBench (Computer Repair, Virus Removal) </span>
-				<span class="right">Part-time job</span><br>
-				<span class="add">Daniel Webster College ITS, Nashua, NH</span>
-				<span class="right">November 2008 to  May 2010</span>                                  
-                <ul>
-					<li>Troubleshot numerous hardware and software related computer issues; Virus Removal;</li>
-					<li>Worked as a team to develop a 100 page technical document;</li>
-				</ul>
-				</div>
-				
-				
-				<div class="job">
-				<span class="head">LabTech (Active Directory, Norton Ghost) </span>
-				<span class="right">Part-time job</span><br>
-				<span class="add">Daniel Webster College ITS, Nashua, NH</span>
-				<span class="right">September 2008 to  May 2010</span>                                  
-                <ul>
-					<li>Worked as a helpdesk associate troubleshooting network, printer and workstation issues;</li>
-					<li>Setup over 100 computers with new software, using Norton Ghost and other various tools.</li>
-				</ul>
-				</div>
-
-                <h2>Clubs/Organizations</h2>
-                 <ul>							  
-					  <li>President of the Gaming Club (Daniel Webster College) </li>		 
-					  <li>Vice President of Marketing for PACE (Plymouth State Univeristy) </li>					   
-			  </ul>
-
-			 <h2>Web Profile</h2>
-				<ul>
-					<li><a href="http://stackoverflow.com/users/984383/david-allen">Stack Overflow</a></li>
-					<li><a href="https://github.com/drallen1">Github</a></li>
-					<li><a href="http://davidrallen.com">Personal Website</a></li>
-					<li><a href="http://coderwall.com/drallen1">Coderwall</a></li>
-				</ul>
-                                                   
-
-	<div id="footer-wrapper">
-		<div id="footer">Website designed by David Allen. Copyright 2012.</div>
+											   
+				  <h2>Education</h2>
+									
+				  <div class="school right-aligned">                                   
+						<span class="school-name">Plymouth State University</span><br>
+						<span class="normal">B.S. Information Technology</span><br>
+						<span class="award">Magna Cum Laude,<br> Top 20 Senior Award,<br> Outstanding Student in <br> Information Technology Award</span>
+				   </div>
 	</div>
-		</div>
+	<div id="right">
+			<h1>Open Source Web Developer</h1>
+
+			<h2>Objective</h2>   
+			 
+			 <p>
+				To create valuable and exciting web applications as an open source web developer, learn new technologies and languages, stay on the leading edge and make a positive impact on the web and its users.
+			</p>
+
+			   <h2>Experience</h2>
+				 
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">May 2012 - Present</span>
+					<br>
+					<span class="job-title">Junior Developer</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Designed and Developed a full-scale open source web application using PHP, MySQL, HTML5, CSS3, jQuery, JavaScript, Smarty and Klein routing in a LAMP environment using VIM and Git</li>
+						 <li>Used MVC Framework with Smarty/HTML5 and PHP/MySQL/Klein</li>
+						 <li>Developed Project from specification to production in 5 months</li>
+						<li>Integrated with existing MySQL database, Plymouth State API Layer, and GLPI</li>
+						<li>Created technical documentation and end-user manuals</li>
+						<li>All code was peer reviewed and open-sourced on github.com</li>
+					 </ul>
+				</div>
+
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Sept 2011 - May 2012</span>
+					<br>
+					<span class="job-title">Computer Science Undergraduate Fellow</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Worked alongside professors in creating and offering support for lab assignments </li>
+						 <li>Maintained and updated networking equipment and computers for computer science labs</li>
+				 </ul>
+				</div> 
+				
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Feb 2011 - May 2011</span>
+					<br>
+					<span class="job-title">Systems Support Intern</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Worked as lead in researching and testing virtual desktop infrastructure services</li>
+						 <li>Created technical documentation for installing and managing tested services</li>
+				 </ul>
+				</div> 
+
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Sept 2010 - May 2012</span>
+					<br>	
+					<span class="job-title">Information Desk Consultant</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Call Center supporting 60,000+ university constituents, 1200+ calls logged</li>
+						 <li>Supported Media Presentation Center (Photoshop, Flash, iMovie)</li>
+				 </ul>
+				</div> 
+				
+				<div class="job">
+					<span class="head">Daniel Webster College</span>
+					<span class="right-head">Nov 2008 - May 2010</span>
+					<br>
+					<span class="job-title">TechBench</span>      
+				    <span class="right-location">Nashua, NH</span>
+				  	<ul>
+						 <li>Troubleshot numerous hardware and software related computer issues</li>
+						 <li>Collaborated with a team on the creation of a 100 page technical manual for helpdesk operation</li>
+				 	</ul>
+				</div> 
+	</div>
+</div>
+	<div id="footer-wrapper">
+		<span class="footer">Website designed by David Allen. Copyright 2012.</span>
 	</div>
 	</body>
 </html>
