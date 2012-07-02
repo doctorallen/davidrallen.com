@@ -1,3 +1,7 @@
+body{
+	overflow: scroll;
+
+}
 #left{
 	text-align: right;
 	width: 300px;
@@ -13,16 +17,16 @@ html, body{
 	font-family:Arial, Helvetica,sans-serif;
 }
 #footer-wrapper{
-	height: 30px;
+	height: 45px;
 	width: 950px;
 	margin: 0 auto 0 auto;
+	padding-top: 20px;
 	position: relative;
-	padding: 20px;
 	margin-top: -70px;
-	outline-style: dashed;
-	outline-width: 2px;
-	outline-color: #0070C0;
-	outline-offset: 5px;
+	background: -moz-linear-gradient(#EAEAEA, #FAFAFA);
+	background: -webkit-linear-gradient(#EAEAEA, #FAFAFA);
+	box-shadow: 0 0px 3px #616158;
+
 }
 #main{
 	width: 950px;
@@ -35,6 +39,7 @@ html, body{
 	overflow: auto;
 	padding-top: 15px;
 	padding-bottom: 100px;
+	
 }
 .alignCenter{
 	text-align:center;
@@ -44,19 +49,23 @@ html, body{
 	width:500px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 90px;
   	font-size: 1.1em; 
   	overflow: hidden;
  }
 
 #header{
 	margin: auto;
+	width: 950px;
 	background: -moz-linear-gradient(#FAFAFA, #EAEAEA);
 	background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);
-	box-shadow: 0 1px 3px #616158;
+	box-shadow: 0 0px 3px #616158;
 	overflow: auto;
 }
 
-#navbar li {float: left;
+#navbar li {
+	position: relative;
+	float: left;
 	box-shadow: 0 0px 3px #616158;
 	width: 100px;
 	height: 50px;
@@ -67,6 +76,8 @@ html, body{
 #navbar li:hover {
 	box-shadow: 0px 0px 4px #0070C0;
 	color: #0070C0;
+	background: -moz-linear-gradient(#EAEAEA, #FAFAFA);
+	background: -webkit-linear-gradient(#EAEAEA, #FAFAFA);
 }
 
 a {text-decoration: none;}
@@ -146,6 +157,13 @@ span.name2{
 	color: #404040;
 	font-size: 3em;
 }
+.so{
+	color: #616168;
+	font-size: 3em;
+}
+.port{
+	padding-left: 50px;
+}
 h1{
 	color:#616158;
 }
@@ -176,5 +194,13 @@ li{
 	font-weight: bold;
 	font-size: 1.1em;
 
+}
+h3{
+	color: #0070C0;
+	font-size: 1.2em;
+}
+h4{
+	color: #404040;
+	font-size: 1.1em;
 }
 

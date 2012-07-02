@@ -1,1 +1,9 @@
 ErrorDocument 404 /404.html
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+Order Allow, Deny
+Deny from all
+</FilesMatch>
+
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^(.*)\.htm$ $1.php [nc]

@@ -65,7 +65,7 @@
 					<span class="job-title">Junior Developer</span>      
 				    <span class="right-location">Plymouth, NH</span>
 				  <ul>
-						 <li>Designed and Developed a full-scale open source web application using PHP, MySQL, HTML5, CSS3, jQuery, JavaScript, Smarty and Klein routing in a LAMP environment using VIM and Git</li>
+						 <li>Designed and Developed a <a href="portfolio.php#CTS">full-scale open source web application</a> using PHP, MySQL, HTML5, CSS3, jQuery, JavaScript, Smarty and Klein routing in a LAMP environment using VIM and Git</li>
 						 <li>Used MVC Framework with Smarty/HTML5 and PHP/MySQL/Klein</li>
 						 <li>Developed Project from specification to production in 5 months</li>
 						<li>Integrated with existing MySQL database, Plymouth State API Layer, and GLPI</li>
