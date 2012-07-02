@@ -1,7 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <?php include('includes/header.html'); ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<div id="main">
 	<div id="left">
 		<span class="name1">DAVID</span> <span class="name2"> ALLEN</span>                              
 				
@@ -74,6 +71,7 @@
 						<li>Integrated with existing MySQL database, Plymouth State API Layer, and GLPI</li>
 						<li>Created technical documentation and end-user manuals</li>
 						<li>All code was peer reviewed and open-sourced on github.com</li>
+						<li>Migrated existing web applications from Subversion to GitHub</li>
 					 </ul>
 				</div>
 
@@ -125,9 +123,4 @@
 				 	</ul>
 				</div> 
 	</div>
-</div>
-	<div id="footer-wrapper">
-		<span class="footer">Website designed by David Allen. Copyright 2012.</span>
-	</div>
-	</body>
-</html>
+<?php include('includes/footer.html'); ?>
