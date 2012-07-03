@@ -2,17 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-	<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery.smooth-scroll.min.js"></script>
+	<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
+	<script src="pikachoose/lib/jquery.jcarousel.min.js"></script>
+	<script src="pikachoose/lib/jquery.pikachoose.full.js"></script>
+	<script src="pikachoose/lib/jquery.pikachoose.js"></script>
+	<script src="js/gallery.js"></script>
+	<script src="js/lightbox.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/common.css" />
-	<title>David Allen's Curriculum vitae</title>
+	<link rel="stylesheet" type="text/css" href="../pikachoose/styles/bottom.css" />
+	<link rel="stylesheet" type="text/css" href="../css/lightbox.css" />
+	<script language="javascript">
+			$(document).ready(
+				function (){
+					$("#gallery").PikaChoose({carousel:true});
+				});
+		</script>
+	<title>David Allen's Curriculum Vitae</title>
 </head>
 <body>			
 	<div id="header">
 		<div id="navbar">
 				<ul>
-					<a href="index.php"><li id="home">Resume</li></a>
-					<a href="portfolio.php"><li id="portfilio">Portfolio</li></a>
-					<a href="about.php"><li id ="about">About</li></a>
+					<a href="index"><li id="home">Resume</li></a>
+					<a href="portfolio"><li id="portfilio">Portfolio</li></a>
+					<a href="about"><li id ="about">About</li></a>
 				</ul>
 			</div>
 		</div>
