@@ -1,0 +1,462 @@
+
+/** 
+ * YAPB Options Page
+ **/
+
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+
+.statbox {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #E5E5E5;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 4px 18px #C8C8C8;
+	font-family: georgia,sans-serif;
+	font-weight: normal;
+	margin: 15px 0 0;
+	padding: 16px 16px 20px;
+}
+
+.yapb-statbox {
+	background: transparent url(../img/camera-big.jpg) left top no-repeat;
+}
+
+
+	/* Layoutbreite > 1024px */
+
+	.yapb-menu {
+		float: left;
+		width: 200px;
+		padding: 180px 40px 40px 20px;
+		margin: 0;
+	}
+
+		.yapb-menu li {
+			list-style-type: none;
+			margin: 0 0 4px 0;
+			padding: 0;
+		}
+
+			.yapb-menu a {
+				font: bold 14px/16px arial,sans-serif;
+				color: #aaaaaa;
+				text-decoration: none;
+				/*  padding-left: 10px;
+				background: transparent url(arrow.gif) left 4px no-repeat; */
+			}
+
+			.yapb-menu a:hover {
+				color: #000000;
+				background-position: left -46px;
+			}
+
+
+
+
+	.yapb-wrap {
+		position: relative;
+		padding-left: 10px;
+		float: left;
+	}
+
+		.yapb-teasers {
+			float: left;
+			width: 400px;
+			padding-top: 15px;
+			margin-left: 30px;
+		}
+
+			.yapb-teaser {
+				margin: 0 0 30px 0;
+				text-decoration: none;
+				color: #000000;
+			}
+
+				.yapb-teaser-community {
+					padding-left: 105px;
+					background: transparent url("../img/teaser-community.jpg") left top no-repeat;
+				}
+
+				.yapb-teaser-donate {
+					padding-left: 105px;
+					background: transparent url("../img/teaser-donate.jpg") left top no-repeat;
+				}
+
+				.yapb-teaser-support {
+					padding-left: 105px;
+					background: transparent url("../img/teaser-support.jpg") left top no-repeat;
+				}
+
+			.yapb-teaser:hover {
+				color: #000000;
+			}
+
+
+				.yapb-teaser h2 {
+					font: bold 14px/13px arial,sans-serif;
+					margin: 0 0 4px 0;
+					padding: 0;
+				}
+
+				.yapb-teaser p {
+					font: normal 12px/16px georgia,serif;
+					margin: 0 0 4px 0;
+					padding: 0;
+				}
+
+				.yapb-teaser i {
+					font-style: normal;
+					color: #8c8c8c;
+				}
+
+				.yapb-teaser .cta {
+					display: block;
+					margin-top: 10px;
+					background: transparent url("../img/bg-cta.gif") left -100px repeat-x;
+					width: 170px;
+					color: white;
+					padding: 2px 10px 4px 10px;
+					font-size: 14px;
+				}
+
+				.yapb-teaser:hover .cta {
+					background: #868686;
+				}
+
+				.yapb-teaser .cta-important {
+					background-position: left top;
+				}
+
+				.yapb-teaser:hover .cta-important {
+					background: #0097dd;
+				}
+
+
+
+		.yapb-information {
+			margin-left: 30px;
+			padding: 10px 0 20px 0;
+			width: 400px;
+			float: left;
+		}
+
+
+			.yapb-information h1 {
+				font: bold 32px/32px arial,sans-serif;
+				letter-spacing: -0.05em;
+				margin: 0 0 6px -4px;
+				padding: 0;
+			}
+
+			.yapb-information .content {
+				margin: 0 0 10px 0;
+				padding: 0;
+				font: normal 14px/18px georgia,serif;
+			}
+
+			.yapb-information ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			.yapb-information li {
+				list-style-type: none;
+				margin: 0 0 4px 0;
+				padding: 0;
+			}
+
+				.yapb-information li h2 {
+					font: bold 14px arial,sans-serif;
+					margin: 0 0 4px 0;
+					padding: 0;
+				}
+
+	/* Accordion links */
+
+	.yapb-information .yapb-accordion-item a {
+		font: normal 13px arial,sans-serif;
+		color: #007ab1;
+		text-decoration: none;
+		padding-left: 16px;
+		background: transparent url("../img/accordion.gif") left 3px no-repeat;
+	}
+
+	.yapb-information .yapb-accordion-item a:hover {
+		color: black;
+		background-position: left -97px;
+	}
+
+	.yapb-information .yapb-accordion-item-opened a {
+		background-position: left -47px;
+	}
+
+	.yapb-wrap .yapb-information .yapb-accordion-item-opened a:hover {
+		background-position: left -147px;
+	}
+
+	/* Accordion links error */
+
+	.yapb-information .error.yapb-accordion-item a {
+		font: normal 13px arial,sans-serif;
+		color: #eb4800;
+		text-decoration: none;
+		padding-left: 16px;
+		background: transparent url("../img/accordion.gif") left -197px no-repeat;
+	}
+
+	.yapb-information .error.yapb-accordion-item a:hover {
+		color: #a53200;
+		background-position: left -297px;
+	}
+
+	.yapb-information .error.yapb-accordion-item-opened a {
+		background-position: left -247px;
+	}
+
+	.yapb-wrap .yapb-information .error.yapb-accordion-item-opened a:hover {
+		background-position: left -347px;
+	}
+
+	/* Accordion item */
+
+	.yapb-information .yapb-accordion-content {
+		padding: 10px 0 0 16px;
+		font: normal 12px/18px georgia,serif;
+	}
+
+	.yapb-information .error .yapb-accordion-content {
+		color: #eb4800;
+	}
+
+		.yapb-information .yapb-accordion-content ul {
+			margin-top: 10px;
+		}
+
+		.yapb-information .yapb-accordion-content li {
+			margin-left: 15px;
+			list-style-type: square;
+		}
+
+			.yapb-information .error .yapb-accordion-content li a {
+				padding: 0;
+				background: none;
+				text-decoration: underline;
+			}
+			
+/* Option groups */
+
+ul.yapb,
+p.yapb-first {
+	margin: 0 0 10px 0;
+}
+
+.wrap-yapb-options th {
+	padding-top: 20px;
+	padding-right: 20px;
+}
+		
+/* YAPB option groups */
+
+.yapb-option-group-level2 {
+	padding-top: 20px;
+}
+
+.yapb-option-group-level3,
+.yapb-option-group-level4 {
+	
+	margin-left: 5px;
+	padding: 0 0 5px 20px;
+	border-left: 2px dotted #efefef;
+	
+}
+			
+
+/* Adaptions for differnt screen resolutions */		
+		
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+
+	.yapb-teasers {
+		width: 300px;
+	}
+
+	.yapb-teaser {
+		padding-left: 0;
+		background: none;
+	}
+
+}
+
+@media screen and (max-width: 1300px) {
+
+	.yapb-information {
+		float: none;
+	}
+	
+	.yapb-teasers {
+		float: none;
+	}
+	
+}		
+
+@media screen and (max-width: 1140px) {
+	
+	.yapb-information {
+		
+	}
+	
+}
+
+@media screen and (max-width: 940px) {
+	
+	.yapb-statbox {
+		background-image: url("../img/camera-small.jpg");
+	}
+	
+	.yapb-menu {
+		padding: 140px 20px 0 20px;
+		width: 180px;
+	}
+	
+	.yapb-menu a {
+		font: bold 12px/14px arial,sans-serif;
+	}
+	
+	.yapb-information { 
+		margin-left: 0;
+	}
+	
+	.yapb-teasers {
+		margin-left: 0;
+	}
+	
+}
+
+@media screen and (max-width: 860px) {
+	
+	.yapb-information,
+	.yapb-teasers {
+		width: 300px;
+	}
+	
+	.yapb-teaser {
+		padding-left: 0;
+		background: none;
+	}
+	
+}
+		
+		
+
+/** 
+ * Accordion 
+ **/
+
+
+.basic-accordion-anchor {
+	display:block;
+}
+
+.basic-accordion {
+	margin:0 0 20px 0;
+}
+
+
+
+
+	/**
+	 * Default YAPB Accordion items
+	 **/
+
+	.basic-accordion a.basic-accordion-link {
+
+		cursor:pointer;
+		display:block;
+		
+		padding:5px 0 5px 20px;
+		margin:0 0 10px 0;
+		
+		text-decoration:none;
+		font-weight:bold;
+		font-size:13px;
+		color:#222222;
+
+		border-top:1px solid #e1e1e1;
+
+		background:#f1f1f1 url(../img/option-arrow.gif) 7px 10px no-repeat;
+
+	}
+
+	.basic-accordion a.basic-accordion-link:hover {
+		color:black;
+		background-color:#e1e1e1;
+		border-top-color:#d1d1d1;
+	}
+
+	.basic-accordion a.selected {
+		background-color:#e1e1e1;
+		border-top-color:#d1d1d1;
+		background-position:7px -14px;
+	}
+
+		.basic-accordion .form-table {
+			margin:10px 0 10px 0;
+		}
+
+		.basic-accordion .form-table tr {
+			/** background-color:#f1f1f1; **/
+		}
+
+
+	.basic-accordion .basic-accordion-content {
+		margin-bottom:10px;
+	}
+
+
+
+	/** 
+	 * Accordion styles for third party YAPB plugins
+	 **/
+
+	.basic-accordion .yapb-plugin a.basic-accordion-link {
+		border-top-color:#c3d9e3;
+		background-color:#eaf5fa;
+	}
+
+	.basic-accordion .yapb-plugin a.basic-accordion-link:hover {
+		border-top-color:#86afc2;
+		background-color:#c3d9e3;
+	}
+
+	.basic-accordion .yapb-plugin a.selected {
+		border-top-color:#86afc2;
+		background-color:#c3d9e3;
+		background-position:7px -14px;
+	}
+
+		.basic-accordion .yapb-plugin .form-table tr {
+			/** background-color:#eaf5fa; **/
+		}
+
+/**
+ * YAPB Separator Option Style
+ **/
+
+.yapb-options-separator {
+	border-bottom:1px dashed gray;
+	margin:20px 0 20px 0;
+	width:200px;
+}

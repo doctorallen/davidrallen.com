@@ -54,6 +54,10 @@ html, body{
   	overflow: hidden;
  }
 
+.clean{
+	list-style: none;
+}
+
 #header{
 	margin: auto;
 	width: 950px;
@@ -152,14 +156,17 @@ span.add{
 span.name1{
 	color: #0070C0;
 	font-size: 3em;
+	text-shadow: 0 0 0.1em #0070C0;
 }
 span.name2{
 	color: #404040;
 	font-size: 3em;
+	text-shadow: 0 0 0.1em #404040;
 }
 .so{
-	color: #616168;
+	color: #616158;
 	font-size: 3em;
+	text-shadow: 0 0 0.1em #616158;
 }
 .port{
 	padding-left: 50px;
@@ -170,6 +177,21 @@ h1{
 h2{
 	 color:#404040;
 }
+
+#image{
+	border:4px #666 solid;
+	height:480px;
+	width:640px;
+}
+
+.thumb{
+	float:left;
+	margin-right:10px;
+	margin-top:10px;
+	height: 50px;
+	width: 50px;
+}
+
 div.skill{
 	  overflow:hidden;
 }
@@ -197,7 +219,7 @@ li{
 }
 h3{
 	color: #0070C0;
-	font-size: 1.2em;
+	font-size: 1.4em;
 }
 h4{
 	color: #404040;

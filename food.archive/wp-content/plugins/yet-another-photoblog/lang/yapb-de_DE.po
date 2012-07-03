@@ -1,0 +1,750 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Photoblog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-18 13:20+0100\n"
+"PO-Revision-Date: 2012-02-18 13:44+0100\n"
+"Last-Translator: J.P.Jarolim <translation@johannes.jarolim.com>\n"
+"Language-Team: J.P.Jarolim\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-Basepath: d:\\xampp\\vhosts\\johannes.jarolim.loc\\blog\\wp-content\\plugins\\yet-another-photoblog\\\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/Yapb.class.php:486
+#: lib/Yapb.class.php:525
+msgid "Image"
+msgstr "Bild"
+
+#: lib/Yapb.class.php:620
+msgid "Options Updated."
+msgstr "Optionen gespeichert."
+
+#: lib/Yapb.class.php:628
+msgid "Cache cleared"
+msgstr "Cache geleert."
+
+#: lib/Yapb.class.php:640
+msgid "Entry cleaned up"
+msgstr "Eintrag gesäubert"
+
+#: lib/Yapb.class.php:659
+msgid "Exif Tags retrained"
+msgstr "Exif Informationen wurden neu ausgelesen"
+
+#: lib/Yapb.class.php:1377
+#, php-format
+msgid "<strong>YAPB Cache dir not writeable.</strong><br/> Please make sure that %s is writeable."
+msgstr "<strong>YAPB Cache-Verzeichnis ist nicht beschreibbar</strong><br/> Bitte sicherstellen, dass %s beschreibbar ist."
+
+#: lib/Yapb.class.php:1391
+#, php-format
+msgid "<strong>YAPB thumbnail cache directory created</strong><br/>YAPB successfully created the directory %s for the internal thumbnail cache."
+msgstr "<strong>YAPB Thumbnail-Verzeichnis wurde erstellt</strong><br/>YAPB hat das Verzeichnis %s für den internen Thumbnail-Cache erfolgreich erstellt."
+
+#: lib/Yapb.class.php:1394
+#, php-format
+msgid "<strong>Could not set sufficient directory permission</strong><br/> Please make sure that the directory %s is writeable."
+msgstr "<strong>Verzeichnisrechte konnten nicht gesetzt werden</strong><br/> Bitte vergewissern, dass das Verzeichnis %s beschreibbar ist."
+
+#: lib/Yapb.class.php:1400
+#, php-format
+msgid "<strong>Could not create YAPB Cache directory automatically.</strong><br/>Please create %s manually. Don't forget to set the according directory permissions to 777 or 775."
+msgstr "<strong>YAPB Cache-Verzeichnis konnte nicht automatisch erstellt werden</strong><br/>Bitte %s manuell erstellen. Bitte auch nicht vergessen, die Verzeichnis-Berechtigungen auf 777 oder 775 zu setzen."
+
+#: lib/Yapb.class.php:1408
+#, php-format
+msgid "<strong>Configured WordPress upload directory doesn't exist</strong><br/> Please make sure that the directory %s exists and is writeable."
+msgstr "<strong>Das eingestellte WordPress Upload Verzeichnis existiert nicht</strong><br/> Bitte sicherstellen, dass das Verzeichnis %s existiert und beschreibbar ist."
+
+#: lib/includes/YapbPointers.class.php:16
+msgid "New Feature: Individual image linking"
+msgstr "Neues Feature: Individuelle Bildverlinkung"
+
+#: lib/includes/YapbPointers.class.php:17
+msgid "You now have exact control over image links on all sections using automatic image insertion"
+msgstr "Du erhältst nun volle Kontrolle über Bildverlinkungen in allen Bereichen, die die automatische Templateintegration nutzen"
+
+#: lib/includes/YapbPointers.class.php:31
+msgid "New Feature: Social media integration"
+msgstr "Neues Feature: Social Media Integration"
+
+#: lib/includes/YapbPointers.class.php:32
+msgid "YAPB now offers some social media integration features: just have a look."
+msgstr "YAPB bietet nun Social Media Integration Features: Einfach reinschauen."
+
+#: lib/options/YapbExifTagnamesOption.class.php:100
+msgid "Please post at least one image containing EXIF data so YAPB can learn which EXIF tags your camera uses."
+msgstr "Bitte mindestens ein Bild uploaden, damit YAPB die EXIF Informationen lernen kann, die von der Kamera gesetzt werden."
+
+#: lib/options/YapbExifTagnamesOption.class.php:102
+msgid "Retrain filter based on already posted images"
+msgstr "Filter anhand bis jetzt upgeloadeter Bilder neu trainieren"
+
+#: lib/options/YapbOptions.php:20
+msgid "YAPB Main Plugin"
+msgstr "YAPB Hauptplugin"
+
+#: lib/options/YapbOptions.php:25
+msgid "General Options"
+msgstr "Generelle Optionen"
+
+#: lib/options/YapbOptions.php:26
+msgid "Welcome to YAPB and to it's numerous configuration possibilities.<br/>Don't panic ;-)"
+msgstr "Willkommen zu YAPB und seinen zahlreichen Konfigurationsmöglichkeiten.<br/>Keine Panik ;-)"
+
+#: lib/options/YapbOptions.php:30
+msgid "Writing Options"
+msgstr "Schreiboptionen"
+
+#: lib/options/YapbOptions.php:31
+msgid "These settings do alter the behaviour of the WordPress input mask for new articles."
+msgstr "Diese Einstellungen verändern das Verhalten der WordPress-Eingabemaske für neue Artikel"
+
+#: lib/options/YapbOptions.php:33
+msgid "Check by default: Post date from image exif data if available."
+msgstr "Standardmäßig anhakeln: Beitragsdatum auf das EXIF-Datum setzen."
+
+#: lib/options/YapbOptions.php:34
+msgid "Assign post exclusivly to category # if attaching an YAPB-image."
+msgstr "Beiträge exklusiv der Kategorie # zuweisen, wenn ein YAPB Bild eingepflegt wird."
+
+#: lib/options/YapbOptions.php:35
+msgid "Enable YAPB-Imageupload for content pages"
+msgstr "YAPB-Bildupload für Seiten aktivieren"
+
+#: lib/options/YapbOptions.php:40
+msgid "EXIF Filtering Options"
+msgstr "EXIF Filteroptionen"
+
+#: lib/options/YapbOptions.php:41
+msgid "EXIF Tags don't get displayed by default: Have a look how to adapt your theme manually to show them on your page."
+msgstr "EXIF Tags werden standardmäßig nicht angezeigt: Die Ausgabe muß manuell in das Theme eingefügt werden."
+
+#: lib/options/YapbOptions.php:43
+msgid "Enable EXIF tags filtering"
+msgstr "EXIF Tags filtern"
+
+#: lib/options/YapbOptions.php:44
+msgid "List only the following EXIF tags if available:"
+msgstr "Nur die folgenden EXIF Tags anzeigen (falls vorhanden):"
+
+#: lib/options/YapbOptions.php:51
+msgid "YAPB notifies the following site update services if you publish a photoblog-post.<br />These services will be pinged additionally to the services defined on the options/write admin-panel.<br />Separate multiple service URIs with line breaks."
+msgstr "YAPB benachrichtigt die folgenden Dienste, wenn ein PhotoBlog Post veröffentlicht wird<br />Diese Dienste werden zusätzlich zu den Diensten benachrichtigt, die unter \"Optionen/Schreiben\" in der Administrationsmaske definiert sind.<br />Mehrere Dienste durch neue Zeilenschaltungen trennen."
+
+#: lib/options/YapbOptions.php:58
+msgid "Thumbnailer Options"
+msgstr "Optionen der Thumbnail Bibliothek"
+
+#: lib/options/YapbOptions.php:59
+msgid "<a href=\"http://phpthumb.sourceforge.net/\" target=\"_blank\">phpThumb</a> is the thumbnailing library of my choice. For your comfort, i made available a selection of settings: For more Information please refer to <a href=\"http://phpthumb.sourceforge.net\" target=\"_blank\">http://phpthumb.sourceforge.net</a> - Especially this two pages: <a href=\"http://phpthumb.sourceforge.net/demo/docs/phpthumb.readme.txt\" target=\"_blank\">readme</a> and <a href=\"http://phpthumb.sourceforge.net/demo/docs/phpthumb.faq.txt\" target=\"_blank\">faq</a>."
+msgstr "<a href=\"http://phpthumb.sourceforge.net/\" target=\"_blank\">phpThumb</a> ist die Software-Bibliothek meiner Wahl, um Thumbnails zu erzeugen. Um den Komfort zu erhöhen, habe ich eine kleine Auswahl der möglichen Einstellungen verfügbar gemacht. Mehr Informationen dazu kann man unter <a href=\"http://phpthumb.sourceforge.net/\" target=\"_blank\">http://phpthumb.sourceforge.net/</a> - und dort speziell auf den folgenden zwei Seiten finden: <a href=\"http://phpthumb.sourceforge.net/demo/docs/phpthumb.readme.txt\" target=\"_blank\">readme</a> and <a href=\"http://phpthumb.sourceforge.net/demo/docs/phpthumb.faq.txt\" target=\"_blank\">faq</a>."
+
+#: lib/options/YapbOptions.php:63
+msgid "ImageMagick configuration"
+msgstr "ImageMagick Konfiguration"
+
+#: lib/options/YapbOptions.php:64
+msgid "If source image is larger than available memory limits AND <a href=\"http://www.imagemagick.org\" target=\"_blank\">ImageMagick's \"convert\" program</a> is available on your server, phpThumb() will call ImageMagick to perform the thumbnailing of the source image to bypass the memory limitation."
+msgstr "Falls das Ausgangsbild größer als das vorhandene Speicherlimit sind UND ImageMagicks \"convert\"-Programm am Server verfügbar ist (<a href=\"http://www.imagemagick.org\" target=\"_blank\">mehr Informationen</a>), versucht phpThumb, Thumbnails über ImageMagick zu erstellen, um das PHP-Speicherlimit zu umgehen."
+
+#: lib/options/YapbOptions.php:66
+msgid "Absolute pathname to \"convert\": #40"
+msgstr "Absoluter Pfad zu \"convert\": #40"
+
+#: lib/options/YapbOptions.php:70
+msgid "Default output configuration"
+msgstr "Standardausgabe"
+
+#: lib/options/YapbOptions.php:73
+msgid "Output Thumbnail URLs XHTML compatible (&amp;amp; instead of &)"
+msgstr "Thumbnail URLs XHTML-kompatibel ausgeben (&amp;amp; statt &)"
+
+#: lib/options/YapbOptions.php:74
+msgid "Default output format: # Thumbnail will be output in this format (if available in your version of GD)."
+msgstr "Standard-Ausgabeformat: # Thumbnails werden in diesem Dateiformat generiert (Falls es in der installierten GD-Version verfügbar ist)"
+
+#: lib/options/YapbOptions.php:75
+msgid "Default JPG output quality: # (The higher, the better; better = bigger filesize)"
+msgstr "Default JPG Ausgabequalität: # (Je höher, desto besser; höher = größere Bilddateien)"
+
+#: lib/options/YapbOptions.php:76
+msgid "(forget that)"
+msgstr "(Einfach vergessen)"
+
+#: lib/options/YapbOptions.php:80
+msgid "(very poor)"
+msgstr "(Sehr schlecht)"
+
+#: lib/options/YapbOptions.php:86
+msgid "(moderate)"
+msgstr "(Durchschnittlich)"
+
+#: lib/options/YapbOptions.php:90
+msgid "(ok)"
+msgstr "(ok)"
+
+#: lib/options/YapbOptions.php:92
+msgid "(very good)"
+msgstr "(Sehr gut)"
+
+#: lib/options/YapbOptions.php:94
+msgid "(premium)"
+msgstr "(Premium)"
+
+#: lib/options/YapbOptions.php:96
+msgid "Interlaced output for GIF/PNG, progressive output for JPEG; if unchecked: non-interlaced for GIF/PNG, baseline for JPEG."
+msgstr "Interlaced-Ausgabe für GIF/PNG, Progressive Ausgabe für JPEGs; Falls nicht angehakelt: Nicht-Interlaced für GIF/PNG, Baseline für JPEG."
+
+#: lib/options/YapbOptions.php:103
+msgid "Feed Options"
+msgstr "Feedoptionen"
+
+#: lib/options/YapbOptions.php:104
+msgid "Here you may alter the behaviour of the automatic feed insertion."
+msgstr "Diese Einstellungen verändern das Verhalten der WordPress-Eingabemaske für neue Artikel"
+
+#: lib/options/YapbOptions.php:108
+msgid "Feed content thumbnail"
+msgstr "Thumbnail im Feedinhalt"
+
+#: lib/options/YapbOptions.php:109
+msgid "YAPB may embed images/thumbnails directly into the content of your RSS2 and ATOM feeds.<br/>You will have to turn on this feature if you want to subscribe to services like <a href=\"http://photos.vfxy.com\" target=\"_blank\">VFXY</a>."
+msgstr "YAPB kann Thumbnails direkt in RSS2 und ATOM Feeds einbinden. Man sollte dieses Feature einschalten, wenn man sich bei Diensten wie zB. <a href=\"http://photos.vfxy.com\" target=\"_blank\">VFXY</a> anmelden möchte."
+
+#: lib/options/YapbOptions.php:111
+msgid "<strong>Embed images in RSS2 and ATOM feeds content.</strong>"
+msgstr "<strong>Thumbnails in RSS2 und ATOM Feeds einbetten.</strong>"
+
+#: lib/options/YapbOptions.php:112
+msgid "Use XHTML style image tags in content."
+msgstr "XHTML Tags im Seiteninhalt benutzen."
+
+#: lib/options/YapbOptions.php:113
+#: lib/options/YapbOptions.php:232
+#: lib/options/YapbOptions.php:262
+#: lib/options/YapbOptions.php:292
+#: lib/options/YapbOptions.php:322
+msgid "Inline CSS-Style for image tag: #40"
+msgstr "Eingebetteter CSS-Style des Bild-Tags: #40"
+
+#: lib/options/YapbOptions.php:114
+#: lib/options/YapbOptions.php:233
+#: lib/options/YapbOptions.php:263
+#: lib/options/YapbOptions.php:293
+#: lib/options/YapbOptions.php:323
+msgid "Custom HTML before image tag"
+msgstr "Eigenes HTML vor Bild-Tag"
+
+#: lib/options/YapbOptions.php:115
+#: lib/options/YapbOptions.php:234
+#: lib/options/YapbOptions.php:264
+#: lib/options/YapbOptions.php:294
+#: lib/options/YapbOptions.php:324
+msgid "Custom HTML after image tag"
+msgstr "Eigenes HTML nach Bild-Tag"
+
+#: lib/options/YapbOptions.php:116
+msgid "Embed as thumbnail"
+msgstr "Als Thumbnail einbinden"
+
+#: lib/options/YapbOptions.php:121
+#: lib/options/YapbOptions.php:167
+msgid "Maximum thumbnail width of #3 px"
+msgstr "Thumbnails mit einer Breite von #3 px anzeigen."
+
+#: lib/options/YapbOptions.php:122
+#: lib/options/YapbOptions.php:168
+msgid "Maximum thumbnail height of #3 px"
+msgstr "Thumbnails mit einer Höhe von #3 px anzeigen."
+
+#: lib/options/YapbOptions.php:123
+#: lib/options/YapbOptions.php:169
+msgid "Crop thumbnail to fill in the defined rectangle"
+msgstr "Thumbnail so zuschneiden, dass es das definierte Rechteck ausfüllt"
+
+#: lib/options/YapbOptions.php:130
+msgid "RSS Enclosure"
+msgstr "RSS Enclosure"
+
+#: lib/options/YapbOptions.php:131
+msgid "You may optionally embed your images as <a href=\"http://en.wikipedia.org/wiki/RSS_enclosure\" target=\"_blank\">media enclosures</a> in RSS2 and ATOM feeds."
+msgstr "Optional Bilder als <a href=\"http://en.wikipedia.org/wiki/RSS_enclosure\" target=\"_blank\">Media Enclosures</a> in RSS2 and ATOM Feeds einbinden."
+
+#: lib/options/YapbOptions.php:133
+msgid "<strong>Embed images as media enclosures.</strong>"
+msgstr "<strong>Bilder als media enclosures einbinden.</strong>"
+
+#: lib/options/YapbOptions.php:134
+#: lib/options/YapbOptions.php:152
+msgid "Embed only resized image"
+msgstr "Nur verkleinerte Bilder einbinden"
+
+#: lib/options/YapbOptions.php:139
+#: lib/options/YapbOptions.php:157
+msgid "Maximum image width of #3 px"
+msgstr "Thumbnails mit einer maximalen Breite von #3 px anzeigen."
+
+#: lib/options/YapbOptions.php:140
+#: lib/options/YapbOptions.php:158
+msgid "Maximum image height of #3 px"
+msgstr "Thumbnails mit einer maximalen Höhe von #3 px anzeigen."
+
+#: lib/options/YapbOptions.php:141
+#: lib/options/YapbOptions.php:159
+msgid "Crop image to fill in the defined rectangle"
+msgstr "Thumbnail so zuschneiden, dass es das definierte Rechteck ausfüllt"
+
+#: lib/options/YapbOptions.php:148
+msgid "Yahoo Media RSS"
+msgstr "Yahoo Media RSS"
+
+#: lib/options/YapbOptions.php:149
+msgid "You may optionally add the elements specified by the <a href=\"http://search.yahoo.com/mrss\" target=\"_blank\">Media RSS 1.1.2 specification</a> to your RSS2 Feeds."
+msgstr "Optional Bilder nach der <a href=\"http://search.yahoo.com/mrss\" target=\"_blank\">Media RSS 1.1.2 Spezifikation</a> in RSS2 Feeds einbinden."
+
+#: lib/options/YapbOptions.php:151
+msgid "<strong>Turn on yahoo media RSS2 enhancement in general.</strong>"
+msgstr "<strong>Yahoo RSS2 Erweiterungen generell einschalten</strong>"
+
+#: lib/options/YapbOptions.php:162
+msgid "Include media:thumbnail"
+msgstr "media:thumbnail einbinden"
+
+#: lib/options/YapbOptions.php:179
+msgid "Social Media"
+msgstr "Social Media"
+
+#: lib/options/YapbOptions.php:180
+msgid "Connect your images better into social media platforms"
+msgstr "Verbinde deine Bilder besser mit Social Media Platformen"
+
+#: lib/options/YapbOptions.php:184
+msgid "Facebook"
+msgstr "Facebook"
+
+#: lib/options/YapbOptions.php:185
+msgid "YAPB supports some Facebook integration improvements <a target=\"_blank\" href=\"http://www.insidefacebook.com/2009/04/06/increase-your-sites-traffic-through-facebook-share/\">as described in this post</a> for example."
+msgstr "YAPB unterstützt die Facebook Integrations-Verbesserungen, die unter anderen <a target=\"_blank\" href=\"http://www.insidefacebook.com/2009/04/06/increase-your-sites-traffic-through-facebook-share/\">in diesem Artikel (englisch)</a> beschrieben sind."
+
+#: lib/options/YapbOptions.php:187
+msgid "<strong>Enable Facebook integration in general</strong>"
+msgstr "<strong>Facebook Erweiterungen generell einschalten</strong>"
+
+#: lib/options/YapbOptions.php:188
+msgid "Use YAPB image as Facebook Post-Thumbnail in single posts/pages"
+msgstr "Benutze das YAPB-Bild als Facebook Post-Thumbnail in Artikeln/Seiten"
+
+#: lib/options/YapbOptions.php:189
+msgid "Declare YAPB-posts as media type medium=image"
+msgstr "Deklariere YAPB-Artikel als media type medium=image"
+
+#: lib/options/YapbOptions.php:196
+msgid "Automatic Image Insertion"
+msgstr "Automatische Templateintegration"
+
+#: lib/options/YapbOptions.php:197
+msgid "Yapb does display uploaded images automatically on different sections of your site by default.<br/>That's just a help for first-time-users and evaluation purproses: To style your photoblog individually,<br/> turn off this option and have a look at <a target=\"_blank\" href=\"http://johannes.jarolim.com/blog/wordpress/yet-another-photoblog/adapting-templates/\">how to adapt themes manually</a>."
+msgstr "YAPB zeigt hochgeladene Bilder automatisch in mehreren Bereichen der Seite an.<br />Das ist NICHT wirklich dass, was ich mir bei der Programmierung von YAPB vorgestellt habe - Dies ist nur eine Hilfe für Neueinsteiger.<br /> Um das ganze eigenständiger zu gestalten, einfach das Feature deaktivieren und schauen, <a target=\"_blank\" href=\"http://johannes.jarolim.com/blog/wordpress/yet-another-photoblog/adapting-templates/\">wie man Themes manuell anpasst</a>."
+
+#: lib/options/YapbOptions.php:201
+msgid "General"
+msgstr "Generell"
+
+#: lib/options/YapbOptions.php:204
+msgid "Activate automatic image rendering in general."
+msgstr "Automatische Integration aktivieren"
+
+#: lib/options/YapbOptions.php:209
+msgid "Home page"
+msgstr "Startseite"
+
+#: lib/options/YapbOptions.php:210
+msgid "The homepage usually shows a number of previously published posts.<br />You probably want to show thumbnails only."
+msgstr "Sie Startseite zeigt normalerweise eine Anzahl von schon veröffentlichten Beiträgen.<br />Man sollte hier nur Vorschaubilder zeigen."
+
+#: lib/options/YapbOptions.php:212
+msgid "<strong>Display images on HOME page listing.</strong>"
+msgstr "<strong>Bilder in der Homepage-Aufzählung anzeigen.</strong>"
+
+#: lib/options/YapbOptions.php:213
+#: lib/options/YapbOptions.php:243
+#: lib/options/YapbOptions.php:273
+#: lib/options/YapbOptions.php:303
+msgid "Display image as thumbnail with a width of #3 px"
+msgstr "Bild als Thumbnails mit einer Breite von #3 px anzeigen."
+
+#: lib/options/YapbOptions.php:214
+msgid "Enable image links:"
+msgstr "Bild-Verlinkungen aktivieren"
+
+#: lib/options/YapbOptions.php:216
+#: lib/options/YapbOptions.php:246
+#: lib/options/YapbOptions.php:276
+#: lib/options/YapbOptions.php:306
+msgid "Linking"
+msgstr "Verlinkung"
+
+#: lib/options/YapbOptions.php:219
+#: lib/options/YapbOptions.php:249
+#: lib/options/YapbOptions.php:279
+#: lib/options/YapbOptions.php:309
+msgid "Link to actual post"
+msgstr "Verlinke auf Artikel/Seite"
+
+#: lib/options/YapbOptions.php:220
+#: lib/options/YapbOptions.php:250
+#: lib/options/YapbOptions.php:280
+#: lib/options/YapbOptions.php:310
+msgid "Link to original image"
+msgstr "Verlinke auf Originalbild"
+
+#: lib/options/YapbOptions.php:222
+#: lib/options/YapbOptions.php:252
+#: lib/options/YapbOptions.php:282
+#: lib/options/YapbOptions.php:312
+msgid "Link thumbnails to image"
+msgstr "Thumbnails zum Bild verlinken"
+
+#: lib/options/YapbOptions.php:225
+#: lib/options/YapbOptions.php:255
+#: lib/options/YapbOptions.php:285
+#: lib/options/YapbOptions.php:315
+msgid "Add rel-attribute #15 to link"
+msgstr "Rel-Attribut #15 hinzufügen"
+
+#: lib/options/YapbOptions.php:226
+#: lib/options/YapbOptions.php:256
+#: lib/options/YapbOptions.php:286
+#: lib/options/YapbOptions.php:316
+msgid "Link to thumbnail with a width of #3 px"
+msgstr "Zu einem Thumbnail mit einer maximalen Breite von #3 px verlinken."
+
+#: lib/options/YapbOptions.php:229
+#: lib/options/YapbOptions.php:259
+#: lib/options/YapbOptions.php:289
+#: lib/options/YapbOptions.php:319
+msgid "Add link target with value #"
+msgstr "Linkziel # hinzufügen"
+
+#: lib/options/YapbOptions.php:229
+#: lib/options/YapbOptions.php:259
+#: lib/options/YapbOptions.php:289
+#: lib/options/YapbOptions.php:319
+msgid "_self (Open link in same window/frame)"
+msgstr "_self (Linkziel im selben Fenster/Frame öffnen)"
+
+#: lib/options/YapbOptions.php:229
+#: lib/options/YapbOptions.php:259
+#: lib/options/YapbOptions.php:289
+#: lib/options/YapbOptions.php:319
+msgid "_top (Open link in top window/frame)"
+msgstr "_top (Linkziel im obersten Fenster/Frame öffnen)"
+
+#: lib/options/YapbOptions.php:229
+#: lib/options/YapbOptions.php:259
+#: lib/options/YapbOptions.php:289
+#: lib/options/YapbOptions.php:319
+msgid "_blank (open link in new browser window/tab)"
+msgstr "_blank (Linkziel in neuem Browserfenster / Browsertab öffnen)"
+
+#: lib/options/YapbOptions.php:239
+msgid "Single Pages"
+msgstr "Einzelseiten"
+
+#: lib/options/YapbOptions.php:240
+msgid "A single page shows a published post on its own.<br />You probably want to show the whole image -<br />But you can use thumbnailing here too, if you have design restrictions for example."
+msgstr "Eine Einzelseite zeigt einen einzelnen Beitrag.<br />Man sollte hier das Bild in Originalgröße zeigen -<br />Man kann hier aber zB. bei Designeinschränkungen ebenfalls nur Thumbnails anzeigen."
+
+#: lib/options/YapbOptions.php:242
+msgid "<strong>Display images on SINGLE pages.</strong>"
+msgstr "<strong>Bilder auf Einzelseiten anzeigen.</strong>"
+
+#: lib/options/YapbOptions.php:244
+#: lib/options/YapbOptions.php:304
+msgid "Enable image link."
+msgstr "Aktiviere Bildverlinkung"
+
+#: lib/options/YapbOptions.php:269
+msgid "Archive Pages"
+msgstr "Archivseiten"
+
+#: lib/options/YapbOptions.php:270
+msgid "Archive pages usually show an overview of all published posts in a category, date range, etc.<br />You probably want to use thumbnails here."
+msgstr "Archivseiten zeigen normalerweise einen Überblick über alle in einer Kategorie eingeordneten Beiträge, Beiträge einer bestimmten Zeitdauer, etc.<br />Man will hier wahrscheinlich nur Thumbnails anzeigen."
+
+#: lib/options/YapbOptions.php:272
+msgid "<strong>Display images on ARCHIVE overview page listings.</strong>"
+msgstr "<strong>Bilder auf Archivseiten anzeigen</strong>"
+
+#: lib/options/YapbOptions.php:274
+msgid "Enable image links."
+msgstr "Aktiviere Bildverlinkungen"
+
+#: lib/options/YapbOptions.php:299
+msgid "Content Pages"
+msgstr "Einzelseiten"
+
+#: lib/options/YapbOptions.php:300
+msgid "You may post images to your content pages if you activate the according option above.<br />On content pages you probably want to show the original image."
+msgstr "Man kann auch Bilder für Seiten uploaden, wenn die oben stehende Option aktiviert wird.<br/>Man sollte hier das Bild in Originalgröße zeigen -<br/>Man kann hier aber zB. bei Designeinschränkungen ebenfalls nur Thumbnails anzeigen."
+
+#: lib/options/YapbOptions.php:302
+msgid "<strong>Display images on CONTENT pages.</strong>"
+msgstr "<strong>Bilder auf Einzelseiten anzeigen.</strong>"
+
+#: tpl/dashboard_activity_div.tpl.php:39
+#, php-format
+msgid "You have posted %s <a href=\"http://johannes.jarolim.com/yapb\" target=\"_blank\">YAPB</a>-Images with an overall size of %s."
+msgstr "Es wurden bis jetzt %s <a href=\"http://johannes.jarolim.com/yapb\" target=\"_blank\">YAPB</a>-Bilder mit einer Gesamtgröße von %s gespeichert."
+
+#: tpl/dashboard_activity_div.tpl.php:39
+#, php-format
+msgid "In average, an image needs %s of disk space"
+msgstr "Durchschnittlich benötigt ein Bild %s Platz auf der Platte."
+
+#: tpl/dashboard_activity_div.tpl.php:39
+msgid "more info &raquo;"
+msgstr "mehr Informationen &raquo;"
+
+#: tpl/dashboard_activity_div.tpl.php:61
+msgid "No YAPB photoblog posts yet."
+msgstr "Keine YAPB Photoblog Artikel bis jetzt."
+
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:7
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:29
+msgid "YAPB Image"
+msgstr "YAPB Bild"
+
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:15
+msgid "Replace image:"
+msgstr "Bild ersetzen:"
+
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:16
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:32
+msgid "Post date from image exif data if available"
+msgstr "Beitragsdatum aus den Bilddaten (EXIF), wenn möglich"
+
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:17
+msgid "Remove image from post"
+msgstr "Bild aus Beitrag entfernen"
+
+#: tpl/edit_form_advanced_field_fileupload.tpl.php:31
+msgid "clear field"
+msgstr "Feld löschen"
+
+#: tpl/yapb_options_page.tpl.php:60
+#, php-format
+msgid "Yet Another Photoblog %s"
+msgstr "Yet Another Photoblog %s"
+
+#: tpl/yapb_options_page.tpl.php:61
+msgid "Convert your WordPress Blog into a full featured photoblog in virtually no time. Use the full range of WordPress functions and plugins: Benefit from the big community WordPress has to offer."
+msgstr "Verwandle dein WordPress Blog fast ohne Zeitaufwand in ein voll ausgebautes Fotoblog. Benutze die volle Bandbreite der WordPress Funktionen und Erweiterungen: Profitiere von der großen Gemeinschaft, die WordPress zu bieten hat."
+
+#: tpl/yapb_options_page.tpl.php:64
+msgid "Images"
+msgstr "Bilder"
+
+#: tpl/yapb_options_page.tpl.php:65
+#, php-format
+msgid "You have posted %s YAPB-Images with an overall size of %s."
+msgstr "Es wurden bis jetzt %s YAPB-Bilder mit einer Gesamtgröße von %s gespeichert."
+
+#: tpl/yapb_options_page.tpl.php:65
+#, php-format
+msgid "In average, an image needs %s of disk space."
+msgstr "Durchschnittlich benötigt ein Bild %s Platz."
+
+#: tpl/yapb_options_page.tpl.php:68
+msgid "Thumbnails"
+msgstr "Thumbnails"
+
+#: tpl/yapb_options_page.tpl.php:71
+#, php-format
+msgid "Currently, the cache contains %s thumbnails with a overall size of %s."
+msgstr "Derzeit beinhaltet der Cache %s Thumbnails mit einer Gesamtgröße von %s."
+
+#: tpl/yapb_options_page.tpl.php:72
+#, php-format
+msgid "In average, a thumbnail needs %s of disk space."
+msgstr "Durchschnittlich benötigt ein Thumbnail %s Platz auf der Platte."
+
+#: tpl/yapb_options_page.tpl.php:74
+msgid "no thumbnails were generated yet."
+msgstr "Es wurden noch keine Thumbnails generiert"
+
+#: tpl/yapb_options_page.tpl.php:81
+#, php-format
+msgid "Currently, YAPB consumes %s of disk space for images."
+msgstr "Derzeit verbraucht YAPB %s Platz für Bilder."
+
+#: tpl/yapb_options_page.tpl.php:83
+#, php-format
+msgid "In average, %s thumbnails per image were generated."
+msgstr "Durchschnittlich wurden %s Thumbnails pro Bild generiert."
+
+#: tpl/yapb_options_page.tpl.php:84
+#, php-format
+msgid "In average, one posted image incl. all associated thumbnails needs approx. %s of disk space."
+msgstr "Durchschnittlich benötigt ein Bild inkl. aller zugehörigen Thumbnails ca. %s Platz."
+
+#: tpl/yapb_options_page.tpl.php:94
+msgid "Missing file"
+msgstr "Fehlende Datei"
+
+#: tpl/yapb_options_page.tpl.php:96
+#, php-format
+msgid "Missing files (%s)"
+msgstr "Fehlende Dateien (%s)"
+
+#: tpl/yapb_options_page.tpl.php:100
+msgid "YAPB is unable to find the following image(s):"
+msgstr "YAPB kann die folgenden Bilder nicht finden:"
+
+#: tpl/yapb_options_page.tpl.php:105
+msgid "show post"
+msgstr "Artikel anzeigen"
+
+#: tpl/yapb_options_page.tpl.php:106
+msgid "clean up entry"
+msgstr "Eintrag säubern"
+
+#: tpl/yapb_options_page.tpl.php:119
+msgid "Clear thumbnail cache"
+msgstr "Den Thumbnail Cache leeren"
+
+#: tpl/yapb_options_page.tpl.php:150
+msgid "Support Open Source"
+msgstr "Unterstütze Open Source"
+
+#: tpl/yapb_options_page.tpl.php:151
+msgid "Help keeping YAPB freely available, up and running: Support the authors efforts."
+msgstr "Hilf dabei, YAPB am Leben zu erhalten: Unterstütze die Bemühungen des Autors."
+
+#: tpl/yapb_options_page.tpl.php:152
+msgid "Donate now"
+msgstr "Jetzt spenden"
+
+#: tpl/yapb_options_page.tpl.php:155
+msgid "Professional Support"
+msgstr "Professionelle Unterstützung"
+
+#: tpl/yapb_options_page.tpl.php:156
+msgid "In case you need help integrating, using or maintaining YAPB in a professional environment: The plugin author also offers professional support."
+msgstr "Sie benötigen Unterstützung bei der Integration, dem Betrieb oder der Wartung von YAPB in einem professionellen Umfeld: Der Autor des Plugins bietet auch professionelle Unterstützung an."
+
+#: tpl/yapb_options_page.tpl.php:157
+msgid "Request support"
+msgstr "Unterstützung anfordern"
+
+#: tpl/yapb_options_page.tpl.php:192
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#~ msgid "without target"
+#~ msgstr "ohne Ziel"
+
+#~ msgid "in the same window"
+#~ msgstr "im selben Fenster"
+
+#~ msgid "in a new window"
+#~ msgstr "in einem neuen Fenster"
+
+#~ msgid "YAPB Community"
+#~ msgstr "YAPB Community"
+
+#~ msgid ""
+#~ "There's a growing community using YAPB to publish their photos via "
+#~ "WordPress - Ask for help or share your knowledge on the forum."
+#~ msgstr ""
+#~ "Eine stetig wachsende Gemeinschaft nutzt YAPB, um Fotos via WordPress zu "
+#~ "veröffentlichen - Such im YAPB-Forum nach Hilfe oder teile dein Wissen "
+#~ "mit anderen:"
+
+#~ msgid "Join YAPB-Forum"
+#~ msgstr "YAPB-Forum besuchen"
+
+#~ msgid "Yet Another Photoblog Options"
+#~ msgstr "Yet Another Photoblog Optionen"
+
+#~ msgid "YAPB Support"
+#~ msgstr "YAPB Unterstützung"
+
+#~ msgid "YAPB Plugins"
+#~ msgstr "YAPB Erweiterungen"
+
+#~ msgid ""
+#~ "Extend your photoblog by adding YAPB Plugins. A list of all extension "
+#~ "like the YAPB Sidebar Widget may be found here:"
+#~ msgstr ""
+#~ "Erweitere dein Photoblog mit YAPB Erweiterungen. Eine Liste aller "
+#~ "Erweiterungen wie zB. das YAPB Sidebar Widget findest du hier:"
+
+#~ msgid "Support YAPB"
+#~ msgstr "Unterstütze YAPB"
+
+#~ msgid ""
+#~ "Do you like YAPB? Do you use it regulary to show your photos or images? "
+#~ "Did YAPB save you time? Or you just want to give something back for the "
+#~ "time spent to create, maintain and support YAPB since 2006?"
+#~ msgstr ""
+#~ "Gefällt dir YAPB? Benutzt du es regelmäßig um deine Fotos zu zeigen? Hat "
+#~ "dir YAPB Zeit gespart? Oder möchtest du einfach etwas zurückgeben für die "
+#~ "Zeit, die ich seit 2006 in Programmierung, Erhaltung und Unterstützung "
+#~ "gesteckt habe?"
+
+#~ msgid ""
+#~ "Just donate a little amount so i may buy a good book, DVD or just pay "
+#~ "some server traffic:"
+#~ msgstr ""
+#~ "Spende einfach einen kleinen Betrag für ein gutes Buch oder eine DVD - "
+#~ "oder einfach nur ein bisschen Transfervolumen für meinen Server."
+
+#~ msgid "Thanks a lot from Salzburg!"
+#~ msgstr "Vielen Dank aus Salzburg!"
+
+#~ msgid "Embedding"
+#~ msgstr "Einbindung"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid ""
+#~ "Set the maximum width and height of the thumbnail inserted into your feed:"
+#~ "<ul><li>If you set either width or height, the other value will be "
+#~ "calculated based on the actual image size to preserve the image "
+#~ "proportions.</li><li>If you set both, YAPB tries to define width and "
+#~ "height so the entire image fits into your defined rectangle.</li><li>If "
+#~ "you check the crop-option, YAPB crops the thumbnail (if neccessary) so it "
+#~ "fills the rectangle entirely.</li></ul>"
+#~ msgstr ""
+#~ "Die maximale Breite und Höhe des Thumbnails für den Feed setzen: "
+#~ "<ul><li>Falls entweder Breite oder Höhe gesetzt wird, wird die andere "
+#~ "Größe anhand der aktuellen Bildgröße gesetzt, um die Bildproportionen zu "
+#~ "erhalten</li><li>Falls beide gesetzt werden, errechnet YAPB die Bildgröße "
+#~ "so, dass sie in das definierte Rechteck passt.</li><li>Falls die "
+#~ "Zuschneideoption angehakelt wird, schneidet YAPB das Bild (falls nötig) "
+#~ "so zu, dass es das definierte Rechteck komplett ausfüllt.</li></ul>"
+
+#~ msgid "Maintainance"
+#~ msgstr "Wartung"
+
+#~ msgid "Information / Statistics"
+#~ msgstr "Information / Statistik"
+
+#~ msgid "Cache Maintainance"
+#~ msgstr "Cachewartung"
+
+#~ msgid "From time to time you may want to tidy up your thumbnail cache:"
+#~ msgstr "Von Zeit zu Zeit möchte man eventuell den gesamten Cache leeren:"
+
+#~ msgid "Clear cache"
+#~ msgstr "Cache leeren"
+
+#~ msgid "WordPress post"
+#~ msgstr "WordPress Beitrag"

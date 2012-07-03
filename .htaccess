@@ -1,9 +1,6 @@
-ErrorDocument 404 /404.html
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
-Order Allow, Deny
-Deny from all
-</FilesMatch>
-
-Options +FollowSymlinks
+php_value include_path ".:/srv/www/davidrallen.com/public_html"
 RewriteEngine on
-RewriteRule ^(.*)\.htm$ $1.php [nc]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule .* $0.php
+

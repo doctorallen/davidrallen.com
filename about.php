@@ -48,7 +48,6 @@
 			<li><a href=""><img src="../images/boyfriend.jpg"></a><span>Boyfriend</span></li>
 			<li><a href=""><img src="../images/chili.jpg"></a><span>Chili Champion</span></li>
 			<li><a href=""><img src="../images/dragon_slayer.jpg"></a><span>Dragon Slayer</span></li>
-			<li><a href=""><img src="../images/gun_enthusiast.jpg"></a><span>Gun Enthusiast</span></li>
 			<li><a href=""><img src="../images/publisher.jpg"></a><span>Publisher</span></li>
 			<li><a href=""><img src="../images/volunteer.jpg"></a><span>Volunteer</span></li>
 			<li><a href=""><img src="../images/friend.jpg"></a><span>Friend</span></li>
