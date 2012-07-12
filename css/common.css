@@ -15,6 +15,13 @@ html, body{
 	background: -moz-linear-gradient(#EAEAEA, #FAFAFA);
 	background: -webkit-linear-gradient(#EAEAEA, #FAFAFA);
 	box-shadow: 0 0px 3px #616158;
+	-webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 
 }
 #main{
@@ -30,6 +37,38 @@ html, body{
 	padding-bottom: 100px;
 	
 }
+/*
+#navbar ul,ol{
+	list-style:none;
+}
+
+#navbar {
+	height: 3.5em;
+	width:500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	padding-left: 90px;
+  	font-size: 1.1em; 
+  	overflow: hidden;
+ }
+#navbar li {
+	position: relative;
+	float: left;
+	box-shadow: 0 0px 3px #616158;
+	width: 100px;
+	height: 30px;
+	margin-right: 15px;
+	text-align: center; 
+  }
+
+#navbar li:hover {
+	box-shadow: 0px 0px 4px #0070C0;
+	color: #0070C0;
+	background: -moz-linear-gradient(#EAEAEA, #FAFAFA);
+	background: -webkit-linear-gradient(#EAEAEA, #FAFAFA);
+}
+*/
 .alignCenter{
 	text-align:center;
 }
@@ -37,16 +76,34 @@ html, body{
 .clean{
 	list-style: none;
 }
-
 #header{
 	margin: auto;
 	width: 950px;
-	background: -moz-linear-gradient(#FAFAFA, #EAEAEA);
+	/*background: -moz-linear-gradient(#FAFAFA, #EAEAEA);
 	background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);
 	box-shadow: 0 0px 3px #616158;
 	overflow: auto;
+	*/
 }
-
+span.header{
+	font-size: 1.2em;
+}
+.navbar-inner{
+	background: -moz-linear-gradient(#FAFAFA, #EAEAEA);
+	background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);
+}
+.navbar .brand{
+	font-size: 16px;
+}
+.navbar .nav > li > a{
+	color: #404040;
+	padding: 22px;
+	font-size: 1.6em;
+}
+.navbar .nav > li > a:hover{
+	color: #0070C0;
+	text-shadow:0px 0px 5px rgba(0,112,192,0.5);
+}
 span.footer{
 	position: absolute;
 	width: 950px;
@@ -55,7 +112,9 @@ span.footer{
 	font-size: 1.2em;
 	margin 0 auto 0 auto;
 }
-
+.tech{
+	margin-top: 2px;
+}
 h1{
 	color:#616158;
 }
@@ -69,5 +128,6 @@ h3{
 h4{
 	color: #404040;
 	font-size: 1.1em;
+	margin-bottom: 0px;
 }
 

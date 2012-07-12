@@ -1,8 +1,7 @@
 <?php include('includes/header.html'); ?>
 	<div id="left">
-		<span class="name1">DAVID</span> <span class="name2"> ALLEN</span>                              
-				
-				<ul class="contact">
+				<h2>Contact</h2>
+				  <ul class="contact">
 					 <li><span>drallen1@plymouth.edu</span></li>
 					 <li><span>(603) 236-6988</span></li>
 					 <li><span>Plymouth, NH 03264<span></li>   

@@ -7,6 +7,7 @@
 	<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 	<script src="pikachoose/lib/jquery.jcarousel.min.js"></script>
 	<script src="pikachoose/lib/jquery.pikachoose.full.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
 	<script src="pikachoose/lib/jquery.pikachoose.js"></script>
 	<script src="js/gallery.js"></script>
 	<script src="js/lightbox.js"></script>
@@ -23,6 +24,7 @@
 	  })();
 
 	</script>	
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="../css/common.css" />
 	<link rel="stylesheet" type="text/css" href="../css/style.css" />
 	<link rel="stylesheet" type="text/css" href="../pikachoose/styles/bottom.css" />
@@ -37,12 +39,27 @@
 </head>
 <body>			
 	<div id="header">
+<!-- OLD HEADER
 		<div id="navbar">
 				<ul>
-					<a href="index"><li id="home">Resume</li></a>
-					<a href="portfolio"><li id="portfilio">Portfolio</li></a>
-					<a href="about"><li id ="about">About</li></a>
+					<a href="index"><li id="home"><span class="header">Resume</span></li></a>
+					<a href="portfolio"><li id="portfilio"><span class="header">Portfolio</span></li></a>
+					<a href="about"><li id ="about"><span class="header">About</span></li></a>
+				</ul>
+			</div>
+-->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="http://davidrallen.com"><span class="name1">DAVID</span><span class="name2"> ALLEN</span></a>
+				<ul class="nav">
+					<li><a href="index">Resume</a></li>
+					<li><a href="portfolio">Portfolio</a></li>
+					<li><a href="about">About</a></li>
 				</ul>
 			</div>
 		</div>
+	</div>
+	</div>
+
 		<div id="main">
