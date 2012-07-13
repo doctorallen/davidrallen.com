@@ -4,7 +4,7 @@
 				  <ul class="contact">
 					 <li><span>drallen1@plymouth.edu</span></li>
 					 <li><span>(603) 236-6988</span></li>
-					 <li><span>Plymouth, NH 03264<span></li>   
+					 <li><span><a href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=plymouth,+nh&aq=&sll=37.0625,-95.677068&sspn=54.928982,79.013672&vpsrc=0&t=h&ie=UTF8&hq=&hnear=Plymouth,+Grafton,+New+Hampshire&z=12" target="_blank" >Plymouth, NH 03264</a><span></li>   
 				  </ul>        
 					
 												   
@@ -70,7 +70,7 @@
 						<li>Integrated with existing MySQL database, Plymouth State API Layer, and GLPI</li>
 						<li>Created technical documentation and end-user manuals</li>
 						<li>All code was peer reviewed and open-sourced on github.com</li>
-						<li>Migrated existing web applications from Subversion to GitHub</li>
+						<li><a href="portfolio#github">Migrated</a> existing web applications from Subversion to GitHub</li>
 					 </ul>
 				</div>
 
@@ -93,7 +93,7 @@
 					<span class="job-title">Systems Support Intern</span>      
 				    <span class="right-location">Plymouth, NH</span>
 				  <ul>
-						 <li>Worked as lead in researching and testing virtual desktop infrastructure services</li>
+						 <li>Worked as lead in researching and testing <a href="portfolio#support">virtual desktop infrastructure</a> services</li>
 						 <li>Created technical documentation for installing and managing tested services</li>
 				 </ul>
 				</div> 

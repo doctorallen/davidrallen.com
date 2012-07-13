@@ -15,11 +15,11 @@ a {text-decoration: none;}
 a img {border: none;}
 
 a:link, a:visited {
-	color: #555; 
+	color: #0070C0;
 }
 
 html body a:hover {
-	color: #0070C0;
+	color: #616158;
 }
 .contact{
 	list-style: none;

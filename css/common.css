@@ -1,17 +1,15 @@
 body{
 	overflow: scroll;
-
+	padding-top: 100px;
 }
 html, body{
 	font-family:Arial, Helvetica,sans-serif;
 }
 #footer-wrapper{
 	height: 45px;
-	width: 950px;
 	margin: 0 auto 0 auto;
+	position: absolute;
 	padding-top: 20px;
-	position: relative;
-	margin-top: -70px;
 	background: -moz-linear-gradient(#EAEAEA, #FAFAFA);
 	background: -webkit-linear-gradient(#EAEAEA, #FAFAFA);
 	box-shadow: 0 0px 3px #616158;
@@ -22,7 +20,10 @@ html, body{
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
+right: 0;
+left: 0;
+z-index: 1030;
+text-align: center;
 }
 #main{
 	width: 950px;
@@ -37,6 +38,24 @@ html, body{
 	padding-bottom: 100px;
 	
 }
+.navbar .divider-vertical {
+  width: 1px;
+  height: 40px;
+  margin: 12px 9px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(0,0,0,0.5);
+}
+.sensitive{
+	color: transparent;
+	text-shadow: 0 0 10px black;
+	-webkit-transition: all .1s linear;
+}
+.sensitive:hover{
+	color: inherit;
+	text-shadow: none;
+}
+
 /*
 #navbar ul,ol{
 	list-style:none;
