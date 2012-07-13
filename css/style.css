@@ -9,7 +9,9 @@
 	float: right;
 
 }
-
+.badge{
+	float:left;
+}
 a {text-decoration: none;}
 
 a img {border: none;}
@@ -25,16 +27,6 @@ html body a:hover {
 	list-style: none;
 }
 
-span.footer{
-	position: absolute;
-	width: 950px;
-	color: #404040;
-	text-align: center;
-	font-size: 1.2em;
-	margin 0 auto 0 auto;
-}
-
-
 span.head{
 	color: #0070C0;
 	font-weight: bold;
@@ -49,7 +41,12 @@ span.right-head{
 	right:80px;
 
 }
+.progress{
+	 -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.75), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.75), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 
+}
 span.right-location{
 	color: #616158;
 	font-style: italic;
@@ -120,11 +117,6 @@ div.skill{
 }
 li{
 	  font-size:.9em;
-}
-.bar{
-	width:300px;
-	height:10px;
-	display:inline;
 }
 .right{
 	position: absolute;
