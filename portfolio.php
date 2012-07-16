@@ -1,5 +1,22 @@
 <?php include('includes/header.html'); ?>
 <div>
+	<h2>Personal</h2>
+	<div class="port">
+		<h3 id="davidrallen">DavidRAllen.com</h3>
+		<p class="desc">Personal website built for development projects and personal use. Hosted on a <a href="http://linode.com" target="_blank">linode server</a>.</p>
+		<h4>Technologies Used:</h4>
+		<ul class="tech">
+			<li>PHP</li>
+			<li>HTML5</li>
+			<li>CSS3</li>
+			<li>Twitter Bootstrap</li>
+			<li>Code Igniter</li>
+			<li>Linux Server Adminstration</li>
+			<li>Git/GitHub</li>
+			<li>MySQL</li>
+		</ul>
+	</div>
+
 	<h2>Plymouth State University</h2>
 	<div class="port">
 		<h3 id="github">GitHub Migration</h3>
