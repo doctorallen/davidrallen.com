@@ -19,7 +19,7 @@
 
 	<h2>Plymouth State University</h2>
 	<div class="port">
-		<h3 id="github">GitHub Migration</h3>
+		<h3 id="github"><a href="http://github.com/plymouthstate/plymouth-webapp/" target="_blank">GitHub Migration</a></h3>
 		<p class="desc">Plymouth State University decided to switch their versioning system from Subversion to Git. I migrated many applications from the Subversion repository to Git and uploaded them to GitHub. During this process all code needed to be scrubbed for sensitive data, non-public information, and in some cases required some functions to be re-written to bring them to standards. </p>
 	<h4>Technologies Used:</h4>
 	<ul class="tech">
