@@ -2,7 +2,7 @@
 <div>
 	<h2>Personal</h2>
 	<div class="port">
-		<h3 id="davidrallen">DavidRAllen.com</h3>
+		<h3 id="davidrallen"><a href="http://github.com/drallen1/davidrallen.com" target="_blank">DavidRAllen.com</a></h3>
 		<p class="desc">Personal website built for development projects and personal use. Hosted on a <a href="http://linode.com" target="_blank">linode server</a>.</p>
 		<h4>Technologies Used:</h4>
 		<ul class="tech">
