@@ -22,6 +22,12 @@ a:link, a:visited {
 html body a:hover {
 	color: #616158;
 }
+
+.alert{
+	text-align: center;
+	margin: 0 auto 0 auto;
+}
+
 .contact{
 	list-style: none;
 }

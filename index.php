@@ -1,4 +1,8 @@
 <?php include('includes/header.html'); ?>
+<div class="alert alert-info">
+You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this link</a>.
+<button type="button" class="close" data-dismiss="alert">x</button>
+</div>
 	<div id="left">
 				<h2>Contact</h2>
 				  <ul class="contact">
