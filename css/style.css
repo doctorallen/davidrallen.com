@@ -4,10 +4,24 @@
 	float: left;
 	margin-right: 50px; 
 }
+#carousel{
+	width: 900px;
+	height: 550px;
+}
+.carousel .item > img{
+	display: inline-block;
+	line-height: 1;
+	max-height: 550px;
+}
 #right{
 	width: 600px;
 	float: right;
 
+}
+.btn-big{
+	margin: 10px auto 10px auto;
+	font-size: 2em;
+	height: 70px;
 }
 .badge{
 	float:left;

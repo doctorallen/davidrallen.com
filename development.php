@@ -1,7 +1,7 @@
 <?php include('includes/header.html'); ?>
 <div id="development">
-	<h2>Current Development Projects</h2>
-	<div class="port">
+	<h2 class="fade">Current Development Projects</h2>
+	<div class="port fade">
 		<h3>Resume Builder</h3>
 		<p class="desc">
 			A web application for creating, editing, saving, displaying, sharing, and styling resumes.
@@ -20,7 +20,7 @@
 			<li>CSS3</li>
 		</ul>
 	</div>
-	<div class="port">
+	<div class="port fade">
 		<h3><a href="http://parahoax.com" target = "_blank">ParaHoax.com</a></h3>
 		<p class="desc">
 			A website designed for a community of people looking to view, share, and create hoaxed paranormal evidence. This site is for entertainment and educational purposes only. This website is built in collaboration with <a href="http://mikeheitz.com" target="_blank">Mike Heitz</a>.</p>
