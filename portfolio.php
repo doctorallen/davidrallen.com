@@ -52,6 +52,23 @@
 		</ul>
 	</div>
 	<div class="port">
+		<h3 id="rym"><a href="http://github.com/drallen1/Rate-Your-Mate" target="_blank">Rate-Your-Mate</a></h3>
+		<p class="desc"> A class project that started me on my path to become a web developer. We were assigned into teams of 6 people and had a month and a half to create a full scale web application with authentication, administration and tools. The project was designed as a tool for students and professors to use in order to rate the progress of groups. The professors would create classes and assign students to them, create groups, create deadlines for assessments, and monitor progress. The students were required to create assessments of their team mates based off 3-5 categories they had defined at the start of the class. They would determine how they would asses each other and were required to submit an assessment every time they were assigned. At the end of the assessment, each person would rate their teammates on a pie chart. This pie chart was created so that the students understood that when they added more points to an individual, another would lose points. The system was also designed so that the students could not disburse the points evenly among their teammates. In the end, 4 groups of us at set out to complete the project, some were a success and some were a failure. My team which I took the lead of, was able to submit a working project, with all of the necessary components of the project.  </p>
+		<h4>Technologies Used:</h4>
+		<ul class="tech">
+			<li>PHP</li>
+			<li>MySQL</li>
+			<li>jQuery</li>
+			<li>JavaScript</li>
+			<li>CSS3</li>
+			<li>HTML5</li>
+			<li>Unix/Linux</li>
+			<li>VIM</li>
+			<li>Git/GitHub</li>
+		</ul>
+	</div>
+
+	<div class="port">
 		<h3 id="support">Systems Support Intern</h3>
 		<p class="desc">I worked as the lead in researching and testing virtual desktop infrastructure services. I met and discussed solutions with vendors, tested and documented the proposed solutions. I installed a complete instance of Citrix XenDesktop with XenApp, configured application delivery and virtual desktop delivery, and documented the processes to install, configure, and manage the system. I also installed, configured, and tested an instance of VMware Veeam to backup our virtual servers. </p>
 		<h4>Technologies Used:</h4>
