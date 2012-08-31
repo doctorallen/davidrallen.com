@@ -79,13 +79,13 @@
 						<li class="nav-header">
 							Work Related
 						<li>
-							<a href="http://drallen1.psudev.com/webapp"><i class="icon-ok"></i>PSU Dev</a>
+							<a href="https://svn.theatomgroup.com"><i class="icon-ok"></i>TAG Subversion</a>
 						</li>
 						<li>
-							<a href="http://www.plymouth.edu/webapp/mis/wiki/Main_page"><i class="icon-book"></i>MIS Wiki</a>
+							<a href="wiki.theatomgroup.com"><i class="icon-book"></i>Wiki</a>
 						</li>
 						<li>
-							<a href="http://www.plymouth.edu/webapp/time"><i class="icon-comment"></i>MIS Time</a>
+							<a href="http://mail.theatomgroup.com/owa"><i class="icon-comment"></i>Email</a>
 						</li>
 					</ul>
 				</div>
