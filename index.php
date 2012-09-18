@@ -15,16 +15,16 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 			    <h2>Proficiencies</h2>
 				 
 					<div class="skill">
-					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, Java, VB .NET, C#, XNA</p>
+					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, SASS, Compass, Java, VB .NET, C#, XNA</p>
 					</div>
 					<div class="skill">
 					<span class="head">Databases</span><p>MySQL, Access</p>
 					</div>
 					<div class="skill">
-					<span class="head">Frameworks</span><p>MVC Using: PHP/Klein Routing, Smarty/HTML5, and MySQL</p>
+					<span class="head">Frameworks</span><p>Klein Routing, Smarty,Codeigniter, CakePHP, Wordpress, Backbone</p>
 					</div>
 					<div class="skill">
-					<span class="head">Software</span><p>Git, VIM, Adobe Photoshop</p>
+					<span class="head">Software</span><p>Git, Subversion, VIM, Adobe Photoshop</p>
 					</div>
 					<div class="skill">
 					<span class="head">Operating Systems</span><p>Windows, Mac OSX, Linux, VMware vSphere, XenServer</p>
@@ -62,8 +62,18 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 			   <h2>Experience</h2>
 				 
 				<div class="job">
+					<span class="head">The Atom Group</span>
+					<span class="right-head">August 2012 - Present</span>
+					<br>
+					<span class="job-title">Web Developer</span>      
+				    <span class="right-location">Porstmouth, NH</span>
+				  <ul>
+					<li>Created Web Applications using Codeiginiter, CakePHP, Wordpress</li>
+				  </ul>
+				</div>
+				<div class="job">
 					<span class="head">Plymouth State University</span>
-					<span class="right-head">May 2012 - Present</span>
+					<span class="right-head">May 2012 - August 2012</span>
 					<br>
 					<span class="job-title">Junior Developer</span>      
 				    <span class="right-location">Plymouth, NH</span>

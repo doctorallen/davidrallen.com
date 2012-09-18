@@ -1,6 +1,27 @@
 <?php include('includes/header.html'); ?>
 <div id="development">
 	<h2 class="fade">Current Development Projects</h2>
+	<div class="port">
+		<h3>Web Development Framework</h3>
+		<p class="desc">
+			A very lightweight framework for building simple websites including a lightweight content management system. 
+				</p>
+		<h4>Progress</h4>
+		<span class="badge badge-info">0%</span>
+		<div class="progress progress-striped active" style="width: 300px; margin-bottom: 9px;">
+			<div class="bar" style="width: 0%;"></div>
+		</div>
+		<h4>Technologies Used:</h4>
+		<ul class="tech">
+			<li>PHP</li>
+			<li>MySQL</li>
+			<li>Smarty</li>
+			<li>Twitter Bootstrap</li>
+			<li>Klein Routing</li>
+			<li>HTML5</li>
+			<li>CSS3</li>
+		</ul>
+	</div>
 	<div class="port fade">
 		<h3><a href="http://dev.davidrallen.com/drupal" target ="_blank" >Drupal Test</a></h3>
 		<p class="desc">
