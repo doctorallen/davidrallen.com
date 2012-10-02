@@ -21,7 +21,7 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 					<span class="head">Databases</span><p>MySQL, Access</p>
 					</div>
 					<div class="skill">
-					<span class="head">Frameworks</span><p>Klein Routing, Smarty,Codeigniter, CakePHP, Wordpress, Backbone</p>
+					<span class="head">Frameworks</span><p>Klein Routing, Smarty, Codeigniter, CakePHP, Wordpress, Backbone.js, Angular.js, Node.js, Socket.io, Express.js</p>
 					</div>
 					<div class="skill">
 					<span class="head">Software</span><p>Git, Subversion, VIM, Adobe Photoshop</p>
@@ -68,7 +68,7 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 					<span class="job-title">Web Developer</span>      
 				    <span class="right-location">Porstmouth, NH</span>
 				  <ul>
-					<li>Created Web Applications using Codeiginiter, CakePHP, Wordpress</li>
+					<li>Created Web Applications using Codeigniter, CakePHP, Wordpress, Drupal, Node.js, Express.js, Socket.io </li>
 				  </ul>
 				</div>
 				<div class="job">
