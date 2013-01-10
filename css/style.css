@@ -148,4 +148,9 @@ div.skill{
 	font-size: 1.1em;
 
 }
-
+.pika-thumbs{
+	height: 120px !important;
+}
+.pika-thumbs li{
+	height: 100px !important;
+}

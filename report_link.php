@@ -1,8 +1,8 @@
 <?php
-	$to = 'drallen1@plymouth.edu';
-	$content = $_SERVER['REQUEST_URI'];
-	$headers = 'FROM: davidrallen.com' . '\n';
-	$send = mail($to, 'Report Link', $content, $headers);
-	return $send;
-	die( echo ($send));
+	$to = 'trooper898@gmail.com';
+	$content = $_POST['URI'];
+	$headers = 'FROM: no-reply' . "\r\n".
+		'Reply-To: trooper898@gmail.com' . "\r\n" .
+	    	'X-Mailer: PHP/' . phpversion();
+	mail($to, 'Report Link', $content, $headers);
 ?>

@@ -30,7 +30,7 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 					<span class="head">Operating Systems</span><p>Windows, Mac OSX, Linux, VMware vSphere, XenServer</p>
 					</div>
 					<div class="skill">
-					<span class="head">Web Administration</span><p>LAMP Server(Linux, Apache, MySQL, PHP), PERL, CCNA</p>
+					<span class="head">Web Administration</span><p>LAMP Server(Linux, Apache, MySQL, PHP), Amazon AWS(EC2, VPC, ELB, EC2, Cloudfront, SES, Route 53), NGINX, NodeJS</p>
 					</div>
 
 				<h2>Web Portfolio</h2>
