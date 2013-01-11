@@ -15,13 +15,13 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 			    <h2>Proficiencies</h2>
 				 
 					<div class="skill">
-					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, SASS, Compass, Java, VB .NET, C#, XNA</p>
+					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, Java, VB .NET, C#, XNA</p>
 					</div>
 					<div class="skill">
 					<span class="head">Databases</span><p>MySQL, Access</p>
 					</div>
 					<div class="skill">
-					<span class="head">Frameworks</span><p>Klein Routing, Smarty, Codeigniter, CakePHP, Wordpress, Backbone.js, Angular.js, Node.js, Socket.io, Express.js</p>
+					<span class="head">Frameworks</span><p>Klein Routing, Smarty, Codeigniter, CakePHP, Wordpress, Node.js, Socket.io, Express.js</p>
 					</div>
 					<div class="skill">
 					<span class="head">Software</span><p>Git, Subversion, VIM, Adobe Photoshop</p>
