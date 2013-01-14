@@ -1,5 +1,24 @@
 <?php include('includes/header.html'); ?>
 <div>
+	<h2>The Atom Group</h2>
+	<div class="port">
+		<h3 id="">Chicago Marathon Node App</h3>
+		<p class="desc">
+The project simply was an admin interface that would be accessed through an iPad 2, and a view page which was accessed through an iPad 2 connected to a vertical flat screen TV. The admin and view interfaces were separated into two pages. The staff member would time a 50ft dash with a stopwatch, and input the dash time and gender into the admin interface on the iPad2. When submitted the television view page would automatically update with the time it would take the user to finish the marathon, compared to the winner of last years marathon.</p>
+<p>
+When the Admin would submit a new time, the data would be validated client side, then posted through AJAX where the Node application. The Node app would validate server side, and return any validation errors. If the validation passed the database would be queried for the marathon time. This data would then be packaged as JSON and sent through the open socket. The application was listening on the socket and as soon as the data had been sent, the page would flash and update with the data.
+</p>
+		<h4>Technologies Used:</h4>
+		<ul class="tech">
+			<li>Node.JS</li>
+			<li>Socket.IO</li>
+			<li>Express JS</li>
+			<li>Heroku</li>
+			<li>jQuery</li>
+			<li>Handlebars</li>
+			<li>MYSQL</li>
+		</ul>
+	</div>
 	<h2 >Personal</h2>
 	<div class="port">
 		<h3 id="davidrallen"><a href="http://github.com/drallen1/davidrallen.com" target="_blank">DavidRAllen.com</a></h3>
@@ -33,7 +52,7 @@
 	</div>
 	<div class="port">
 		<h3 id="CTS"><a href="images/cts_full.png" rel="lightbox" title="CTS Toolkit">Classroom Technology Services Toolkit</a></h3>
-		<p class="desc">The Plymouth State Classroom Technology Services Toolkit was a full-scale web application that was built for the use of all students, faculty and staff and Plymouth State University. It's functionalities allow authenticated users to make equipment requests, and has a very large selection of administrative tools that allows the manager of the Classroom Technology Servcices Department (CTS) to assign his staff members to reservations for support, but also allows his staff to view available equipment from the Unversities inventory control system GLPI, assign equipment and edit loans, view their assignments, as well as support for help desk personal who will be the face to face contact for the person who created the loan. I took the project from product specification to production in only 5 months, after a rigourous code-review and debug process.   </p>
+		<p class="desc">The Plymouth State Classroom Technology Services Toolkit is a full-scale web application that was built for the use of all students, faculty and staff and Plymouth State University. It's functionalities allow authenticated users to make equipment requests, and has a very large selection of administrative tools that allows the manager of the Classroom Technology Servcices Department (CTS) to assign his staff members to reservations for support, but also allows his staff to view available equipment from the Unversities inventory control system GLPI, assign equipment and edit loans, view their assignments, as well as support for help desk personal who will be the face to face contact for the person who created the loan. I took the project from product specification to production in only 5 months, after a rigourous code-review and debug process.   </p>
 		<h4>Technologies Used:</h4>
 		<ul class="tech">
 			<li>PHP</li>
