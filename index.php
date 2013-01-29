@@ -6,7 +6,7 @@ You can download my resume by clicking <a href="Resume_Current_7.2.12.pdf">this 
 	<div id="left">
 				<h2>Contact</h2>
 				  <ul class="contact">
-					 <li><span>drallen1@plymouth.edu</span></li>
+					 <li><span>trooper898@gmail.com</span></li>
 					 <li><span>(603) 236-6988</span></li>
 					 <li><span><a href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=plymouth,+nh&aq=&sll=37.0625,-95.677068&sspn=54.928982,79.013672&vpsrc=0&t=h&ie=UTF8&hq=&hnear=Plymouth,+Grafton,+New+Hampshire&z=12" target="_blank" >Plymouth, NH 03264</a><span></li>   
 				  </ul>        
