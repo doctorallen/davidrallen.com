@@ -121,6 +121,10 @@ span.header{
 	color: #0070C0;
 	text-shadow:0px 0px 5px rgba(0,112,192,0.5);
 }
+.navbar .nav .active{
+	color: #0070C0;
+	text-shadow:0px 0px 5px rgba(0,112,192,0.5);
+}
 span.footer{
 	color: #404040;
 	text-align: center;

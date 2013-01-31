@@ -11,33 +11,7 @@
 	<script src="http://davidrallen.com/bootstrap/js/bootstrap.js"></script>
 	<script src="http://davidrallen.com/bootstrap/js/bootstrap-carousel.js"></script>
 	<script src="http://davidrallen.com/pikachoose/lib/jquery.pikachoose.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		fadeElements( '.fade', 700, 1 );
-		$('.carousel').carousel();
-	});
-
-	function fadeElements( e, s, o ){
-		var $fade = $(e);
-		$fade.each(function( i ){
-			$(this).delay(i * s).fadeTo(s,o);
-		});
-	}
-	</script>
-
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-33243251-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>	
+	<script src="http://davidrallen.com/js/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="../css/common.css" />
 	<link rel="stylesheet" type="text/css" href="../css/style.css" />
@@ -54,27 +28,18 @@
 </head>
 <body>			
 	<div id="header">
-<!-- OLD HEADER
-		<div id="navbar">
-				<ul>
-					<a href="index"><li id="home"><span class="header">Resume</span></li></a>
-					<a href="portfolio"><li id="portfilio"><span class="header">Portfolio</span></li></a>
-					<a href="about"><li id ="about"><span class="header">About</span></li></a>
-				</ul>
-			</div>
--->
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="http://davidrallen.com"><span class="name1">DAVID</span><span class="name2"> ALLEN</span></a>
 				<ul class="nav">
-					<li><a href="http://davidrallen.com/index">Resume</a></li>
+					<li><a class="home" href="http://davidrallen.com">Resume</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="http://davidrallen.com/portfolio">Portfolio</a></li>
+					<li><a class="portfolio" href="http://davidrallen.com/portfolio">Portfolio</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="http://davidrallen.com/about">About</a></li>
+					<li><a class="about" href="http://davidrallen.com/about">About</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="http://davidrallen.com/development">Development</a></li>
+					<li><a class="development" href="http://davidrallen.com/development">Development</a></li>
 				</ul>
 			</div>
 		</div>
