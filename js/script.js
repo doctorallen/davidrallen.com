@@ -19,7 +19,7 @@ $(document).ready(function(){
 	if(pathname == ''){
 		pathname = 'home';
 	}
-	$('.' + pathname ).addClass('active');
+	$('.' + pathname + ' a').addClass('active');
 });
 //Google analytics
   var _gaq = _gaq || [];
