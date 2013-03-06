@@ -199,11 +199,17 @@ a img {border: none;}
 .nav li a:hover{
 	background: #FFF;
 	color: #232323;
+  -webkit-box-shadow: 0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+  -moz-box-shadow:    0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+  box-shadow:         0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
 }
 .nav .active{
 	background: #FFF;
 	color: #232323;
+  -webkit-box-shadow: 0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+  -moz-box-shadow:    0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+  box-shadow:         0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
 }
 #main{
