@@ -2,7 +2,6 @@ $(document).ready(function(){
 //Fading for elements with the fade class
 	$(function(){
 		fadeElements( '.fade', 700, 1);
-		$('.carousel').carousel();
 	});
 
 	function fadeElements( e, s, o ){
