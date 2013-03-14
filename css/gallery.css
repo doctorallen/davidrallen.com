@@ -32,6 +32,8 @@
 }
 
 .gallery ul li span{
+  color: #EAEAEA;
+	text-shadow: 0 0 0.2em rgba(0,0,0,0.5);
   display: block;
   font-size: 2em;
 }
