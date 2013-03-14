@@ -32,8 +32,12 @@ $(document).on('ready', function(){
           prev_idx = images[idx - 1];
         }
        //change which element is active
-       $('#' + active_element).removeClass('active').fadeOut('slow');
-       $('#' + prev_idx).addClass('active').fadeIn('slow');
+       $('#' + active_element).fadeOut(200, function(){ 
+          $('#' + active_element).removeClass('active');
+           $('#' + prev_idx).fadeIn(200, function(){
+              $('#' + prev_idx).addClass('active');
+            });
+        });
 			return false;
   }
 
@@ -53,8 +57,12 @@ $(document).on('ready', function(){
           prev_idx = images[idx + 1];
         }
        //change which element is active
-       $('#' + active_element).removeClass('active').fadeOut('slow');
-       $('#' + prev_idx).addClass('active').fadeIn('slow');
+       $('#' + active_element).fadeOut(200, function(){ 
+          $('#' + active_element).removeClass('active');
+           $('#' + prev_idx).fadeIn(200, function(){
+              $('#' + prev_idx).addClass('active');
+            });
+        });
 			return false;
   }
 	$("#prev").click(function() {
@@ -72,4 +80,24 @@ $(document).on('ready', function(){
         next();
       }
   });
+  var downX = 0;
+  var downY = 0;
+  var upX = 0;
+  var upY = 0;
+  $('.gallery img').mousedown(function(e){
+      e.preventDefault();
+      downX = e.pageX - $(this).offset().left;
+      downY= e.pageY - $(this).offset().top;
+  });
+  $('.gallery img').mouseup(function(e){
+      e.preventDefault();
+      upX = e.pageX - $(this).offset().left;
+      upY= e.pageY - $(this).offset().top;
+      console.log('DOWN X:', downX);
+      console.log('DOWN Y:', downY);
+      console.log('UP X:', upX);
+      console.log('UP Y:', upY);
+      $(this).html
+  });
+
 });
