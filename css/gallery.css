@@ -24,7 +24,7 @@
 
 .gallery ul li img{
   max-width: 860px;
-  max-height: 660px;
+  max-height: 540px;
 }
 
 .gallery ul li.active{
