@@ -1,6 +1,7 @@
 $(document).on('ready', function(){
     //first we need to build the element object
     var images = [];
+    var switching = false;
     $('.gallery ul').each(function(){
       var i = 0;
          $(this).find('li').each( function() {;
@@ -17,31 +18,37 @@ $(document).on('ready', function(){
         });
     });
   function previous(){
-     //find the currently active element 
-      var li = $('.gallery ul .active');
-       //grab the current index of the active element
-       var active_element = li.attr('id');
-       var idx =  images.indexOf(active_element);
-       //now that we have the index, we are going to get the previous index
-       var prev_idx = 0;
-       if( idx === 0 ){
-          //if the index is 0, we know it is the first element, so it needs to grab the last element
-          prev_idx = images[images.length - 1];
-        }else{
-          //if the index is not 0, we know to grab the previous element
-          prev_idx = images[idx - 1];
-        }
-       //change which element is active
-       $('#' + active_element).fadeOut(200, function(){ 
-          $('#' + active_element).removeClass('active');
-           $('#' + prev_idx).fadeIn(200, function(){
-              $('#' + prev_idx).addClass('active');
-            });
-        });
-			return false;
+    if(switching == false){
+      switching = true;
+       //find the currently active element 
+        var li = $('.gallery ul .active');
+         //grab the current index of the active element
+         var active_element = li.attr('id');
+         var idx =  images.indexOf(active_element);
+         //now that we have the index, we are going to get the previous index
+         var prev_idx = 0;
+         if( idx === 0 ){
+            //if the index is 0, we know it is the first element, so it needs to grab the last element
+            prev_idx = images[images.length - 1];
+          }else{
+            //if the index is not 0, we know to grab the previous element
+            prev_idx = images[idx - 1];
+          }
+         //change which element is active
+         $('#' + active_element).fadeOut(200, function(){ 
+            $('#' + active_element).removeClass('active');
+             $('#' + prev_idx).fadeIn(200, function(){
+                $('#' + prev_idx).addClass('active');
+                  switching = false;
+              });
+          });
+        return false;
+    }
   }
 
   function next(){
+    if( switching == false ){
+    switching = true;
      //find the currently active element 
       var li = $('.gallery ul .active');
        //grab the current index of the active element
@@ -61,9 +68,11 @@ $(document).on('ready', function(){
           $('#' + active_element).removeClass('active');
            $('#' + prev_idx).fadeIn(200, function(){
               $('#' + prev_idx).addClass('active');
+                switching = false;
             });
         });
 			return false;
+    }
   }
 	$("#prev").click(function() {
       previous();
@@ -80,24 +89,4 @@ $(document).on('ready', function(){
         next();
       }
   });
-  var downX = 0;
-  var downY = 0;
-  var upX = 0;
-  var upY = 0;
-  $('.gallery img').mousedown(function(e){
-      e.preventDefault();
-      downX = e.pageX - $(this).offset().left;
-      downY= e.pageY - $(this).offset().top;
-  });
-  $('.gallery img').mouseup(function(e){
-      e.preventDefault();
-      upX = e.pageX - $(this).offset().left;
-      upY= e.pageY - $(this).offset().top;
-      console.log('DOWN X:', downX);
-      console.log('DOWN Y:', downY);
-      console.log('UP X:', upX);
-      console.log('UP Y:', upY);
-      $(this).html
-  });
-
 });

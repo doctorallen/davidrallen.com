@@ -3,7 +3,7 @@
 	<span class="so">WHO IS </span><span class="name1">DAVID</span> <span class="name2"> ALLEN</span> <span class="so">?</span>
 	<h3>Why don't I just show you..</h3> 
 	<div class="gallery">
-    <div id ="prev" class="controls"><</div>
+    <div id ="prev" class="controls"></div>
 		<ul id="gallery">
 			<li><img src="../images/bistro.jpg"><span>Chef</span></li>
 			<li><img src="../images/boyfriend.jpg"><span>Boyfriend</span></li>
@@ -27,7 +27,7 @@
 			<li><img src="../images/family.jpg"><span>Family Man</span></li>
 			<li><img src="../images/ocean.jpg"><span>Ocean Lover</span></li>
 		</ul>
-    <div id ="next" class="controls">></div>
+    <div id ="next" class="controls"></div>
 	</div>
 </div>   
 <?php include('includes/footer.html'); ?>

@@ -3,6 +3,7 @@
   height: 600px;
   background: #383332;
   padding: 20px;
+  position: relative;
 }
 
 .gallery ul{
@@ -38,6 +39,33 @@
   font-size: 2em;
 }
 .gallery .controls{
-  color: #FFF;
+  top: 296px;
   cursor: pointer;
+  display: block;
+  position: absolute;
+  background-color: #f7f7f7;
+  color: #a7a7a7;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: inset 0px 1px 3px 1px rgba(0,0,0,0.4), 0px 0px 1px 1px rgba(0,0,0,0.4);
+}
+.gallery .controls:hover{
+  text-decoration: none;
+  color: #555;
+  background: #f5f5f5;
+  box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.4);
+}
+.gallery #prev{
+  left: 25px;
+  background-image: url('../images/controls-prev.png');
+  background-position: 4px 5px;
+  background-repeat: no-repeat;
+}
+.gallery #next{
+  right: 25px;
+  background-image: url('../images/controls-next.png');
+  background-position: 12px 5px;
+  background-repeat: no-repeat;
 }
