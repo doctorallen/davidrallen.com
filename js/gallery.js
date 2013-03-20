@@ -1,6 +1,7 @@
 $(document).on('ready', function(){
     //first we need to build the element object
     var images = [];
+    var thumbnails = [];
     var switching = false;
     $('.gallery ul').each(function(){
       var i = 0;
@@ -14,9 +15,21 @@ $(document).on('ready', function(){
           var item_name = 'gallery_item_' + i;
           li.attr('id', item_name);
           images[i] = item_name;
+          thumbnails[i] = {
+            id: item_name,
+            src: li.find('img').attr('src')
+          };
           i = i + 1;
         });
     });
+  function generateThumbnails(){
+    $('.gallery').after('<div id="thumbnail-container"></div>');
+    $.each( thumbnails,  function (index, thumbnail) {
+        console.log(thumbnail);
+      $('#thumbnail-container').append('<li class="thumbnail" data-id="' + thumbnail.id + '"><img src="' + thumbnail.src + '"></li>');
+    });
+  }
+    generateThumbnails();
   function previous(){
     if(switching == false){
       switching = true;
@@ -81,6 +94,25 @@ $(document).on('ready', function(){
 	$("#next").click(function() {
       next();
 	});
+
+  $('.thumbnail').click(function() {
+    if( switching == false){
+      switching = true;
+      var li = $('.gallery ul .active');
+      var active_element = li.attr('id');
+      $('.thumbnail').removeClass('active');
+      $(this).addClass('active');
+      var id = $(this).data('id');
+         $('#' + active_element).fadeOut(200, function(){ 
+            $('#' + active_element).removeClass('active');
+             $('#' + id).fadeIn(200, function(){
+                $('#' + id).addClass('active');
+                  switching = false;
+              });
+          });
+    }
+  });
+
   $(document).keydown(function(e){
       if (e.keyCode == 37) { 
         previous();
