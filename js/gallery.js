@@ -84,6 +84,7 @@ $(document).on('ready', function(){
                 switching = false;
             });
         });
+       setControls();
 			return false;
     }
   }
@@ -112,6 +113,30 @@ $(document).on('ready', function(){
           });
     }
   });
+
+  $('.gallery').mouseenter( function() {
+    $('.gallery .controls').css('display', 'block');
+  });
+
+  $('.gallery').mouseleave( function(){
+    $('.gallery .controls').css('display', 'none');
+  });
+
+  $('.gallery').click( function() {
+      next();
+  });
+
+  function setControls(){
+    var left = $('#prev');
+    var right = $('#next');
+    var li = $('.gallery ul .active');
+    var active_element = li.attr('id');
+    var img = li.find('img');
+    console.log(img.position());
+    left.css('left', img.position().left);
+    console.log(img.width());
+    right.css('left', (img.position().left + img.width()));
+  }
 
   $(document).keydown(function(e){
       if (e.keyCode == 37) { 
