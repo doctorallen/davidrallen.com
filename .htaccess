@@ -1,7 +1,5 @@
 php_value include_path ".:/srv/www/davidrallen.com/public_html"
-ErrorDocument 404 /404.php
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule .* $0.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /index.php [L]
 

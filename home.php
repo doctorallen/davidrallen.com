@@ -1,107 +1,135 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<?php include('includes/header.html'); ?>
+	<div id="left">
+				<h2>Contact</h2>
+				  <ul class="contact">
+					 <li><span>trooper898@gmail.com</span></li>
+					 <li><span>(603) 236-6988</span></li>
+					 <li><span><a href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=plymouth,+nh&aq=&sll=37.0625,-95.677068&sspn=54.928982,79.013672&vpsrc=0&t=h&ie=UTF8&hq=&hnear=Plymouth,+Grafton,+New+Hampshire&z=12" target="_blank" >Plymouth, NH 03264</a><span></li>   
+				  </ul>        
+					
+												   
+			    <h2>Proficiencies</h2>
+				 
+					<div class="skill">
+					<span class="head">Languages</span><p>PHP, HTML5, CSS3, JavaScript, jQuery, Java, VB .NET, C#, XNA</p>
+					</div>
+					<div class="skill">
+					<span class="head">Databases</span><p>MySQL, Access</p>
+					</div>
+					<div class="skill">
+					<span class="head">Frameworks</span><p>Klein Routing, Smarty, Codeigniter, CakePHP, Wordpress, Node.js, Socket.io, Express.js</p>
+					</div>
+					<div class="skill">
+					<span class="head">Software</span><p>Git, Subversion, VIM, Adobe Photoshop</p>
+					</div>
+					<div class="skill">
+					<span class="head">Operating Systems</span><p>Windows, Mac OSX, Linux, VMware vSphere, XenServer</p>
+					</div>
+					<div class="skill">
+					<span class="head">Web Administration</span><p>LAMP Server(Linux, Apache, MySQL, PHP), Amazon AWS(EC2, VPC, ELB, EC2, Cloudfront, SES, Route 53), NGINX, NodeJS</p>
+					</div>
 
-<head>
-	<base target="_blank">
-	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/jquery.smooth-scroll.min.js"></script>
-	<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
-	<script src="bootstrap/js/bootstrap.js"></script>
-	<script src="pikachoose/lib/jquery.jcarousel.min.js"></script>
-	<script src="pikachoose/lib/jquery.pikachoose.full.js"></script>
-	<script src="pikachoose/lib/jquery.pikachoose.js"></script>
-	<script src="js/gallery.js"></script>
-	<script src="js/lightbox.js"></script>
-	<script type="text/javascript">
+				<h2>Web Portfolio</h2>
+						<ul class="profile">
+							<li><a href="http://stackoverflow.com/users/984383" target="blank">Stack Overflow</a></li>
+							<li><a href="https://github.com/drallen1" target="blank">Github</a></li>
+							<li><a href="http://coderwall.com/drallen1" target="blank">Coderwall</a></li>
+						</ul>
+			
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-33243251-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>	
-	<link rel="stylesheet" type="text/css" href="../css/common.css" />
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-responsive.css" />
-	<style type="text/css">
-		#main{
-			padding-top: 20px;
-		}
-	</style>
-<title>David Allen's Home Page</title>
-</head>
-<body>			
-	<div id="main">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand" href="http://davidrallen.com/home">David's Home Page</a>
-					<ul class="nav">
-							<form class="navbar-search pull-right" method="get" action="http://www.google.com/search">
-
-								<input type="text" class="search-query span2" name="q" size="31" maxlength="255" value="" placeholder="Search Google" />
-							</form>
-						<b class="caret"></b>
-						
-					</ul>
-				</div>	
-			</div>
-		</div>
-		<div class="row">
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
-						<li class="nav-header">
-							Personal Sites
-						</li>
-						<li>
-							<a href="http://davidrallen.com"><i class="icon-home"></i>David Allen</a>
-						</li>
-						<li>
-							<a href="http://parahoax.com"><i class="icon-camera"></i>ParaHoax</a>
-						</li>
-						<li class="nav-header">
-							Social Media
-						<li>
-							<a href="http://facebook.com"><i class="icon-thumbs-up"></i>Facebook</a>
-						</li>
-						<li>
-							<a href="http://plus.google.com"><i class="icon-plus"></i>Google Plus</a>
-						</li>
-						<li>
-							<a href="http://twitter.com"><i class="icon-user"></i>Twitter</a>
-						</li>
-						<li class="nav-header">
-							Work Related
-						<li>
-							<a href="https://svn.theatomgroup.com"><i class="icon-ok"></i>TAG Subversion</a>
-						</li>
-						<li>
-							<a href="wiki.theatomgroup.com"><i class="icon-book"></i>Wiki</a>
-						</li>
-						<li>
-							<a href="http://mail.theatomgroup.com/owa"><i class="icon-comment"></i>Email</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="span3">
-				<div class="well">
-				asdf
-				</div>
-			</div>
-		</div>
-
-	<a class="btn btn-primary" href="http://moqups.com">Moqups</a>
+											   
+				  <h2>Education</h2>
+									
+				  <div class="school right-aligned">                                   
+						<span class="school-name">Plymouth State University</span><br>
+						<span class="normal">B.S. Information Technology</span><br>
+						<span class="award">Magna Cum Laude,<br> Top 20 Senior Award,<br> Outstanding Student in <br> Information Technology Award</span>
+				   </div>
 	</div>
+	<div id="right">
+			<h1>Open Source Web Developer</h1>
 
-<div id="footer-wrapper">
-		<span class="footer">Website designed by David Allen. Copyright 2012.</span>
+			<h2>Objective</h2>   
+			 
+			 <p>
+				To create valuable and exciting web applications as an open source web developer, learn new technologies and languages, stay on the leading edge and make a positive impact on the web and its users.
+			</p>
+
+			   <h2>Experience</h2>
+				 
+				<div class="job">
+					<span class="head">The Atom Group</span>
+					<span class="right-head">August 2012 - Present</span>
+					<br>
+					<span class="job-title">Web Developer</span>      
+				    <span class="right-location">Porstmouth, NH</span>
+				  <ul>
+					<li>Created Web Applications using Codeigniter, CakePHP, Wordpress, Drupal, Node.js, Express.js, Socket.io </li>
+				  </ul>
+				</div>
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">May 2012 - August 2012</span>
+					<br>
+					<span class="job-title">Junior Developer</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Designed and Developed a <a href="portfolio.php#CTS">full-scale open source web application</a> using PHP, MySQL, HTML5, CSS3, jQuery, JavaScript, Smarty and Klein routing in a LAMP environment using VIM and Git</li>
+						 <li>Used MVC Framework with Smarty/HTML5 and PHP/MySQL/Klein</li>
+						 <li>Developed Project from specification to production in 5 months</li>
+						<li>Integrated with existing MySQL database, Plymouth State API Layer, and GLPI</li>
+						<li>Created technical documentation and end-user manuals</li>
+						<li>All code was peer reviewed and open-sourced on github.com</li>
+						<li><a href="portfolio#github">Migrated</a> existing web applications from Subversion to GitHub</li>
+					 </ul>
+				</div>
+
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Sept 2011 - May 2012</span>
+					<br>
+					<span class="job-title">Computer Science Undergraduate Fellow</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Worked alongside professors in creating and offering support for lab assignments </li>
+						 <li>Maintained and updated networking equipment and computers for computer science labs</li>
+				 </ul>
+				</div> 
+				
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Feb 2011 - May 2011</span>
+					<br>
+					<span class="job-title">Systems Support Intern</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Worked as lead in researching and testing <a href="portfolio#support">virtual desktop infrastructure</a> services</li>
+						 <li>Created technical documentation for installing and managing tested services</li>
+				 </ul>
+				</div> 
+
+				<div class="job">
+					<span class="head">Plymouth State University</span>
+					<span class="right-head">Sept 2010 - May 2012</span>
+					<br>	
+					<span class="job-title">Information Desk Consultant</span>      
+				    <span class="right-location">Plymouth, NH</span>
+				  <ul>
+						 <li>Call Center supporting 60,000+ university constituents, 1200+ calls logged</li>
+						 <li>Supported Media Presentation Center (Photoshop, Flash, iMovie)</li>
+				 </ul>
+				</div> 
+				
+				<div class="job">
+					<span class="head">Daniel Webster College</span>
+					<span class="right-head">Nov 2008 - May 2010</span>
+					<br>
+					<span class="job-title">TechBench</span>      
+				    <span class="right-location">Nashua, NH</span>
+				  	<ul>
+						 <li>Troubleshot numerous hardware and software related computer issues</li>
+						 <li>Collaborated with a team on the creation of a 100 page technical manual for helpdesk operation</li>
+				 	</ul>
+				</div> 
 	</div>
-	</body>
-</html>
+<?php include('includes/footer.html'); ?>
