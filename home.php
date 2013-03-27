@@ -1,4 +1,3 @@
-<?php include('includes/header.html'); ?>
 	<div id="left">
 				<h2>Contact</h2>
 				  <ul class="contact">
@@ -132,4 +131,3 @@
 				 	</ul>
 				</div> 
 	</div>
-<?php include('includes/footer.html'); ?>

@@ -1,5 +1,10 @@
 <?php
 require 'klein.php';
+
+respond('*', function( $request, $response, $app ){
+  $response->render('includes/header.html');
+});
+
 respond('/', function( $request, $response, $app ){
   $response->render('home.php');
 });
@@ -18,6 +23,10 @@ respond('/about', function( $request, $response, $app ){
 
 respond('/development', function( $request, $response, $app ){
   $response->render('development.php');
+});
+
+respond('*', function( $request, $response, $app ){
+  $response->render('includes/footer.html');
 });
 
 dispatch();

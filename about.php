@@ -1,4 +1,3 @@
-<?php include('includes/header.html'); ?>
 <div>
 	<span class="so">WHO IS </span><span class="name1">DAVID</span> <span class="name2"> ALLEN</span> <span class="so">?</span>
 	<h3>Why don't I just show you..</h3> 
@@ -30,4 +29,3 @@
     <div id ="next" class="controls"></div>
 	</div>
 </div>   
-<?php include('includes/footer.html'); ?>

@@ -1,4 +1,3 @@
-<?php include('includes/header.html'); ?>
 <div id="development">
 	<h2 class="fade">Current Development Projects</h2>
 	<div class="port fade">
@@ -55,4 +54,3 @@
 
 	-->
 </div>
-<?php include('includes/footer.html'); ?>

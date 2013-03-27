@@ -1,4 +1,3 @@
-<?php include('includes/header.html'); ?>
 <div>
 	<h2>The Atom Group</h2>
 	<div class="port">
@@ -111,4 +110,3 @@ When the Admin would submit a new time, the data would be validated client side,
 	</div>
 -->
 </div>
-<?php include('includes/footer.html'); ?>
