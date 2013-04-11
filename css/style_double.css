@@ -341,13 +341,6 @@ a img {border: none;}
   font-size: 2em;
 }
 
-.btn-3d:disabled{
-    background-color: rgba(158,158,158,1);
-    -moz-box-shadow: 0px 3px 0px rgba(100,100,100,1), 0px 3px 6px rgba(0,0,0,.9);
-    box-shadow: 0px 3px 0px rgba(100,100,100,1), 0px 3px 6px rgba(0,0,0,.9);
-    position: relative;
-    top: 6px;
-}
 .btn-3d:active{
     -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
     -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
@@ -378,6 +371,14 @@ a img {border: none;}
     -webkit-box-shadow: 0px 3px 0px rgba(91,183,91,1), 0px 3px 6px rgba(0,0,0,.9);
     -moz-box-shadow: 0px 3px 0px rgba(91,183,91,1), 0px 3px 6px rgba(0,0,0,.9);
     box-shadow: 0px 3px 0px rgba(91,183,91,1), 0px 3px 6px rgba(0,0,0,.9);
+    position: relative;
+    top: 6px;
+}
+.btn-3d:disabled{
+    background-color: rgba(158,158,158,1);
+    -webkit-box-shadow: 0px 3px 0px rgba(100,100,100,1), 0px 3px 6px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 3px 0px rgba(100,100,100,1), 0px 3px 6px rgba(0,0,0,.9);
+    box-shadow: 0px 3px 0px rgba(100,100,100,1), 0px 3px 6px rgba(0,0,0,.9);
     position: relative;
     top: 6px;
 }

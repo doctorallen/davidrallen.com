@@ -11,7 +11,7 @@ respond('*', function( $request, $response, $app ){
 });
 
 /*******************************
- *          ROUTES
+ *        STATIC ASSETS
  *******************************/
 
 respond('@\.(js|css)$', function( $request, $response, $app ){
@@ -25,27 +25,27 @@ respond('@\.(js|css)$', function( $request, $response, $app ){
 
 
 respond('/', function( $request, $response, $app ){
-  $response->render('home.php');
+  $response->render('home.html');
 });
 
 respond('/home', function( $request, $response, $app ){
-  $response->render('home.php');
+  $response->render('home.html');
 });
 
 respond('/portfolio', function( $request, $response, $app ){
-  $response->render('portfolio.php');
+  $response->render('portfolio.html');
 });
 
 respond('/about', function( $request, $response, $app ){
-  $response->render('about.php');
+  $response->render('about.html');
 });
 
 respond('/resume', function( $request, $response, $app ){
-  $response->render('resume.php');
+  $response->render('resume.html');
 });
 
 respond('/contact', function( $request, $response, $app ){
-  $response->render('contact.php');
+  $response->render('contact.html');
 });
 
 
