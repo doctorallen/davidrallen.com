@@ -61,7 +61,7 @@
 					<span class="right-head">August 2012 - Present</span>
 					<br>
 					<span class="job-title">Web Developer</span>      
-				    <span class="right-location">Porstmouth, NH</span>
+				    <span class="right-location">Portsmouth, NH</span>
 				  <ul>
 					<li>Created Web Applications using Codeigniter, CakePHP, Wordpress, Drupal, Node.js, Express.js, Socket.io </li>
 				  </ul>
