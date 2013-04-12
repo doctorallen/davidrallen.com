@@ -23,14 +23,51 @@ $(document).on('ready', function(){
           i = i + 1;
         });
     });
-  function generateThumbnails(){
-    $('.gallery').after('<div id="thumbnail-container"></div>');
-    $.each( thumbnails,  function (index, thumbnail) {
-        console.log(thumbnail);
-      $('#thumbnail-container').append('<li class="thumbnail" data-id="' + thumbnail.id + '"><img src="' + thumbnail.src + '"></li>');
-    });
-  }
-    generateThumbnails();
+
+  generateThumbnails();
+
+  $('img').one('load', function(){
+    setControls();
+  });
+
+	$("#prev").click(function() {
+      previous();
+	});
+
+	$("#next").click(function() {
+      next();
+	});
+
+  $('.thumbnail').click(function() {
+    if( switching == false){
+          switching = true;
+          var li = $('.gallery ul .active');
+          var active_element = li.attr('id');
+          $('.thumbnail').removeClass('active');
+          $(this).addClass('active');
+          var id = $(this).data('id');
+             $('#' + active_element).fadeOut(200, function(){ 
+                $('#' + active_element).removeClass('active');
+                 $('#' + id).fadeIn(200, function(){
+                    $('#' + id).addClass('active');
+                      switching = false;
+                  });
+              });
+        }
+  });
+
+  $('.gallery').mouseenter( function() {
+      showControls();
+  });
+
+  $('.gallery').mouseleave( function(){
+      hideControls();
+  });
+
+  $('.gallery').click( function() {
+      next();
+  });
+
   function previous(){
     if(switching == false){
       switching = true;
@@ -92,43 +129,6 @@ $(document).on('ready', function(){
 			return false;
     }
   }
-	$("#prev").click(function() {
-      previous();
-	});
-
-	$("#next").click(function() {
-      next();
-	});
-
-  $('.thumbnail').click(function() {
-    if( switching == false){
-      switching = true;
-      var li = $('.gallery ul .active');
-      var active_element = li.attr('id');
-      $('.thumbnail').removeClass('active');
-      $(this).addClass('active');
-      var id = $(this).data('id');
-         $('#' + active_element).fadeOut(200, function(){ 
-            $('#' + active_element).removeClass('active');
-             $('#' + id).fadeIn(200, function(){
-                $('#' + id).addClass('active');
-                  switching = false;
-              });
-          });
-    }
-  });
-
-  $('.gallery').mouseenter( function() {
-    $('.gallery .controls').css('display', 'block');
-  });
-
-  $('.gallery').mouseleave( function(){
-    $('.gallery .controls').css('display', 'none');
-  });
-
-  $('.gallery').click( function() {
-      next();
-  });
 
   function hideControls(){
     var left = $('#prev');
@@ -152,12 +152,18 @@ $(document).on('ready', function(){
     var img = li.find('img');
     var position = img.position();
     var width = img.width();
-    console.log(img.position());
     left.css('left', position.left + padding);
-    console.log('width:' + img.width());
     right.css('left', position.left + width - right.width() - padding);
     showControls();
   }
+
+  function generateThumbnails(){
+    $('.gallery').after('<div id="thumbnail-container"></div>');
+    $.each( thumbnails,  function (index, thumbnail) {
+      $('#thumbnail-container').append('<li class="thumbnail" data-id="' + thumbnail.id + '"><img src="' + thumbnail.src + '"></li>');
+    });
+  }
+
 
   $(document).keydown(function(e){
       if (e.keyCode == 37) { 
