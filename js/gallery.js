@@ -18,17 +18,12 @@ $(document).on('ready', function(){
           images[i] = item_name;
           thumbnails[i] = {
             id: item_name,
-            src: li.find('img').attr('src')
+            src: li.find('div').css('background-image')
           };
           i = i + 1;
         });
     });
-
   generateThumbnails();
-
-  $('img').one('load', function(){
-    setControls();
-  });
 
 	$("#prev").click(function() {
       previous();
@@ -57,6 +52,7 @@ $(document).on('ready', function(){
   });
 
   $('.gallery').mouseenter( function() {
+      setControls();
       showControls();
   });
 
@@ -91,6 +87,9 @@ $(document).on('ready', function(){
             $('#' + active_element).removeClass('active');
              $('#' + prev_idx).fadeIn(200, function(){
                 $('#' + prev_idx).addClass('active');
+                  var thumb = $('*[data-id="' + prev_idx + '"]');
+                  $('.thumbnail').removeClass('active');
+                  updateThumb(prev_idx);
                   setControls();
                   switching = false;
               });
@@ -122,11 +121,27 @@ $(document).on('ready', function(){
           $('#' + active_element).removeClass('active');
            $('#' + prev_idx).fadeIn(200, function(){
               $('#' + prev_idx).addClass('active');
+                updateThumb(prev_idx);
                 setControls();
                 switching = false;
             });
         });
 			return false;
+    }
+  }
+
+  function updateThumb(prev_idx){
+    var thumb = $('*[data-id="' + prev_idx + '"]');
+    var thumbPosition = thumb.position();
+    var container = $('#thumbnail-container');
+    console.log(thumbPosition);
+    console.log(container);
+    $('.thumbnail').removeClass('active');
+    thumb.addClass('active');
+    console.log(thumbPosition);
+    console.log(container.height());
+    if( thumbPosition.top > container.height() || thumbPosition.top < 0 ){
+      container.scrollTop(thumbPosition.top + container.scrollTop() - 30);
     }
   }
 
@@ -149,18 +164,23 @@ $(document).on('ready', function(){
     var right = $('#next');
     var li = $('.gallery ul .active');
     var active_element = li.attr('id');
-    var img = li.find('img');
-    var position = img.position();
-    var width = img.width();
+    var div = li.find('div');
+    var position = div.position();
+    var width = div.width();
     left.css('left', position.left + padding);
     right.css('left', position.left + width - right.width() - padding);
     showControls();
   }
 
   function generateThumbnails(){
-    $('.gallery').after('<div id="thumbnail-container"></div>');
+    $('.gallery').prepend('<div id="thumbnail-container"></div>');
+    var i = 0;
     $.each( thumbnails,  function (index, thumbnail) {
-      $('#thumbnail-container').append('<li class="thumbnail" data-id="' + thumbnail.id + '"><img src="' + thumbnail.src + '"></li>');
+      $('#thumbnail-container').append('<li class="thumbnail" data-id="' + thumbnail.id + '"><div class="thumbnail-image-container"style="background-image:' + thumbnail.src + '"></div></li>');
+        if( i === 0 ){
+          $('.thumbnail').addClass('active');
+        }
+      i++;
     });
   }
 

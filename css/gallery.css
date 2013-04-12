@@ -8,6 +8,8 @@
   -webkit-margin-after: 0px;
   -webkit-padding-start: 0px;
   list-style-type: none;
+  width: 720px;
+  display: inline-block;
 }
 
 .gallery ul li {
@@ -30,8 +32,13 @@
 .gallery ul li span{
   color: #EAEAEA;
 	text-shadow: 0 0 0.2em rgba(0,0,0,0.5);
-  display: block;
+  display: inline-block;
   font-size: 2em;
+  position: relative;
+  padding: 0 25px 0 25px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.7);
+  top: -50px;
 }
 .gallery .controls{
   top: 296px;
@@ -46,6 +53,22 @@
 .gallery .controls:hover{
   opacity: 1;
 }
+.gallery-image-container{
+  width: 720px;
+  height: 540px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.thumbnail-image-container{
+  margin-top: 10px;
+  width: 140px;
+  height: 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0.6;
+}
 .gallery #prev{
   left: 25px;
   background-image: url('../images/controls.png');
@@ -59,10 +82,10 @@
   background-repeat: no-repeat;
 }
 #thumbnail-container{
-  width: 220px;
+  width: 160px;
   padding: 10px;
   background: #bababa;
-  max-height: 640px;
+  max-height: 520px;
   overflow-y: scroll;
   float: right;
 
@@ -70,11 +93,6 @@
 .thumbnail{
   list-style-type: none;
 }
-.thumbnail img{
-  height: auto;
-  width: 200px;
-  margin-top: 10px;
-}
-.thumbnail.active > img{
-  border: 2px solid black;
+.thumbnail.active > div{
+  opacity: 1;
 }
