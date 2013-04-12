@@ -2,6 +2,7 @@ $(document).on('ready', function(){
     //first we need to build the element object
     var images = [];
     var thumbnails = [];
+    var padding = 15;
     var switching = false;
     $('.gallery ul').each(function(){
       var i = 0;
@@ -33,6 +34,7 @@ $(document).on('ready', function(){
   function previous(){
     if(switching == false){
       switching = true;
+      hideControls();
        //find the currently active element 
         var li = $('.gallery ul .active');
          //grab the current index of the active element
@@ -52,6 +54,7 @@ $(document).on('ready', function(){
             $('#' + active_element).removeClass('active');
              $('#' + prev_idx).fadeIn(200, function(){
                 $('#' + prev_idx).addClass('active');
+                  setControls();
                   switching = false;
               });
           });
@@ -61,7 +64,8 @@ $(document).on('ready', function(){
 
   function next(){
     if( switching == false ){
-    switching = true;
+      switching = true;
+      hideControls();
      //find the currently active element 
       var li = $('.gallery ul .active');
        //grab the current index of the active element
@@ -81,10 +85,10 @@ $(document).on('ready', function(){
           $('#' + active_element).removeClass('active');
            $('#' + prev_idx).fadeIn(200, function(){
               $('#' + prev_idx).addClass('active');
+                setControls();
                 switching = false;
             });
         });
-       setControls();
 			return false;
     }
   }
@@ -126,16 +130,33 @@ $(document).on('ready', function(){
       next();
   });
 
+  function hideControls(){
+    var left = $('#prev');
+    var right = $('#next');
+    left.css('display', 'none');
+    right.css('display', 'none');
+  }
+
+  function showControls(){
+    var left = $('#prev');
+    var right = $('#next');
+    left.fadeIn(200);
+    right.fadeIn(200);
+  }
+
   function setControls(){
     var left = $('#prev');
     var right = $('#next');
     var li = $('.gallery ul .active');
     var active_element = li.attr('id');
     var img = li.find('img');
+    var position = img.position();
+    var width = img.width();
     console.log(img.position());
-    left.css('left', img.position().left);
-    console.log(img.width());
-    right.css('left', (img.position().left + img.width()));
+    left.css('left', position.left + padding);
+    console.log('width:' + img.width());
+    right.css('left', position.left + width - right.width() - padding);
+    showControls();
   }
 
   $(document).keydown(function(e){

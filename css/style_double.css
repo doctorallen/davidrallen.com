@@ -108,14 +108,27 @@ h4{
 	font-weight: 300;
   padding: .1em;
 }
-.orange:first-letter{
-	color: #FF4500;
-}
-.blue:first-letter{
-	color: #0070C0;
-}
 .brand:hover{
 	color: #FAFAFA !important;
+}
+
+.grey{
+	color: #616158 !important;
+}
+.grey:hover{
+	color: #FAFAFA !important;
+}
+.blue{
+	color: #0070C0 !important;
+}
+.blue:hover{
+	color: #FF4500 !important;
+}
+.orange{
+	color: #FF4500 !important;
+}
+.orange:hover{
+	color: #0070C0 !important;
 }
 .btn-big{
 	margin: 10px auto 10px auto;

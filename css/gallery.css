@@ -38,21 +38,24 @@
   cursor: pointer;
   display: block;
   position: absolute;
-  width: 30px;
+  width: 45px;
   height: 50px;
   display: none;
+  opacity: 0.8;
 }
 .gallery .controls:hover{
-  background: rgba(0,0,0,0.3);
+  opacity: 1;
 }
 .gallery #prev{
   left: 25px;
-  background-image: url('../images/arrow-left.png');
+  background-image: url('../images/controls.png');
+  background-position: 0px 0px;
   background-repeat: no-repeat;
 }
 .gallery #next{
   right: 25px;
-  background-image: url('../images/arrow-right.png');
+  background-image: url('../images/controls.png');
+  background-position: -45px 0px;
   background-repeat: no-repeat;
 }
 #thumbnail-container{

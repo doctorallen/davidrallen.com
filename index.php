@@ -48,6 +48,10 @@ respond('/contact', function( $request, $response, $app ){
   $response->render('contact.html');
 });
 
+respond('/blog', function( $request, $response, $app ){
+  $response->render('blog/index.php');
+});
+
 
 
 
