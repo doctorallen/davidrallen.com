@@ -395,6 +395,14 @@ a img {border: none;}
     position: relative;
     top: 6px;
 }
+#skills{
+  float: left;
+  width: 600px;
+  height: 600px;
+}
+.get{
+  display: none;
+}
 @media all and (min-width: 320px){
 	/*This needs to change the layout*/
 	#header{

@@ -1,0 +1,135 @@
+<div id="skills">
+  <div class="get">
+    <div class="arc">
+      <span class="text">jQuery</span>
+      <input type="hidden" class="percent" value="65">
+      <input type="hidden" class="color" value="#616158">
+    </div>
+
+    <div class="arc">
+      <span class="text">CSS3</span>
+      <input type="hidden" class="percent" value="40">
+      <input type="hidden" class="color" value="#FF4500">
+    </div>
+
+    <div class="arc">
+      <span class="text">HTML5</span>
+      <input type="hidden" class="percent" value="90">
+      <input type="hidden" class="color" value="#0070C0">
+    </div>
+
+    <div class="arc">
+      <span class="text">PHP</span>
+      <input type="hidden" class="percent" value="80">
+      <input type="hidden" class="color" value="#616158">
+    </div>
+
+    <div class="arc">
+      <span class="text">MySQL</span>
+      <input type="hidden" class="percent" value="70">
+      <input type="hidden" class="color" value="#FF4500">
+    </div>
+  </div>
+</div>
+
+<div id="skills2">
+  <div class="get">
+    <div class="arc">
+      <span class="text">jQuery</span>
+      <input type="hidden" class="percent" value="65">
+      <input type="hidden" class="color" value="#616158">
+    </div>
+
+    <div class="arc">
+      <span class="text">CSS3</span>
+      <input type="hidden" class="percent" value="40">
+      <input type="hidden" class="color" value="#FF4500">
+    </div>
+
+    <div class="arc">
+      <span class="text">HTML5</span>
+      <input type="hidden" class="percent" value="90">
+      <input type="hidden" class="color" value="#0070C0">
+    </div>
+
+    <div class="arc">
+      <span class="text">PHP</span>
+      <input type="hidden" class="percent" value="80">
+      <input type="hidden" class="color" value="#616158">
+    </div>
+
+    <div class="arc">
+      <span class="text">MySQL</span>
+      <input type="hidden" class="percent" value="70">
+      <input type="hidden" class="color" value="#FF4500">
+    </div>
+  </div>
+</div>
+<script>
+var o = {
+  init: function(id, size){
+    this.diagram(id, size);
+  },
+    random: function(l, u){
+      return Math.floor((Math.random()*(u-l+1))+l);
+    },
+      diagram: function(id, size){
+        var r = Raphael(id, size, size),
+          defaultText = 'Skills',
+          speed = 250,
+          items = $('.get').find('.arc').size(),
+          half = size/2,
+          stroke = size/(items * 2.5),
+          strokeTo = stroke * 2,
+          radPadding = stroke + (stroke / 5),
+          mainRadius = size / 5,
+          rad = mainRadius - (stroke /2 );
+console.log(mainRadius);
+console.log(items);
+console.log('stroke:' + stroke);
+console.log('radpadding:' + radPadding);
+        r.circle(half, half, mainRadius).attr({ stroke: 'none', fill: '#193340' });
+        var title = r.text(half, half, defaultText).attr({
+          font: '20px Arial',
+            fill: '#fff'
+        }).toFront();
+        r.customAttributes.arc = function(value, color, rad){
+          var v = 3.6*value,
+            alpha = v == 360 ? 359.99 : v,
+            random = o.random(91, 240),
+            a = (random-alpha) * Math.PI/180,
+            b = random * Math.PI/180,
+            sx = half + rad * Math.cos(b),
+            sy = half - rad * Math.sin(b),
+            x = half + rad * Math.cos(a),
+            y = half - rad * Math.sin(a),
+            path = [['M', sx, sy], ['A', rad, rad, 0, +(alpha > 180), 1, x, y]];
+              return { path: path, stroke: color }
+        }
+        $('#' + id).find('.get').find('.arc').each(function(i){
+          var t = $(this), 
+          color = t.find('.color').val(),
+          value = t.find('.percent').val(),
+          text = t.find('.text').text();
+          rad += radPadding;  
+          var z = r.path().attr({ arc: [value, color, rad], 'stroke-width': stroke });
+
+          z.mouseover(function(){
+            this.animate({ 'stroke-width': strokeTo, opacity: .75 }, 1000, 'elastic');
+            if(Raphael.type != 'VML') //solves IE problem
+              this.toFront();
+            title.stop().animate({ opacity: 0 }, speed / 2, '>', function(){
+              this.attr({ text: text + '\n' + value + '%' }).animate({ opacity: 1 }, speed / 2, '<');
+            });
+          }).mouseout(function(){
+            this.stop().animate({ 'stroke-width': stroke, opacity: 1 }, speed*4, 'elastic');
+            title.stop().animate({ opacity: 0 }, speed / 2, '>', function(){
+              title.attr({ text: defaultText }).animate({ opacity: 1 }, speed /2 , '<');
+            }); 
+          });
+        });
+      }
+}
+
+$(function(){ o.init('skills', 600); });
+</script>
