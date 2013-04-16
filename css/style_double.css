@@ -395,10 +395,10 @@ a img {border: none;}
     position: relative;
     top: 6px;
 }
-#skills{
+.skills{
   float: left;
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 300px;
 }
 .get{
   display: none;
