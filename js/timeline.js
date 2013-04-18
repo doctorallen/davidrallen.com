@@ -60,21 +60,24 @@ $('.date').click( function(e){
 e.stopPropagation();
   var t = $(this),
       d = t.find('.description');
-console.log(d);
-  if( d.hasClass('active') || d.is(':visible') ){
-    d.fadeOut();
-    d.removeClass('active');
-  }else{
-    d.addClass('active');
-    d.fadeIn();
-  }
+      fade(d);
 });
 
 $('.month').click( function(e){
 e.stopPropagation();
   var t = $(this),
       d = t.find('.date');
-console.log(d);
+      fade(d);
+});
+
+$('.year').click( function(e){
+e.stopPropagation();
+  var t = $(this),
+      d = t.find('.month');
+      fade(d);
+});
+
+function fade(d){
   if( d.hasClass('active') || d.is(':visible') ){
     d.fadeOut();
     d.removeClass('active');
@@ -82,7 +85,7 @@ console.log(d);
     d.addClass('active');
     d.fadeIn();
   }
-});
+}
 
 function dynamicSort(property) {
     var sortOrder = 1;
