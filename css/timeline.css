@@ -1,0 +1,29 @@
+.timeline{
+  display: none;
+}
+.timeline-graph{
+}
+.timeline-graph div{
+  display: block;
+}
+.timeline-graph .year{
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  width: 200px;
+  color: #000000;
+}
+.timeline-graph .month{
+  margin-left: 10px;
+  
+  color: #000000;
+}
+.timeline-graph .date{
+  margin-left: 10px;
+  color: #000000;
+}
+.timeline-graph .description{
+  display: none;
+  width: 600px;
+  margin-left: 10px;
+  padding: 10px;
+}

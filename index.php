@@ -44,6 +44,10 @@ respond('/skills', function( $request, $response, $app ){
   $response->render('skills.html');
 });
 
+respond('/timeline', function( $request, $response, $app ){
+  $response->render('timeline.html');
+});
+
 respond('/resume', function( $request, $response, $app ){
   $response->render('resume.html');
 });
