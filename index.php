@@ -62,6 +62,10 @@ respond('/blog', function( $request, $response, $app ){
 
 
 
+respond('404', function( $request, $response, $app ){
+  $response->render('404.html');
+});
+
 
 /*******************************
  *          FOOTER

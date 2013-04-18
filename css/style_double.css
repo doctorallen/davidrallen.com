@@ -1,5 +1,4 @@
 body{
-	/*background: #4B4543;*/
 	background: #FFF;
 	color: #383332;
 	margin: 0px;
@@ -97,17 +96,6 @@ h4{
 	font-weight: 300;
 }
 
-.trevor{
-	text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
-	display: block;
-	margin: 0 auto 0 auto;
-	line-height: .9em;
-	color: #383332;
-	font-size: 3.5em;
-	font-family: Roboto Condensed;
-	font-weight: 300;
-  padding: .1em;
-}
 .brand:hover{
 	color: #FAFAFA !important;
 }
