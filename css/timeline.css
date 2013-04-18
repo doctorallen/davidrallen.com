@@ -3,9 +3,6 @@
 }
 .timeline-graph{
 }
-.timeline-graph div{
-  display: block;
-}
 .timeline-graph .year{
   border-bottom: 1px solid #000;
   border-left: 1px solid #000;
@@ -20,6 +17,15 @@
 .timeline-graph .date{
   margin-left: 10px;
   color: #000000;
+}
+.timeline-nav{
+  width: 250px;
+  display: inline-block;
+}
+.timeline-description{
+  float: right;
+  width: 650px;
+  margin: 0 25px 0 25px;
 }
 .timeline-graph .description{
   display: none;

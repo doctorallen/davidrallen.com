@@ -4,6 +4,8 @@ var dates = [];
 
 var timeline =[];
 
+var speed = 250;
+
 $('.timeline').find('.timeline-item').each( function(){
     var t = $(this),
         d = t.data('date'),
@@ -43,14 +45,16 @@ $('.timeline').find('.timeline-item').each( function(){
 
   console.log(timeline);
   //build the timeline graph
+  $('.timeline-graph').append('<div class="timeline-nav"></div>');
+  $('.timeline-graph').append('<div class="timeline-description"></div>');
   var i = 0;
   timeline.forEach( function( years, year) {
-    $('.timeline-graph').append('<div id="' +year+'" class="year">'+year+'</div>');
+    $('.timeline-nav').append('<div id="' +year+'" class="year">'+year+'</div>');
     years.forEach( function( monthArray, month ){
       $('#'+year).append('<div id="' +year+'-'+month+'" class="month">'+months[month]+'</div>');
       monthArray.forEach( function( date ){
-        $('#'+year+'-'+month).append('<div id="date-'+i+'"class="date">'+date.title+'</div>');
-        $('#date-'+i).append('<div class="description">'+date.description+'</div>');
+        $('#'+year+'-'+month).append('<div data-id="'+i+'" id="date-'+i+'" class="date">'+date.title+'</div>');
+        $('.timeline-description').append('<div id="description-'+i+'" class="description">'+date.description+'</div>');
         i++;
       });
     });
@@ -59,8 +63,14 @@ $('.timeline').find('.timeline-item').each( function(){
 $('.date').click( function(e){
 e.stopPropagation();
   var t = $(this),
-      d = t.find('.description');
+      d = $('#description-' + t.data('id'));
+    console.log('click');
+    $.when(
+      $('.description').fadeOut(speed)
+    ).done( function(){
+      $('.description').removeClass('active');
       fade(d);
+    });
 });
 
 $('.month').click( function(e){
@@ -79,11 +89,11 @@ e.stopPropagation();
 
 function fade(d){
   if( d.hasClass('active') || d.is(':visible') ){
-    d.fadeOut();
+    d.fadeOut(speed);
     d.removeClass('active');
   }else{
     d.addClass('active');
-    d.fadeIn();
+    d.fadeIn(speed);
   }
 }
 
