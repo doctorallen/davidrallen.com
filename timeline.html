@@ -2,45 +2,83 @@
 
 </div>
 <div class="timeline">
-  <div class="timeline-item" data-date="2009-01-02">
-    <span class="title">Test1</span>
+  <div class="timeline-item" data-date="2012-10-10">
+    <span class="title">Chicago Marathon Node App</span>
     <div class="description">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor lectus quis tortor sollicitudin accumsan. Vestibulum eu odio vitae augue fermentum porttitor et tempor sem. Mauris mollis, nibh a semper laoreet, libero enim scelerisque nibh, ut commodo urna diam ac purus. Mauris risus lorem, commodo suscipit pellentesque vel, ullamcorper bibendum tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent tempor vehicula pellentesque. Vestibulum nec justo erat. Nam id ipsum quis nibh facilisis auctor. Integer dignissim euismod quam. In sollicitudin risus eget massa fermentum id vestibulum purus ornare. Nam iaculis tincidunt magna, sodales tincidunt orci fermentum lobortis.
-
-Sed ac turpis libero. Sed dictum dignissim dapibus. Nulla non consectetur sem. Nullam sollicitudin, leo imperdiet tincidunt dignissim, nibh massa lobortis ligula, eu rutrum ipsum orci quis nibh. Nulla placerat mi in risus bibendum sed faucibus est egestas. Vivamus tincidunt varius purus ut faucibus. Aenean turpis turpis, sagittis vitae mattis at, tincidunt eget elit. Mauris vulputate molestie massa, id posuere velit tempus pellentesque. Vestibulum dapibus dui ut augue semper eget adipiscing orci lobortis. Suspendisse potenti. Vestibulum eros erat, interdum quis porttitor in, volutpat rhoncus magna. Quisque et eros eget tellus accumsan cursus eget ut tortor. Duis eu risus est, in tincidunt sapien. Maecenas ac pulvinar turpis.
+      <h3 id="">Chicago Marathon Node App</h3>
+      <p class="desc">
+  The project simply was an admin interface that would be accessed through an iPad 2, and a view page which was accessed through an iPad 2 connected to a vertical flat screen TV. The admin and view interfaces were separated into two pages. The staff member would time a 50ft dash with a stopwatch, and input the dash time and gender into the admin interface on the iPad2. When submitted the television view page would automatically update with the time it would take the user to finish the marathon, compared to the winner of last years marathon.</p>
+  <p>
+  When the Admin would submit a new time, the data would be validated client side, then posted through AJAX where the Node application. The Node app would validate server side, and return any validation errors. If the validation passed the database would be queried for the marathon time. This data would then be packaged as JSON and sent through the open socket. The application was listening on the socket and as soon as the data had been sent, the page would flash and update with the data.
+  </p>
+      <h4>Technologies Used:</h4>
+      <ul class="tech">
+        <li>Node.JS</li>
+        <li>Socket.IO</li>
+        <li>Express JS</li>
+        <li>Heroku</li>
+        <li>jQuery</li>
+        <li>Handlebars</li>
+        <li>MYSQL</li>
+      </ul>
     </div>
   </div>
-  <div class="timeline-item" data-date="2019-02">
-    <span class="title">Test2</span>
-    <div class="description">Test2asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
+  <div class="timeline-item" data-date="2012-06">
+    <span class="title">GitHub Migration</span>
+    <div class="description">
+      <h3 id="github"><a href="http://github.com/plymouthstate/plymouth-webapp/" target="_blank">GitHub Migration</a></h3>
+      <p class="desc">Plymouth State University decided to switch their versioning system from Subversion to Git. I migrated many applications from the Subversion repository to Git and uploaded them to GitHub. During this process all code needed to be scrubbed for sensitive data, non-public information, and in some cases required some functions to be re-written to bring them to standards. </p>
+    <h4>Technologies Used:</h4>
+    <ul class="tech">
+      <li>Subversion</li>
+      <li>Git/GitHub</li>
+      <li>PHP</li>
+      <li>MySQL</li>
+      <li>Unix/Linux</li>
+      <li>VIM</li>
+    </ul>
   </div>
-  <div class="timeline-item" data-date="2010-02-02">
-    <span class="title">Test2</span>
-    <div class="description">Test2asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
+  <div class="timeline-item" data-date="2012-07">
+    <span class="title">Classroom Technology Services Toolkit</span>
+    <div class="description">
+      <h3 id="CTS"><a href="images/cts_full.png" rel="lightbox" title="CTS Toolkit">Classroom Technology Services Toolkit</a></h3>
+      <p class="desc">The Plymouth State Classroom Technology Services Toolkit is a full-scale web application that was built for the use of all students, faculty and staff and Plymouth State University. It's functionalities allow authenticated users to make equipment requests, and has a very large selection of administrative tools that allows the manager of the Classroom Technology Servcices Department (CTS) to assign his staff members to reservations for support, but also allows his staff to view available equipment from the Unversities inventory control system GLPI, assign equipment and edit loans, view their assignments, as well as support for help desk personal who will be the face to face contact for the person who created the loan. I took the project from product specification to production in only 5 months, after a rigourous code-review and debug process.   </p>
+      <h4>Technologies Used:</h4>
+      <ul class="tech">
+        <li>PHP</li>
+        <li>MySQL</li>
+        <li>Smarty</li>
+        <li>jQuery</li>
+        <li>JavaScript</li>
+        <li>CSS3</li>
+        <li>HTML5</li>
+        <li>Klein Routing</li>
+        <li>Unix/Linux</li>
+        <li>VIM</li>
+        <li>Git/GitHub</li>
+        <li>Plymouth State API layer</li>
+        <li>GLPI</li>
+      </ul>
+    </div>
   </div>
-  <div class="timeline-item" data-date="2011-03-02">
-    <span class="title">Test3</span>
-    <div class="description">Test3asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
-  </div>
-  <div class="timeline-item" data-date="2013-04-02">
-    <span class="title">Test4</span>
-    <div class="description">Test4asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
-  </div>
-  <div class="timeline-item" data-date="2012-05-03">
-    <span class="title">Test5</span>
-    <div class="description">Test5asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
-  </div>
-  <div class="timeline-item" data-date="2012-05-04">
-    <span class="title">Test6</span>
-    <div class="description">Test6asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
-  </div>
-  <div class="timeline-item" data-date="2012-04-04">
-    <span class="title">Test7</span>
-    <div class="description">Test7asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
-  </div>
-  <div class="timeline-item" data-date="2012-06-04">
-    <span class="title">Test8</span>
-    <div class="description">Test8asasjkdfhalfjkhdsalf jkhdsajkhdsfaljkhs fdlajkhsfd jkahsdflkjahsdfkljah sfkljahsdflkjahsdfkljh asldkfhakldsjfh ajkhdsfkljahsdflkjahsdfkah sdfkljahsdfklj hasdfkljhasfkldj haslfjkdha sldfjkhsdf</div>
+  <div class="timeline-item" data-date="2011-12">
+    <span class="title">Rate Your Mate</span>
+    <div class="description">
+      <h3 id="rym"><a href="http://github.com/drallen1/Rate-Your-Mate" target="_blank">Rate-Your-Mate</a></h3>
+      <p class="desc"> A class project that started me on my path to become a web developer. We were assigned into teams of 6 people and had a month and a half to create a full scale web application with authentication, administration and tools. The project was designed as a tool for students and professors to use in order to rate the progress of groups. The professors would create classes and assign students to them, create groups, create deadlines for assessments, and monitor progress. The students were required to create assessments of their team mates based off 3-5 categories they had defined at the start of the class. They would determine how they would asses each other and were required to submit an assessment every time they were assigned. At the end of the assessment, each person would rate their teammates on a pie chart. This pie chart was created so that the students understood that when they added more points to an individual, another would lose points. The system was also designed so that the students could not disburse the points evenly among their teammates. In the end, 4 groups of us at set out to complete the project, some were a success and some were a failure. My team which I took the lead of, was able to submit a working project, with all of the necessary components of the project.  </p>
+      <h4>Technologies Used:</h4>
+      <ul class="tech">
+        <li>PHP</li>
+        <li>MySQL</li>
+        <li>jQuery</li>
+        <li>JavaScript</li>
+        <li>CSS3</li>
+        <li>HTML5</li>
+        <li>Unix/Linux</li>
+        <li>VIM</li>
+        <li>Git/GitHub</li>
+      </ul>
+    </div>
   </div>
 </div>
 <script src="http://davidrallen.com/js/timeline.js"></script>

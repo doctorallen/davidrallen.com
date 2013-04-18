@@ -2,11 +2,11 @@
   display: none;
 }
 .timeline-graph{
+  height: auto;
 }
 .timeline-graph .year{
   padding: 10px 0 10px 0;
   border-left: 1px solid #000;
-  width: 200px;
   color: #000000;
   cursor: pointer;
 }
@@ -37,9 +37,9 @@
 .timeline-description{
   float: right;
   width: 650px;
-  margin: 0 25px 0 25px;
 }
 .timeline-graph .description{
+  height: auto;
   display: none;
   width: 600px;
   margin-left: 10px;
