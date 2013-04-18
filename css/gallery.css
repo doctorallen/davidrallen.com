@@ -4,11 +4,12 @@
 }
 
 .gallery ul{
+  padding: 0px;
+  margin: 0px;
   -webkit-margin-before: 0px;
-  -webkit-margin-after: 0px;
-  -webkit-padding-start: 0px;
+  -webkit-margin-aftler: 0px;
   list-style-type: none;
-  width: 720px;
+  width: 710px;
   display: inline-block;
 }
 
@@ -54,7 +55,7 @@
   opacity: 1;
 }
 .gallery-image-container{
-  width: 720px;
+  width: 710px;
   height: 540px;
   background-size: cover;
   background-repeat: no-repeat;
