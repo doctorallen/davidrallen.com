@@ -12,7 +12,7 @@ $('.timeline').find('.timeline-item').each( function(){
         s = d.split('-'),
         year = parseInt(s[0]),
         month = parseInt(s[1]),
-        day = parseInt(s[2]),
+        day = parseInt(s[2]) ? parseInt(s[2]) : 1,
         title = t.find('.title').html(),
         description = t.find('.description').html(),
         date = {

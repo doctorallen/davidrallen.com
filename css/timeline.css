@@ -4,19 +4,31 @@
 .timeline-graph{
 }
 .timeline-graph .year{
-  border-bottom: 1px solid #000;
+  padding: 10px 0 10px 0;
   border-left: 1px solid #000;
   width: 200px;
   color: #000000;
+  cursor: pointer;
+}
+.timeline-graph .year:before{
+  content: '\2013';
 }
 .timeline-graph .month{
-  margin-left: 10px;
-  
+  padding-top: 5px;
+  cursor: pointer;
   color: #000000;
 }
+.timeline-graph .month:before{
+  content: '\2013\2013';
+}
 .timeline-graph .date{
-  margin-left: 10px;
+  padding-top: 5px;
   color: #000000;
+  cursor: pointer;
+  display: none;
+}
+.timeline-graph .date:before{
+  content: '\2013\2013\2013';
 }
 .timeline-nav{
   width: 250px;
