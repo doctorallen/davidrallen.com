@@ -43,8 +43,9 @@ $(document).on('ready', function(){
           var id = $(this).data('id');
              $('#' + active_element).fadeOut(200, function(){ 
                 $('#' + active_element).removeClass('active');
-                 $('#' + id).fadeIn(200, function(){
+                $('#' + id).fadeIn(200, function(){
                     $('#' + id).addClass('active');
+                      setControls();
                       switching = false;
                   });
               });
