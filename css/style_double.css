@@ -225,7 +225,8 @@ a img {border: none;}
 	max-width: 950px;
 	height: 100%;
 	margin: 0 auto 0 auto;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #footer-text{
 	color: #EAEAEA;
