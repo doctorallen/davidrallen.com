@@ -49,11 +49,11 @@ $('.timeline').find('.timeline-item').each( function(){
   $('.timeline-graph').append('<div class="timeline-description"></div>');
   var i = 0;
   timeline.forEach( function( years, year) {
-    $('.timeline-nav').append('<div id="' +year+'" class="year">'+year+'</div>');
+    $('.timeline-nav').append('<div id="' +year+'" class="year focus"><span class="num-label year-label">'+year+'</span></div>');
     years.forEach( function( monthArray, month ){
-      $('#'+year).append('<div id="' +year+'-'+month+'" class="month">'+months[month]+'</div>');
+      $('#'+year).append('<div id="' +year+'-'+month+'" class="month"><span class="month-label">'+months[month]+'</span></div>');
       monthArray.forEach( function( date ){
-        $('#'+year+'-'+month).append('<div data-id="'+i+'" id="date-'+i+'" class="date">'+date.title+'</div>');
+        $('#'+year+'-'+month).append('<div data-id="'+i+'" id="date-'+i+'" class="date"><span class="date-label">'+date.title+'</span></div>');
         $('.timeline-description').append('<div id="description-'+i+'" class="description">'+date.description+'</div>');
         i++;
       });
@@ -78,6 +78,7 @@ e.stopPropagation();
   var t = $(this),
       d = t.find('.date');
       fade(d);
+      active(t);
 });
 
 $('.year').click( function(e){
@@ -85,6 +86,7 @@ e.stopPropagation();
   var t = $(this),
       d = t.find('.month');
       fade(d);
+      active(t);
 });
 
 function fade(d){
@@ -95,6 +97,15 @@ function fade(d){
     d.addClass('active');
     d.fadeIn(speed);
   }
+}
+
+function active(t){
+  if( t.hasClass('focus')){
+    t.removeClass('focus')
+  }else{
+    t.addClass('focus');
+  }
+
 }
 
 function dynamicSort(property) {
