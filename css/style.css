@@ -139,11 +139,12 @@ div.skill{
 }
 #header{
   background: #EAEAEA;
+  border-top: 5px solid #0070C0;
 }
 .nav li a{
   color: #616158;
 }
 .brand{
   color: #615858;
-  font-size: 7.5em;
+  font-size: 5.5em;
 }

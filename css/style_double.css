@@ -22,15 +22,18 @@ input{
 .control-label{
 	font-size: 1.5em;
 }
-.brand-container{
+#header-container{
 	margin: 0 auto 1em auto;
-	text-align: center;
 	max-width: 950px;
+}
+.brand-container{
+	padding-top: 1em;
+	text-align: left;
+	float: left;
 }
 #header{
 	font-size: .5em;
 	background: #383332;
-	padding-top: 1em;
 	word-break: normal;
 	height: 100%;
 	padding-bottom: 0px;
@@ -185,6 +188,7 @@ a img {border: none;}
 }
 .nav{
 	text-align: center;
+	margin: 0px;
 }
 .nav ul{
 	padding: 0;
@@ -197,27 +201,24 @@ a img {border: none;}
 }
 .nav li a{
 	color: #FFF;
-	font-size: 2.75em;
+	font-size: 2.3em;
 	padding: 0 .5em 0 .5em;
 	font-family: Roboto Condensed;
 	font-weight: 300;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 .nav li a:hover{
-	background: #FFF;
-	color: #232323;
-  -webkit-box-shadow: 0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
-  -moz-box-shadow:    0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
-  box-shadow:         0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+	background: #0070C0;
+	color: #FFFFFF;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
 }
 .nav .active{
-	background: #FFF;
-	color: #232323;
-  -webkit-box-shadow: 0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
-  -moz-box-shadow:    0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
-  box-shadow:         0 -3px 3px -3px rgba(0,0,0,.5), 3px 0px 3px -3px rgba(0,0,0,.5), -3px 0px 3px -3px rgba(0,0,0,.5);
+	background: #0070C0;
+	color: #FFFFFF;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
+}
+.nav-select{
+	display: none;
 }
 #main{
 	padding: .5em;
@@ -410,9 +411,11 @@ a img {border: none;}
 	#header{
 		font-size: .6em;
 	}
+	.nav-select{
+		display: block;
+	}
 	.nav li a{
-		margin: .5em;
-		padding: .1em .5em .5em .5em;
+		padding: .1em .5em .1em .5em;
 	}
 	.nav li{
 		display: inline-block;
@@ -431,7 +434,6 @@ a img {border: none;}
 		font-size: .8em;
 	}
 	.nav li a{
-		margin: .8em;
 	}
 	.nav li{
 		display: inline-block;
@@ -442,7 +444,6 @@ a img {border: none;}
 		font-size: 1em;
 	}
 	.nav li a{
-		margin: 1em;
 	}
 	.nav li{
 		display: inline-block;
