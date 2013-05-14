@@ -27,12 +27,13 @@ input{
 	max-width: 950px;
 }
 .brand-container{
+	display: none;
 	padding-top: 1em;
 	text-align: left;
 	float: left;
 }
 #header{
-	font-size: .5em;
+	font-size: 2em;
 	background: #383332;
 	word-break: normal;
 	height: 100%;
@@ -187,34 +188,42 @@ a img {border: none;}
 	max-width: 98em;
 }
 .nav{
-	text-align: center;
+	overflow: hidden;
+	max-height: 0;
+	display: none;
 	margin: 0px;
+	text-transform: uppercase;
+	-webkit-padding-start: 0;
 }
-.nav ul{
-	padding: 0;
+.nav.open{
+	max-height: 999px;
+	display: block;
 }
 .nav li{
-	margin-top: .5em;
-	margin-bottom: .5em;
 	list-style-type: none;
-	display: block;
+	color: #616158;
+	background: #0070C0;
+	border-bottom: 1px solid #FFF;
+	padding: .2em;
 }
 .nav li a{
 	color: #FFF;
-	font-size: 2.3em;
-	padding: 0 .5em 0 .5em;
-	font-family: Roboto Condensed;
-	font-weight: 300;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	padding: .2em 0 .2em 0;
+
 }
-.nav li a:hover{
+.nav li:hover{
 	background: #0070C0;
-	color: #FFFFFF;
+	color: #000 !important;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
+}
+.nav li:hover a{
+	color: #FFFFFF !important;
 }
 .nav .active{
 	background: #0070C0;
-	color: #FFFFFF;
+}
+.nav .active a{
+	color: #FFFFFF !important;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
 }
 .nav-select{
@@ -322,7 +331,15 @@ a img {border: none;}
 .form-horizontal .controls{
   margin-left: 160px;
 }
-
+#nav-button{
+	width: 25px;
+	height: 20px;
+	margin: 10px;
+	cursor: pointer;
+	background: url('../images/menu-button.png');
+	float: right;
+	display: block;
+}
 .btn-3d{
     position: relative;
     border: none;
@@ -403,23 +420,14 @@ a img {border: none;}
 @media all and (min-width: 320px){
 	/*This needs to change the layout*/
 	#header{
-		font-size: .5em;
 	}
 }
 @media all and (min-width: 480px){
 	/*This needs to change the layout*/
 	#header{
-		font-size: .6em;
 	}
 	.nav-select{
 		display: block;
-	}
-	.nav li a{
-		padding: .1em .5em .1em .5em;
-	}
-	.nav li{
-		display: inline-block;
-		margin: 0;
 	}
 	#contact-form{
 		width: 100%;
@@ -433,17 +441,41 @@ a img {border: none;}
 	#header{
 		font-size: .8em;
 	}
-	.nav li a{
+	.nav{
+		display: block;
+		max-height: 999px;
+	}
+	.nav ul{
+		padding: 0;
 	}
 	.nav li{
+		background: none;
+		margin-top: .5em;
+		margin-bottom: .5em;
+		list-style-type: none;
 		display: inline-block;
+		margin: 0;
+		padding: 0;
+		border-bottom: none;
+	}
+	.nav li a{
+		color: #616158;
+		font-size: 2em;
+		padding: .1em .5em .1em .5em;
+		font-family: Roboto Condensed;
+		font-weight: 300;
+		text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	}
+	.brand-container{
+		display: block;
+	}
+	#nav-button{
+		display: none;
 	}
 }
 @media all and (min-width: 960px){
 	body{
 		font-size: 1em;
-	}
-	.nav li a{
 	}
 	.nav li{
 		display: inline-block;

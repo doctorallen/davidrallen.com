@@ -10,6 +10,15 @@ $(document).ready(function(){
 			$(this).delay(i * s).fadeTo(s,o);
 		});
 	}
+//navigation menu
+	$('#nav-button').click( function(){
+		var menu = $('.nav');
+		if( menu.hasClass('open') ){
+			menu.removeClass('open');
+		}else{
+			menu.addClass('open')
+		}
+	});
 
 //Navigation tab
 	var pathname = window.location.pathname;
@@ -18,7 +27,7 @@ $(document).ready(function(){
 	if(pathname == ''){
 		pathname = 'home';
 	}
-	$('.' + pathname + ' a').addClass('active');
+	$('.' + pathname).addClass('active');
 });
 //Google analytics
   var _gaq = _gaq || [];
