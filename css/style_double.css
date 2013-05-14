@@ -27,10 +27,9 @@ input{
 	max-width: 950px;
 }
 .brand-container{
-	display: none;
 	padding-top: 1em;
 	text-align: left;
-	float: left;
+	font-size:.5em;
 }
 #header{
 	font-size: 2em;
@@ -220,6 +219,7 @@ a img {border: none;}
 	color: #FFFFFF !important;
 }
 .nav .active{
+	color: #FFFFFF !important;
 	background: #0070C0;
 }
 .nav .active a{
@@ -466,8 +466,13 @@ a img {border: none;}
 		font-weight: 300;
 		text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 	}
+	#navigation{
+		float: right;
+	}
 	.brand-container{
 		display: block;
+		float: left;
+		font-size: 1em;
 	}
 	#nav-button{
 		display: none;
