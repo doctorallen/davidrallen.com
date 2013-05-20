@@ -57,6 +57,7 @@
 .timeline-nav{
   width: 290px;
   display: inline-block;
+  float: left;
 }
 .timeline-description{
   float: right;
