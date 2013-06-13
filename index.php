@@ -1,20 +1,22 @@
 <?php
-require 'klein.php';
+require_once __DIR__ .'/vendor/autoload.php';
+
+$klein = new \Klein\Klein();
 
 
 /*******************************
  *          HEADER
  *******************************/
 
-respond('*', function( $request, $response, $app ){
-  $response->render('includes/header.html');
+$klein->respond('*', function( $request, $response, $service ){
+  $service->render('includes/header.html');
 });
 
 /*******************************
  *        STATIC ASSETS
  *******************************/
 
-respond('@\.(js|css)$', function( $request, $response, $app ){
+$klein->respond('@\.(js|css)$', function( $request, $response, $service ){
 
 });
 
@@ -24,54 +26,54 @@ respond('@\.(js|css)$', function( $request, $response, $app ){
  *******************************/
 
 
-respond('/', function( $request, $response, $app ){
-  $response->render('home.html');
+$klein->respond('/', function( $request, $response, $service ){
+  $service->render('home.html');
 });
 
-respond('/home', function( $request, $response, $app ){
-  $response->render('home.html');
+$klein->respond('/home', function( $request, $response, $service ){
+  $service->render('home.html');
 });
 
-respond('/portfolio', function( $request, $response, $app ){
-  $response->render('portfolio.html');
+$klein->respond('/portfolio', function( $request, $response, $service ){
+  $service->render('portfolio.html');
 });
 
-respond('/about', function( $request, $response, $app ){
-  $response->render('about.html');
+$klein->respond('/about', function( $request, $response, $service ){
+  $service->render('about.html');
 });
 
-respond('/skills', function( $request, $response, $app ){
-  $response->render('skills.html');
+$klein->respond('/skills', function( $request, $response, $service ){
+  $service->render('skills.html');
 });
 
-respond('/timeline', function( $request, $response, $app ){
-  $response->render('timeline.html');
+$klein->respond('/timeline', function( $request, $response, $service ){
+  $service->render('timeline.html');
 });
 
-respond('/resume', function( $request, $response, $app ){
-  $response->render('resume.html');
+$klein->respond('/resume', function( $request, $response, $service ){
+  $service->render('resume.html');
 });
 
-respond('/contact', function( $request, $response, $app ){
-  $response->render('contact.html');
+$klein->respond('/contact', function( $request, $response, $service ){
+  $service->render('contact.html');
 });
 
-respond('/blog/*', function( $request, $response, $app ){
-  $response->render('blog/index.php');
+$klein->respond('/blog/*', function( $request, $response, $service ){
+  $service->render('blog/index.php');
 });
 
 
 
-respond('404', function( $request, $response, $app ){
-  $response->render('404.html');
+$klein->respond('404', function( $request, $response, $service ){
+  $service->render('404.html');
 });
 
 
 /*******************************
  *          FOOTER
  *******************************/
-respond('*', function( $request, $response, $app ){
-  $response->render('includes/footer.html');
+$klein->respond('*', function( $request, $response, $service ){
+  $service->render('includes/footer.html');
 });
 
-dispatch();
+$klein->dispatch();
