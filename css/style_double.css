@@ -4,6 +4,9 @@ body{
 	margin: 0px;
 	font-size: .8em;
 }
+menu, ol, ul{
+	padding: 0;
+}
 .clearfix:after { 
    content: " ";
    display: block; 
@@ -23,7 +26,7 @@ input{
 	font-size: 1.5em;
 }
 #header-container{
-	margin: 0 auto 1em auto;
+	margin: 0 auto 0 auto;
 	max-width: 950px;
 }
 .brand-container{
@@ -444,6 +447,7 @@ a img {border: none;}
 	.nav{
 		display: block;
 		max-height: 999px;
+		padding: 0;
 	}
 	.nav ul{
 		padding: 0;
