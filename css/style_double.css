@@ -207,6 +207,10 @@ a img {border: none;}
 	background: #0070C0;
 	border-bottom: 1px solid #FFF;
 	padding: .2em;
+	-webkit-transition-duration: 0.30s;
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-duration: 0.30s;
+	-moz-transition-timing-function: ease-out;	
 }
 .nav li a{
 	color: #FFF;
