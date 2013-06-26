@@ -18,10 +18,14 @@ $(document).ready(function(){
 					loader.html(data);
 					loader.slideDown( function(){
 						loader.removeClass('sideload');
-						$('#main').remove();
-						loader.attr('id', 'main');
-						navigating = false;
 					});
+
+					$('#main').slideUp(function(){
+						$(this).remove();
+					});
+
+					loader.attr('id', 'main');
+					navigating = false;
 
 				});
 			}else{
