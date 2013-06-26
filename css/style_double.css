@@ -198,7 +198,6 @@ a img {border: none;}
 	-webkit-padding-start: 0;
 }
 .nav.open{
-	max-height: 999px;
 	display: block;
 }
 .nav li{
@@ -502,5 +501,8 @@ a img {border: none;}
 	}
 	.nav li{
 		display: inline-block;
+	}
+	.nav{
+		max-height: 999px !important;
 	}
 }

@@ -14,9 +14,12 @@ $(document).ready(function(){
 	$('#nav-button').click( function(){
 		var menu = $('.nav');
 		if( menu.hasClass('open') ){
-			menu.removeClass('open');
+			menu.animate({'maxHeight': 0}, function(){
+				menu.removeClass('open');
+			});
 		}else{
 			menu.addClass('open')
+			menu.animate({'maxHeight': 999});
 		}
 	});
 
