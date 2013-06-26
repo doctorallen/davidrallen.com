@@ -207,17 +207,17 @@ a img {border: none;}
 	background: #0070C0;
 	border-bottom: 1px solid #FFF;
 	padding: .2em;
-	-webkit-transition-duration: 0.30s;
-	-webkit-transition-timing-function: ease-out;
-	-moz-transition-duration: 0.30s;
-	-moz-transition-timing-function: ease-out;	
 }
 .nav li a{
 	color: #FFF;
 	padding: .2em 0 .2em 0;
+	-webkit-transition-duration: 0.30s;
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-duration: 0.30s;
+	-moz-transition-timing-function: ease-out;	
 
 }
-.nav li:hover{
+.nav li a:hover{
 	background: #0070C0;
 	color: #000 !important;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 30px rgba(255, 255, 255, .325);
