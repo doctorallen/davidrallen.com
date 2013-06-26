@@ -1,4 +1,4 @@
-$(document).on('ready', function(){
+$('.gallery').ready(function(){
     //first we need to build the element object
     var images = [];
     var thumbnails = [];

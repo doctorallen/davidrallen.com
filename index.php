@@ -9,7 +9,9 @@ $klein = new \Klein\Klein();
  *******************************/
 
 $klein->respond('*', function( $request, $response, $service ){
-  $service->render('includes/header.html');
+	if(!array_key_exists('ajax', $request->params())){
+	  $service->render('includes/header.html');
+	}
 });
 
 /*******************************
@@ -73,7 +75,9 @@ $klein->respond('404', function( $request, $response, $service ){
  *          FOOTER
  *******************************/
 $klein->respond('*', function( $request, $response, $service ){
-  $service->render('includes/footer.html');
+	if(!array_key_exists('ajax', $request->params())){
+	  $service->render('includes/footer.html');
+	}
 });
 
 $klein->dispatch();
