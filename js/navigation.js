@@ -4,8 +4,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		if(navigating == false){
 			navigating = true;
-			$('.nav a').removeClass('active');
-			$(this).addClass('active');
+			$('.nav li').removeClass('active');
+			$(this).parent().addClass('active');
 			if( validateURL(this.href)){
 				history.pushState({ path: this.path}, '', this.href);
 				//create the div to put the content into
@@ -19,13 +19,14 @@ $(document).ready(function(){
 					loader.slideDown( function(){
 						loader.removeClass('sideload');
 					});
+					setTimeout(function(){
+						$('#main').slideUp(function(){
+							$(this).remove();
+						});
 
-					$('#main').slideUp(function(){
-						$(this).remove();
-					});
-
-					loader.attr('id', 'main');
-					navigating = false;
+						loader.attr('id', 'main');
+						navigating = false;
+					}, 200);
 
 				});
 			}else{
