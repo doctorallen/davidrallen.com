@@ -242,8 +242,19 @@ a img {border: none;}
 	max-width: 950px;
 	height: 100%;
 	margin: 0 auto 0 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.sideload{
+	padding: .5em;
+	padding-top: 1em;
+	max-width: 950px;
+	height: 100%;
+	margin: 0 auto 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+	display: none;
+	right: 950px;
 }
 #footer-text{
 	color: #EAEAEA;

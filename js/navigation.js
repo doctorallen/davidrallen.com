@@ -1,13 +1,32 @@
 $(document).ready(function(){
+	var navigating = false;
 	$('.nav a').click( function(e){
-		$('.nav a').removeClass('active');
-		$(this).addClass('active');
 		e.preventDefault();
-		if( validateURL(this.href) ){
-			history.pushState({ path: this.path}, '', this.href);
-			$.get(this.href + '?ajax=true', function(data){
-				$('#main').html(data);
-			});
+		if(navigating == false){
+			navigating = true;
+			$('.nav a').removeClass('active');
+			$(this).addClass('active');
+			if( validateURL(this.href)){
+				history.pushState({ path: this.path}, '', this.href);
+				//create the div to put the content into
+				$('#main').before('<div class="sideload"></div>');
+				var loader = $('.sideload');
+				///load the content
+				$.get(this.href + '?ajax=true', function(data){
+					//remove any already existing sideloaders
+					//insert content into the div
+					loader.html(data);
+					loader.slideDown( function(){
+						loader.removeClass('sideload');
+						$('#main').remove();
+						loader.attr('id', 'main');
+						navigating = false;
+					});
+
+				});
+			}else{
+				navigating = false;
+			}
 		}
 	});
 	$(window).bind('popstate', function(){
