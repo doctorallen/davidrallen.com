@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	//when the page loads initally, we don't want it to display anything
+	$('#main').html('');
 	var navigating = false;
 	$('.nav a').click( function(e){
 		e.preventDefault();
