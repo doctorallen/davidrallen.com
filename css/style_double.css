@@ -205,12 +205,10 @@ a img {border: none;}
 	color: #616158;
 	background: #0070C0;
 	border-bottom: 1px solid #FFF;
-	padding: .2em;
-	margin-top: -2px;
-}
-.nav li{
-	color: #FFF;
 	padding: .2em 0 .2em 0;
+}
+.nav li a{
+	color: #FFF;
 	-webkit-transition-duration: 0.30s;
 	-webkit-transition-timing-function: ease-out;
 	-moz-transition-duration: 0.30s;
