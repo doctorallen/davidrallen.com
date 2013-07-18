@@ -23,14 +23,6 @@ $(document).ready(function(){
 		}
 	});
 
-//Navigation tab
-	var pathname = window.location.pathname;
-	pathname = pathname.split("/");
-	pathname = pathname[1];
-	if(pathname == ''){
-		pathname = 'home';
-	}
-	$('.' + pathname).addClass('active');
 });
 //Google analytics
   var _gaq = _gaq || [];

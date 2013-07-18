@@ -43,8 +43,11 @@ $(document).ready(function(){
 		$.get(location.pathname + '?ajax=true', function(data){
 			loadPage(data);
 			$('.nav li').removeClass('active');
-			$('.nav .' + location.pathname.substring(1)).addClass('active');
-			console.log(location);
+			pathname = location.pathname.substring(1);
+			if( location.pathname == '/' ){
+				pathname = 'home';
+			}
+			$('.nav .' + pathname).addClass('active');
 		});
 	});
 	function validateURL(URL){
@@ -53,4 +56,13 @@ $(document).ready(function(){
 		}
 		return true;
 	}
+	//Navigation tab
+	var pathname = window.location.pathname;
+	pathname = pathname.split("/");
+	pathname = pathname[1];
+	console.log(pathname);
+	if(pathname == ''){
+		pathname = 'home';
+	}
+	$('.' + pathname).addClass('active');
 });
