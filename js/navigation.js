@@ -10,16 +10,24 @@ $(document).ready(function(){
 			$(this).parent().addClass('active');
 			if( validateURL(this.href)){
 				history.pushState({ path: this.path}, '', this.href);
+				var path = this.href.substring(this.href.lastIndexOf('/') + 1);
 				//create the div to put the content into
 				///load the content
 				$.get(this.href + '?ajax=true', function(data){
 					loadPage(data);
+					changeTitle(path);
 				});
 			}else{
 				navigating = false;
 			}
 		}
 	});
+	function changeTitle(title){
+		title = title.replace(/\b[a-z]/g, function(letter){
+			return letter.toUpperCase();
+		});
+		$(document).attr('title', "David Allen - " + title);
+	}
 	function loadPage(data){
 		$('#main').before('<div class="sideload"></div>');
 		var loader = $('.sideload');
@@ -60,9 +68,9 @@ $(document).ready(function(){
 	var pathname = window.location.pathname;
 	pathname = pathname.split("/");
 	pathname = pathname[1];
-	console.log(pathname);
 	if(pathname == ''){
 		pathname = 'home';
 	}
 	$('.' + pathname).addClass('active');
+	changeTitle(pathname);
 });
