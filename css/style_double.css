@@ -36,7 +36,8 @@ input{
 }
 #header{
 	font-size: 2em;
-	background: #383332;
+	background: #EAEAEA;
+	border-top: 5px solid #0070C0;
 	word-break: normal;
 	height: 100%;
 	padding-bottom: 0px;
@@ -49,6 +50,13 @@ input{
 	-webkit-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.1);
 	box-shadow: inset 0px 2px 2px rgba(0,0,0,0.1);	
 	background: -webkit-linear-gradient(143deg, rbga(255,69,0,.25) 0%, #4B4543 100%);
+}
+a:link, a:visited {
+	color: #0070C0;
+}
+
+html body a:hover {
+	color: #FF4500;
 }
 .sensitive{
 	color: transparent;
@@ -96,8 +104,8 @@ h4{
 	display: inline-block;
 	margin: 0 auto 0 auto;
 	line-height: .9em;
-	color: #EAEAEA;
-	font-size: 4.5em;
+	color: #615858;
+	font-size: 5.5em;
 	font-family: Roboto Condensed;
 	font-weight: 300;
 }

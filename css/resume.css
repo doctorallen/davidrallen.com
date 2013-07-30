@@ -9,25 +9,6 @@
 	float: right;
 
 }
-a {text-decoration: none;}
-
-a:link, a:visited {
-	color: #0070C0;
-}
-
-html body a:hover {
-	color: #FF4500;
-}
-
-.alert{
-	text-align: center;
-	margin: 0 auto 0 auto;
-}
-
-.contact{
-	list-style: none;
-}
-
 span.head{
 	color: #0070C0;
 	font-weight: bold;
@@ -136,15 +117,4 @@ div.skill{
 	font-weight: bold;
 	font-size: 1.1em;
 
-}
-#header{
-  background: #EAEAEA;
-  border-top: 5px solid #0070C0;
-}
-.nav li{
-  color: #616158;
-}
-.brand{
-  color: #615858;
-  font-size: 5.5em;
 }
