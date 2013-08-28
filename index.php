@@ -18,7 +18,7 @@ $klein->respond('*', function( $request, $response, $service ){
  *        STATIC ASSETS
  *******************************/
 
-$klein->respond('@\.(js|css)$', function( $request, $response, $service ){
+$klein->respond('@\.(js|css|.png|.jpg)$', function( $request, $response, $service ){
 
 });
 

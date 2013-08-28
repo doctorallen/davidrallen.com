@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	$.ajaxSetup({
+		cache: true
+	});
 	//when the page loads initally, we don't want it to display anything
 	$('#main').html('');
 	var navigating = false;
@@ -14,7 +17,7 @@ $(document).ready(function(){
 				//create the div to put the content into
 				///load the content
 				$.get(this.href + '?ajax=true', function(data){
-					loadPage(data);
+					loadPage(data, path);
 					changeTitle(path);
 				});
 			}else{
@@ -28,7 +31,7 @@ $(document).ready(function(){
 		});
 		$(document).attr('title', "David Allen - " + title);
 	}
-	function loadPage(data){
+	function loadPage(data, path){
 		$('#main').before('<div class="sideload"></div>');
 		var loader = $('.sideload');
 		//remove any already existing sideloaders
@@ -37,6 +40,7 @@ $(document).ready(function(){
 		loader.html(data);
 		loader.slideDown(speed, function(){
 			loader.removeClass('sideload');
+			$(document).trigger('ajaxLoad', {slug: path});				
 		});
 		setTimeout(function(){
 			$('#main').slideUp(function(){
@@ -49,7 +53,8 @@ $(document).ready(function(){
 	}
 	$(window).bind('popstate', function(){
 		$.get(location.pathname + '?ajax=true', function(data){
-			loadPage(data);
+			var path = pathname.substring(pathname.lastIndexOf('/') + 1);
+			loadPage(data, path);
 			$('.nav li').removeClass('active');
 			pathname = location.pathname.substring(1);
 			if( location.pathname == '/' ){

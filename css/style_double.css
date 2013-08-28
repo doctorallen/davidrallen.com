@@ -431,7 +431,7 @@ a img {border: none;}
     position: relative;
     top: 6px;
 }
-.skills{
+#main .skills{
   float: left;
   width: 300px;
   height: 300px;

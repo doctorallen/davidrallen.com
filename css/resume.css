@@ -84,7 +84,7 @@ h4{
 	margin-bottom: 0px;
 }
 .tech{
-	margin-top: 2px;
+	margin: 2px 45px;
 }
 
 #image{
@@ -117,4 +117,7 @@ div.skill{
 	font-weight: bold;
 	font-size: 1.1em;
 
+}
+.job ul{
+	margin-left: 40px;
 }
