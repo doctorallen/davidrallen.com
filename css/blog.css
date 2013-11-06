@@ -1,0 +1,19 @@
+#blog{
+}
+
+.blog-left{
+	width: 20%;
+	text-align: right;
+	display: inline-block;
+}
+.blog-right{
+	padding-left: 2em;
+	width: 75%;
+	display: inline-block;
+}
+.post h1{
+	margin-bottom: .05em;
+}
+.post span{
+	display: block;
+}
