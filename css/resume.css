@@ -1,0 +1,123 @@
+#left{
+	text-align: right;
+	width: 300px;
+	float: left;
+	margin-right: 50px; 
+}
+#right{
+	width: 600px;
+	float: right;
+
+}
+span.head{
+	color: #0070C0;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+span.right-head{
+	color: #0070C0;
+	float: right;
+	font-weight: bold;
+	font-size: 1.2em;
+	right:80px;
+
+}
+span.right-location{
+	color: #616158;
+	font-style: italic;
+	float: right;
+	right:80px;
+
+}
+.profile{
+	list-style: none;
+}
+.school-name{
+	color: #616158;
+	font-weight: bold;
+}
+.normal{
+	color: #616158;
+}
+.award{
+	font-style: italic;
+	color: #616158;
+}
+span.add{
+	color: #333;
+	font-weight: bold;
+	font-size:.9em;
+}
+span.name1{
+	color: #0070C0;
+	font-size: 3em;
+	text-shadow: 0 0 0.1em #0070C0;
+}
+span.name2{
+	color: #404040;
+	font-size: 3em;
+	text-shadow: 0 0 0.1em #404040;
+}
+.so{
+	color: #616158;
+	font-size: 3em;
+	text-shadow: 0 0 0.1em #616158;
+}
+.port{
+	padding-left: 50px;
+}
+h1{
+	color:#616158;
+  font-size: 2.5em;
+}
+h2{
+	 color:#404040;
+}
+h3{
+	color: #0070C0;
+	font-size: 1.4em;
+}
+h4{
+	color: #404040;
+	font-size: 1.1em;
+	margin-bottom: 0px;
+}
+.tech{
+	margin: 2px 45px;
+}
+
+#image{
+	border:4px #666 solid;
+	height:480px;
+	width:640px;
+}
+
+.thumb{
+	float:left;
+	margin-right:10px;
+	margin-top:10px;
+	height: 50px;
+	width: 50px;
+}
+
+div.skill{
+	  overflow:hidden;
+}
+.right{
+	position: absolute;
+	right:80px;
+	color: #333;
+	font-weight: bold;
+	background-color: #ccc;
+}
+.job-title{
+	color: #616158;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 1.1em;
+
+}
+.job ul{
+	margin-left: 40px;
+}

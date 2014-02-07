@@ -10,15 +10,19 @@ $(document).ready(function(){
 			$(this).delay(i * s).fadeTo(s,o);
 		});
 	}
+//navigation menu
+	$('#nav-button').click( function(){
+		var menu = $('.nav');
+		if( menu.hasClass('open') ){
+			menu.animate({'maxHeight': 0}, function(){
+				menu.removeClass('open');
+			});
+		}else{
+			menu.addClass('open')
+			menu.animate({'maxHeight': 999});
+		}
+	});
 
-//Navigation tab
-	var pathname = window.location.pathname;
-	pathname = pathname.split("/");
-	pathname = pathname[1];
-	if(pathname == ''){
-		pathname = 'home';
-	}
-	$('.' + pathname + ' a').addClass('active');
 });
 //Google analytics
   var _gaq = _gaq || [];
