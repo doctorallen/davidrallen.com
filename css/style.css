@@ -30,3 +30,17 @@ h1{
 {
 	text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
+.centered
+{
+	text-align: center;
+}
+.large
+{
+	font-size: 700%;
+}
+.full-height{
+	height: 100%;
+}
+.form-horizontal .form-group .control-label{
+	color: #FFFFFF;
+}
