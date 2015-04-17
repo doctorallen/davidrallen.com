@@ -1,5 +1,0 @@
-php_value include_path ".:/srv/www/davidrallen.com/public_html"
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . /index.php [L]
-
