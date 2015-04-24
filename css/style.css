@@ -436,7 +436,8 @@ a:hover{
 	color: #ff4500;
 }
 .container{
-	width: 950px;
+	max-width: 950px;
+  width: 100%;
 	margin: 0 auto;
 }
 #name{
@@ -451,10 +452,15 @@ a:hover{
     color: #616158;
 }
 #left{
-	text-align: right;
-	width: 300px;
-	float: left;
-	margin-right: 50px; 
+	text-align: left;
+	width: 30%;
+	float: right;
+	margin-left: 50px; 
+}
+#left ul
+{
+  -webkit-padding-start: 0px;
+  -webkit-margin-before: 0px;
 }
 #left:first-child{
     margin-top: 20px;
@@ -463,8 +469,8 @@ a:hover{
     margin-top: 20px;
 }
 #right{
-	width: 600px;
-	float: right;
+	width: 64%;
+	float: left;
 
 }
 span.head{
@@ -593,4 +599,22 @@ div.skill{
 ::selection{
     background: #ff4500;
     color: #FFF;
+}
+.header{
+  text-align: center;
+}
+
+@media (max-width:768px)
+{
+  #left{
+    width: 100%;
+    margin: 20px;
+    float: none;
+    text-align: center;
+  }
+  #right{
+    width: 100%;
+    margin: 20px;
+    float: none;
+  }
 }
