@@ -578,7 +578,14 @@ div.skill{
 
 }
 .job ul{
-	margin-left: 40px;
+	margin-left: 10px;
+}
+/*.job ul li:nth-child(even)
+{
+  color: #808080;
+}
+*/.job ul li{
+  margin-bottom: 5px;
 }
 .contact{
 	list-style-type: none;
