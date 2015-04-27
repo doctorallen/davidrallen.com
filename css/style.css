@@ -424,9 +424,13 @@ th {
 }
 
  /* END NORMALIZE*/
+ html,
+ body{
+  width: 100%;
+ }
  
 body{
-	font-family: Roboto;
+	font-family: Roboto, sans-serif;
     color: #616158;
 }
 a{
@@ -437,8 +441,8 @@ a:hover{
 }
 .container{
 	max-width: 950px;
-  width: 100%;
 	margin: 0 auto;
+  padding: 20px;
 }
 #name{
     text-align: center;
@@ -473,25 +477,33 @@ a:hover{
 	float: left;
 
 }
-span.head{
+.head{
 	color: #0070C0;
 	font-weight: bold;
 	font-size: 1.2em;
+  float: left;
 }
 
-span.right-head{
+.right-head{
 	color: #0070C0;
 	float: right;
 	font-weight: bold;
 	font-size: 1.2em;
-	right:80px;
 
 }
-span.right-location{
+.right-location{
 	color: #616158;
 	font-style: italic;
 	float: right;
 	right:80px;
+
+}
+.job-title{
+  color: #616158;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.1em;
+  float: left;
 
 }
 .no-list{
@@ -509,17 +521,17 @@ span.right-location{
 	font-style: italic;
 	color: rgba(97, 97, 88, 0.7);
 }
-span.add{
+.add{
 	color: #333;
 	font-weight: bold;
 	font-size:.9em;
 }
-span.name1{
+.name1{
 	color: #0070C0;
 	font-size: 3em;
 	text-shadow: 0 0 0.1em #0070C0;
 }
-span.name2{
+.name2{
 	color: #404040;
 	font-size: 3em;
 	text-shadow: 0 0 0.1em #404040;
@@ -541,7 +553,8 @@ h2{
 }
 h3{
 	color: #0070C0;
-	font-size: 1.4em;
+	font-size: 1.2em;
+  font-weight: bold;
 }
 h4{
 	color: #404040;
@@ -576,13 +589,6 @@ div.skill{
 	font-weight: bold;
 	background-color: #ccc;
 }
-.job-title{
-	color: #616158;
-	font-style: italic;
-	font-weight: bold;
-	font-size: 1.1em;
-
-}
 .job ul{
 	margin-left: 10px;
 }
@@ -603,17 +609,26 @@ div.skill{
 .header{
   text-align: center;
 }
+.row:after,
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
 
 @media (max-width:768px)
 {
   #left{
-    width: 100%;
+    width: auto;
     margin: 20px;
     float: none;
     text-align: center;
   }
   #right{
-    width: 100%;
+    width: auto;
     margin: 20px;
     float: none;
   }
