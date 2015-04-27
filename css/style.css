@@ -633,3 +633,16 @@ div.skill{
     float: none;
   }
 }
+@media (max-width: 500px)
+{
+  .job .row div{
+    float: none;
+    text-align: center;
+  }
+  .job ul{
+    margin-left: 0px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-padding-start: 0px
+  }
+}
