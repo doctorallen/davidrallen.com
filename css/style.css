@@ -423,6 +423,11 @@ th {
   padding: 0;
 }
 
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
  /* END NORMALIZE*/
  html,
  body{
@@ -455,24 +460,19 @@ a:hover{
 .last-name{
     color: #616158;
 }
-#left{
+#side{
 	text-align: left;
 	width: 30%;
 	float: right;
 	margin-left: 50px; 
 }
-#left ul
-{
-  -webkit-padding-start: 0px;
-  -webkit-margin-before: 0px;
-}
-#left:first-child{
+#side:first-child{
     margin-top: 20px;
 }
-#right:first-child{
+#main:first-child{
     margin-top: 20px;
 }
-#right{
+#main{
 	width: 64%;
 	float: left;
 
@@ -590,13 +590,14 @@ div.skill{
 	background-color: #ccc;
 }
 .job ul{
-	margin-left: 10px;
+	margin: 10px 0px 20px 40px;
 }
 /*.job ul li:nth-child(even)
 {
   color: #808080;
 }
-*/.job ul li{
+*/
+.job ul li{
   margin-bottom: 5px;
 }
 .contact{
@@ -608,6 +609,9 @@ div.skill{
 }
 .header{
   text-align: center;
+}
+.header h1{
+  margin: 0px;
 }
 .row:after,
 .clearfix:after {
@@ -621,13 +625,13 @@ div.skill{
 
 @media (max-width:768px)
 {
-  #left{
+  #side{
     width: auto;
     margin: 20px;
     float: none;
     text-align: center;
   }
-  #right{
+  #main{
     width: auto;
     margin: 20px;
     float: none;
@@ -640,9 +644,10 @@ div.skill{
     text-align: center;
   }
   .job ul{
-    margin-left: 0px;
-    -webkit-margin-before: 0px;
-    -webkit-margin-start: 0px;
-    -webkit-padding-start: 0px
+    margin: 10px 0px;
+    list-style-type: none;
+  }
+  .job ul li{
+    margin-bottom: 10px;
   }
 }
