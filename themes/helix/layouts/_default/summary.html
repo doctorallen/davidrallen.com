@@ -3,7 +3,7 @@
         <h2><a href='{{ .Permalink }}'> {{ .Title }}</a> </h2>
         <div class="post-meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
     </header>
-        {{ .Summary }}
+        {{ .Params.excerpt }}
     <footer>
         <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
     </footer>

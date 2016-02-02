@@ -2,3 +2,12 @@ baseurl = "http://replace-this-with-your-hugo-site.com/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "helix"
+SectionPagesMenu = "main"
+[[menu.main]]
+    name = "Resume"
+    identifier = "resume"
+    url = "/"
+[[menu.main]]
+    name = "Blog"
+    identifier = "blog"
+    url = "/blog/"
