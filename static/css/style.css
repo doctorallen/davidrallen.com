@@ -442,6 +442,7 @@ body{
 
 h1,h2,h3,h4,h5{
     font-family: Roboto, sans-serif;
+    flex: 1 100%;
 }
 
 h1 a,
@@ -488,7 +489,7 @@ a:hover{
 }
 
 #name{
-    text-align: center;
+    text-align: left;
     font-size: 4rem;
     text-shadow: 0px 0px 1px rgba(0,0,0,0.3);
     flex-grow: 1;
@@ -667,11 +668,51 @@ div.skill{
 
 #main-content{
     max-width: 48rem;
+    flex-grow: 1;
     margin: 0 auto;
 }
 
 .post-meta {
     font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.post-meta-list{
+    border-left: 2px solid #616158;
+    padding-left: 5px;
+}
+
+#all-tags{
+    list-style-type: none;
+}
+
+.post-title{
+    margin-bottom: 10px;
+}
+
+.tags{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.tags .tag{
+    display: inline-block;
+    padding: 3px 4px;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 2px;
+    background: #E6E5E5;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12)
+}
+
+.tags .tag a{
+    color: #616158;
+    text-decoration: none;
+}
+
+.content-container{
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .row:after,

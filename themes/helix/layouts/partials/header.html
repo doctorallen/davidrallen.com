@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,300|Open+Sans' rel='stylesheet' type='text/css'/>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/hybrid.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <base href="{{ .Site.BaseURL }}">
 </head>
 <body>          
@@ -19,17 +20,5 @@
             <div id="name">
                 <span class="first-name">David</span> <span class="last-name">Allen</span>
             </div>
-            <nav id="main-nav">
-                <ul>
-                  {{ $currentNode := . }}
-                  {{ range .Site.Menus.main }}
-                    <li>
-                    <a class="{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">
-                        {{ .Pre }}
-                        <span>{{ .Name }}</span>
-                    </a>
-                  </li>
-                  {{end}}
-                </ul>
-            </nav>
+            {{ partial "nav" . }}
         </div>

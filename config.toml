@@ -11,3 +11,6 @@ SectionPagesMenu = "main"
     name = "Blog"
     identifier = "blog"
     url = "/blog/"
+[taxonomies]
+tag = "tags"
+category = "categories"
