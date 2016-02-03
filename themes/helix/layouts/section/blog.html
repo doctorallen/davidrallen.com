@@ -1,12 +1,12 @@
 {{ partial "header.html" . }}
 <div class="content-container">
-    <h1 id="title">All Posts</h1>
     <section id="main-content">
-      <div>
-        {{ range .Data.Pages.ByDate }}
-            {{ .Render "summary"}}
-        {{ end }}
-      </div>
+        <h1 id="title">All Posts</h1>
+          <div>
+            {{ range .Data.Pages.ByDate }}
+                {{ .Render "summary"}}
+            {{ end }}
+          </div>
     </section>
 
     {{ partial "tags.html" . }}

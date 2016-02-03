@@ -11,6 +11,11 @@ SectionPagesMenu = "main"
     name = "Blog"
     identifier = "blog"
     url = "/blog/"
+[[menu.main]]
+    name = "GitHub"
+    weight = 100
+    identifier = "github"
+    url = "https://github.com/doctorallen/"
 [taxonomies]
 tag = "tags"
 category = "categories"
