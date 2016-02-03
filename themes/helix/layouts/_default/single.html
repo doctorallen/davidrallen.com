@@ -1,0 +1,21 @@
+{{ partial "header" . }}
+<div class="content-container">
+    <section id="main-content">
+        <article class="post">
+            <header>
+                <h1 class="post-title"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h1>
+                <div class="post-meta-list">
+                    <div class="post-meta"><i class="fa fa-clock-o"></i> {{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+                    {{ partial "post-tags" .}}
+                </div>
+            </header>
+                <div class="post-body">
+                    {{ .Content }}
+                </div>
+            <footer>
+            </footer>
+        </article>
+    </section>
+    {{ partial "tags.html" . }}
+</div>
+{{ partial "footer" . }}
