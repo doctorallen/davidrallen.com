@@ -1,0 +1,16 @@
+    </div> <!-- End .container -->
+<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  $(document.links).filter(function() {
+    return this.hostname != window.location.hostname;
+    }).attr('target', '_blank');
+});
+</script>
+</body>
+</html>

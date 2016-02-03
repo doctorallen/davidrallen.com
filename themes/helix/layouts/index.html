@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="David Allen's Resume">
-  <meta name="author" content="David Allen">
-  <meta name="viewport" content="width=device-width">
-  <meta name="theme-color" content="#0070C0">
-  <title>David Allen</title>
-  <link rel="shortcut icon" href="img/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,300' rel='stylesheet' type='text/css'/>
-</head>
-<body>			
-	<div class="container clearfix">
-		<div class="header">
-			<div id="name">
-				<span class="first-name">David</span> <span class="last-name">Allen</span>
-			</div>
-			<h1>Open Source Web Developer</h1>
-		</div>
+{{ partial "header" . }}
 
 		<div id="main">
 
@@ -151,7 +126,7 @@
 					  <ul class="contact">
 						 <li><a href="mailto:trooper898@gmail.com">trooper898@gmail.com</a></li>
 						 <li>(603) 852-9228</li>
-						 <li><a href="https://www.google.com/maps/place/Rochester,+NH/@43.3021441,-70.9845065,12z/data=!3m1!4b1!4m2!3m1!1s0x89e29b41def39f27:0x8c4a0af6255db8ad" target="_blank">Rochester, NH</a></li>   
+						 <li>Portsmouth, NH</li>   
 					  </ul>        
 						
 													   
@@ -216,5 +191,4 @@
 						</ul>
 		</div>
 		</div>
-</body>
-</html>
+{{ partial "footer" . }}

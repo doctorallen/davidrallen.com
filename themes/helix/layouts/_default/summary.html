@@ -1,0 +1,15 @@
+<article class="post">
+    <header>
+        <h2 class="post-title"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h2>
+    </header>
+        {{ .Params.excerpt }}
+    <footer>
+    <div class="post-meta-list">
+        <div class="post-meta"><i class="fa fa-clock-o"></i> {{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+        {{ partial "post-tags" .}}
+    </div>
+    <div>
+        <a href='{{ .Permalink }}'><nobr>Read post</nobr></a>
+    </div>
+    </footer>
+</article>
