@@ -3,7 +3,7 @@
     <section id="main-content">
         <h1 id="title">All Posts</h1>
           <div>
-            {{ range .Data.Pages.ByDate }}
+            {{ range .Data.Pages.ByDate.Reverse }}
                 {{ .Render "summary"}}
             {{ end }}
           </div>

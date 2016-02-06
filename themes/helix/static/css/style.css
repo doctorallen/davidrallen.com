@@ -433,6 +433,21 @@ ul, ol {
  body{
   width: 100%;
  }
+
+ ol{
+    margin-left: 40px;
+ }
+
+ code{
+    color: #FF4500;
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
+ }
  
 body{
 	font-family: Lato, sans-serif;
@@ -443,6 +458,10 @@ body{
 h1,h2,h3,h4,h5{
     font-family: Roboto, sans-serif;
     flex: 1 100%;
+}
+
+h2{
+    font-size: 1.5rem;
 }
 
 h1 a,
