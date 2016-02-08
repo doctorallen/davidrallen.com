@@ -2,7 +2,9 @@
     <header>
         <h2 class="post-title"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h2>
     </header>
+    <div class="excerpt">
         {{ .Params.excerpt }}
+    </div>
     <footer>
     <div class="post-meta-list">
         <div class="post-meta time-since" data-timestamp="{{ .Date }}"><i class="fa fa-clock-o"></i> <span class="relative-time"></span></div>

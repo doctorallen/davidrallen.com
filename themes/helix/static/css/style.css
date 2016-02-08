@@ -735,6 +735,10 @@ div.skill{
     flex-flow: row wrap;
 }
 
+.excerpt{
+    margin-bottom: 10px;
+}
+
 .row:after,
 .clearfix:after {
      visibility: hidden;
