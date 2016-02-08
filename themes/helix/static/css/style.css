@@ -738,6 +738,10 @@ div.skill{
 .excerpt{
     margin-bottom: 10px;
 }
+.post img{
+    display: block;
+    margin: 10px auto;
+}
 
 .row:after,
 .clearfix:after {
