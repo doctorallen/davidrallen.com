@@ -1,3 +1,16 @@
-<div id="side">
-    {{ .Content }}
-</div>
+<section id="sidebar">
+    <h2>Series</h2>
+    <ul id="all-tags">
+      {{ range $name, $taxonomy := .Site.Taxonomies.series }}
+        <li><a href="/series/{{ $name | urlize }}">{{ $name | title }} ({{ .Count }})</a></li>
+      {{ end }}
+    </ul>
+    
+    <h2>Tags</h2>
+    <ul id="all-tags">
+      {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        <li><a href="/tags/{{ $name | urlize }}">{{ $name }} ({{ .Count }})</a></li>
+      {{ end }}
+    </ul>
+
+</section>

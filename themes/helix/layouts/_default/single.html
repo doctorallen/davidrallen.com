@@ -15,7 +15,15 @@
             <footer>
             </footer>
         </article>
+    <div class="post-footer">
+        {{ if .PrevInSection }}
+           <a class="post-nav previous-post" href="{{ .PrevInSection.Permalink }}">Previous Post</a>
+        {{ end }}
+        {{ if .NextInSection }}
+           <a class="post-nav next-post" href="{{ .NextInSection.Permalink }}">Next Post</a>
+        {{ end }}
+    </div>
     </section>
-    {{ partial "tags.html" . }}
+    {{ partial "sidebar.html" . }}
 </div>
 {{ partial "footer" . }}

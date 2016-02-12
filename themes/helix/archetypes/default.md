@@ -1,2 +1,5 @@
 +++
+excerpt = ""
+tags = []
+categories = []
 +++
