@@ -16,21 +16,11 @@
             </footer>
         </article>
     <div class="post-footer">
-        {{ $currentNode := . }}
-        <p class="text-center">Read more posts in {{ .Params.series }}</p>
-        {{ range first 1 (where .Site.Pages.ByDate "Params.series" .Params.series) }}
-            {{ if ne $currentNode .}}
-                {{ if gt $currentNode.Date.Unix .Date.Unix}}
-                   <a class="previous-post" href="{{ .Permalink }}">Previous Post</a>
-                {{ end }}
-            {{ end }}
+        {{ if .PrevInSection }}
+           <a class="post-nav previous-post" href="{{ .PrevInSection.Permalink }}">Previous Post</a>
         {{ end }}
-        {{ range first 1 (where .Site.Pages.ByDate.Reverse "Params.series" .Params.series) }}
-            {{ if ne $currentNode .}}
-                {{ if lt $currentNode.Date.Unix .Date.Unix}}
-                   <a class="next-post" href="{{ .Permalink }}">Next Post</a>
-                {{ end }}
-            {{ end }}
+        {{ if .NextInSection }}
+           <a class="post-nav next-post" href="{{ .NextInSection.Permalink }}">Next Post</a>
         {{ end }}
     </div>
     </section>
