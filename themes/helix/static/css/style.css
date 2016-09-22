@@ -459,7 +459,7 @@ ul, ol {
  }
  
 body{
-	font-family: Lato, sans-serif;
+	font-family: Raleway, sans-serif;
     color: #616158;
     font-size: 1.2rem;
 }
@@ -510,10 +510,10 @@ a:hover{
 
 #name{
     text-align: left;
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-shadow: 0px 0px 1px rgba(0,0,0,0.3);
     flex-grow: 1;
-    font-family: Roboto, sans-serif;
+    font-family: Monoton, sans-serif;
 }
 
 #main-nav ul{
