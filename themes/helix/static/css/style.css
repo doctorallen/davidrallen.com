@@ -606,6 +606,7 @@ a:hover{
 	color: #616158;
 }
 .award{
+    font-size: 1rem;
 	font-style: italic;
 	color: rgba(97, 97, 88, 0.7);
 }
@@ -670,6 +671,12 @@ div.skill{
 */
 .job ul li{
   margin-bottom: 5px;
+}
+
+.job .position{
+    color: #404040;
+    font-weight: bold;
+    margin: 0.5rem;
 }
 .contact{
 	list-style-type: none;
