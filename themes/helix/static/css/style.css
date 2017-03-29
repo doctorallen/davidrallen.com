@@ -862,6 +862,123 @@ blockquote {
     font-size: 22px;
 }
 
+@keyframes flicker {
+    0% {
+        opacity: 0.62728;
+    }
+    5% {
+        opacity: 0.9039;
+    }
+    10% {
+        opacity: 0.58209;
+    }
+    15% {
+        opacity: 0.49596;
+    }
+    20% {
+        opacity: 0.01803;
+    }
+    25% {
+        opacity: 0.8707;
+    }
+    30% {
+        opacity: 0.80519;
+    }
+    35% {
+        opacity: 0.06373;
+    }
+    40% {
+        opacity: 0.3991;
+    }
+    45% {
+        opacity: 0.35664;
+    }
+    50% {
+        opacity: 0.21649;
+    }
+    55% {
+        opacity: 0.42556;
+    }
+    60% {
+        opacity: 0.11692;
+    }
+    65% {
+        opacity: 0.9834;
+    }
+    70% {
+        opacity: 0.82822;
+    }
+    75% {
+        opacity: 0.45156;
+    }
+    80% {
+        opacity: 0.69136;
+    }
+    85% {
+        opacity: 0.49528;
+    }
+    90% {
+        opacity: 0.94211;
+    }
+    95% {
+        opacity: 0.5143;
+    }
+    100% {
+        opacity: 0.54438;
+    }
+}
+.container {
+    background: #121010;
+    width: 800px;
+    height: 600px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1rem solid;
+    border-bottom-color: #121212;
+    border-left-color: #080808;
+    border-right-color: #080808;
+    border-top-color: #020202;
+    box-shadow: inset 0 0 18rem black,
+    inset 0 0 3rem black,
+    0 0 10rem black;
+}
+.container::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+.container::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.container::after {
+    animation: flicker 0.15s infinite;
+}
+
+.container::before {
+    animation: flicker 0.15s infinite;
+}
+
 @media (max-width: 768px) {
     #side {
         width: auto;
