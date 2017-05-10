@@ -927,7 +927,7 @@ blockquote {
         opacity: 0.54438;
     }
 }
-.container {
+.fourohfour .container {
     background: #121010;
     width: 800px;
     height: 600px;
@@ -944,7 +944,7 @@ blockquote {
     inset 0 0 3rem black,
     0 0 10rem black;
 }
-.container::after {
+.fourohfour .container::after {
     content: " ";
     display: block;
     position: absolute;
@@ -957,7 +957,7 @@ blockquote {
     z-index: 2;
     pointer-events: none;
 }
-.container::before {
+.fourohfour .container::before {
     content: " ";
     display: block;
     position: absolute;
@@ -971,11 +971,11 @@ blockquote {
     pointer-events: none;
 }
 
-.container::after {
+.fourohfour .container::after {
     animation: flicker 0.15s infinite;
 }
 
-.container::before {
+.fourohfour .container::before {
     animation: flicker 0.15s infinite;
 }
 
