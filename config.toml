@@ -1,4 +1,4 @@
-baseurl = "http://davidrallen.com/"
+baseurl = "https://davidrallen.com/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "helix"
