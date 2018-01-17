@@ -1,6 +1,6 @@
 baseurl = "https://davidrallen.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Resume"
 theme = "helix"
 disqusShortname = "doctorallen"
 SectionPagesMenu = "main"
