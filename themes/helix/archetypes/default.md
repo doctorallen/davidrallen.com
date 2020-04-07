@@ -1,5 +1,0 @@
-+++
-excerpt = ""
-tags = []
-categories = []
-+++
