@@ -154,6 +154,42 @@ a.navbar-item:hover,
   }
 }
 
+.linkedin-banner {
+  width: 1584px;
+  height: 396px;
+  background-color: $body-background;
+  border-left: 15px solid $orange;
+  border-right: 15px solid $orange;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .banner {
+    font-size: 42px;
+    margin-bottom: 100px;
+    .divider {
+      color: $font-accent;
+    }
+
+    .software {
+      font-family: 'Anonymous Pro';
+    }
+
+    .teacher {
+      font-family: 'Shadows Into Light';
+    }
+
+    .hobbyist {
+      font-family: 'Fredericka the Great';
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: 80%;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .navbar-menu {
     background: transparent;
