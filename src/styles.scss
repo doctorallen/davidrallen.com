@@ -43,7 +43,6 @@ $color5: #0091adff;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
   font-family: 'Montserrat', sans-serif;
   color: $font-secondary;
 }
@@ -99,6 +98,21 @@ html {
     color: $font;
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: normal;
+    font-size: 32px !important;
+
+    &.software {
+      font-family: 'Anonymous Pro';
+      font-size: 28px !important;
+    }
+
+    &.teacher {
+      font-family: 'Shadows Into Light';
+    }
+
+    &.hobbyist {
+      font-family: 'Fredericka the Great';
+    }
   }
 }
 
