@@ -198,9 +198,17 @@ a.navbar-item:hover,
     }
   }
 
+  .website {
+    font-size: 35px;
+    font-family: 'Anonymous Pro';
+    text-align: right;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: -40px;
+  }
+
   img {
     max-width: 100%;
-    height: 80%;
+    height: 100%;
   }
 }
 
