@@ -92,6 +92,10 @@ html {
 
   @include gradient-bg();
 
+  .card-content {
+    padding: 1.25rem;
+  }
+
   color: $font;
 
   .title {
@@ -137,12 +141,24 @@ a.navbar-item:hover,
 }
 
 .content {
+  p:not(:last-child) {
+    margin-bottom: 12px !important;
+  }
+
   blockquote {
     color: $font-secondary;
     font-family: 'Anonymous Pro', monospace;
     border-left: 5px solid $orange;
     background-color: $blockquote-bg;
-    padding: 16px;
+    padding: 8px 16px;
+
+    .author {
+      color: $font-accent;
+    }
+
+    p:not(:last-child) {
+      margin-bottom: 0 !important;
+    }
 
     p {
       margin-bottom: 0px !important;
