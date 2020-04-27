@@ -88,7 +88,8 @@ html {
 }
 .card {
   border-radius: 16px;
-  margin: 16px;
+  margin: 16px auto;
+  max-width: 1000px;
 
   @include gradient-bg();
 
@@ -126,6 +127,12 @@ html {
 
 .hero-body {
   padding: 0 1.5rem;
+
+  &.card-rows {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
 }
 
 a.navbar-item:focus,
@@ -238,5 +245,16 @@ a.navbar-item:hover,
   }
   a.navbar-item {
     border-bottom: 2px solid white;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .column.is-40-desktop {
+    flex: none;
+    width: 40%;
+  }
+  .column.is-60-desktop {
+    flex: none;
+    width: 60%;
   }
 }
