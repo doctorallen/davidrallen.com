@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import '~bulma/bulma';
 
-$font-secondary: white;
+$font-secondary: #e1ad21;
 // $font: #737E94;
 // $font: #bfcadf;
 $font: #d2d7e1;
@@ -27,6 +27,9 @@ $color2: #99e1d9ff;
 $color3: #291f1eff;
 $color4: #31393cff;
 $color5: #0091adff;
+
+$primary: #2f2468;
+$secondary: #e1ad21;
 
 @mixin gradient-bg {
   background: $card-background; /* Old browsers */
@@ -67,7 +70,7 @@ html {
 .navbar {
   background: transparent;
   .navbar-item {
-    color: $font-secondary;
+    color: $font;
     border-bottom: 2px solid transparent;
 
     &.is-active {
@@ -203,6 +206,19 @@ a.navbar-item:hover,
       color: $orange;
       text-decoration: underline;
     }
+  }
+}
+
+.contact-btn {
+  border-color: $font;
+  color: $font;
+  background: transparent;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: $font-accent;
+    color: $font-accent;
   }
 }
 
