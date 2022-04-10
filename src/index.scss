@@ -45,6 +45,10 @@ body {
     color: #60d700;
   }
 
+  .red-text {
+    color: #ff2500;
+  }
+
   .blinking-cursor {
     color: #c7c7c7;
     animation: blink 0.85s steps(1000, start) infinite;
