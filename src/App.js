@@ -9,7 +9,11 @@ function App() {
   const [typedCommand, setTypedCommand] = useState('');
   const [acceptingInput, setAcceptingInput] = useState(false);
 
-  const availableCommands = ['help', 'clear', 'info'];
+  const availableCommands = ['help', 'clear', 'info', 'neo'];
+
+  const easterEggResponse = {
+    'fuck you': 'No, fuck YOU!',
+  };
 
   const handleKeyUp = (event) => {
     console.log(event.key);
@@ -33,27 +37,69 @@ function App() {
     setAcceptingInput(true);
   };
 
+  const pushIntoHistory = (command) => {
+    setCommandHistory((oldHistory) => [...oldHistory, command]);
+  };
+
   const executeClear = () => {
     setCommandHistory([]);
+  };
+
+  const sleep = async (timeout = 100) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, timeout);
+    });
+  };
+
+  const executeInfo = () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: <div>Things</div>,
+    });
+  };
+
+  const executeTheOne = async () => {
+    await autoType('Wake up, Neo...');
+    await sleep(500);
     reset();
+    await autoType('The Matrix has you...');
   };
 
   const executeCommand = () => {
     if (!availableCommands.includes(typedCommand)) {
       setTypedCommand('');
-      setCommandHistory([
-        ...commandHistory,
-        {
+
+      if (easterEggResponse.hasOwnProperty(typedCommand)) {
+        return pushIntoHistory({
           command: typedCommand,
           success: false,
-          output: `davesh: command not found: ${typedCommand}`,
-        },
-      ]);
+          output: easterEggResponse[typedCommand],
+        });
+      }
+
+      pushIntoHistory({
+        command: typedCommand,
+        success: false,
+        output: `davesh: command not found: ${typedCommand}`,
+      });
     }
 
-    if (typedCommand === 'clear') {
-      executeClear();
+    switch (typedCommand) {
+      case 'clear':
+        executeClear();
+        break;
+      case 'info':
+        executeInfo();
+        break;
+      case 'neo':
+        executeTheOne();
+        break;
     }
+
+    reset();
   };
 
   useKeyPress(handleKeyUp);
@@ -63,34 +109,41 @@ function App() {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
+  const autoType = (text) => {
+    return new Promise((resolve) => {
+      const letters = text.split('');
+      let totalTimeout = 0;
+      letters.reduce((word, letter) => {
+        const timeoutAmount = randBetween(20, 50);
+        console.log(word, letter);
+        totalTimeout += timeoutAmount;
+        const newText = word + letter;
+        setTimeout(() => {
+          setTypedCommand(newText);
+          // if we've typed out all of the letters that we need to type out
+          if (newText === text) {
+            // give the user 450 ms to see the message before it moves into the
+            // history as if the command was executed
+            setTimeout(() => {
+              pushIntoHistory({
+                command: text,
+                success: true,
+              });
+              reset();
+            }, 450);
+            resolve();
+          }
+        }, totalTimeout);
+
+        return newText;
+      }, '');
+    });
+  };
+
   useEffect(() => {
     const text =
       'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
-    const letters = text.split('');
-    let totalTimeout = 0;
-    letters.reduce((word, letter) => {
-      const timeoutAmount = randBetween(20, 50);
-      console.log(word, letter);
-      totalTimeout += timeoutAmount;
-      const newText = word + letter;
-      setTimeout(() => {
-        setTypedCommand(newText);
-        if (newText === text) {
-          setTimeout(() => {
-            setCommandHistory([
-              ...commandHistory,
-              {
-                command: text,
-                success: true,
-              },
-            ]);
-            reset();
-          }, 450);
-        }
-      }, totalTimeout);
-
-      return newText;
-    }, '');
+    autoType(text);
   }, []);
 
   return (
