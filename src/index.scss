@@ -1,0 +1,62 @@
+@import-normalize;
+
+.App {
+  &:focus {
+    outline: none;
+  }
+}
+
+body {
+  background-color: black;
+  color: #c7c7c7;
+  font-size: 1.1rem;
+}
+
+.command-group {
+  margin: 16px;
+}
+
+.bash-line {
+  font-family: monospace;
+
+  .blue-bg {
+    background-color: #03afd7;
+    color: black;
+    padding: 0px 8px;
+    margin: 0;
+  }
+
+  .orange-bg {
+    background-color: #ff8700;
+    color: black;
+    padding: 0px 8px;
+    margin: 0;
+  }
+
+  .blue-text {
+    color: #03afd7;
+  }
+
+  .orange-text {
+    color: #ff8700;
+  }
+
+  .green-text {
+    color: #60d700;
+  }
+
+  .blinking-cursor {
+    color: #c7c7c7;
+    animation: blink 0.85s steps(1000, start) infinite;
+  }
+
+  @keyframes blink {
+    from,
+    to {
+      color: transparent;
+    }
+    50% {
+      color: #c7c7c7;
+    }
+  }
+}
