@@ -5,11 +5,59 @@ import useKeyPress from './useKeyPress';
 import CompletedCommand from './components/CompletedCommand';
 
 function App() {
-  const [commandHistory, setCommandHistory] = useState([]);
+  const Banner = () => {
+    return (
+      <div className="banner">
+        <div>
+          Welcome to Davenix 32.4.10 LTS (GNU/Linux 5.3.90-management x86_64)
+        </div>
+        <ul className="documentation-list">
+          <li>
+            * Documentation:&nbsp;&nbsp;
+            <a href="https://help.ubuntu.com">https://help.ubuntu.com</a>
+          </li>
+          <li>
+            * Management:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://landscape.canonical.com">
+              https://landscape.canonical.com
+            </a>
+          </li>
+          <li>
+            * Support:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://ubuntu.com/advantage">
+              https://ubuntu.com/advantage
+            </a>
+          </li>
+        </ul>
+        <div>System information as of {new Date().toString()}</div>
+        <div className="row">
+          <div className="column">
+            <ul className="sys-list">
+              <li>System load: 0.0</li>
+              <li>Usage of /: 29.5% of 69.420GB</li>
+              <li>Memory usage: 18%</li>
+              <li>Swap usage: 0%</li>
+            </ul>
+          </div>
+          <div className="column">
+            <ul className="sys-list">
+              <li>Processes: 87</li>
+              <li>Users logged in: 9</li>
+              <li>IP address for eth0: 127.0.0.1</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const [commandHistory, setCommandHistory] = useState([
+    { command: 'ssh broadbrain', success: true, output: <Banner /> },
+  ]);
   const [typedCommand, setTypedCommand] = useState('');
   const [acceptingInput, setAcceptingInput] = useState(false);
 
-  const availableCommands = ['help', 'clear', 'info', 'neo'];
+  const availableCommands = ['help', 'clear', 'info', 'neo', 'motd', 'tech'];
 
   const easterEggResponse = {
     'fuck you': 'No, fuck YOU!',
@@ -53,19 +101,29 @@ function App() {
     });
   };
 
+  const executeMOTD = async () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: <Banner />,
+    });
+  };
+
   const executeInfo = async () => {
     pushIntoHistory({
       command: typedCommand,
       success: true,
       output: (
-        <div>
-          I started my journey as a Software Engineer in 2005, coding my own
-          video games in Flash and Visual Basic. 15 years, over 100 clients, and
-          dozens of custom applications have built my diverse tools that I hone
-          by contributing to every aspect of software development; sales,
-          project management, software architecture, database design, I've done
-          it all. I'm a jack-of-all-trades who enjoys database design and
-          server-side programming most of all.
+        <div className="info-container">
+          <div className="inner">
+            I started my journey as a Software Engineer in 2005, coding my own
+            video games in Flash and Visual Basic. 15 years, over 100 clients,
+            and dozens of custom applications have built my diverse tools that I
+            hone by contributing to every aspect of software development; sales,
+            project management, software architecture, database design, I've
+            done it all. I'm a jack-of-all-trades who enjoys database design and
+            server-side programming most of all.
+          </div>
         </div>
       ),
     });
@@ -94,6 +152,55 @@ function App() {
               <li key={index}>{command}</li>
             ))}
           </ul>
+        </>
+      ),
+    });
+  };
+
+  const executeTech = async () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: (
+        <>
+          <strong>This website built with:</strong>
+          <ul>
+            <li>React 18</li>
+            <li>SCSS</li>
+          </ul>
+          <p>
+            This website was built as an homage to my customized terminal
+            environment I spend most of my day. That terminal environment is
+            configured with the following:
+          </p>
+          <ul>
+            <li>macOS</li>
+            <li>
+              <a target="_blank" href="https://www.zsh.org/">
+                Zsh
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://ohmyz.sh/">
+                Oh My Zsh
+              </a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://github.com/romkatv/powerlevel10k"
+              >
+                Powerlevel10k
+              </a>
+            </li>
+          </ul>
+          <p>
+            If you want to check it out in more detail, take a peek at my{' '}
+            <a target="_blank" href="https://github.com/doctorallen/dotfiles">
+              dotfiles
+            </a>
+            .
+          </p>
         </>
       ),
     });
@@ -130,6 +237,12 @@ function App() {
         break;
       case 'neo':
         await executeTheOne();
+        break;
+      case 'motd':
+        await executeMOTD();
+        break;
+      case 'tech':
+        await executeTech();
         break;
     }
 

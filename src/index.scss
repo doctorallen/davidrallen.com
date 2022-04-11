@@ -10,6 +10,7 @@ body {
   background-color: black;
   color: #c7c7c7;
   font-size: 1.1rem;
+  font-family: monospace;
 }
 
 .command-group {
@@ -17,8 +18,6 @@ body {
 }
 
 .bash-line {
-  font-family: monospace;
-
   .blue-bg {
     background-color: #03afd7;
     color: black;
@@ -68,5 +67,69 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 8px;
+  }
+}
+
+.info-container {
+  border: 1px dashed #c7c7c7;
+  padding: 8px;
+  margin: 8px;
+  position: relative;
+
+  &::after {
+    content: '+';
+    position: absolute;
+    left: -6px;
+    top: -11px;
+    color: #c7c7c7;
+  }
+  &::before {
+    content: '+';
+    position: absolute;
+    right: -6px;
+    top: -11px;
+    color: #c7c7c7;
+  }
+  .inner {
+    &::after {
+      content: '+';
+      position: absolute;
+      left: -6px;
+      bottom: -10px;
+      color: #c7c7c7;
+    }
+
+    &::before {
+      content: '+';
+      position: absolute;
+      right: -6px;
+      bottom: -10px;
+      color: #c7c7c7;
+    }
+  }
+}
+
+.banner {
+  margin: 32px;
+  a {
+    text-decoration: underline;
+    color: #c7c7c7;
+  }
+  .sys-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 32px;
+  }
+
+  .documentation-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 32px;
+  }
+
+  .row {
+    display: flex;
+    .column {
+    }
   }
 }
