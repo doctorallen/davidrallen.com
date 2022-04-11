@@ -16,8 +16,6 @@ function App() {
   };
 
   const handleKeyUp = (event) => {
-    console.log(event.key);
-    console.log(typedCommand);
     if (!acceptingInput) {
       return;
     }
@@ -32,6 +30,8 @@ function App() {
     }
   };
 
+  useKeyPress(handleKeyUp);
+
   const reset = () => {
     setTypedCommand('');
     setAcceptingInput(true);
@@ -41,7 +41,7 @@ function App() {
     setCommandHistory((oldHistory) => [...oldHistory, command]);
   };
 
-  const executeClear = () => {
+  const executeClear = async () => {
     setCommandHistory([]);
   };
 
@@ -53,22 +53,53 @@ function App() {
     });
   };
 
-  const executeInfo = () => {
+  const executeInfo = async () => {
     pushIntoHistory({
       command: typedCommand,
       success: true,
-      output: <div>Things</div>,
+      output: (
+        <div>
+          I started my journey as a Software Engineer in 2005, coding my own
+          video games in Flash and Visual Basic. 15 years, over 100 clients, and
+          dozens of custom applications have built my diverse tools that I hone
+          by contributing to every aspect of software development; sales,
+          project management, software architecture, database design, I've done
+          it all. I'm a jack-of-all-trades who enjoys database design and
+          server-side programming most of all.
+        </div>
+      ),
     });
   };
 
   const executeTheOne = async () => {
+    setAcceptingInput(false);
     await autoType('Wake up, Neo...');
     await sleep(500);
-    reset();
     await autoType('The Matrix has you...');
+    await sleep(1500);
+    await autoType('Follow the white rabbit.');
+    await sleep(1500);
+    await autoType('Knock, knock, Neo.');
   };
 
-  const executeCommand = () => {
+  const executeHelp = async () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: (
+        <>
+          <strong>List of available commands:</strong>
+          <ul className="command-list">
+            {availableCommands.map((command, index) => (
+              <li key={index}>{command}</li>
+            ))}
+          </ul>
+        </>
+      ),
+    });
+  };
+
+  const executeCommand = async () => {
     if (!availableCommands.includes(typedCommand)) {
       setTypedCommand('');
 
@@ -88,21 +119,22 @@ function App() {
     }
 
     switch (typedCommand) {
+      case 'help':
+        await executeHelp();
+        break;
       case 'clear':
-        executeClear();
+        await executeClear();
         break;
       case 'info':
-        executeInfo();
+        await executeInfo();
         break;
       case 'neo':
-        executeTheOne();
+        await executeTheOne();
         break;
     }
 
     reset();
   };
-
-  useKeyPress(handleKeyUp);
 
   const randBetween = (min, max) => {
     // min and max included
@@ -129,7 +161,6 @@ function App() {
                 command: text,
                 success: true,
               });
-              reset();
             }, 450);
             resolve();
           }
@@ -141,10 +172,20 @@ function App() {
   };
 
   useEffect(() => {
-    const text =
-      'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
+    // const text =
+    const text = 'test';
+    //   'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
     autoType(text);
   }, []);
+
+  // automatically resets the bashline when a history item is pushed into the
+  // stack of history
+  useEffect(() => {
+    const latestHistoryItem = commandHistory.at(-1);
+    if (latestHistoryItem && latestHistoryItem.command === typedCommand) {
+      reset();
+    }
+  }, [commandHistory]);
 
   return (
     <div className="App">
