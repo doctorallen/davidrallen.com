@@ -3,110 +3,160 @@ import BashLine from './components/BashLine';
 import { useEffect, useState, useRef } from 'react';
 import useKeyPress from './useKeyPress';
 import CompletedCommand from './components/CompletedCommand';
+import Info from './components/Info';
+import Banner from './components/Banner';
+import Tech from './components/Tech';
 
 function App() {
+  // used for scrolling the user down to the bash line when the screen is too large
   const bashLineRef = useRef(null);
-  const Banner = () => {
-    return (
-      <div className="banner">
-        <div>
-          Welcome to Davenix 32.4.10 LTS (GNU/Linux 5.3.90-management x86_64)
-        </div>
-        <ul className="documentation-list">
-          <li>
-            * Resume:&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/">https://davidrallen.com/resume.pdf</a>
-          </li>
-          <li>
-            * GitHub:&nbsp;&nbsp;&nbsp;&nbsp;
-            <a target="_blank" href="https://github.com/doctorallen">
-              https://github.com/doctorallen
-            </a>
-          </li>
-          <li>
-            * Contact:&nbsp;&nbsp;&nbsp;
-            <a target="_blank" href="mailto:jobs@davidrallen.com?subject=Hello">
-              jobs@davidrallen.com
-            </a>
-          </li>
-        </ul>
-        <div>System information as of {new Date().toString()}</div>
-        <div className="row">
-          <div className="column">
-            <ul className="sys-list">
-              <li>System load: 0.0</li>
-              <li>Usage of /: 5.3% of 1990 GB.</li>
-              <li>Memory usage: 32%</li>
-              <li>Swap usage: 0%</li>
-            </ul>
-          </div>
-          <div className="column">
-            <ul className="sys-list">
-              <li>Processes: 87</li>
-              <li>Users logged in: 9</li>
-              <li>IP address for eth0: 127.0.0.1</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
+  // state to hold all of the command history. Has one default history item to
+  // look like the user had already ssh'd into a server and is seeing a banner
   const [commandHistory, setCommandHistory] = useState([
     { command: 'ssh broadbrain', success: true, output: <Banner /> },
   ]);
+
+  // the currently typed command
   const [typedCommand, setTypedCommand] = useState('');
+
+  // whether or not the bash prompt is currently accepting input
   const [acceptingInput, setAcceptingInput] = useState(false);
 
+  // all of the available commands with their descriptions for display in the
+  // "help" command
   const availableCommands = {
-    help: 'display this list of available commands',
-    clear: 'clear the console',
-    info: 'display information about David Allen',
+    help: 'displays this list of available commands',
+    clear: 'clears the console',
+    info: 'displays information about David Allen',
     neo: 'Mr. Anderson',
-    motd: 'Display the banner message of the day',
-    tech: 'Display information about how this website was built',
+    motd: 'displays the banner message of the day',
+    tech: 'displays information about how this website was built',
   };
 
+  // responses that are not listed in the help screen
   const easterEggResponse = {
     'fuck you': 'No, fuck YOU!',
   };
 
+  // function used for handling user input
   const handleKeyUp = (event) => {
+    // if we're not currently accepting input, return early
     if (!acceptingInput) {
       return;
     }
+
+    // scroll the user to the bottom of the page when they type, in case they
+    // have scrolled up on the page and are currently entering a command
     scrollToBottom();
-    if (event.key.match(/^.$/g)) {
-      return setTypedCommand(typedCommand + event.key);
-    }
+
+    // if the user types the Enter key and there is a current command, attempt
+    // to execute the current command
     if (event.key === 'Enter' && typedCommand !== '') {
       return executeCommand();
     }
+
+    // if the user types the Backspace key, we need to delete the last key they
+    // entered
     if (event.key === 'Backspace') {
       return setTypedCommand(typedCommand.slice(0, typedCommand.length - 1));
     }
+
+    // if the user types a key that is a single digit, we want to display it
+    if (event.key.match(/^.$/g)) {
+      return setTypedCommand(typedCommand + event.key);
+    }
   };
 
+  // setup our custom hook to call our handleKeyUp function when the user
+  // hits a key
+  useKeyPress(handleKeyUp);
+
+  // function to scroll the user to the bottom of the page
   const scrollToBottom = () => {
     bashLineRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useKeyPress(handleKeyUp);
-
+  // reset the bash prompt
   const reset = () => {
     setTypedCommand('');
     setAcceptingInput(true);
   };
 
+  // utility function for generating a random number between two integers
+  const randBetween = (min, max) => {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  // function that will use timeouts to render text to the screen as if someone
+  // is typing the command
+  const autoType = (text) => {
+    return new Promise((resolve) => {
+      // split the text we want to display into individual letters
+      const letters = text.split('');
+      // create a counter to store the amount of time the current letter is going
+      // to take to display on the screen
+      let totalTimeout = 0;
+      // loop over all of the letters
+      letters.reduce((word, letter) => {
+        // choose a random keystroke time between two values so the typing seems
+        // more realistic
+        const timeoutAmount = randBetween(20, 50);
+        // add to our total timeout counter
+        totalTimeout += timeoutAmount;
+        // build the text that should be displayed on the screen
+        const newText = word + letter;
+        setTimeout(() => {
+          // update the state for what text should be displayed on the screen
+          setTypedCommand(newText);
+          // if we've typed out all of the letters that we need to type out
+          if (newText === text) {
+            // give the user 450 ms to see the message before it moves into the
+            // history as if the command was executed
+            setTimeout(() => {
+              pushIntoHistory({
+                command: text,
+                success: true,
+              });
+            }, 450);
+            resolve();
+          }
+        }, totalTimeout);
+
+        // return the newText for the reducer
+        return newText;
+      }, '');
+    });
+  };
+
+  // use effect hook to run when the page first loads
+  useEffect(() => {
+    // const text =
+    //   'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
+    const text = 'test';
+    autoType(text);
+  }, []);
+
+  // automatically resets the bashline when a history item is pushed into the
+  // stack of history
+  useEffect(() => {
+    const latestHistoryItem = commandHistory.at(-1);
+    if (latestHistoryItem && latestHistoryItem.command === typedCommand) {
+      reset();
+    }
+  }, [commandHistory]);
+
+  // push the passed command into the history stack
   const pushIntoHistory = (command) => {
+    // maintain the old history, and add the new one. We are getting the old history
+    // from the hook so that we can call this function from timeouts and intervals
     setCommandHistory((oldHistory) => [...oldHistory, command]);
+    // scroll the user to the bottom of the page after a command output is displayed
     scrollToBottom();
   };
 
-  const executeClear = async () => {
-    setCommandHistory([]);
-  };
-
+  // sleep utility function used for the auto typer
   const sleep = async (timeout = 100) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -115,6 +165,12 @@ function App() {
     });
   };
 
+  // execute the clear command
+  const executeClear = async () => {
+    setCommandHistory([]);
+  };
+
+  // execute the motd command
   const executeMOTD = async () => {
     pushIntoHistory({
       command: typedCommand,
@@ -123,26 +179,16 @@ function App() {
     });
   };
 
+  // execute the info command
   const executeInfo = async () => {
     pushIntoHistory({
       command: typedCommand,
       success: true,
-      output: (
-        <div className="info-container">
-          <div className="inner">
-            I started my journey as a Software Engineer in 2005, coding my own
-            video games in Flash and Visual Basic. 15 years, over 100 clients,
-            and dozens of custom applications have built my diverse tools that I
-            hone by contributing to every aspect of software development; sales,
-            project management, software architecture, database design, I've
-            done it all. I'm a jack-of-all-trades who enjoys database design and
-            server-side programming most of all.
-          </div>
-        </div>
-      ),
+      output: <Info />,
     });
   };
 
+  // execute the neo command
   const executeTheOne = async () => {
     setAcceptingInput(false);
     await autoType('Wake up, Neo...');
@@ -154,6 +200,7 @@ function App() {
     await autoType('Knock, knock, Neo.');
   };
 
+  // execute the help command
   const executeHelp = async () => {
     pushIntoHistory({
       command: typedCommand,
@@ -182,68 +229,36 @@ function App() {
     });
   };
 
+  // execute the tech command
   const executeTech = async () => {
     pushIntoHistory({
       command: typedCommand,
       success: true,
-      output: (
-        <>
-          <strong>This website built with:</strong>
-          <ul>
-            <li>React 18</li>
-            <li>SCSS</li>
-          </ul>
-          <p>
-            This website was built as an homage to my customized terminal
-            environment I spend most of my day. That terminal environment is
-            configured with the following:
-          </p>
-          <ul>
-            <li>macOS</li>
-            <li>
-              <a target="_blank" href="https://www.zsh.org/">
-                Zsh
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href="https://ohmyz.sh/">
-                Oh My Zsh
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://github.com/romkatv/powerlevel10k"
-              >
-                Powerlevel10k
-              </a>
-            </li>
-          </ul>
-          <p>
-            If you want to check it out in more detail, take a peek at my{' '}
-            <a target="_blank" href="https://github.com/doctorallen/dotfiles">
-              dotfiles
-            </a>
-            .
-          </p>
-        </>
-      ),
+      output: <Tech />,
     });
   };
 
+  // attempt to execute the current command
   const executeCommand = async () => {
+    // normalize the command so we're comparing all lowercase strings and remove
+    // any additional whitespace
     const command = typedCommand.toLowerCase().trim();
-    if (!Object.keys(availableCommands).includes(command)) {
+
+    // check if this could possibly be an easter egg command
+    if (easterEggResponse.hasOwnProperty(command)) {
+      return pushIntoHistory({
+        command: command,
+        success: false,
+        output: easterEggResponse[command],
+      });
+    }
+
+    // if the typed command is not in the list of available commands
+    if (!availableCommands.hasOwnProperty(command)) {
+      // reset the currently typed command
       setTypedCommand('');
 
-      if (easterEggResponse.hasOwnProperty(command)) {
-        return pushIntoHistory({
-          command: command,
-          success: false,
-          output: easterEggResponse[command],
-        });
-      }
-
+      // add a failed command into the stack to display
       pushIntoHistory({
         command: command,
         success: false,
@@ -251,6 +266,7 @@ function App() {
       });
     }
 
+    // execute the proper function based on the command the user entered
     switch (command) {
       case 'help':
         await executeHelp();
@@ -274,57 +290,6 @@ function App() {
 
     reset();
   };
-
-  const randBetween = (min, max) => {
-    // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const autoType = (text) => {
-    return new Promise((resolve) => {
-      const letters = text.split('');
-      let totalTimeout = 0;
-      letters.reduce((word, letter) => {
-        const timeoutAmount = randBetween(20, 50);
-        console.log(word, letter);
-        totalTimeout += timeoutAmount;
-        const newText = word + letter;
-        setTimeout(() => {
-          setTypedCommand(newText);
-          // if we've typed out all of the letters that we need to type out
-          if (newText === text) {
-            // give the user 450 ms to see the message before it moves into the
-            // history as if the command was executed
-            setTimeout(() => {
-              pushIntoHistory({
-                command: text,
-                success: true,
-              });
-            }, 450);
-            resolve();
-          }
-        }, totalTimeout);
-
-        return newText;
-      }, '');
-    });
-  };
-
-  useEffect(() => {
-    // const text =
-    //   'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
-    const text = 'test';
-    autoType(text);
-  }, []);
-
-  // automatically resets the bashline when a history item is pushed into the
-  // stack of history
-  useEffect(() => {
-    const latestHistoryItem = commandHistory.at(-1);
-    if (latestHistoryItem && latestHistoryItem.command === typedCommand) {
-      reset();
-    }
-  }, [commandHistory]);
 
   return (
     <div className="App">
