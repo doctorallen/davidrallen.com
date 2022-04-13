@@ -6,37 +6,57 @@ export default function Banner() {
       </div>
       <ul className="documentation-list">
         <li>
-          * Resume:&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="/">https://davidrallen.com/resume.pdf</a>
+          <pre>
+            {`* Resume:`.padEnd(10)}{' '}
+            <a href="/">https://davidrallen.com/resume.pdf</a>
+          </pre>
         </li>
         <li>
-          * GitHub:&nbsp;&nbsp;&nbsp;&nbsp;
-          <a target="_blank" href="https://github.com/doctorallen">
-            https://github.com/doctorallen
-          </a>
+          <pre>
+            {`* GitHub:`.padEnd(10)}{' '}
+            <a target="_blank" href="https://github.com/doctorallen">
+              https://github.com/doctorallen
+            </a>
+          </pre>
         </li>
         <li>
-          * Contact:&nbsp;&nbsp;&nbsp;
-          <a target="_blank" href="mailto:jobs@davidrallen.com?subject=Hello">
-            jobs@davidrallen.com
-          </a>
+          <pre>
+            {`* Contact:`.padEnd(10)}{' '}
+            <a target="_blank" href="mailto:jobs@davidrallen.com?subject=Hello">
+              jobs@davidrallen.com
+            </a>
+          </pre>
         </li>
       </ul>
       <div>System information as of {new Date().toString()}</div>
       <div className="row">
         <div className="column">
           <ul className="sys-list">
-            <li>System load: 0.0</li>
-            <li>Usage of /: 5.3% of 1990 GB.</li>
-            <li>Memory usage: 32%</li>
-            <li>Swap usage: 0%</li>
+            <li>
+              <pre>{`System load:`.padEnd(13)} 0.0</pre>
+            </li>
+            <li>
+              <pre>{`Usage of /:`.padEnd(13)} 5.3% of 1990 GB.</pre>
+            </li>
+            <li>
+              <pre>{`Memory usage:`.padEnd(13)} 32%</pre>
+            </li>
+            <li>
+              <pre>{`Swap usage:`.padEnd(13)} 0%</pre>
+            </li>
           </ul>
         </div>
         <div className="column">
           <ul className="sys-list">
-            <li>Processes: 87</li>
-            <li>Users logged in: 9</li>
-            <li>IP address for eth0: 127.0.0.1</li>
+            <li>
+              <pre>{`Processes:`.padEnd(20)} 87</pre>
+            </li>
+            <li>
+              <pre>{`Users logged in:`.padEnd(20)} 9</pre>
+            </li>
+            <li>
+              <pre>{`IP address for eth0:`.padEnd(20)} 127.0.0.1</pre>
+            </li>
           </ul>
         </div>
       </div>

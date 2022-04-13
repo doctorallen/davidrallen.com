@@ -1,15 +1,20 @@
 export default function Tech() {
   return (
     <>
-      <strong>This website built with:</strong>
+      <strong>This website was built with:</strong>
       <ul>
         <li>React 18</li>
         <li>SCSS</li>
+        <li>
+          <a target="_blank" href="https://www.youtube.com/watch?v=R2IJdfxWtPM">
+            Tea, Earl Grey, Hot
+          </a>
+        </li>
+        <li>Jokes</li>
       </ul>
       <p>
-        This website was built as an homage to my customized terminal
-        environment I spend most of my day. That terminal environment is
-        configured with the following:
+        This project is an homage to my customized terminal environment, which
+        is configured with the following:
       </p>
       <ul>
         <li>macOS</li>
@@ -30,7 +35,8 @@ export default function Tech() {
         </li>
       </ul>
       <p>
-        If you want to check it out in more detail, take a peek at my{' '}
+        If you want to check out my environment in more detail, take a peek at
+        my{' '}
         <a target="_blank" href="https://github.com/doctorallen/dotfiles">
           dotfiles
         </a>
