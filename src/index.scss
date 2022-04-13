@@ -6,6 +6,16 @@
   }
 }
 
+pre {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: underline;
+  color: #c7c7c7;
+}
+
 body {
   background-color: black;
   color: #c7c7c7;
@@ -111,10 +121,7 @@ body {
 
 .banner {
   margin: 32px;
-  a {
-    text-decoration: underline;
-    color: #c7c7c7;
-  }
+
   .sys-list {
     list-style-type: none;
     padding: 0;

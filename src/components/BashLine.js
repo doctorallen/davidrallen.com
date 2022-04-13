@@ -1,9 +1,4 @@
-import { useState, useEffect } from 'react';
-
-export default function BashLine({ command }) {
-  const [printedText, setPrintedText] = useState('');
-  const [complete, setComplete] = useState(false);
-
+export default function BashLine({ command, innerRef }) {
   return (
     <div>
       <div className="command-group">
@@ -12,7 +7,7 @@ export default function BashLine({ command }) {
           <span className="blue-bg">www</span>
           <span className="orange-bg">~/projects/davidrallen.com</span>
         </div>
-        <div className="bash-line">
+        <div className="bash-line" ref={innerRef}>
           <span className="blue-text">╰─</span>
           <span className="orange-text">$&nbsp;</span>
           <span className="command">

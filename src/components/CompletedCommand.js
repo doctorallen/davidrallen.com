@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 export default function CompletedCommand({ command, output, success = true }) {
   return (
     <div className="command-group">

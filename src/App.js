@@ -1,10 +1,11 @@
 import './index.scss';
 import BashLine from './components/BashLine';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import useKeyPress from './useKeyPress';
 import CompletedCommand from './components/CompletedCommand';
 
 function App() {
+  const bashLineRef = useRef(null);
   const Banner = () => {
     return (
       <div className="banner">
@@ -13,19 +14,19 @@ function App() {
         </div>
         <ul className="documentation-list">
           <li>
-            * Documentation:&nbsp;&nbsp;
-            <a href="https://help.ubuntu.com">https://help.ubuntu.com</a>
+            * Resume:&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/">https://davidrallen.com/resume.pdf</a>
           </li>
           <li>
-            * Management:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://landscape.canonical.com">
-              https://landscape.canonical.com
+            * GitHub:&nbsp;&nbsp;&nbsp;&nbsp;
+            <a target="_blank" href="https://github.com/doctorallen">
+              https://github.com/doctorallen
             </a>
           </li>
           <li>
-            * Support:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://ubuntu.com/advantage">
-              https://ubuntu.com/advantage
+            * Contact:&nbsp;&nbsp;&nbsp;
+            <a target="_blank" href="mailto:jobs@davidrallen.com?subject=Hello">
+              jobs@davidrallen.com
             </a>
           </li>
         </ul>
@@ -34,8 +35,8 @@ function App() {
           <div className="column">
             <ul className="sys-list">
               <li>System load: 0.0</li>
-              <li>Usage of /: 29.5% of 69.420GB</li>
-              <li>Memory usage: 18%</li>
+              <li>Usage of /: 5.3% of 1990 GB.</li>
+              <li>Memory usage: 32%</li>
               <li>Swap usage: 0%</li>
             </ul>
           </div>
@@ -57,7 +58,14 @@ function App() {
   const [typedCommand, setTypedCommand] = useState('');
   const [acceptingInput, setAcceptingInput] = useState(false);
 
-  const availableCommands = ['help', 'clear', 'info', 'neo', 'motd', 'tech'];
+  const availableCommands = {
+    help: 'display this list of available commands',
+    clear: 'clear the console',
+    info: 'display information about David Allen',
+    neo: 'Mr. Anderson',
+    motd: 'Display the banner message of the day',
+    tech: 'Display information about how this website was built',
+  };
 
   const easterEggResponse = {
     'fuck you': 'No, fuck YOU!',
@@ -67,7 +75,8 @@ function App() {
     if (!acceptingInput) {
       return;
     }
-    if (event.key.match(/^[a-zA-Z\s]{1}$/g)) {
+    scrollToBottom();
+    if (event.key.match(/^.$/g)) {
       return setTypedCommand(typedCommand + event.key);
     }
     if (event.key === 'Enter' && typedCommand !== '') {
@@ -76,6 +85,10 @@ function App() {
     if (event.key === 'Backspace') {
       return setTypedCommand(typedCommand.slice(0, typedCommand.length - 1));
     }
+  };
+
+  const scrollToBottom = () => {
+    bashLineRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useKeyPress(handleKeyUp);
@@ -87,6 +100,7 @@ function App() {
 
   const pushIntoHistory = (command) => {
     setCommandHistory((oldHistory) => [...oldHistory, command]);
+    scrollToBottom();
   };
 
   const executeClear = async () => {
@@ -148,9 +162,20 @@ function App() {
         <>
           <strong>List of available commands:</strong>
           <ul className="command-list">
-            {availableCommands.map((command, index) => (
-              <li key={index}>{command}</li>
-            ))}
+            <li style={{ marginBottom: '4px' }}>
+              <pre>
+                <strong>{`command`.padEnd(10, ' ')} description</strong>
+              </pre>
+            </li>
+            {Object.entries(availableCommands).map(([command, description]) => {
+              return (
+                <li key={command}>
+                  <pre>
+                    {command.padEnd(10, ' ')} {description}
+                  </pre>
+                </li>
+              );
+            })}
           </ul>
         </>
       ),
@@ -207,25 +232,26 @@ function App() {
   };
 
   const executeCommand = async () => {
-    if (!availableCommands.includes(typedCommand)) {
+    const command = typedCommand.toLowerCase().trim();
+    if (!Object.keys(availableCommands).includes(command)) {
       setTypedCommand('');
 
-      if (easterEggResponse.hasOwnProperty(typedCommand)) {
+      if (easterEggResponse.hasOwnProperty(command)) {
         return pushIntoHistory({
-          command: typedCommand,
+          command: command,
           success: false,
-          output: easterEggResponse[typedCommand],
+          output: easterEggResponse[command],
         });
       }
 
       pushIntoHistory({
-        command: typedCommand,
+        command: command,
         success: false,
-        output: `davesh: command not found: ${typedCommand}`,
+        output: `davesh: command not found: ${command}`,
       });
     }
 
-    switch (typedCommand) {
+    switch (command) {
       case 'help':
         await executeHelp();
         break;
@@ -286,8 +312,8 @@ function App() {
 
   useEffect(() => {
     // const text =
-    const text = 'test';
     //   'Welcome to my website. Type a command and hit "Enter" to execute. Type "help" for a list of all available commands.';
+    const text = 'test';
     autoType(text);
   }, []);
 
@@ -310,7 +336,7 @@ function App() {
           output={command.output}
         />
       ))}
-      <BashLine command={typedCommand} />
+      <BashLine innerRef={bashLineRef} command={typedCommand} />
     </div>
   );
 }
