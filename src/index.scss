@@ -128,7 +128,7 @@ body {
 
 .banner {
   margin: 32px;
-  max-width: 800px;
+  max-width: 960px;
 
   .sys-list {
     list-style-type: none;
@@ -140,5 +140,30 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 32px;
+  }
+}
+
+.timeline {
+  // border-left: 1px dashed #cfcfcf;
+  list-style-type: none;
+  padding: 0;
+  .year {
+    display: inline-block;
+    padding: 4px 16px;
+    font-weight: bold;
+    // margin: 8px 0 0 8px;
+    border: 1px dashed #cfcfcf;
+  }
+  > li {
+    // padding: 8px;
+    padding: 0;
+
+    ul {
+      border-left: 1px dashed #cfcfcf;
+      list-style-type: none;
+      margin: 0 0 0 37px;
+      padding: 8px 16px;
+    }
+    // border-top: 1px dashed #cfcfcf;
   }
 }

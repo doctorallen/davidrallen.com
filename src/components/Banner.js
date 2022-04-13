@@ -36,7 +36,7 @@ export default function Banner() {
               <pre>{`System load:`.padEnd(13)} 0.0</pre>
             </li>
             <li>
-              <pre>{`Usage of /:`.padEnd(13)} 5.3% of 1990 GB.</pre>
+              <pre>{`Usage of /:`.padEnd(13)} 5.3% of 1990 GB</pre>
             </li>
             <li>
               <pre>{`Memory usage:`.padEnd(13)} 32%</pre>
