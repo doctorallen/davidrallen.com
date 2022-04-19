@@ -1,33 +1,11 @@
+import Menu from './Menu';
 export default function Banner() {
   return (
     <div className="banner">
       <div>
         Welcome to Davenix 32.4.10 LTS (GNU/Linux 5.3.90-management x86_64)
       </div>
-      <ul className="documentation-list">
-        <li>
-          <pre>
-            {`* Resume:`.padEnd(10)}{' '}
-            <a href="/">https://davidrallen.com/resume.pdf</a>
-          </pre>
-        </li>
-        <li>
-          <pre>
-            {`* GitHub:`.padEnd(10)}{' '}
-            <a target="_blank" href="https://github.com/doctorallen">
-              https://github.com/doctorallen
-            </a>
-          </pre>
-        </li>
-        <li>
-          <pre>
-            {`* Contact:`.padEnd(10)}{' '}
-            <a target="_blank" href="mailto:jobs@davidrallen.com?subject=Hello">
-              jobs@davidrallen.com
-            </a>
-          </pre>
-        </li>
-      </ul>
+      <Menu />
       <div>System information as of {new Date().toString()}</div>
       <div className="row">
         <div className="column">

@@ -83,8 +83,9 @@ body {
 .info-container {
   border: 1px dashed #c7c7c7;
   padding: 8px;
-  margin: 8px;
+  margin: 16px;
   position: relative;
+  max-width: 960px;
 
   &::after {
     content: '+';
@@ -126,6 +127,12 @@ body {
   }
 }
 
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 32px;
+}
+
 .banner {
   margin: 32px;
   max-width: 960px;
@@ -135,18 +142,32 @@ body {
     padding: 0;
     margin: 32px;
   }
+}
 
-  .documentation-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 32px;
-  }
+blockquote {
+  border-left: 3px solid #cfcfcf;
+  padding-left: 8px;
 }
 
 .timeline {
   // border-left: 1px dashed #cfcfcf;
   list-style-type: none;
   padding: 0;
+
+  .timeline-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .tag {
+    background: #cfcfcf;
+    color: black;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    border: 1px dashed #cfcfcf;
+    margin-left: 8px;
+  }
+
   .year {
     display: inline-block;
     padding: 4px 16px;

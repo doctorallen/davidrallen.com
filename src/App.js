@@ -3,9 +3,11 @@ import BashLine from './components/BashLine';
 import { useEffect, useState, useRef } from 'react';
 import useKeyPress from './useKeyPress';
 import CompletedCommand from './components/CompletedCommand';
-import Info from './components/Info';
+import Story from './components/Story';
 import Banner from './components/Banner';
 import Tech from './components/Tech';
+import Menu from './components/Menu';
+import Timeline from './components/Timeline';
 
 function App() {
   // used for scrolling the user down to the bash line when the screen is too large
@@ -14,7 +16,7 @@ function App() {
   // state to hold all of the command history. Has one default history item to
   // look like the user had already ssh'd into a server and is seeing a banner
   const [commandHistory, setCommandHistory] = useState([
-    { command: 'ssh broadbrain', success: true, output: <Banner /> },
+    { command: 'ssh davidrallen.com', success: true, output: <Banner /> },
   ]);
 
   // the currently typed command
@@ -26,12 +28,14 @@ function App() {
   // all of the available commands with their descriptions for display in the
   // "help" command
   const availableCommands = {
-    help: 'displays this list of available commands',
     clear: 'clears the console',
-    info: 'displays information about David Allen',
-    neo: 'Mr. Anderson',
+    help: 'displays this list of available commands',
+    menu: 'displays the menu of pages',
     motd: 'displays the banner message of the day',
+    neo: 'Mr. Anderson',
     tech: 'displays information about how this website was built',
+    story: 'displays my story',
+    timeline: 'displays my career timeline',
   };
 
   // responses that are not listed in the help screen
@@ -179,12 +183,30 @@ function App() {
     });
   };
 
-  // execute the info command
-  const executeInfo = async () => {
+  // execute the motd command
+  const executeMenu = async () => {
     pushIntoHistory({
       command: typedCommand,
       success: true,
-      output: <Info />,
+      output: <Menu />,
+    });
+  };
+
+  // execute the story command
+  const executeStory = async () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: <Story />,
+    });
+  };
+
+  // execute the timeline command
+  const executeTimeline = async () => {
+    pushIntoHistory({
+      command: typedCommand,
+      success: true,
+      output: <Timeline />,
     });
   };
 
@@ -274,14 +296,20 @@ function App() {
       case 'clear':
         await executeClear();
         break;
-      case 'info':
-        await executeInfo();
+      case 'story':
+        await executeStory();
+        break;
+      case 'timeline':
+        await executeTimeline();
         break;
       case 'neo':
         await executeTheOne();
         break;
       case 'motd':
         await executeMOTD();
+        break;
+      case 'menu':
+        await executeMenu();
         break;
       case 'tech':
         await executeTech();
