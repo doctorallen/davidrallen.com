@@ -168,6 +168,28 @@ blockquote {
     margin-left: 8px;
   }
 
+  .inline-tag {
+    background: #cfcfcf;
+    color: black;
+    padding: 2px 12px;
+    &.plymouth {
+      background: #117353;
+      color: white;
+    }
+    &.prhs {
+      background: #1e6c93;
+      color: white;
+    }
+    &.atom {
+      background: #1abc9c;
+      color: black;
+    }
+    &.dwc {
+      background: #005594;
+      color: white;
+    }
+  }
+
   .year {
     display: inline-block;
     padding: 4px 16px;
@@ -184,6 +206,10 @@ blockquote {
       list-style-type: none;
       margin: 0 0 0 37px;
       padding: 8px 16px;
+
+      li {
+        padding: 4px 0;
+      }
     }
     // border-top: 1px dashed #cfcfcf;
   }

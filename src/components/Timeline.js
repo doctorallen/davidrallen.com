@@ -46,7 +46,7 @@ export default function Info() {
               Basic 6 with custom graphics designed in Photoshop
             </li>
             <li>
-              [JOB] Started as Teacher's Assistant in Intro to Programming{' '}
+              [JOB] Started as Teacher's Assistant in Intro to Programming
             </li>
             <li>[EDUCATION] Started learning C++</li>
           </ul>
@@ -62,23 +62,26 @@ export default function Info() {
           <ul>
             <li>
               [EDUCATION] Graduated from{' '}
-              <strong>Plymouth Regional High School</strong>
+              <span className="inline-tag prhs">
+                Plymouth Regional High School
+              </span>
             </li>
             <li>
               [EDUCATION] Started Gaming, Simulation, and Robotics Bachelor's
-              Degree at <strong>Daniel Webster College</strong>
+              Degree at{' '}
+              <span className="inline-tag dwc">Daniel Webster College</span>
             </li>
             <li>
               [PROJECT] Built video games with C# and Microsoft XNA Framework,
               with TCP/UDP networking for multiplayer and Microsoft SQL Database
             </li>
             <li>
-              [JOB] Started working as a Help Desk Support Specialist at Daniel
-              Webster College
+              [JOB] Started working as a Help Desk Support Specialist at{' '}
+              <span className="inline-tag dwc">Daniel Webster College</span>
             </li>
             <li>
-              [JOB] Started working as a Techbench Support Engineer at Daniel
-              Webster College
+              [JOB] Started working as a Techbench Support Engineer at{' '}
+              <span className="inline-tag dwc">Daniel Webster College</span>
             </li>
           </ul>
         </li>
@@ -105,8 +108,8 @@ export default function Info() {
           <ul>
             <li>
               [EDUCATION] Transferred to{' '}
-              <strong>Plymouth State University</strong> for a Bachelor's Degree
-              in Information Technology
+              <span class="inline-tag plymouth">Plymouth State University</span>{' '}
+              for a Bachelor's Degree in Information Technology
             </li>
             <li>[EDUCATION] Started learning Java</li>
           </ul>
@@ -139,16 +142,23 @@ export default function Info() {
             </li>
             <li>[EDUCATION] Cisco CCNA</li>
             <li>
-              [JOB] Started working as an Infodesk Consultant at Plymouth State
-              University
+              [JOB] Started working as an Infodesk Consultant at{' '}
+              <span className="inline-tag green">
+                Plymouth State University
+              </span>
             </li>
             <li>
               [JOB] Started working as a Systems Support Intern - Desktop
-              Virtualization as Plymouth State University
+              Virtualization at{' '}
+              <span className="inline-tag green">
+                Plymouth State University
+              </span>
             </li>
             <li>
-              [JOB] Started working as an Undergraduate Fellow at Plymouth State
-              University
+              [JOB] Started working as an Undergraduate Fellow at{' '}
+              <span className="inline-tag green">
+                Plymouth State University
+              </span>
             </li>
           </ul>
         </li>
@@ -168,16 +178,21 @@ export default function Info() {
           </div>
           <ul>
             <li>
-              [EDUCATION] Graduated Magna Cum Laude from Plymouth State
-              University with a Bachelor's of Science Degree in Information
-              Technology
+              [EDUCATION] Graduated Magna Cum Laude from{' '}
+              <span className="inline-tag green">
+                Plymouth State University
+              </span>{' '}
+              with a Bachelor's of Science Degree in Information Technology
             </li>
             <li>
-              [JOB] Started working as a Junior Developer at Plymouth State
-              University
+              [JOB] Started working as a Junior Developer at{' '}
+              <span className="inline-tag green">
+                Plymouth State University
+              </span>
             </li>
             <li>
-              [JOB] Started working as a Junior Web Developer at The ATOM Group
+              [JOB] Started working as a Junior Web Developer at{' '}
+              <span className="inline-tag atom">The ATOM Group</span>
             </li>
           </ul>
         </li>

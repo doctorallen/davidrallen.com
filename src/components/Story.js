@@ -11,7 +11,7 @@ export default function Story() {
             out one day how to load Tetris while messing around with the command
             line. I think I was around 7 or 8 at the time. That's around the
             same time my grandmother got a new computer, a Compaq Presario,
-            complete with a dial-up connection provided by AOL. It was setup
+            complete with a dial-up connection provided by AOL. It was set up
             right in her dining room.
           </p>
           <blockquote>
@@ -21,8 +21,8 @@ export default function Story() {
           <p>
             We spent like what felt like hours asking Jeeves as many questions
             as we could think of. My mind was reeling thinking about all of the
-            questions I wanted to ask Jeeves when my Grandmother wasn't around.
-            Eventually I went back to playing{' '}
+            possibilities with this new found technology. Eventually I went back
+            to playing{' '}
             <a
               target="_blank"
               href="https://en.wikipedia.org/wiki/The_Secret_Island_of_Dr._Quandary"
@@ -151,7 +151,7 @@ export default function Story() {
           <h2>Transfer Student</h2>
           <p>
             I transferred to Plymouth State University in 2010 to finish a
-            degree my degree in "Information Technology". Transferring into
+            degree my degree in Information Technology. Transferring into
             Plymouth State was a great experience, I was back in my home town,
             and my best friend had started the semester before. Not only that
             but a good friend of mine transferred with me from Daniel Webster,
