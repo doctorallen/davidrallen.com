@@ -21570,7 +21570,7 @@ html {
   color: #d2d7e1;
   border-bottom: 2px solid transparent;
 }
-.navbar .navbar-item.is-active {
+.navbar .navbar-item.is-active, .navbar .navbar-item:hover {
   color: #e1ad21;
   font-weight: bold;
   background: transparent;
@@ -21586,6 +21586,10 @@ html {
 
 .is-horizontal-center {
   justify-content: center;
+}
+
+.headshot-container {
+  padding: 35px;
 }
 
 .headshot {
@@ -21688,8 +21692,8 @@ a.navbar-item:hover,
 }
 
 .contact-btn {
-  border-color: #d2d7e1;
-  color: #d2d7e1;
+  border-color: #d2d7e1 !important;
+  color: #d2d7e1 !important;
   background: transparent;
 }
 .contact-btn:hover, .contact-btn:active, .contact-btn:focus {

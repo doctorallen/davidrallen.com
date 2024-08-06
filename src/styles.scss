@@ -74,7 +74,8 @@ html {
     color: $font;
     border-bottom: 2px solid transparent;
 
-    &.is-active {
+    &.is-active,
+    &:hover {
       color: $font-secondary;
       font-weight: bold;
       background: transparent;
@@ -94,6 +95,10 @@ html {
 
 .is-horizontal-center {
   justify-content: center;
+}
+
+.headshot-container {
+  padding: 35px;
 }
 
 .headshot {
@@ -217,8 +222,8 @@ a.navbar-item:hover,
 }
 
 .contact-btn {
-  border-color: $font;
-  color: $font;
+  border-color: $font !important;
+  color: $font !important;
   background: transparent;
 
   &:hover,
