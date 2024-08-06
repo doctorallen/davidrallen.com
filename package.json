@@ -1,26 +1,10 @@
 {
-  "name": "davidrallen.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
   "dependencies": {
-    "bulma": "^0.8.0",
-    "css-loader": "^3.4.2",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.1",
-    "style-loader": "^1.1.2",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "bulma": "^1.0.2",
+    "sass": "^1.77.8"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "watch": "webpack --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "build-bulma": "sass --load-path=node_modules src/styles.scss dist/css/styles.css",
+    "start": "npm run build-bulma -- --watch"
+  }
 }
