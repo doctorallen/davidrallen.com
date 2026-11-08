@@ -652,6 +652,38 @@ html,body{margin:0;background:#0e0c09}
 }
 @media (prefers-reduced-motion:reduce){.nv2 .xp-now,.nv2 .xp-row{opacity:1;transform:none;transition:none}}
 @container site (min-width:641px) and (max-width:900px){.nv2 .dc-pic{aspect-ratio:2/1!important}}
+/* Phone and tablet: the row you tap becomes the description, the picture follows */
+@container site (max-width:900px){
+  .nv.nv2.w1 .dc-core .dc-spine{height:58px!important;overflow:hidden;transition:height .45s cubic-bezier(.6,0,.2,1),opacity .2s}
+  .nv.nv2.w1 .dc-core.open .dc-spine{height:0!important;opacity:0;pointer-events:none}
+  .nv.nv2.w1 .dc-x{display:flex;flex-direction:column}
+  .nv.nv2.w1 .dc-x .dc-txt{order:-1;padding:18px 16px 16px}
+  .nv.nv2.w1 .dc-core.open .dc-x{background:none!important;transition:max-height .5s cubic-bezier(.6,0,.2,1),opacity .35s .15s}
+  .nv.nv2.w1 .dc-core.open .dc-txt > *{animation:mobIn .4s both cubic-bezier(.3,.7,.2,1)}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(2){animation-delay:.05s}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(3){animation-delay:.1s}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(4){animation-delay:.15s}
+  .nv.nv2.w1 .dc-core.open .dc-pic{animation:mobPic .5s .2s both ease}
+  @keyframes mobIn{from{opacity:0;transform:translateY(6px)}}
+  @keyframes mobPic{from{opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){.nv.nv2.w1 .dc-core .dc-spine,.nv.nv2.w1 .dc-core.open .dc-txt > *,.nv.nv2.w1 .dc-core.open .dc-pic{transition:none;animation:none}}
+/* Desktop: the label strip you click becomes the description column, the picture fills the rest */
+@container site (min-width:901px){
+  .nv.nv2.w1 .dc-core .dc-spine{transition:flex-basis .55s cubic-bezier(.6,0,.2,1),opacity .2s;overflow:hidden}
+  .nv.nv2.w1 .dc-core.open .dc-spine{flex:0 0 0!important;opacity:0;padding:0!important;pointer-events:none}
+  .nv.nv2.w1 .dc-core.open .dc-x{flex-direction:row}
+  .nv.nv2.w1 .dc-x .dc-txt{order:-1;flex:0 0 290px;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:26px 24px}
+  .nv.nv2.w1 .dc-x .dc-txt h3{white-space:normal;font-size:26px;line-height:1.15}
+  .nv.nv2.w1 .dc-x .dc-pic{flex:1 1 auto;min-width:0}
+  .nv.nv2.w1 .dc-core.open .dc-txt > *{animation:mobIn .45s .3s both cubic-bezier(.3,.7,.2,1)}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(2){animation-delay:.36s}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(3){animation-delay:.42s}
+  .nv.nv2.w1 .dc-core.open .dc-txt > :nth-child(4){animation-delay:.48s}
+  .nv.nv2.w1 .dc-core.open .dc-pic{animation:mobPic .5s .4s both ease}
+  @keyframes mobIn{from{opacity:0;transform:translateY(6px)}}
+  @keyframes mobPic{from{opacity:0}}
+}
 
 </style>
 </head>
