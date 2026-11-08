@@ -194,7 +194,7 @@ html,body{margin:0;background:#0e0c09}
 .nv3 .br-link:hover{color:var(--gold)}
 
 /* ---------- phone ---------- */
-@container site (max-width:640px){
+@container site (max-width:900px){
   .nv1{padding:18px 16px 30px}
   .nv1 .dp-id .nv-sig{width:104px}
   .nv1 .dp-id span{display:none}
@@ -232,7 +232,7 @@ html,body{margin:0;background:#0e0c09}
   .nv2 .dc-n{order:3}
   .nv2 .dc-led{top:8px;bottom:8px;left:-1px;right:auto;width:3px;height:auto}
   .nv2 .dc-x{width:auto;transform:none;border-left:1px solid #1b2230;border-top:0;max-height:0;transition:max-height .45s ease,opacity .3s}
-  .nv2 .dc-core.open .dc-x{max-height:520px}
+  .nv2 .dc-core.open .dc-x{max-height:1000px}
   .nv2 .dc-core:not(.open) .dc-x{border:0}
   .nv2 .dc-x{flex:none}
   .nv2 .dc-pic{flex:none;aspect-ratio:16/10}
@@ -379,7 +379,7 @@ html,body{margin:0;background:#0e0c09}
 .nv2.w4 .dc-core:not(.open) .dc-x::before,.nv2.w4 .dc-core:not(.open) .dc-x::after{display:none}
 .nv2.w4 .dc-pic{overflow:hidden}
 
-@container site (max-width:640px){
+@container site (max-width:900px){
   .nv2.w1 .dc-rack,.nv2.w2 .dc-rack{padding:0}
   .nv2.w1 .dc-x,.nv2.w2 .dc-x,.nv2.w3 .dc-x,.nv2.w4 .dc-x{margin:6px 0 0;transform:none}
   .nv2.w1 .dc-core.open .dc-spine,.nv2.w2 .dc-core.open .dc-spine,.nv2.w3 .dc-core.open .dc-spine{transform:none}
@@ -423,7 +423,7 @@ html,body{margin:0;background:#0e0c09}
 .nv.nv2.w4 .dc-x::before{background:#080b10}
 .nv.nv2.w4 .dc-x::after{background:color-mix(in srgb,var(--tint) 25%,#161c28)}
 .nv.nv2.w4 .dc-rack::before{-webkit-mask:none;mask:none;opacity:.55}
-@container site (max-width:640px){
+@container site (max-width:900px){
   .nv.nv2 .dc-spine{background:color-mix(in srgb,var(--tint) 10%,#10141c)}
   .nv.nv2.w2 .dc-spine{background:#0b0d12}
   .nv.nv2.w3 .dc-spine{background:#0c0b08}
@@ -507,7 +507,7 @@ html,body{margin:0;background:#0e0c09}
 .nv.nv2.w1.f4 .dc-core.open .dc-pic,.nv.nv2.w1.f4 .dc-core.open .dc-txt{animation:w1fade .4s .8s both}
 .nv.nv2.w1.f4 .dc-go{clip-path:none;background:none;border:1px solid var(--tint)}
 
-@container site (max-width:640px){
+@container site (max-width:900px){
   .nv.nv2.w1.f3 .dc-core{animation:none}
   .nv.nv2.w1.f3{--notch:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
   .nv.nv2.w1.f3 .dc-led{top:8px;bottom:8px;left:0;right:auto;width:3px;height:auto}
@@ -583,7 +583,7 @@ html,body{margin:0;background:#0e0c09}
 .nv.nv2.w1.f4 .dc-core.open::after{background:color-mix(in srgb,var(--tint) 14%,transparent)}
 .nv.nv2.w1.f4 .dc-led{z-index:3}
 
-@container site (max-width:640px){
+@container site (max-width:900px){
   .nv.nv2.w1 .dc-core.open .dc-x{background:linear-gradient(color-mix(in srgb,var(--tint) 55%,transparent),color-mix(in srgb,var(--tint) 55%,transparent)) 0 0/100% 1px no-repeat!important;animation:dvLineX .5s .1s both cubic-bezier(.6,0,.2,1)!important}
   @keyframes dvLineX{from{background-size:0 1px}}
   .nv.nv2.w1 .dc-core:hover{transform:none}
@@ -598,7 +598,7 @@ html,body{margin:0;background:#0e0c09}
 
 .nv.nv2 .dc-rack-t{font:600 26px var(--head);color:var(--tx);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid #1b2230;letter-spacing:.01em}
 .nv.nv2 .dc-role{margin-bottom:0}
-@container site (max-width:640px){.nv.nv2 .dc-rack-t{font-size:21px;margin-bottom:16px}}
+@container site (max-width:900px){.nv.nv2 .dc-rack-t{font-size:21px;margin-bottom:16px}}
 
 /* Desktop: a larger headshot beside the signature and role */
 @container site (min-width:641px){
@@ -650,6 +650,7 @@ html,body{margin:0;background:#0e0c09}
   .nv2 .xp-else{gap:12px}
 }
 @media (prefers-reduced-motion:reduce){.nv2 .xp-now,.nv2 .xp-row{opacity:1;transform:none;transition:none}}
+@container site (min-width:641px) and (max-width:900px){.nv2 .dc-pic{aspect-ratio:2/1!important}}
 
 </style>
 </head>
