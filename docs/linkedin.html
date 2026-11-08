@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>David Allen - Software Engineer, Mentor, Hobbyist</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Shadows+Into+Light&family=Anonymous+Pro&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-
-  <body>
-    <main>
-      <div class="linkedin-banner">
-        <div class="banner">
-          <span class="software">Software Engineer</span>
-          <span class="divider">|</span> <span class="teacher">Mentor</span>
-          <span class="divider">|</span> <span class="hobbyist">Hobbyist</span>
-        </div>
-        <div style="height: 80%">
-          <img src="images/davidallenshort.png" />
-          <p class="website">davidrallen.com</p>
-        </div>
-      </div>
-    </main>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1584">
+<title>David Allen · LinkedIn header</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* LinkedIn header: 1584 x 396. Open this page at that size and capture it.
+     The bottom-left corner sits under the profile photo, so it is left empty. */
+  html, body { margin: 0; background: #0e0c09; }
+  .banner {
+    position: relative; width: 1584px; height: 396px; overflow: hidden;
+    background: radial-gradient(circle, #2b3546 2px, transparent 2.4px) 0 0 / 30px 30px, #0e0c09;
+  }
+  .text { position: absolute; left: 372px; top: 120px; }
+  .kicker { font: 500 15px 'IBM Plex Mono', monospace; letter-spacing: .24em; text-transform: uppercase; color: #dca24a; margin: 0 0 14px; }
+  .title { font: 600 38px/1.1 'Chakra Petch', sans-serif; color: #d9e0e4; margin: 0; letter-spacing: .005em; }
+  .rule { width: 460px; height: 1px; background: #1b2230; margin: 22px 0 16px; }
+  .url { font: 500 15px 'IBM Plex Mono', monospace; letter-spacing: .16em; color: #9fbfd4; }
+  .sig { position: absolute; right: 64px; top: 70px; width: 480px; height: 240px; }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="text">
+      <p class="kicker">Fidelity Investments</p>
+      <h1 class="title">Director of Software Engineering</h1>
+      <div class="rule"></div>
+      <div class="url">davidrallen.com</div>
+    </div>
+    <svg class="sig" viewBox="0 0 791 396" role="img" aria-label="David Allen, signed">
+      <defs><filter id="gold" color-interpolation-filters="sRGB"><feFlood flood-color="#dca24a"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs>
+      <image href="images/davidallenshort.png" width="791" height="396" filter="url(#gold)"/>
+    </svg>
+  </div>
+</body>
 </html>
