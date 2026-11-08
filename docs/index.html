@@ -684,6 +684,16 @@ html,body{margin:0;background:#0e0c09}
   @keyframes mobIn{from{opacity:0;transform:translateY(6px)}}
   @keyframes mobPic{from{opacity:0}}
 }
+/* Smoother switching on phones and tablets: rows resize together, by their real height */
+@container site (max-width:900px){
+  .nv.nv2.w1 .dc-core{display:grid!important;grid-template-rows:58px 0fr;transition:grid-template-rows .5s cubic-bezier(.4,0,.2,1),background .4s!important}
+  .nv.nv2.w1 .dc-core.open{grid-template-rows:0px 1fr}
+  .nv.nv2.w1 .dc-core .dc-spine{height:auto!important;min-height:0;transition:opacity .25s .2s}
+  .nv.nv2.w1 .dc-core.open .dc-spine{height:auto!important;opacity:0;transition:opacity .15s}
+  .nv.nv2.w1 .dc-core .dc-x{max-height:none!important;min-height:0;overflow:hidden;visibility:visible!important;opacity:0!important;transition:opacity .18s!important}
+  .nv.nv2.w1 .dc-core.open .dc-x{opacity:1!important;transition:opacity .3s .15s!important}
+  .nv.nv2.w1 .dc-core.open .dc-txt > *{animation-duration:.35s}
+}
 
 </style>
 </head>
@@ -847,12 +857,35 @@ html,body{margin:0;background:#0e0c09}
     io.observe(xp);
   };
 })();
+(function () {
+  // Keep the tapped row where it is while the rows above it resize, so the page doesn't jump.
+  window.mobInit = function (host) {
+    const root = host.querySelector('.nv');
+    if (!root) return;
+    root.addEventListener('click', (ev) => {
+      const spine = ev.target.closest && ev.target.closest('.dc-spine');
+      if (!spine) return;
+      const core = spine.closest('.dc-core');
+      if (getComputedStyle(core).display !== 'grid' || core.classList.contains('open')) return;
+      const box = host.closest('.phone-scroll') || host.closest('.overlay-body');
+      const y0 = core.getBoundingClientRect().top;
+      const t0 = performance.now();
+      const step = (t) => {
+        const dy = core.getBoundingClientRect().top - y0;
+        if (Math.abs(dy) > 0.5) { if (box) box.scrollTop += dy; else window.scrollBy(0, dy); }
+        if (t - t0 < 650) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, true);
+  };
+})();
 
 (function () {
   var b = document.body;
   if (window.nvInit) window.nvInit(b);
   if (window.nv5Init) window.nv5Init(b);
   if (window.xpInit) window.xpInit(b);
+  if (window.mobInit) window.mobInit(b);
 })();
 </script>
 </body>
