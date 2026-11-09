@@ -654,6 +654,10 @@ html,body{margin:0;background:#0e0c09}
 @container site (min-width:641px) and (max-width:900px){.nv2 .dc-pic{aspect-ratio:2/1!important}}
 /* Headshot: no border, cut corners like the cards */
 .nv.nv2 .dc-hero .dc-photo{border:0!important;padding:0!important;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+/* Alternate gold and steel tints, like How I got started */
+.nv2 .xp-now{background:color-mix(in srgb,var(--gold) 8%,#10141c)}
+.nv2 .xp-row:nth-child(even){background:color-mix(in srgb,var(--steel) 8%,#10141c)}
+.nv2 .xp-row:nth-child(odd){background:color-mix(in srgb,var(--gold) 8%,#10141c)}
 /* Phone and tablet: the row you tap becomes the description, the picture follows */
 @container site (max-width:900px){
   .nv.nv2.w1 .dc-core .dc-spine{height:58px!important;overflow:hidden;transition:height .45s cubic-bezier(.6,0,.2,1),opacity .2s}
