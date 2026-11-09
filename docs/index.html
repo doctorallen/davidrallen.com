@@ -704,8 +704,8 @@ html,body{margin:0;background:#0e0c09}
 @media (max-width:640px){.nv.nv2{padding:30px 12px 32px!important}}
 @media (min-width:641px) and (max-width:900px){.nv.nv2{padding-left:24px!important;padding-right:24px!important}}
 
-/* Spines never move vertically: no hover lift, and no lift when the card opens (the old open state had one). */
-.nv.nv2.w1 .dc-spine:hover,.nv.nv2.w1 .dc-core.open .dc-spine{transform:none!important}
+/* Cards never move vertically: no hover lift on the card or its spine, and no lift when a card opens. */
+.nv.nv2.w1 .dc-core:hover,.nv.nv2.w1 .dc-spine:hover,.nv.nv2.w1 .dc-core.open .dc-spine{transform:none!important}
 /* ===================== How I got started ===================== */
 .nv2 .gs{max-width:1180px;margin:56px auto 0}
 .nv2 .gs-lede{margin:-6px 0 22px;color:var(--mu);font-size:16px;line-height:1.6;max-width:640px}
