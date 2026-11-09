@@ -696,6 +696,9 @@ html,body{margin:0;background:#0e0c09}
   .nv.nv2.w1 .dc-core.open .dc-x{opacity:1!important;transition:opacity .3s .15s!important}
   .nv.nv2.w1 .dc-core.open .dc-txt > *{animation-duration:.35s}
 }
+/* Phones: narrower side margins so the content runs wider */
+@media (max-width:640px){.nv.nv2{padding:30px 12px 32px!important}}
+@media (min-width:641px) and (max-width:900px){.nv.nv2{padding-left:24px!important;padding-right:24px!important}}
 /* ===================== How I got started ===================== */
 .nv2 .gs{max-width:1180px;margin:56px auto 0}
 .nv2 .gs-lede{margin:-6px 0 22px;color:var(--mu);font-size:16px;line-height:1.6;max-width:640px}
