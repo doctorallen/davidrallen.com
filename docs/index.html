@@ -947,8 +947,9 @@ html,body{margin:0;background:#0e0c09}
       const top = getY() + rect.top - viewTop(), bottom = top + rect.height, vh = viewH();
       let endTop = top - OFFSET;
       if (!stacked) {
-        if (top - OFFSET < start) endTop = top - OFFSET;
-        else if (bottom + OFFSET > start + vh) endTop = Math.min(top - OFFSET, bottom + OFFSET - vh);
+        // Only move when the card is actually cut off; a card that is fully visible stays put.
+        if (top < start) endTop = top - OFFSET;
+        else if (bottom > start + vh) endTop = Math.min(top - OFFSET, bottom + OFFSET - vh);
         else endTop = start;
       }
       const end = Math.max(0, Math.min(endTop, fullH() - vh));
@@ -957,7 +958,7 @@ html,body{margin:0;background:#0e0c09}
       void root.offsetHeight;
       root.classList.remove('nv-instant');
       void root.offsetHeight;
-      if (Math.abs(end - start) < 1) return;
+      if (Math.abs(end - start) < 4) return;
       // The page's own handler now opens the card with transitions; scroll in step with it.
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { requestAnimationFrame(() => setY(end)); return; }
       const t0 = performance.now();
