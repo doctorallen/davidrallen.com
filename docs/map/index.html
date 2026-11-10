@@ -353,11 +353,15 @@ function tactical(root, host) {
   const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
   // on phones the same tilted plane, seen from higher up and with a little perspective, so it fills a tall frame
+  const V = { s: 1, x: 0, y: 0, used: false };
   const P = (x, y, z) => {
     const c = Math.cos(th), s = Math.sin(th); const rx = x * c - y * s, ry = x * s + y * c;
-    if (PV.on) { const q = 1 / (1 + ry * PV.pp); return [C.x + rx * PV.kx * q, C.y + ry * PV.ky * q - (z || 0) * PV.ky * ZS * q]; }
-    return [C.x + rx * K, C.y + ry * K * TILT - (z || 0) * K * ZS];
+    let sx, sy;
+    if (PV.on) { const q = 1 / (1 + ry * PV.pp); sx = C.x + rx * PV.kx * q; sy = C.y + ry * PV.ky * q - (z || 0) * PV.ky * ZS * q; }
+    else { sx = C.x + rx * K; sy = C.y + ry * K * TILT - (z || 0) * K * ZS; }
+    return [C.x + (sx - C.x) * V.s + V.x, C.y + (sy - C.y) * V.s + V.y];
   };
+  const clampV = () => { V.s = Math.max(1, Math.min(4, V.s)); const mx = A.w * (V.s - 1) * .5 + 40, my = A.h * (V.s - 1) * .5 + 40; V.x = Math.max(-mx, Math.min(mx, V.x)); V.y = Math.max(-my, Math.min(my, V.y)); if (V.s === 1) { V.x = 0; V.y = 0; } };
   // a ring on the plane, as a sampled path (an ellipse in the tilted view, a perspective curve in the other)
   const ring = (r) => { ctx.beginPath(); for (let i = 0; i <= 64; i++) { const a = i / 64 * Math.PI * 2; const [x, y] = P(Math.cos(a) * r, Math.sin(a) * r, 0); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); };
   const place = () => nodes.forEach((n) => { const [x, y] = P(n.px, n.py, n.pz); const [fx, fy] = P(n.px, n.py, 0); n.x = x; n.y = y; n.fx = fx; n.fy = fy; n.range = Math.hypot(n.px, n.py, n.pz) / 200; n.brg = ((Math.atan2(n.py, n.px) + th) * 180 / Math.PI + 450) % 360; });
@@ -387,13 +391,44 @@ function tactical(root, host) {
     typing = setInterval(() => { i += 3; rP.textContent = n.p.slice(0, i); if (i >= n.p.length) { clearInterval(typing); typing = null; rP.textContent = n.p; if (n.items) { rItems.innerHTML = n.items.map(([h, d]) => '<div><b>' + esc(h) + '</b><span>' + esc(d) + '</span></div>').join(''); rItems.hidden = false; } } }, 16);
     Object.values(rows).forEach((b) => b.classList.toggle('on', b.dataset.id === n.id));
     burn = n === you ? null : { n, t0: performance.now(), dur: 1400 + n.range * 900, logged: 0 };
+    // zoomed in: pan so the lock is on screen
+    if (V.s > 1 && (n.x < A.x + 30 || n.x > A.x + A.w - 30 || n.y < A.y + 40 || n.y > A.y + A.h - 30)) { V.x += C.x - n.x; V.y += C.y - n.y; clampV(); }
     if (!quiet) log(n === you ? 'Holding at HOME.' : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn plotted, ETA ' + fmtT(burn.dur) + '.');
   };
   const near = (x, y) => { let best = null, bd = phone ? 30 : 20; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
   const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
-  cv.addEventListener('pointermove', (ev) => { const [x, y] = pos(ev); hover = near(x, y); cv.style.cursor = hover ? 'pointer' : 'default'; });
+  const ptrs = new Map(); let pinch = null, drag = null, lastTap = 0;
+  cv.style.touchAction = 'none';
+  cv.addEventListener('pointermove', (ev) => {
+    const [x, y] = pos(ev);
+    if (ptrs.has(ev.pointerId)) ptrs.set(ev.pointerId, [x, y]);
+    if (pinch && ptrs.size >= 2) {
+      const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]), mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      const s = Math.max(1, Math.min(4, pinch.s * d / pinch.d));
+      // zoom about the pinch midpoint, then follow it
+      V.s = s; V.x = pinch.x + (mx - pinch.mx) + (pinch.mx - C.x - pinch.x) * (1 - s / pinch.s); V.y = pinch.y + (my - pinch.my) + (pinch.my - C.y - pinch.y) * (1 - s / pinch.s); clampV(); V.used = true; return;
+    }
+    if (drag && ptrs.size === 1) { const dx = x - drag.x0, dy = y - drag.y0; if (drag.on || Math.hypot(dx, dy) > 8) { drag.on = true; if (V.s > 1) { V.x = drag.vx + dx; V.y = drag.vy + dy; clampV(); } } return; }
+    if (ev.pointerType === 'mouse') { hover = near(x, y); cv.style.cursor = hover ? 'pointer' : V.s > 1 ? 'grab' : 'default'; }
+  });
   cv.addEventListener('pointerleave', () => { hover = null; });
-  cv.addEventListener('pointerdown', (ev) => { const [x, y] = pos(ev); const n = near(x, y); focusBox(); if (n) select(n); });
+  cv.addEventListener('pointerdown', (ev) => {
+    const [x, y] = pos(ev); ptrs.set(ev.pointerId, [x, y]); try { cv.setPointerCapture(ev.pointerId); } catch (e) {}
+    if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]) || 1, mx: (a[0] + b[0]) / 2, my: (a[1] + b[1]) / 2, s: V.s, x: V.x, y: V.y }; drag = null; return; }
+    if (ptrs.size === 1) drag = { x0: x, y0: y, vx: V.x, vy: V.y, on: false, t0: performance.now() };
+  });
+  const endPtr = (ev) => {
+    const [x, y] = pos(ev); const wasPinch = !!pinch;
+    ptrs.delete(ev.pointerId); if (ptrs.size < 2) pinch = null;
+    if (!wasPinch && drag && !drag.on && performance.now() - drag.t0 < 600) {
+      const now = performance.now();
+      if (now - lastTap < 320) { V.s = 1; V.x = 0; V.y = 0; lastTap = 0; }
+      else { lastTap = now; const n = near(x, y); focusBox(); if (n) select(n); }
+    }
+    if (ptrs.size === 0) drag = null;
+  };
+  cv.addEventListener('pointerup', endPtr); cv.addEventListener('pointercancel', endPtr);
+  cv.addEventListener('wheel', (ev) => { if (!ev.ctrlKey && !ev.metaKey) return; ev.preventDefault(); const [x, y] = pos(ev); const s0 = V.s; V.s = Math.max(1, Math.min(4, V.s * Math.exp(-ev.deltaY * .01))); V.x = (x - C.x) - ((x - C.x) - V.x) * (V.s / s0); V.y = (y - C.y) - ((y - C.y) - V.y) * (V.s / s0); clampV(); V.used = true; }, { passive: false });
   const step = (d) => { const i = sel ? nodes.indexOf(sel) : -1; select(nodes[(i + d + nodes.length) % nodes.length]); };
   box.addEventListener('keydown', (ev) => {
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); step(1); }
@@ -521,6 +556,7 @@ function tactical(root, host) {
       ctx.font = mono(7); ctx.fillStyle = DIM; wide('TRACKING ' + String(nodes.length - 1).padStart(2, '0'), bx, by + rows.length * lh + 2, 'right');
     }
     ctx.textAlign = 'left'; ctx.fillStyle = DIM; ctx.font = mono(7); wide('DRA-NAV-0001', A.x + 10, A.y + 14, 'left');
+    if (phone && !V.used) wide('PINCH TO ZOOM', A.x + 10, A.y + A.h - 10, 'left'); else if (V.s > 1.01) { wide('ZOOM ' + V.s.toFixed(1) + '× · DOUBLE-TAP RESETS', A.x + 10, A.y + A.h - 10, 'left'); }
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
