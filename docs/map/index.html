@@ -214,9 +214,14 @@ body{overflow:hidden}
   .fc.tac .sc-data div{padding:7px 0}
   .fc.tac .sc-data div:last-child{border-bottom:1px solid #12263a}
   .fc.tac .sc-data b{font-size:13px}
-  .fc.tac .sc-read-pic{float:right;width:104px;height:66px;margin:8px 0 4px 12px}
+  .fc.tac .sc-read{-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-top:6px}
+  .fc.tac .sc-read::-webkit-scrollbar{display:none}
+  .fc.tac .sc-read-pic{float:none;width:100%;height:clamp(120px,38vw,180px);margin:10px 0 2px;box-shadow:none}
+  .fc.tac .sc-read-pic.you img{filter:grayscale(1) contrast(1.05)}
+  .fc.tac .sc-read-pic.logo img{inset:14% 18%;width:64%;height:72%}
+  .fc.tac .sc-read-pic.you{display:block;float:right;width:96px;height:96px;margin:8px 0 6px 12px}
   .fc.tac .sc-read-p{margin-top:12px;line-height:1.5}
-  .fc.tac .sc-read-a{margin-top:12px;gap:8px}
+  .fc.tac .sc-read-a{margin-top:12px;gap:8px;padding-bottom:6px}
   .fc.tac .sc-read-a a{height:40px;line-height:38px;padding:0 18px;font-size:11px;min-width:96px;text-align:center}
   .fc.tac .sc-foot{left:14px;right:14px;bottom:0;height:44px;align-items:center;font-size:9px}
   .fc.tac .sc-foot>span:first-child{display:none}
@@ -231,6 +236,9 @@ body{overflow:hidden}
 
 /* the ship picker */
 .ship-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.home-pick{grid-template-columns:repeat(5,1fr)}
+.home-pick canvas{height:110px}
+@media (max-width:900px){.home-pick{grid-template-columns:repeat(3,1fr)}}
 .ship-opt{position:relative;display:block;cursor:pointer;padding:14px 14px 16px;background:#070a12;border:1px solid #223449;border-radius:6px}
 .ship-opt.on{border-color:#d4922c;box-shadow:inset 0 0 0 1px #d4922c}
 .ship-opt input{position:absolute;opacity:0;width:0;height:0}
@@ -333,6 +341,72 @@ const SHIPS = (() => {
 })();
 window.SHIPS = SHIPS;
 window.drawShip = (ctx, k, thrust, t) => (SHIPS[k] || SHIPS.dart)(ctx, thrust, t);
+// What sits at HOME. Each draws at the origin on the tilted plane; TILT flattens anything that lies on the plane.
+const HOMES = (() => {
+  const O = '#d4922c', BLUE = '#9ad0ea', LINE = '#2f5f80', BG = '#04060b';
+  const ell = (ctx, x, y, r, tilt) => { ctx.beginPath(); ctx.ellipse(x, y, r, r * tilt, 0, 0, Math.PI * 2); };
+  const beacon = (ctx, x, y, t) => { ctx.fillStyle = (t >> 4) & 1 ? '#fff' : O; ctx.fillRect(x - 1.5, y - 1.5, 3, 3); };
+  return {
+    // 1. Ring station: a turning ring with six spokes, three docking arms, a hub and a tower.
+    ring: (ctx, t, lit, TILT) => {
+      const rot = t * .004, col = lit ? O : BLUE;
+      ctx.strokeStyle = LINE; ctx.lineWidth = 1; ell(ctx, 0, 0, 32, TILT); ctx.stroke();
+      ctx.strokeStyle = col; ctx.lineWidth = 2.5; ell(ctx, 0, 0, 22, TILT); ctx.stroke();
+      ctx.lineWidth = 1; for (let k = 0; k < 6; k++) { const a = rot + k * Math.PI / 3; const ex = Math.cos(a), ey = Math.sin(a) * TILT; ctx.beginPath(); ctx.moveTo(ex * 6, ey * 6); ctx.lineTo(ex * 22, ey * 22); ctx.stroke(); if (k % 2 === 0) { ctx.fillStyle = col; ctx.fillRect(ex * 27 - 2.5, ey * 27 - 1.5, 5, 3); } }
+      ctx.fillStyle = BG; ctx.beginPath(); ctx.ellipse(0, 0, 7, 7 * TILT + 1.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.stroke();
+      ctx.fillStyle = O; ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -3); ctx.lineTo(0, -24); ctx.stroke(); beacon(ctx, 0, -25.5, t);
+    },
+    // 2. Spindle: a tall mast with two counter-rotating rings at different heights. An orbital tower.
+    spindle: (ctx, t, lit, TILT) => {
+      const col = lit ? O : BLUE;
+      ctx.strokeStyle = LINE; ctx.lineWidth = 1; ell(ctx, 0, 0, 26, TILT); ctx.stroke();
+      ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(0, 8 * TILT); ctx.lineTo(0, -38); ctx.stroke();
+      [[0, 18, t * .006, 1], [-16, 11, -t * .009, 1], [-30, 6, t * .012, .6]].forEach(([y, r, rot, w]) => {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.5 * w; ell(ctx, 0, y, r, TILT); ctx.stroke();
+        ctx.lineWidth = 1; for (let k = 0; k < 4; k++) { const a = rot + k * Math.PI / 2; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Math.cos(a) * r, y + Math.sin(a) * r * TILT); ctx.stroke(); ctx.fillStyle = col; ctx.fillRect(Math.cos(a) * r - 1.5, y + Math.sin(a) * r * TILT - 1.5, 3, 3); }
+      });
+      ctx.fillStyle = O; ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
+      beacon(ctx, 0, -40, t);
+    },
+    // 3. Drydock: an open gantry on the plane with a hull on the cradle inside. Where things get built.
+    drydock: (ctx, t, lit, TILT) => {
+      const col = lit ? O : BLUE, w = 24, d = 13, h = 15;
+      const c = [[-w, -d], [w, -d], [w, d], [-w, d]].map(([x, y]) => [x, y * TILT]);
+      ctx.strokeStyle = LINE; ctx.lineWidth = 1; ell(ctx, 0, 0, 34, TILT); ctx.stroke();
+      ctx.strokeStyle = col; ctx.lineWidth = 1.2;
+      ctx.beginPath(); c.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.stroke();
+      ctx.beginPath(); c.forEach(([x, y], i) => i ? ctx.lineTo(x, y - h) : ctx.moveTo(x, y - h)); ctx.closePath(); ctx.stroke();
+      ctx.lineWidth = 1; c.forEach(([x, y]) => { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y - h); ctx.stroke(); });
+      ctx.strokeStyle = LINE; [[0, 1], [3, 2]].forEach(([i, j]) => { ctx.beginPath(); ctx.moveTo(c[i][0], c[i][1]); ctx.lineTo(c[j][0], c[j][1] - h); ctx.moveTo(c[j][0], c[j][1]); ctx.lineTo(c[i][0], c[i][1] - h); ctx.stroke(); });
+      // the hull on the cradle, drawn in orange
+      ctx.fillStyle = BG; ctx.strokeStyle = O; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(13, -6); ctx.lineTo(-9, -6 - 4.5 * TILT); ctx.lineTo(-6, -6); ctx.lineTo(-9, -6 + 4.5 * TILT); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = (t >> 3) & 1 ? O : '#fff'; ctx.fillRect(-w - 1.5, -d * TILT - h - 1.5, 3, 3); ctx.fillRect(w - 1.5, -d * TILT - h - 1.5, 3, 3);
+      ctx.fillStyle = (t >> 3) & 1 ? '#fff' : O; ctx.fillRect(-w - 1.5, d * TILT - h - 1.5, 3, 3); ctx.fillRect(w - 1.5, d * TILT - h - 1.5, 3, 3);
+    },
+    // 4. Nav beacon: a hex platform, a mast, and a ping that spreads across the plane every couple of seconds.
+    beacon: (ctx, t, lit, TILT) => {
+      const col = lit ? O : BLUE;
+      const u = (t % 150) / 150; ctx.strokeStyle = 'rgba(154,208,234,' + (0.6 * (1 - u)).toFixed(2) + ')'; ctx.lineWidth = 1; ell(ctx, 0, 0, 10 + u * 42, TILT); ctx.stroke();
+      const u2 = ((t + 75) % 150) / 150; ctx.strokeStyle = 'rgba(154,208,234,' + (0.6 * (1 - u2)).toFixed(2) + ')'; ell(ctx, 0, 0, 10 + u2 * 42, TILT); ctx.stroke();
+      ctx.fillStyle = BG; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.beginPath(); for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; const x = Math.cos(a) * 11, y = Math.sin(a) * 11 * TILT; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -30); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-6, -22); ctx.lineTo(6, -22); ctx.moveTo(-4, -16); ctx.lineTo(4, -16); ctx.stroke();
+      ctx.fillStyle = O; ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
+      beacon(ctx, 0, -32, t);
+    },
+    // 5. Star: the system's centre of gravity. A glowing disc with a slowly turning corona.
+    star: (ctx, t, lit, TILT) => {
+      const col = lit ? '#fff' : O, rot = t * .003;
+      ctx.strokeStyle = LINE; ctx.lineWidth = 1; ell(ctx, 0, 0, 30, TILT); ctx.stroke();
+      ctx.strokeStyle = col; for (let k = 0; k < 12; k++) { const a = rot + k * Math.PI / 6, l = k % 2 ? 16 : 22; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 11, Math.sin(a) * 11); ctx.lineTo(Math.cos(a) * l, Math.sin(a) * l); ctx.stroke(); }
+      ctx.save(); ctx.shadowColor = O; ctx.shadowBlur = 18; ctx.fillStyle = O; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      ctx.fillStyle = '#fff6e0'; ctx.beginPath(); ctx.arc(0, 0, 3.5, 0, Math.PI * 2); ctx.fill();
+    },
+  };
+})();
+window.HOMES = HOMES;
+window.drawHome = (ctx, k, t, lit, tilt) => (HOMES[k] || HOMES.ring)(ctx, t, lit, tilt);
 // C3. Tactical plot, after the UNN / Razorback screens: thin light-blue rules, ID codes over section titles,
 // hex contacts with a dot, an orange tag on the lock, a dash-dot crosshair, square ticks on the frame, a system terminal.
 function tactical(root, host) {
@@ -379,18 +453,18 @@ function tactical(root, host) {
       // phones: the same tilt as the desktop plane, no perspective; the frame is only as tall as the plane needs
       PV.on = phone; PV.pp = 0; PV.kx = (A.w / 2 - 22) / 340;
       const tiltP = .46; PV.ky = PV.kx * tiltP; TILT = .46; ZS = phone ? 1.1 : .85;
-      A.h = phone ? Math.min(ch * .56, Math.round(2 * 340 * PV.ky + 190)) : ch - 92 - 160;
-      C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 22 : 16);
+      A.h = phone ? Math.min(ch * .5, Math.round(2 * 340 * PV.ky + 172)) : ch - 92 - 160;
+      C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 16 : 16);
       K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
     }
     box.classList.toggle('short', short);
   };
-  const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); if (phone) { read.style.top = (A.y + A.h + 14) + 'px'; read.style.bottom = 'auto'; } else { read.style.top = ''; read.style.bottom = ''; } };
+  const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); if (phone) { read.style.top = (A.y + A.h + 12) + 'px'; read.style.bottom = '44px'; read.style.overflow = 'auto'; } else { read.style.top = ''; read.style.bottom = ''; read.style.overflow = ''; } };
   resize();
   try { new ResizeObserver(resize).observe(box); } catch (e) { window.addEventListener('resize', resize); }
   let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
   const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
-  const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
+  const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0, at: you };
   // on phones the same tilted plane, seen from higher up and with a little perspective, so it fills a tall frame
   const V = { s: 1, x: 0, y: 0, used: false };
   const P = (x, y, z) => {
@@ -429,10 +503,12 @@ function tactical(root, host) {
     rItems.innerHTML = ''; rItems.hidden = true;
     typing = setInterval(() => { i += 3; rP.textContent = n.p.slice(0, i); if (i >= n.p.length) { clearInterval(typing); typing = null; rP.textContent = n.p; if (n.items) { rItems.innerHTML = n.items.map(([h, d]) => '<div><b>' + esc(h) + '</b><span>' + esc(d) + '</span></div>').join(''); rItems.hidden = false; } } }, 16);
     Object.values(rows).forEach((b) => b.classList.toggle('on', b.dataset.id === n.id));
-    burn = n === you ? null : { n, t0: performance.now(), dur: 1400 + n.range * 900, logged: 0 };
+    const from = ship.at;
+    if (n === from) burn = null;
+    else { const leg = Math.hypot(n.px - from.px, n.py - from.py, n.pz - from.pz) / 200; burn = { n, from, leg, t0: performance.now(), dur: 1400 + leg * 900, logged: 0 }; }
     // zoomed in: pan so the lock is on screen
     if (V.s > 1 && (n.x < A.x + 30 || n.x > A.x + A.w - 30 || n.y < A.y + 40 || n.y > A.y + A.h - 30)) { V.x += C.x - n.x; V.y += C.y - n.y; clampV(); }
-    if (!quiet) log(n === you ? 'Holding at HOME.' : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn plotted, ETA ' + fmtT(burn.dur) + '.');
+    if (!quiet) log(!burn ? (n === you ? 'Holding at HOME.' : 'Already on station at ' + n.code + '.') : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn ' + from.code + ' → ' + n.code + ', ETA ' + fmtT(burn.dur) + '.');
   };
   const near = (x, y) => { let best = null, bd = fine ? 20 : 30; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
   const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
@@ -521,15 +597,15 @@ function tactical(root, host) {
     // burn plan: straight to the lock; accelerate, flip, decelerate
     let phase = 'idle', prog = 0;
     if (burn) {
-      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, f = burn.from, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
       prog = u; phase = u >= 1 ? 'station' : u < .47 ? 'burn' : u < .53 ? 'flip' : 'decel';
       if (phase === 'flip' && burn.logged < 1) { burn.logged = 1; log('Flip.'); }
-      if (phase === 'station' && burn.logged < 2) { burn.logged = 2; log('On station at ' + n.code + '. Range ' + fmtR(n.range) + '.'); }
-      ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(you.x, you.y); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.setLineDash([]);
-      const mx = (you.x + n.x) / 2, my = (you.y + n.y) / 2, ang = Math.atan2(n.y - you.y, n.x - you.x);
+      if (phase === 'station' && burn.logged < 2) { burn.logged = 2; ship.at = n; log('On station at ' + n.code + '. Range ' + fmtR(n.range) + ' from HOME.'); }
+      ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(f.x, f.y); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.setLineDash([]);
+      const mx = (f.x + n.x) / 2, my = (f.y + n.y) / 2, ang = Math.atan2(n.y - f.y, n.x - f.x);
       ctx.save(); ctx.translate(mx, my); ctx.rotate(ang); ctx.strokeStyle = phase === 'flip' ? '#fff' : ORANGE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(0, 6); ctx.stroke(); ctx.restore();
       if (!dense) { ctx.font = mono(8); ctx.fillStyle = phase === 'flip' ? '#fff' : DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); }
-      ship.x = you.x + (n.x - you.x) * e; ship.y = you.y + (n.y - you.y) * e; ship.a = ang + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
+      ship.x = f.x + (n.x - f.x) * e; ship.y = f.y + (n.y - f.y) * e; ship.a = ang + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
       if (eta) { eta.textContent = u < 1 ? (phase === 'flip' ? 'Flip' : (phase === 'decel' ? 'Decel · ETA ' : 'Burn · ETA ') + fmtT(burn.dur * (1 - u))) : 'On station'; eta.classList.toggle('ok', u >= 1); }
     } else { ship.state = 'docked'; ship.thrust = 0; if (eta) { eta.textContent = sel === you ? 'Holding at home' : 'No burn'; eta.classList.toggle('ok', sel === you); } }
 
@@ -548,14 +624,7 @@ function tactical(root, host) {
       if (n.kind === 'log') {
         ctx.strokeStyle = on ? ORANGE : hv ? '#fff' : GREY; ctx.lineWidth = on ? 1.5 : 1; ctx.beginPath(); ctx.arc(n.x, n.y, 5, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = lit ? ORANGE : GREY; ctx.beginPath(); ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2); ctx.fill();
       } else if (n === you) {
-        // the station: a turning ring with spokes and docking arms on the plane, a hub, and a tower with a beacon
-        const rot = t * .004, col = lit ? ORANGE : BLUE;
-        ctx.strokeStyle = LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(n.x, n.y, 32, 32 * TILT, 0, 0, Math.PI * 2); ctx.stroke();
-        ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.ellipse(n.x, n.y, 22, 22 * TILT, 0, 0, Math.PI * 2); ctx.stroke();
-        ctx.lineWidth = 1; for (let k = 0; k < 6; k++) { const a = rot + k * Math.PI / 3; const ex = Math.cos(a), ey = Math.sin(a) * TILT; ctx.beginPath(); ctx.moveTo(n.x + ex * 6, n.y + ey * 6); ctx.lineTo(n.x + ex * 22, n.y + ey * 22); ctx.stroke(); if (k % 2 === 0) { ctx.fillStyle = col; ctx.fillRect(n.x + ex * 27 - 2.5, n.y + ey * 27 - 1.5, 5, 3); } }
-        ctx.fillStyle = '#04060b'; ctx.beginPath(); ctx.ellipse(n.x, n.y, 7, 7 * TILT + 1.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.stroke();
-        ctx.fillStyle = ORANGE; ctx.beginPath(); ctx.arc(n.x, n.y, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(n.x, n.y - 3); ctx.lineTo(n.x, n.y - 24); ctx.stroke(); ctx.fillStyle = (t >> 4) & 1 ? '#fff' : ORANGE; ctx.fillRect(n.x - 1.5, n.y - 27, 3, 3);
+        ctx.save(); ctx.translate(n.x, n.y); window.drawHome(ctx, window.HOME || 'ring', t, lit, TILT); ctx.restore();
       } else {
         hex(n.x, n.y, 7); ctx.fillStyle = '#04060b'; ctx.fill(); ctx.strokeStyle = on ? ORANGE : hv ? '#fff' : n.kind === 'job' ? GREY : BLUE; ctx.lineWidth = on ? 1.5 : 1; ctx.stroke();
         ctx.fillStyle = n.kind === 'job' ? GREY : n.tint; ctx.beginPath(); ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2); ctx.fill();
