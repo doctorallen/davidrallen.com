@@ -515,6 +515,8 @@ function tactical(root, host) {
   let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
   const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0, at: you };
+  const B = (b, u) => { const a = b.from, m = b.ctl, z = b.n, s = 1 - u; return { px: s * s * a.px + 2 * s * u * m.px + u * u * z.px, py: s * s * a.py + 2 * s * u * m.py + u * u * z.py, pz: s * s * a.pz + 2 * s * u * m.pz + u * u * z.pz }; };
+  const Bt = (b, u) => { const a = b.from, m = b.ctl, z = b.n; return { px: 2 * (1 - u) * (m.px - a.px) + 2 * u * (z.px - m.px), py: 2 * (1 - u) * (m.py - a.py) + 2 * u * (z.py - m.py), pz: 2 * (1 - u) * (m.pz - a.pz) + 2 * u * (z.pz - m.pz) }; };
   // on phones the same tilted plane, seen from higher up and with a little perspective, so it fills a tall frame
   const V = { s: 1, x: 0, y: 0, used: false };
   const P = (x, y, z) => {
@@ -553,16 +555,24 @@ function tactical(root, host) {
     rItems.innerHTML = ''; rItems.hidden = true;
     typing = setInterval(() => { i += 3; rP.textContent = n.p.slice(0, i); if (i >= n.p.length) { clearInterval(typing); typing = null; rP.textContent = n.p; if (n.items) { rItems.innerHTML = n.items.map(([h, d]) => '<div><b>' + esc(h) + '</b><span>' + esc(d) + '</span></div>').join(''); rItems.hidden = false; } } }, 16);
     Object.values(rows).forEach((b) => b.classList.toggle('on', b.dataset.id === n.id));
-    // depart from wherever the ship is: the last stop, or mid-leg if a burn is still under way
-    let from = ship.at;
+    // depart from wherever the ship is. From rest the plan is a straight line; diverted mid-leg it keeps its momentum,
+    // so the new plan bends out of the old heading before coming round onto the target.
+    let from = ship.at, ctl = null;
     if (burn && burn.n !== n && performance.now() - burn.t0 < burn.dur) {
-      const u = (performance.now() - burn.t0) / burn.dur, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2, a = burn.from, b = burn.n;
-      from = { code: 'EN ROUTE', px: a.px + (b.px - a.px) * e, py: a.py + (b.py - a.py) * e, pz: a.pz + (b.pz - a.pz) * e, virtual: true };
+      const u = (performance.now() - burn.t0) / burn.dur, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2, speed = u < .5 ? 4 * u : 4 * (1 - u);
+      const at = B(burn, e), v = Bt(burn, e), vl = Math.hypot(v.px, v.py, v.pz) || 1;
+      from = Object.assign({ code: 'EN ROUTE', virtual: true }, at);
+      const legNew = Math.hypot(n.px - at.px, n.py - at.py, n.pz - at.pz);
+      const carry = Math.min(legNew * .7, burn.len * (speed / 2) * .5);
+      ctl = { px: at.px + v.px / vl * carry, py: at.py + v.py / vl * carry, pz: at.pz + v.pz / vl * carry };
     }
     if (n === from) burn = null;
-    else { const leg = Math.hypot(n.px - from.px, n.py - from.py, n.pz - from.pz) / 200; burn = { n, from, leg, t0: performance.now(), dur: 1400 + leg * 900, logged: 0 }; ship.at = from; }
-    // zoomed in: pan so the lock is on screen
-    if (V.s > 1 && (n.x < A.x + 30 || n.x > A.x + A.w - 30 || n.y < A.y + 40 || n.y > A.y + A.h - 30)) { V.x += C.x - n.x; V.y += C.y - n.y; clampV(); }
+    else {
+      if (!ctl) ctl = { px: (from.px + n.px) / 2, py: (from.py + n.py) / 2, pz: (from.pz + n.pz) / 2 };
+      const nb = { n, from, ctl, t0: performance.now(), logged: 0 };
+      let len = 0, prev = B(nb, 0); for (let i = 1; i <= 24; i++) { const q = B(nb, i / 24); len += Math.hypot(q.px - prev.px, q.py - prev.py, q.pz - prev.pz); prev = q; }
+      nb.len = len; nb.leg = len / 200; nb.dur = 1400 + nb.leg * 900; burn = nb; ship.at = from;
+    }
     if (!quiet) log(!burn ? (n === you ? 'Holding at HOME.' : 'Already on station at ' + n.code + '.') : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn ' + from.code + ' → ' + n.code + ', ETA ' + fmtT(burn.dur) + '.');
   };
   const near = (x, y) => { let best = null, bd = fine ? 20 : 30; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
@@ -652,16 +662,18 @@ function tactical(root, host) {
     // burn plan: straight to the lock; accelerate, flip, decelerate
     let phase = 'idle', prog = 0;
     if (burn) {
-      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, f0 = burn.from, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
-      const f = f0.virtual ? (([x, y]) => ({ x, y }))(P(f0.px, f0.py, f0.pz)) : f0;
+      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
       prog = u; phase = u >= 1 ? 'station' : u < .47 ? 'burn' : u < .53 ? 'flip' : 'decel';
       if (phase === 'flip' && burn.logged < 1) { burn.logged = 1; log('Flip.'); }
       if (phase === 'station' && burn.logged < 2) { burn.logged = 2; ship.at = n; log('On station at ' + n.code + '. Range ' + fmtR(n.range) + ' from HOME.'); }
-      ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(f.x, f.y); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.setLineDash([]);
-      const mx = (f.x + n.x) / 2, my = (f.y + n.y) / 2, ang = Math.atan2(n.y - f.y, n.x - f.x);
+      const S = (q) => P(q.px, q.py, q.pz);
+      ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.lineWidth = 1; ctx.beginPath();
+      for (let i = 0; i <= 28; i++) { const [x, y] = S(B(burn, i / 28)); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); ctx.setLineDash([]);
+      const [mx, my] = S(B(burn, .5)), [tx1, ty1] = S(B(burn, .52)), [tx0, ty0] = S(B(burn, .48)), ang = Math.atan2(ty1 - ty0, tx1 - tx0);
       ctx.save(); ctx.translate(mx, my); ctx.rotate(ang); ctx.strokeStyle = phase === 'flip' ? '#fff' : ORANGE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(0, 6); ctx.stroke(); ctx.restore();
       if (!dense) { ctx.font = mono(8); ctx.fillStyle = phase === 'flip' ? '#fff' : DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); }
-      ship.x = f.x + (n.x - f.x) * e; ship.y = f.y + (n.y - f.y) * e; ship.a = ang + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
+      const [sx, sy] = S(B(burn, e)), [ax, ay] = S(B(burn, Math.min(1, e + .01))), [bx, by] = S(B(burn, Math.max(0, e - .01)));
+      ship.x = sx; ship.y = sy; ship.a = Math.atan2(ay - by, ax - bx) + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
       if (eta) { eta.textContent = u < 1 ? (phase === 'flip' ? 'Flip' : (phase === 'decel' ? 'Decel · ETA ' : 'Burn · ETA ') + fmtT(burn.dur * (1 - u))) : 'On station'; eta.classList.toggle('ok', u >= 1); }
     } else { ship.state = 'docked'; ship.thrust = 0; if (eta) { eta.textContent = sel === you ? 'Holding at home' : 'No burn'; eta.classList.toggle('ok', sel === you); } }
 
