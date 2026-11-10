@@ -123,7 +123,7 @@ body{overflow:hidden}
 .fc.tac .tx-rail i{position:absolute;left:5px;width:3px;height:36px;background:var(--line)}
 .fc.tac .tx-rail .r1{top:120px;background:var(--gold)}.fc.tac .tx-rail .r2{top:164px;background:var(--blue)}
 .fc.tac .tx-rail em{position:absolute;left:4px;bottom:120px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
-.fc.tac .tx-head{position:absolute;left:26px;right:22px;top:20px;display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:start;pointer-events:none}
+.fc.tac .tx-head{position:absolute;left:26px;right:22px;top:20px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;pointer-events:none}
 .fc.tac .tx-head .tx-sec{max-width:280px}
 .fc.tac .tx-head-r{text-align:right;font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-top:14px}
 .fc.tac .tx-head-r span{display:block;margin-top:4px}
@@ -182,13 +182,11 @@ body{overflow:hidden}
 .fc.tac .sc-foot a{color:var(--blue)}
 .fc.tac .sc-foot a:hover{color:var(--gold)}
 @container site (max-width:640px){
-  .fc.tac .sc{height:640px}
+  .fc.tac .sc{height:790px}
   .fc.tac .tx-rail{display:none}
   .fc.tac .tx-head{left:14px;right:14px;top:12px;grid-template-columns:1fr auto;gap:10px;align-items:start}
   .fc.tac .tx-head .tx-sec b{font-size:11px}
-  .fc.tac .tx-head-r{grid-column:1;grid-row:2;text-align:left;padding-top:0;font-size:8px;letter-spacing:.12em}
-  .fc.tac .tx-head-r span{display:inline;margin:0 10px 0 0}
-  .fc.tac .sc-nav{grid-column:2;grid-row:1/3;margin:6px 0 0;gap:6px;pointer-events:auto}
+  .fc.tac .sc-nav{grid-column:2;margin:4px 0 0;gap:6px;pointer-events:auto}
   .fc.tac .sc-nav button{min-width:44px;height:40px;line-height:40px;padding:0 10px;font-size:10px}
   .fc.tac .sc-nav .tx-listbtn{display:inline-block}
   .fc.tac .tx-head{z-index:9}
@@ -205,14 +203,14 @@ body{overflow:hidden}
   .fc.tac .tx-chk{height:40px;padding:0 8px;font-size:9px}
   .fc.tac .tx-chk i{width:16px;height:16px}
   .fc.tac .tx-log{display:none}
-  .fc.tac .sc-read{left:14px;right:14px;top:auto;bottom:44px;width:auto;padding:0;font-size:14px}
+  .fc.tac .sc-read{left:14px;right:14px;top:auto;bottom:44px;width:auto;padding:0;font-size:13.5px}
   .fc.tac .sc-read .tx-sec b{font-size:19px}
   .fc.tac .sc-read-s{font-size:9px}
   .fc.tac .sc-data{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;border-bottom:0;margin-top:10px}
   .fc.tac .sc-data div{padding:7px 0}
   .fc.tac .sc-data div:last-child{border-bottom:1px solid #12263a}
   .fc.tac .sc-data b{font-size:13px}
-  .fc.tac .sc-read-pic{float:right;width:116px;height:74px;margin:12px 0 6px 12px}
+  .fc.tac .sc-read-pic{float:right;width:104px;height:66px;margin:8px 0 4px 12px}
   .fc.tac .sc-read-p{margin-top:12px;line-height:1.5}
   .fc.tac .sc-read-a{margin-top:12px;gap:8px}
   .fc.tac .sc-read-a a{height:40px;line-height:38px;padding:0 18px;font-size:11px;min-width:96px;text-align:center}
@@ -227,13 +225,23 @@ body{overflow:hidden}
   .fc .sc-rail{display:none}
 }
 
+/* the ship picker */
+.ship-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.ship-opt{position:relative;display:block;cursor:pointer;padding:14px 14px 16px;background:#070a12;border:1px solid #223449;border-radius:6px}
+.ship-opt.on{border-color:#d4922c;box-shadow:inset 0 0 0 1px #d4922c}
+.ship-opt input{position:absolute;opacity:0;width:0;height:0}
+.ship-opt canvas{display:block;width:150px;height:90px;margin:0 auto 10px;max-width:100%}
+.ship-opt b{display:block;font:600 15px 'Chakra Petch',sans-serif;color:#fff;letter-spacing:.04em}
+.ship-opt span{display:block;font:13px/1.45 Inter,system-ui,sans-serif;color:#9ba4af;margin-top:4px}
+@media (max-width:720px){.ship-pick{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
 <div class="o fc cc tac"><div class="sc" tabindex="0" aria-label="A tactical plot of David Allen's work. Click a contact to lock on; arrow keys move between contacts.">
 <canvas class="sc-c"></canvas>
 <aside class="tx-rail"><span>Navigation</span><i class="r1"></i><i class="r2"></i><em></em></aside>
-<header class="tx-head"><div class="tx-sec"><small>DRA-NAV-0001</small><b>Tactical plot</b></div><div class="tx-head-r"><span class="sc-lock">Lock: none</span><span class="sc-eta">No burn</span></div><div class="sc-nav"><button type="button" data-n="list" class="tx-listbtn" aria-label="Contacts">List</button><button type="button" data-n="home">Home</button><button type="button" data-n="prev" aria-label="Previous">&lsaquo;</button><button type="button" data-n="next" aria-label="Next">&rsaquo;</button></div></header>
+<header class="tx-head"><div class="tx-sec"><small>DRA-NAV-0001</small><b>Tactical plot</b></div><div class="sc-nav"><button type="button" data-n="list" class="tx-listbtn" aria-label="Contacts">List</button><button type="button" data-n="home">Home</button><button type="button" data-n="prev" aria-label="Previous">&lsaquo;</button><button type="button" data-n="next" aria-label="Next">&rsaquo;</button></div></header>
 <section class="tx-list"><div class="tx-sec"><small>DRA-TRK-0012</small><b>Contacts</b></div><div class="tx-cols"><span>ID &#9662;</span><span>Name</span><span>Range</span><span>Brg</span></div><div class="tx-rows"></div>
 <div class="tx-bar"><button type="button" data-n="lock">Lock</button><button type="button" data-n="open">Open</button><button type="button" data-n="home">Home</button><label class="tx-chk"><input type="checkbox" class="tx-auto"><i></i>Auto</label></div></section>
 <aside class="sc-read"><div class="tx-sec"><small class="sc-read-k">No lock</small><b class="sc-read-h"></b></div><div class="sc-read-s"></div><div class="sc-read-pic"></div><div class="sc-read-p"></div><div class="sc-read-a"></div></aside>
@@ -243,6 +251,54 @@ body{overflow:hidden}
 <script>
 window.FUN = {"role": "Director of Software Engineering", "co": "Fidelity Investments", "intro": "Writing software since 2005, from Flash games to more than a hundred client projects. I lead two teams in fixed income: Investment Tool Development and the User Experience Center of Excellence.", "links": [{"t": "Resume", "h": "https://davidrallen.com/resume.pdf"}, {"t": "LinkedIn", "h": "https://www.linkedin.com/in/davidallen03264/"}, {"t": "GitHub", "h": "https://github.com/doctorallen"}], "teams": [{"t": "Investment Tool Development", "d": "Tools for the portfolio managers, quants and traders behind more than $2.5T in fixed income."}, {"t": "User Experience Center of Excellence", "d": "UI components and standards for all of fixed income engineering."}], "projects": [{"id": "deckard", "name": "Deckard", "kind": "VS Code extension", "line": "A local-first second brain for the Markdown notes already in your workspace.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.deckard-notes", "img": "deckard-lockup.svg", "logo": true, "icon": "deckard-lockup.svg", "tint": "#d4922c"}, {"id": "esper", "name": "Esper Themes", "kind": "VS Code themes", "line": "Film-inspired, high-contrast color themes for VS Code.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.esper-themes", "img": "esper-themes-crop.svg", "logo": true, "icon": "esper-themes-crop.svg", "tint": "#9fbfd4"}, {"id": "tycho", "name": "Tycho", "kind": "Game engine", "line": "An engine for small, phone-first pixel games, with Tyrell, a minds engine, inside.", "lt": "Docs", "href": "https://doctorallen.github.io/tycho/", "img": "tycho-lockup.svg", "logo": true, "icon": "tycho-icon.svg", "tint": "#d4922c"}, {"id": "utwd", "name": "Under the White Dragon", "kind": "Side-scroller", "line": "Cyberpunk repair, from a basement under a noodle bar.", "lt": "Play", "href": "https://doctorallen.github.io/under-the-white-dragon/", "img": "g-utwd-skyline.jpg", "logo": false, "icon": "under-the-white-dragon-icon.svg", "tint": "#3fe0d0"}, {"id": "lodestar", "name": "Lodestar", "kind": "Top-down action", "line": "Carry a star's light across a dead world.", "lt": "Play", "href": "https://doctorallen.github.io/Lodestar/", "img": "lodestar-lockup.png", "logo": true, "icon": "lodestar-icon.svg", "tint": "#e8b75a"}, {"id": "merryfolk", "name": "Merryfolk", "kind": "Artificial life", "line": "Artificial life in a Shire-like village.", "lt": "Play", "href": "https://doctorallen.github.io/merryfolk/", "img": "g-merryfolk-hole.jpg", "logo": false, "icon": "merryfolk-icon.svg", "tint": "#8fc46a"}, {"id": "neo", "name": "NEO", "kind": "Roguelite", "line": "A five-minute roguelite in a dungeon of code.", "lt": "Play", "href": "https://doctorallen.github.io/Neo/", "img": "g-neo-wake.jpg", "logo": false, "icon": "neo-icon.svg", "tint": "#4be36b"}], "jobs": [{"w": "2024 \u2013 now", "co": "Fidelity Investments", "r": "Director, Software Engineering", "d": "Leading Investment Tool Development and the User Experience Center of Excellence in fixed income."}, {"w": "2022 \u2013 2024", "co": "Datamura Solutions", "r": "Director of Software Engineering", "d": "Built and led the team behind an operations and analytics platform for a Fortune 500 pharmaceutical company."}, {"w": "2020 \u2013 now", "co": "Esper Innovations", "r": "Founder", "d": "Custom software and consulting for a range of clients."}, {"w": "2019 \u2013 2020", "co": "University of New Hampshire", "r": "Adjunct instructor", "d": "Instructed two cohorts of a six-month full-stack bootcamp."}, {"w": "2012 \u2013 2019", "co": "The Atom Group", "r": "Senior software architect", "d": "Built software for more than 100 clients."}], "base": "../assets/"};
 (function () {
+// Ship designs for the tactical plot. Each draws in a frame pointing +x, about 20 units long, with a plume when thrust > 0.
+const SHIPS = (() => {
+  const O = '#d4922c', HULL = '#0a0d14', W = '#fff';
+  const plume = (ctx, x, y, thrust, t, w, seed) => {
+    if (thrust <= 0) return;
+    const fl = (7 + 4 * Math.sin(t * .7 + (seed || 0))) * thrust;
+    ctx.fillStyle = O + '66'; ctx.beginPath(); ctx.moveTo(x, y - w); ctx.lineTo(x - fl * 1.6, y); ctx.lineTo(x, y + w); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ffe2a8'; ctx.beginPath(); ctx.moveTo(x, y - w * .5); ctx.lineTo(x - fl, y); ctx.lineTo(x, y + w * .5); ctx.closePath(); ctx.fill();
+  };
+  const body = (ctx) => { ctx.fillStyle = HULL; ctx.strokeStyle = O; ctx.lineWidth = 1.2; ctx.fill(); ctx.stroke(); };
+  return {
+    // 1. Dart: one long arrowhead with a notched tail. The simplest.
+    dart: (ctx, thrust, t) => {
+      plume(ctx, -6, 0, thrust, t, 2.5);
+      ctx.beginPath(); ctx.moveTo(12, 0); ctx.lineTo(-7, -4.5); ctx.lineTo(-4.5, 0); ctx.lineTo(-7, 4.5); ctx.closePath(); body(ctx);
+      ctx.fillStyle = W; ctx.beginPath(); ctx.moveTo(6, 0); ctx.lineTo(2, -1.2); ctx.lineTo(2, 1.2); ctx.closePath(); ctx.fill();
+    },
+    // 2. Frigate: a long hull, two swept pods amidships, a drive bell. The current one, tidied.
+    frigate: (ctx, thrust, t) => {
+      plume(ctx, -11, 0, thrust, t, 2.5);
+      ctx.fillStyle = HULL; ctx.strokeStyle = O; ctx.lineWidth = 1.2;
+      ctx.fillRect(-4, -7, 7, 2.2); ctx.strokeRect(-4, -7, 7, 2.2); ctx.fillRect(-4, 4.8, 7, 2.2); ctx.strokeRect(-4, 4.8, 7, 2.2);
+      ctx.beginPath(); ctx.moveTo(12, 0); ctx.lineTo(5, -3); ctx.lineTo(-7, -3); ctx.lineTo(-9, -1.6); ctx.lineTo(-9, 1.6); ctx.lineTo(-7, 3); ctx.lineTo(5, 3); ctx.closePath(); body(ctx);
+      ctx.fillStyle = O; ctx.fillRect(-11, -1.6, 2.2, 3.2);
+      ctx.fillStyle = W; ctx.beginPath(); ctx.moveTo(8, 0); ctx.lineTo(3.5, -1.4); ctx.lineTo(3.5, 1.4); ctx.closePath(); ctx.fill();
+    },
+    // 3. Tug: a boxy body with a crossbar of cargo rails and lights on the ends. Industrial.
+    tug: (ctx, thrust, t) => {
+      plume(ctx, -9, 0, thrust, t, 3);
+      ctx.fillStyle = HULL; ctx.strokeStyle = O; ctx.lineWidth = 1.2;
+      ctx.fillRect(-2.5, -9, 2.5, 18); ctx.strokeRect(-2.5, -9, 2.5, 18);
+      ctx.beginPath(); ctx.moveTo(-8, -3.5); ctx.lineTo(4, -3.5); ctx.lineTo(8, -1.5); ctx.lineTo(8, 1.5); ctx.lineTo(4, 3.5); ctx.lineTo(-8, 3.5); ctx.closePath(); body(ctx);
+      ctx.fillStyle = O; ctx.fillRect(-10, -2, 2.2, 4);
+      ctx.fillStyle = (t >> 4) & 1 ? W : O; ctx.fillRect(-2.2, -10, 1.8, 1.8); ctx.fillRect(-2.2, 8.2, 1.8, 1.8);
+      ctx.fillStyle = W; ctx.fillRect(4, -1, 2.5, 2);
+    },
+    // 4. Skiff: a stubby oval body with two outboard engines, so it burns on two plumes.
+    skiff: (ctx, thrust, t) => {
+      plume(ctx, -7, -4.2, thrust, t, 1.6, 0); plume(ctx, -7, 4.2, thrust, t, 1.6, 2);
+      ctx.fillStyle = HULL; ctx.strokeStyle = O; ctx.lineWidth = 1.2;
+      ctx.fillRect(-7, -5.8, 6, 3.2); ctx.strokeRect(-7, -5.8, 6, 3.2); ctx.fillRect(-7, 2.6, 6, 3.2); ctx.strokeRect(-7, 2.6, 6, 3.2);
+      ctx.beginPath(); ctx.ellipse(1.5, 0, 8, 4, 0, 0, Math.PI * 2); body(ctx);
+      ctx.fillStyle = W; ctx.beginPath(); ctx.arc(5, 0, 1.5, 0, Math.PI * 2); ctx.fill();
+    },
+  };
+})();
+window.SHIPS = SHIPS;
+window.drawShip = (ctx, k, thrust, t) => (SHIPS[k] || SHIPS.dart)(ctx, thrust, t);
 // C3. Tactical plot, after the UNN / Razorback screens: thin light-blue rules, ID codes over section titles,
 // hex contacts with a dot, an orange tag on the lock, a dash-dot crosshair, square ticks on the frame, a system terminal.
 function tactical(root, host) {
@@ -271,21 +327,33 @@ function tactical(root, host) {
   const nodes = [you].concat(proj, jobs);
   const links = [[proj[0], proj[1]], [proj[2], proj[3]], [proj[2], proj[4]], [proj[2], proj[5]], [proj[2], proj[6]]];
   let cw = 0, ch = 0, dpr = 1, phone = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
-  const TILT = .46, ZS = .85;
+  let TILT = .46, ZS = .85;
+  const PV = { on: false, kx: 1, ky: 1, pp: 0 };
   const layout = () => {
     phone = cw < 640;
-    A.x = phone ? 14 : 326; A.y = phone ? 70 : 92; A.w = phone ? cw - 28 : cw - 326 - 372; A.h = phone ? ch * .5 - 20 : ch - 92 - 160;
-    C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 6 : 16);
+    A.x = phone ? 14 : 326; A.y = phone ? 70 : 92; A.w = phone ? cw - 28 : cw - 326 - 372;
+    // phones: the same tilt as the desktop plane, no perspective; the frame is only as tall as the plane needs
+    PV.on = phone; PV.pp = 0; PV.kx = (A.w / 2 - 22) / 340;
+    const tiltP = .46; PV.ky = PV.kx * tiltP; TILT = .46; ZS = phone ? 1.1 : .85;
+    A.h = phone ? Math.min(ch * .56, Math.round(2 * 340 * PV.ky + 190)) : ch - 92 - 160;
+    C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 22 : 16);
     K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
   };
-  const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); };
+  const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); if (phone) { read.style.top = (A.y + A.h + 14) + 'px'; read.style.bottom = 'auto'; } else { read.style.top = ''; read.style.bottom = ''; } };
   resize();
   try { new ResizeObserver(resize).observe(box); } catch (e) { window.addEventListener('resize', resize); }
   let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
   const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
-  const P = (x, y, z) => { const c = Math.cos(th), s = Math.sin(th); const rx = x * c - y * s, ry = x * s + y * c; return [C.x + rx * K, C.y + ry * K * TILT - (z || 0) * K * ZS]; };
+  // on phones the same tilted plane, seen from higher up and with a little perspective, so it fills a tall frame
+  const P = (x, y, z) => {
+    const c = Math.cos(th), s = Math.sin(th); const rx = x * c - y * s, ry = x * s + y * c;
+    if (PV.on) { const q = 1 / (1 + ry * PV.pp); return [C.x + rx * PV.kx * q, C.y + ry * PV.ky * q - (z || 0) * PV.ky * ZS * q]; }
+    return [C.x + rx * K, C.y + ry * K * TILT - (z || 0) * K * ZS];
+  };
+  // a ring on the plane, as a sampled path (an ellipse in the tilted view, a perspective curve in the other)
+  const ring = (r) => { ctx.beginPath(); for (let i = 0; i <= 64; i++) { const a = i / 64 * Math.PI * 2; const [x, y] = P(Math.cos(a) * r, Math.sin(a) * r, 0); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); };
   const place = () => nodes.forEach((n) => { const [x, y] = P(n.px, n.py, n.pz); const [fx, fy] = P(n.px, n.py, 0); n.x = x; n.y = y; n.fx = fx; n.fy = fy; n.range = Math.hypot(n.px, n.py, n.pz) / 200; n.brg = ((Math.atan2(n.py, n.px) + th) * 180 / Math.PI + 450) % 360; });
   place();
   // the contact table
@@ -293,11 +361,6 @@ function tactical(root, host) {
   if (list) list.innerHTML = nodes.map((n) => '<button type="button" data-id="' + n.id + '"><b><i style="--t:' + n.tint + '"></i>' + n.code + '</b><span>' + esc(n.name) + '</span><em data-r>—</em><em data-b>—</em></button>').join('');
   const rows = list ? Object.fromEntries([...list.querySelectorAll('button')].map((b) => [b.dataset.id, b])) : {};
   Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.classList.remove('list-open'); focusBox(); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
-  // the readout's key/value rows
-  const data = document.createElement('div'); data.className = 'sc-data';
-  data.innerHTML = '<div><span>Range</span><b data-d="r">—</b></div><div><span>Bearing</span><b data-d="b">—</b></div><div><span>Altitude</span><b data-d="a">—</b></div><div><span>Drive</span><b data-d="e">—</b></div>';
-  rS.after(data);
-  const dR = data.querySelector('[data-d=r]'), dB = data.querySelector('[data-d=b]'), dA = data.querySelector('[data-d=a]'), dE = data.querySelector('[data-d=e]');
   // the system terminal
   const log = (s) => { if (!logEl) return; const d = document.createElement('div'); d.textContent = '> ' + s; logEl.appendChild(d); while (logEl.children.length > 4) logEl.removeChild(logEl.firstChild); };
   log('Nav system online. Frame: HOME. Tracking ' + String(nodes.length - 1).padStart(2, '0') + ' contacts.');
@@ -307,7 +370,7 @@ function tactical(root, host) {
   const select = (n, quiet) => {
     if (!n) return;
     sel = n; ret = 0; autoT = performance.now();
-    lock.textContent = 'Lock: ' + n.code;
+    if (lock) lock.textContent = 'Lock: ' + n.code;
     read.classList.remove('off');
     rK.textContent = n.code + ' · ' + n.grp; rH.textContent = n.name; rS.textContent = n.s;
     rPic.className = 'sc-read-pic' + (n.logo ? ' logo' : '') + (n.kind === 'you' ? ' you' : ''); rPic.innerHTML = n.pic ? '<img src="' + (window.FUN.base || 'assets/') + n.pic + '" alt="">' : '';
@@ -353,16 +416,16 @@ function tactical(root, host) {
     ctx.lineWidth = 1;
     ctx.save(); ctx.beginPath(); ctx.rect(A.x + 1, A.y + 1, A.w - 2, A.h - 2); ctx.clip();
     // dash-dot crosshair through HOME
-    ctx.strokeStyle = '#ffffff55'; ctx.setLineDash([9, 4, 2, 4]); ctx.beginPath(); ctx.moveTo(A.x, C.y); ctx.lineTo(A.x + A.w, C.y); ctx.moveTo(C.x, A.y); ctx.lineTo(C.x, A.y + A.h); ctx.stroke(); ctx.setLineDash([]);
+    { const [hx, hy] = P(0, 0, 0); ctx.strokeStyle = '#ffffff55'; ctx.setLineDash([9, 4, 2, 4]); ctx.beginPath(); ctx.moveTo(A.x, hy); ctx.lineTo(A.x + A.w, hy); ctx.moveTo(hx, A.y); ctx.lineTo(hx, A.y + A.h); ctx.stroke(); ctx.setLineDash([]); }
     // the plane: grid clipped to the outer ring, range rings, bearing ticks
     const R = 340;
-    ctx.save(); ctx.beginPath(); ctx.ellipse(C.x, C.y, R * K, R * K * TILT, 0, 0, Math.PI * 2); ctx.clip();
+    ctx.save(); ring(R); ctx.clip();
     ctx.strokeStyle = '#17324a';
     for (let g = -360; g <= 360; g += (phone ? 90 : 60)) { let [x0, y0] = P(g, -360, 0), [x1, y1] = P(g, 360, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); [x0, y0] = P(-360, g, 0); [x1, y1] = P(360, g, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); }
     ctx.restore();
     ctx.font = mono(8); ctx.fillStyle = DIM;
-    [100, 200, 300].forEach((r, i) => { ctx.strokeStyle = i === 2 ? LINE : '#1f4260'; ctx.setLineDash(i === 2 ? [] : [2, 5]); ctx.beginPath(); ctx.ellipse(C.x, C.y, r * K, r * K * TILT, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]); if (!phone || i === 2) wide((r / 200).toFixed(1) + ' AU', C.x + r * K * .72, C.y + r * K * TILT * .72 + 10, 'left'); });
-    for (let d = 0; d < 360; d += 10) { const a = d * Math.PI / 180 + th; const big = d % 90 === 0; const x0 = C.x + Math.cos(a) * R * K, y0 = C.y + Math.sin(a) * R * K * TILT, x1 = C.x + Math.cos(a) * (R + (big ? 14 : 7)) * K, y1 = C.y + Math.sin(a) * (R + (big ? 14 : 7)) * K * TILT; ctx.strokeStyle = big ? BLUE : LINE; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); if (big && !phone) { ctx.fillStyle = DIM; ctx.font = mono(8); wide(String((360 - d) % 360).padStart(3, '0'), C.x + Math.cos(a) * (R + 30) * K, C.y + Math.sin(a) * (R + 30) * K * TILT + 3); } }
+    [100, 200, 300].forEach((r, i) => { ctx.strokeStyle = i === 2 ? LINE : '#1f4260'; ctx.setLineDash(i === 2 ? [] : [2, 5]); ring(r); ctx.stroke(); ctx.setLineDash([]); if (!phone || i === 2) { const [lx, ly] = P(r * .72 * Math.cos(.8 - th), r * .72 * Math.sin(.8 - th), 0); wide((r / 200).toFixed(1) + ' AU', lx, ly + 10, 'left'); } });
+    for (let d = 0; d < 360; d += 10) { const a = d * Math.PI / 180; const big = d % 90 === 0; const [x0, y0] = P(Math.cos(a) * R, Math.sin(a) * R, 0), [x1, y1] = P(Math.cos(a) * (R + (big ? 14 : 7)), Math.sin(a) * (R + (big ? 14 : 7)), 0); ctx.strokeStyle = big ? BLUE : LINE; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); if (big && !phone) { const [tx, ty] = P(Math.cos(a) * (R + 30), Math.sin(a) * (R + 30), 0); ctx.fillStyle = DIM; ctx.font = mono(8); wide(String((360 - d) % 360).padStart(3, '0'), tx, ty + 3); } }
     // grid references, the way the Razorback map scatters them
     if (!phone) [[-200, 100], [180, -120], [60, 260]].forEach(([gx, gy]) => { const [x, y] = P(gx, gy, 0); ctx.fillStyle = '#4a9ad0'; ctx.fillRect(x - 1.5, y - 1.5, 3, 3); ctx.fillStyle = DIM; ctx.font = mono(7); ctx.textAlign = 'left'; ctx.fillText(String(gx + 500).padStart(4, '0') + ' ' + String(gy + 500).padStart(4, '0'), x + 6, y - 4); });
     // the transit lane: a grey curve through the stations
@@ -387,7 +450,7 @@ function tactical(root, host) {
     } else { ship.state = 'docked'; ship.thrust = 0; if (eta) { eta.textContent = sel === you ? 'Holding at home' : 'No burn'; eta.classList.toggle('ok', sel === you); } }
 
     const dLabel = phase === 'idle' ? (sel === you ? 'Holding' : 'Idle') : phase === 'station' ? 'On station' : phase === 'flip' ? 'Flip' : phase === 'decel' ? 'Decel ' + (3 - 3 * (prog - .5) * 2).toFixed(1) + ' g' : 'Burn ' + (3 * Math.min(1, prog * 2.2)).toFixed(1) + ' g';
-    if (sel) { dR.textContent = sel === you ? '0.00 AU' : fmtR(sel.range); dB.textContent = sel === you ? '—' : fmtB(sel.brg); dA.textContent = sel === you ? '0.00 AU' : ((sel.pz >= 0 ? '+' : '−') + (Math.abs(sel.pz) / 200).toFixed(2) + ' AU'); dE.textContent = dLabel; dE.className = phase === 'station' || phase === 'idle' ? 'ok' : 'hot'; }
+    const dEta = burn && prog < 1 ? fmtT(burn.dur * (1 - prog)) : null;
     // bodies: foot, stalk, velocity tick, hex marker, labels; nearest drawn last
     const litN = hover || sel; let homeQuiet = false;
     if (litN && litN !== you) { const tw = (litN.kind === 'job' ? 4 : litN.name.length) * 7.2 + 16, flip = litN.x + tw > A.x + A.w; const x0 = flip ? litN.x - tw : litN.x, x1 = x0 + tw, hx0 = you.x, hx1 = you.x + 11 * 7.2 + 16; homeQuiet = x0 < hx1 && x1 > hx0 && Math.abs(litN.y - you.y) < 16; }
@@ -395,9 +458,8 @@ function tactical(root, host) {
     nodes.slice().sort((a, b) => a.fy - b.fy).forEach((n) => {
       const on = n === sel, hv = n === hover, lit = on || hv;
       if (n !== you) {
-        ctx.strokeStyle = lit ? ORANGE : LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(n.fx, n.fy); ctx.lineTo(n.x, n.y); ctx.stroke();
-        ctx.fillStyle = lit ? ORANGE : LINE; ctx.beginPath(); ctx.ellipse(n.fx, n.fy, 2.5, 2.5 * TILT, 0, 0, Math.PI * 2); ctx.fill();
-        const va = Math.atan2(n.py, n.px) + th + Math.PI / 2; const vx = Math.cos(va) * K, vy = Math.sin(va) * K * TILT, vl = 10 + n.range * 4; ctx.strokeStyle = lit ? ORANGE : '#2f5f80'; ctx.beginPath(); ctx.moveTo(n.x + vx * 9, n.y + vy * 9); ctx.lineTo(n.x + vx * (9 + vl), n.y + vy * (9 + vl)); ctx.stroke();
+        ctx.strokeStyle = lit ? ORANGE : LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(n.fx, n.fy); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.fillStyle = lit ? ORANGE : LINE; ctx.beginPath(); ctx.ellipse(n.fx, n.fy, 2.5, 2.5 * TILT, 0, 0, Math.PI * 2); ctx.fill();
+        const ea = .06, [ax, ay] = P(n.px * Math.cos(ea) - n.py * Math.sin(ea), n.px * Math.sin(ea) + n.py * Math.cos(ea), n.pz); let vx = ax - n.x, vy = ay - n.y; const vn = Math.hypot(vx, vy) || 1; vx /= vn; vy /= vn; const vl = 10 + n.range * 4; ctx.strokeStyle = lit ? ORANGE : '#2f5f80'; ctx.beginPath(); ctx.moveTo(n.x + vx * 9, n.y + vy * 9); ctx.lineTo(n.x + vx * (9 + vl), n.y + vy * (9 + vl)); ctx.stroke();
       }
       if (n === you) {
         // the station: a turning ring with spokes and docking arms on the plane, a hub, and a tower with a beacon
@@ -414,7 +476,7 @@ function tactical(root, host) {
       }
       const tw = (n.kind === 'job' ? 4 : n.name.length) * 7.2 + 16, flip = n.x + tw > A.x + A.w;
       // a lit label that would flip across HOME goes underneath the marker instead
-      const below = n !== you && flip && (n.x - tw < C.x + 70);
+      const below = n !== you && flip && (n.x - tw < you.x + 70);
       const lx = below ? n.x : n.x + (n === you ? 30 : flip ? -12 : 12), al = below ? 'center' : flip ? 'right' : 'left', ly = below ? n.y + 24 : n.y + 5;
       if (on) {
         // the orange tag, like the Razorback's selected contact
@@ -435,15 +497,17 @@ function tactical(root, host) {
     if (burn && ship.state === 'burn') ship.fade = 1; else if (ship.fade > 0) ship.fade = Math.max(0, ship.fade - .08);
     if (ship.fade > 0) {
       ctx.save(); ctx.globalAlpha = ship.fade; ctx.translate(ship.x, ship.y); ctx.rotate(ship.a); ctx.scale(.9, .9);
-      if (ship.thrust > 0 && ship.state === 'burn') { const fl = (8 + 4 * Math.sin(t * .7)) * ship.thrust; ctx.fillStyle = ORANGE + '66'; ctx.beginPath(); ctx.moveTo(-8, -2.5); ctx.lineTo(-8 - fl * 1.5, 0); ctx.lineTo(-8, 2.5); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#ffe2a8'; ctx.beginPath(); ctx.moveTo(-8, -1.2); ctx.lineTo(-8 - fl, 0); ctx.lineTo(-8, 1.2); ctx.closePath(); ctx.fill(); }
-      ctx.fillStyle = '#0a0d14'; ctx.strokeStyle = ORANGE; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(2, -3); ctx.lineTo(-6, -3); ctx.lineTo(-8, -1.5); ctx.lineTo(-8, 1.5); ctx.lineTo(-6, 3); ctx.lineTo(2, 3); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.moveTo(6, 0); ctx.lineTo(2, -1.3); ctx.lineTo(2, 1.3); ctx.closePath(); ctx.fill();
+      window.drawShip(ctx, window.SHIP || 'dart', ship.state === 'burn' ? ship.thrust : 0, t);
       ctx.restore();
     }
     ctx.restore();
-    // top-right of the plot: tracking readout, like the fire-control screen
-    ctx.font = mono(9); ctx.textAlign = 'right'; ctx.fillStyle = BLUE; ctx.fillText((sel && sel !== you ? sel.range.toFixed(2) : '0.00'), A.x + A.w - 10, A.y + 16); ctx.font = mono(7); ctx.fillStyle = DIM; wide('TRACKING ' + String(nodes.length - 1).padStart(2, '0'), A.x + A.w - 10, A.y + 27, 'right');
+    // top-right of the plot: the lock's data block, like the fire-control readout
+    {
+      const bx = A.x + A.w - 10, by = A.y + 18, lh = phone ? 13 : 12;
+      const rows = sel ? [['LOCK', sel.code], ['RANGE', sel === you ? '0.00 AU' : fmtR(sel.range)], ['BRG', sel === you ? '—' : fmtB(sel.brg)], ['ALT', sel === you ? '0.00 AU' : (sel.pz >= 0 ? '+' : '−') + (Math.abs(sel.pz) / 200).toFixed(2) + ' AU'], ['DRIVE', dEta ? (phase === 'flip' ? 'Flip' : (phase === 'decel' ? 'Decel ' : 'Burn ') + dEta) : dLabel]] : [['LOCK', 'NONE']];
+      rows.forEach(([k, v], i) => { ctx.font = mono(phone ? 9 : 8); ctx.textAlign = 'right'; ctx.fillStyle = k === 'DRIVE' ? (phase === 'station' || phase === 'idle' ? OK : ORANGE) : k === 'LOCK' ? ORANGE : '#fff'; ctx.fillText(v, bx, by + i * lh); ctx.font = mono(7); ctx.fillStyle = DIM; wide(k, bx - ctx.measureText(v).width * (phone ? 1.25 : 1.3) - 14, by + i * lh, 'right'); });
+      ctx.font = mono(7); ctx.fillStyle = DIM; wide('TRACKING ' + String(nodes.length - 1).padStart(2, '0'), bx, by + rows.length * lh + 2, 'right');
+    }
     ctx.textAlign = 'left'; ctx.fillStyle = DIM; ctx.font = mono(7); wide('DRA-NAV-0001', A.x + 10, A.y + 14, 'left');
     requestAnimationFrame(frame);
   };
