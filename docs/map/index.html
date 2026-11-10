@@ -277,6 +277,18 @@ body{overflow:hidden}
 .fc.tac .sc.short .sc-read-a{margin-top:10px;gap:6px}
 .fc.tac .sc.short .sc-read-a a{height:34px;line-height:32px;padding:0 14px;font-size:10px}
 
+/* tablets upright: plot on top, entry and contacts below it */
+.fc.tac .sc.mid .tx-rail{display:none}
+.fc.tac .sc.mid .tx-head{left:26px;right:22px}
+.fc.tac .sc.mid .sc-read{left:26px;right:auto;width:calc(52% - 40px);top:var(--below,520px);bottom:44px;overflow:auto;scrollbar-width:none;padding-top:6px}
+.fc.tac .sc.mid .sc-read::-webkit-scrollbar{display:none}
+.fc.tac .sc.mid .sc-read-pic{height:clamp(90px,16vh,150px)}
+.fc.tac .sc.mid .tx-list{left:52%;right:22px;top:var(--below,520px);bottom:44px;width:auto;display:flex;flex-direction:column}
+.fc.tac .sc.mid .tx-rows{flex:1;max-height:none;min-height:0}
+.fc.tac .sc.mid .tx-cols,.fc.tac .sc.mid .tx-rows button{grid-template-columns:62px 1fr 60px 38px}
+.fc.tac .sc.mid .tx-bar{margin-top:10px}
+.fc.tac .sc.mid .tx-log{display:none}
+
 </style>
 </head>
 <body>
@@ -487,12 +499,21 @@ function tactical(root, host) {
   const nodes = [you].concat(proj, jobs, logs);
   const links = [[proj[0], proj[1]], [proj[2], proj[3]], [proj[2], proj[4]], [proj[2], proj[5]], [proj[2], proj[6]]];
   const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  let cw = 0, ch = 0, dpr = 1, phone = false, short = false, dense = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
+  let cw = 0, ch = 0, dpr = 1, phone = false, short = false, mid = false, dense = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
   let TILT = .46, ZS = .85;
   const PV = { on: false, kx: 1, ky: 1, pp: 0 };
   const layout = () => {
-    phone = cw < 640; short = !phone && ch < 520; dense = phone || short;
-    if (short) {
+    phone = cw < 640; short = !phone && ch < 520; mid = !phone && !short && cw < 1100; dense = phone || short;
+    if (mid) {
+      // tablet upright: the plot across the top at full width, the entry and the contact table side by side under it
+      A.x = 26; A.y = 92; A.w = cw - 48;
+      PV.on = false; TILT = .46; ZS = .85;
+      const tall = ch > cw;
+      if (tall) { K = Math.min((A.w / 2 - 30) / 340, (Math.min(ch * .5, 560) - 150) / (2 * 340 * .46)); A.h = Math.round(2 * 340 * K * .46 + 150); }
+      else { A.h = Math.round(ch * .5); K = Math.min((A.w / 2 - 30) / 340, (A.h - 90) / (2 * 340 * .46)); }
+      C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (tall ? 18 : 10);
+      box.style.setProperty('--below', (A.y + A.h + 18) + 'px');
+    } else if (short) {
       // a phone on its side: the plot takes the left three fifths, full height; the entry sits on the right
       A.x = 14; A.y = 50; A.w = Math.round(cw * .6) - 24; A.h = ch - 50 - 12;
       PV.on = false; TILT = .46; ZS = .85;
@@ -507,7 +528,7 @@ function tactical(root, host) {
       C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 16 : 16);
       K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
     }
-    box.classList.toggle('short', short);
+    box.classList.toggle('short', short); box.classList.toggle('mid', mid);
   };
   const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); if (phone) { read.style.top = (A.y + A.h + 12) + 'px'; read.style.bottom = '44px'; read.style.overflow = 'auto'; } else { read.style.top = ''; read.style.bottom = ''; read.style.overflow = ''; } };
   resize();
@@ -520,10 +541,11 @@ function tactical(root, host) {
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0, at: you, p: { x: 0, y: 0, z: 0 }, v: { x: 0, y: 0, z: 0 }, target: null, hdg: null, last: 0, flipped: 0, path: [], flips: [], eta: 0, burning: false };
   const guide = (p, v, tgt) => {
     const dx = tgt.px - p.x, dy = tgt.py - p.y, dz = tgt.pz - p.z, dist = Math.hypot(dx, dy, dz);
-    if (dist < 1.2 && Math.hypot(v.x, v.y, v.z) < 10) return null;
+    if (dist < 3 && Math.hypot(v.x, v.y, v.z) < 18) return null;
     const vmax = Math.sqrt(2 * ACC * dist) * .92; const k = dist > 0 ? vmax / dist : 0;
     const ex = dx * k - v.x, ey = dy * k - v.y, ez = dz * k - v.z, el = Math.hypot(ex, ey, ez);
-    if (el < 2) return { x: 0, y: 0, z: 0, on: false };
+    // a dead band: when the ship is already close to the velocity it wants, it coasts rather than chattering the drive
+    if (el < 14) return { x: 0, y: 0, z: 0, on: false };
     return { x: ex / el, y: ey / el, z: ez / el, on: true };
   };
   const stepNav = (p, v, tgt, dt) => { const g = guide(p, v, tgt); if (!g) return null; if (g.on) { v.x += g.x * ACC * dt; v.y += g.y * ACC * dt; v.z += g.z * ACC * dt; } p.x += v.x * dt; p.y += v.y * dt; p.z += v.z * dt; return g; };
@@ -680,10 +702,11 @@ function tactical(root, host) {
         const [hx, hy] = S(ship.p), [ax, ay] = S({ x: ship.p.x + (g.on ? g.x : ship.v.x / (sp || 1)) * 8, y: ship.p.y + (g.on ? g.y : ship.v.y / (sp || 1)) * 8, z: ship.p.z + (g.on ? g.z : ship.v.z / (sp || 1)) * 8 });
         const want = Math.atan2(ay - hy, ax - hx); if (ship.hdg === null) ship.hdg = want;
         let d = want - ship.hdg; while (d > Math.PI) d -= Math.PI * 2; while (d < -Math.PI) d += Math.PI * 2;
+        if (!g.on) d = 0; // coasting: hold the heading
         const turn = Math.min(Math.abs(d), 7 * dt) * Math.sign(d); ship.hdg += turn; const turning = Math.abs(d) > .4;
         ship.x = hx; ship.y = hy; ship.a = ship.hdg; ship.thrust = g.on && !turning ? 1 : g.on ? .25 : 0;
         phase = turning ? 'flip' : !g.on ? 'coast' : dot < 0 && sp > 12 ? 'decel' : 'burn';
-        if (turning && !ship.flipped) { ship.flipped = 1; log(dot < 0 && sp > 12 ? 'Flip and brake.' : 'Flip.'); } if (!turning) ship.flipped = 0;
+        if (turning && Math.abs(d) > 2.2 && !ship.flipped) { ship.flipped = 1; log(dot < 0 && sp > 12 ? 'Flip and brake.' : 'Flip.'); } if (!turning) ship.flipped = 0;
         dEta = fmtT(ship.eta * 1000);
         // the plan
         ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(hx, hy); ship.path.forEach((q) => { const [x, y] = S(q); ctx.lineTo(x, y); }); ctx.stroke(); ctx.setLineDash([]);
