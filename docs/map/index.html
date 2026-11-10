@@ -236,9 +236,9 @@ body{overflow:hidden}
 
 /* the ship picker */
 .ship-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
-.home-pick{grid-template-columns:repeat(5,1fr)}
+.home-pick,.ships10{grid-template-columns:repeat(5,1fr)}
 .home-pick canvas{height:110px}
-@media (max-width:900px){.home-pick{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.home-pick,.ships10{grid-template-columns:repeat(3,1fr)}}
 .ship-opt{position:relative;display:block;cursor:pointer;padding:14px 14px 16px;background:#070a12;border:1px solid #223449;border-radius:6px}
 .ship-opt.on{border-color:#d4922c;box-shadow:inset 0 0 0 1px #d4922c}
 .ship-opt input{position:absolute;opacity:0;width:0;height:0}
@@ -336,6 +336,56 @@ const SHIPS = (() => {
       ctx.fillRect(-7, -5.8, 6, 3.2); ctx.strokeRect(-7, -5.8, 6, 3.2); ctx.fillRect(-7, 2.6, 6, 3.2); ctx.strokeRect(-7, 2.6, 6, 3.2);
       ctx.beginPath(); ctx.ellipse(1.5, 0, 8, 4, 0, 0, Math.PI * 2); body(ctx);
       ctx.fillStyle = W; ctx.beginPath(); ctx.arc(5, 0, 1.5, 0, Math.PI * 2); ctx.fill();
+    },
+    // 5. Pinnace: a racing yacht, all needle and drive. A longer, leaner dart with a big bell and two tail fins.
+    pinnace: (ctx, thrust, t) => {
+      plume(ctx, -11, 0, thrust, t, 3.2);
+      ctx.strokeStyle = O; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(-8, -3.5); ctx.lineTo(-5, -7); ctx.moveTo(-8, 3.5); ctx.lineTo(-5, 7); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(15, 0); ctx.lineTo(0, -2.2); ctx.lineTo(-8, -3.8); ctx.lineTo(-10.5, -2.6); ctx.lineTo(-10.5, 2.6); ctx.lineTo(-8, 3.8); ctx.lineTo(0, 2.2); ctx.closePath(); body(ctx);
+      ctx.fillStyle = O; ctx.fillRect(-12.5, -2, 2.4, 4);
+      ctx.fillStyle = W; ctx.beginPath(); ctx.moveTo(9, 0); ctx.lineTo(5, -1); ctx.lineTo(5, 1); ctx.closePath(); ctx.fill();
+    },
+    // 6. Corvette: a stacked military hull, chamfered nose, flat stern with a wide bell, point-defence bumps on the flanks.
+    corvette: (ctx, thrust, t) => {
+      plume(ctx, -12, 0, thrust, t, 3);
+      ctx.beginPath(); ctx.moveTo(12, 0); ctx.lineTo(9, -4); ctx.lineTo(-8, -4); ctx.lineTo(-10, -2.5); ctx.lineTo(-10, 2.5); ctx.lineTo(-8, 4); ctx.lineTo(9, 4); ctx.closePath(); body(ctx);
+      ctx.strokeStyle = O + '88'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(-7, 0); ctx.lineTo(7, 0); ctx.stroke();
+      ctx.fillStyle = O; ctx.fillRect(1, -5.5, 2.5, 1.5); ctx.fillRect(1, 4, 2.5, 1.5); ctx.fillRect(-5, -5.5, 2.5, 1.5); ctx.fillRect(-5, 4, 2.5, 1.5);
+      ctx.fillRect(-12.5, -2.2, 2.5, 4.4);
+      ctx.fillStyle = W; ctx.beginPath(); ctx.moveTo(8, 0); ctx.lineTo(4.5, -1.4); ctx.lineTo(4.5, 1.4); ctx.closePath(); ctx.fill();
+    },
+    // 7. Gunboat: a stubby wedge with two forward prongs. The silhouette is the fork.
+    gunboat: (ctx, thrust, t) => {
+      plume(ctx, -10, 0, thrust, t, 2.8);
+      ctx.beginPath(); ctx.moveTo(12, -4.5); ctx.lineTo(5, -3.5); ctx.lineTo(4, -4.5); ctx.lineTo(-7, -4.5); ctx.lineTo(-9.5, -2.5); ctx.lineTo(-9.5, 2.5); ctx.lineTo(-7, 4.5); ctx.lineTo(4, 4.5); ctx.lineTo(5, 3.5); ctx.lineTo(12, 4.5); ctx.lineTo(12, 2.5); ctx.lineTo(5, 1.5); ctx.lineTo(5, -1.5); ctx.lineTo(12, -2.5); ctx.closePath(); body(ctx);
+      ctx.fillStyle = O; ctx.fillRect(-12, -1.8, 2.5, 3.6);
+      ctx.fillStyle = W; ctx.fillRect(0, -1, 3, 2);
+    },
+    // 8. Hauler: a bridge block, a long spine with cargo frames, and the drive block at the back. An ice hauler.
+    hauler: (ctx, thrust, t) => {
+      plume(ctx, -14, 0, thrust, t, 3.2);
+      ctx.fillStyle = HULL; ctx.strokeStyle = O; ctx.lineWidth = 1.2;
+      ctx.fillRect(-9, -1, 18, 2); ctx.strokeRect(-9, -1, 18, 2);
+      [-5, 0, 5].forEach((x) => { ctx.strokeStyle = O + 'aa'; ctx.lineWidth = 1; ctx.strokeRect(x - 2, -4.5, 4, 9); });
+      ctx.strokeStyle = O; ctx.lineWidth = 1.2; ctx.fillRect(9, -3, 5, 6); ctx.strokeRect(9, -3, 5, 6); ctx.fillRect(-14, -3.5, 5, 7); ctx.strokeRect(-14, -3.5, 5, 7);
+      ctx.fillStyle = W; ctx.fillRect(11, -1, 2, 2);
+    },
+    // 9. Rock-hopper: a Belter working boat, angular and asymmetric, with a pod bolted on one side and patched plates.
+    rockhopper: (ctx, thrust, t) => {
+      plume(ctx, -9, .5, thrust, t, 2.6);
+      ctx.beginPath(); ctx.moveTo(11, 1); ctx.lineTo(6, -3); ctx.lineTo(-3, -3); ctx.lineTo(-5, -6); ctx.lineTo(-9, -6); ctx.lineTo(-9, 3.5); ctx.lineTo(-4, 4.5); ctx.lineTo(6, 3.5); ctx.closePath(); body(ctx);
+      ctx.strokeStyle = O + '88'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(-3, -3); ctx.lineTo(-3, 4); ctx.moveTo(2, -3); ctx.lineTo(1, 3.5); ctx.stroke();
+      ctx.fillStyle = O; ctx.fillRect(-11, -1, 2.3, 3.5);
+      ctx.fillStyle = W; ctx.fillRect(5, -.5, 2.5, 2);
+    },
+    // 10. Dreadnought: a broad blocky hull with a tower amidships, turrets on both flanks and a wide drive. The biggest.
+    dreadnought: (ctx, thrust, t) => {
+      plume(ctx, -14, 0, thrust, t, 4.2);
+      ctx.beginPath(); ctx.moveTo(14, 0); ctx.lineTo(9, -6); ctx.lineTo(-9, -6); ctx.lineTo(-12, -3.5); ctx.lineTo(-12, 3.5); ctx.lineTo(-9, 6); ctx.lineTo(9, 6); ctx.closePath(); body(ctx);
+      ctx.strokeStyle = O; ctx.lineWidth = 1; ctx.strokeRect(-3, -2.5, 6, 5);
+      ctx.fillStyle = O; [[5, -4.5], [5, 4.5], [-6, -4.5], [-6, 4.5]].forEach(([x, y]) => { ctx.beginPath(); ctx.arc(x, y, 1.3, 0, Math.PI * 2); ctx.fill(); });
+      ctx.fillRect(-14.5, -3, 2.5, 6);
+      ctx.fillStyle = W; ctx.fillRect(9, -1, 3, 2);
     },
   };
 })();
@@ -503,9 +553,14 @@ function tactical(root, host) {
     rItems.innerHTML = ''; rItems.hidden = true;
     typing = setInterval(() => { i += 3; rP.textContent = n.p.slice(0, i); if (i >= n.p.length) { clearInterval(typing); typing = null; rP.textContent = n.p; if (n.items) { rItems.innerHTML = n.items.map(([h, d]) => '<div><b>' + esc(h) + '</b><span>' + esc(d) + '</span></div>').join(''); rItems.hidden = false; } } }, 16);
     Object.values(rows).forEach((b) => b.classList.toggle('on', b.dataset.id === n.id));
-    const from = ship.at;
+    // depart from wherever the ship is: the last stop, or mid-leg if a burn is still under way
+    let from = ship.at;
+    if (burn && burn.n !== n && performance.now() - burn.t0 < burn.dur) {
+      const u = (performance.now() - burn.t0) / burn.dur, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2, a = burn.from, b = burn.n;
+      from = { code: 'EN ROUTE', px: a.px + (b.px - a.px) * e, py: a.py + (b.py - a.py) * e, pz: a.pz + (b.pz - a.pz) * e, virtual: true };
+    }
     if (n === from) burn = null;
-    else { const leg = Math.hypot(n.px - from.px, n.py - from.py, n.pz - from.pz) / 200; burn = { n, from, leg, t0: performance.now(), dur: 1400 + leg * 900, logged: 0 }; }
+    else { const leg = Math.hypot(n.px - from.px, n.py - from.py, n.pz - from.pz) / 200; burn = { n, from, leg, t0: performance.now(), dur: 1400 + leg * 900, logged: 0 }; ship.at = from; }
     // zoomed in: pan so the lock is on screen
     if (V.s > 1 && (n.x < A.x + 30 || n.x > A.x + A.w - 30 || n.y < A.y + 40 || n.y > A.y + A.h - 30)) { V.x += C.x - n.x; V.y += C.y - n.y; clampV(); }
     if (!quiet) log(!burn ? (n === you ? 'Holding at HOME.' : 'Already on station at ' + n.code + '.') : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn ' + from.code + ' → ' + n.code + ', ETA ' + fmtT(burn.dur) + '.');
@@ -597,7 +652,8 @@ function tactical(root, host) {
     // burn plan: straight to the lock; accelerate, flip, decelerate
     let phase = 'idle', prog = 0;
     if (burn) {
-      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, f = burn.from, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, f0 = burn.from, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      const f = f0.virtual ? (([x, y]) => ({ x, y }))(P(f0.px, f0.py, f0.pz)) : f0;
       prog = u; phase = u >= 1 ? 'station' : u < .47 ? 'burn' : u < .53 ? 'flip' : 'decel';
       if (phase === 'flip' && burn.logged < 1) { burn.logged = 1; log('Flip.'); }
       if (phase === 'station' && burn.logged < 2) { burn.logged = 2; ship.at = n; log('On station at ' + n.code + '. Range ' + fmtR(n.range) + ' from HOME.'); }
