@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>David Allen · Tactical plot</title>
+<meta name="description" content="A tactical plot of David Allen's work: tools, a game engine, games and a career, as contacts on a nav display.">
+<meta name="theme-color" content="#04060b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#04060b;min-height:100%}
+body{overflow:hidden}
+.o.fc.tac .sc,.o.fc.tac .sc{height:100vh;height:100dvh}
+.o.fc.tac .sc-foot a{text-decoration:none}
+@container site (max-width:640px){.o.fc.tac .sc{height:100vh;height:100dvh}}
+/* ===================== Six directions ===================== */
+.o{container:site/inline-size;--gold:#dca24a;--steel:#9fbfd4;--tx:#d9e0e4;--mu:#9ba4af;--mono:'IBM Plex Mono',ui-monospace,monospace;--head:'Chakra Petch',sans-serif;
+  font-family:Inter,system-ui,sans-serif;color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100%}
+.o *{box-sizing:border-box}
+.o [hidden]{display:none!important}
+.o h1,.o h2,.o h3,.o h4,.o p{margin:0}
+.o a{color:inherit;text-decoration:none}
+.o a:focus-visible,.o button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.o .sig{display:block;width:100%;height:auto}
+.o img{display:block}
+.o .px{image-rendering:pixelated}
+.o [data-in]{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s cubic-bezier(.3,.7,.2,1)}
+.o [data-in].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.o [data-in]{opacity:1;transform:none;transition:none}}
+/* shared picture boxes */
+.o .pic,.o .m-pic,.o .c-pic,.o .b-pic,.o .e-pic,.o .x-mpic{position:relative;overflow:hidden;background:#07080b}
+.o .pic img,.o .m-pic img,.o .c-pic img,.o .b-pic img,.o .e-pic img,.o .x-mpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.o .logo img{inset:12% 14%!important;width:72%!important;height:76%!important;object-fit:contain!important}
+
+
+.o.fc{--gold:#d4922c;--ink:#d4922c;--mut:#9ba4af;--px:'Press Start 2P',monospace}
+/* ---------------------------------------------------------------- C. Star chart */
+.fc{background:#04060b}
+.fc .sc{position:relative;height:700px;overflow:hidden;outline:none}
+.fc .sc:focus-visible{box-shadow:inset 0 0 0 2px var(--gold)}
+.fc .sc-c{display:block;width:100%;height:100%}
+.fc .sc-hud{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;padding:18px 22px;font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#6f8294;pointer-events:none}
+.fc .sc-hud b{display:block;color:#dfe8f0;font-weight:500}
+.fc .sc-hud span{display:block;margin-top:5px}
+.fc .sc-hud-l .sc-lock{margin-top:6px}
+.fc .sc-hud-r{text-align:right}
+.fc .sc-lock{color:var(--gold)}
+.fc .sc-read{position:absolute;right:22px;top:86px;width:340px;padding:18px 20px 20px;background:#070a12e6;border:1px solid #1d2a3a;font:14px/1.55 Inter,system-ui,sans-serif;color:#c3ccd6;transition:opacity .3s,transform .3s}
+.fc .sc-read.off{opacity:0;transform:translateX(12px);pointer-events:none}
+.fc .sc-read-k{font:500 10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.fc .sc-read-h{font:700 24px var(--head);color:#fff;margin-top:8px;line-height:1.1}
+.fc .sc-read-s{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+.fc .sc-read-pic{margin:14px 0 12px;height:130px;background:#0a0d14;border:1px solid #1d2a3a;overflow:hidden;position:relative}
+.fc .sc-read-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fc .sc-read-pic.logo img{inset:12% 14%;width:72%;height:76%;object-fit:contain}
+.fc .sc-read-pic.you img{filter:grayscale(1) contrast(1.05);object-position:center 20%}
+.fc .sc-read-pic:empty{display:none}
+.fc .sc-read-p{min-height:44px}
+.fc .sc-read-a{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.fc .sc-read-a a{display:inline-flex;gap:8px;align-items:center;padding:9px 14px;border:1px solid var(--gold);color:var(--gold);font:600 12px var(--head);letter-spacing:.14em;text-transform:uppercase}
+.fc .sc-read-a a:hover{background:var(--gold);color:#000}
+.fc .sc-foot{position:absolute;left:22px;right:22px;bottom:16px;display:flex;justify-content:space-between;align-items:center;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#56677a;pointer-events:none}
+.fc .sc-foot-r{display:flex;gap:18px}
+.fc .sc-foot a{pointer-events:auto;color:#9fb3c6}
+.fc .sc-foot a:hover{color:var(--gold)}
+.fc .sc-foot svg{display:none}
+@container site (max-width:640px){
+  .fc .sc{height:640px}
+  .fc .sc-hud{padding:14px 14px;font-size:9px}
+  .fc .sc-read{left:12px;right:12px;top:auto;bottom:48px;width:auto;padding:14px 16px 16px;font-size:13px}
+  .fc .sc-read-h{font-size:20px}
+  .fc .sc-read-pic{height:80px;float:right;width:120px;margin:0 0 8px 12px}
+  .fc .sc-read-p{min-height:0}
+  .fc .sc-foot{left:14px;right:14px;bottom:12px;font-size:9px}
+  .fc .sc-foot>span:first-child{display:none}
+  .fc .sc-read-pic.you{display:none}
+  .fc .sc-read-a a{padding:7px 10px;font-size:11px}
+}
+
+
+/* orrery controls */
+.fc .sc-speed{display:inline-flex;gap:6px;margin-left:18px;pointer-events:auto}
+.fc .sc-speed button{all:unset;cursor:pointer;padding:5px 9px;border:1px solid #1d2a3a;color:#9fb3c6;font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.fc .sc-speed button.on{border-color:var(--gold);color:var(--gold)}
+.fc .sc-speed button:hover{color:#fff}
+.fc .sc-clock,.fc .sc-range{color:#9fb3c6}
+/* deep field: the contact rail and the prev/next in the readout */
+.fc .sc-rail{position:absolute;left:22px;top:78px;display:flex;flex-direction:column;gap:2px;max-height:calc(100% - 140px);overflow:auto;scrollbar-width:none;z-index:2}
+.fc .sc-rail::-webkit-scrollbar{display:none}
+.fc .sc-rail button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:4px 8px 4px 6px;border-left:2px solid transparent;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#56677a}
+.fc .sc-rail button b{font-weight:500;color:#7f93a6;min-width:34px}
+.fc .sc-rail button:hover{color:#dfe8f0}
+.fc .sc-rail button.on{border-left-color:var(--gold);color:var(--gold)}
+.fc .sc-rail button.on b{color:var(--gold)}
+.fc .sc-nav{display:flex;gap:4px;justify-content:flex-end;pointer-events:auto;margin-bottom:8px}
+.fc .sc-nav button{all:unset;cursor:pointer;width:30px;height:28px;border:1px solid #2a3a4e;color:#9fb3c6;text-align:center;font:500 16px/26px var(--mono)}
+.fc .sc-nav button:hover{border-color:var(--gold);color:var(--gold)}
+.fc .sc-eta{color:var(--gold)}
+.fc .sc-rail-x{display:grid;grid-template-columns:auto;gap:0}
+.fc .sc-rail-x .sc-rail-h,.fc .sc-rail-x button{display:grid;grid-template-columns:46px 118px 58px 36px;gap:8px;align-items:baseline}
+.fc .sc-rail-x .sc-rail-h{padding:0 8px 6px 8px;font:500 8px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#3f5468;border-bottom:1px solid #1d2a3a;margin-bottom:4px}
+.fc .sc-rail-x .sc-rail-h span:nth-child(2){grid-column:2/4;text-align:right}
+.fc .sc-rail-x button{padding:3px 8px 3px 6px}
+.fc .sc-rail-x button span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.fc .sc-rail-x button i{font-style:normal;text-align:right;color:#56677a;font-variant-numeric:tabular-nums}
+.fc .sc-rail-x button.on i{color:var(--gold)}
+/* tactical: after the UNN console and the Razorback map */
+.fc.tac{--blue:#9ad0ea;--line:#2f5f80;--dim:#4f7a99;--fill:#9ad0ea22;--ok:#7ed37a;background:#04060b}
+.fc.tac .sc{height:720px}
+.fc.tac .sc-c{position:absolute;inset:0}
+.fc.tac .tx-sec{position:relative;padding-top:12px}
+.fc.tac .tx-sec::before{content:"";position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line)}
+.fc.tac .tx-sec::after{content:"";position:absolute;left:0;top:7px;width:28px;height:3px;background:var(--blue)}
+.fc.tac .tx-sec small{position:absolute;left:0;top:-4px;font:500 7px var(--mono);letter-spacing:.14em;color:var(--dim)}
+.fc.tac .tx-sec b{display:block;font:500 13px var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.fc.tac .tx-rail{position:absolute;left:0;top:0;bottom:0;width:14px;border-right:1px solid var(--line);background:#070b12}
+.fc.tac .tx-rail span{position:absolute;left:-2px;top:50%;transform:rotate(-90deg) translateX(-50%);transform-origin:left top;font:500 9px var(--head);letter-spacing:.3em;text-transform:uppercase;color:var(--blue);white-space:nowrap}
+.fc.tac .tx-rail i{position:absolute;left:5px;width:3px;height:36px;background:var(--line)}
+.fc.tac .tx-rail .r1{top:120px;background:var(--gold)}.fc.tac .tx-rail .r2{top:164px;background:var(--blue)}
+.fc.tac .tx-rail em{position:absolute;left:4px;bottom:120px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.fc.tac .tx-head{position:absolute;left:26px;right:22px;top:20px;display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:start;pointer-events:none}
+.fc.tac .tx-head .tx-sec{max-width:280px}
+.fc.tac .tx-head-r{text-align:right;font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-top:14px}
+.fc.tac .tx-head-r span{display:block;margin-top:4px}
+.fc.tac .sc-lock{color:var(--blue)}
+.fc.tac .sc-eta{color:var(--gold)}.fc.tac .sc-eta.ok{color:var(--ok)}
+.fc.tac .sc-nav{margin:12px 0 0;gap:6px}
+.fc.tac .sc-nav button,.fc.tac .tx-bar button{all:unset;cursor:pointer;min-width:30px;height:24px;padding:0 10px;border:1px solid var(--blue);border-radius:3px;background:var(--fill);color:var(--blue);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:24px;box-sizing:border-box}
+.fc.tac .sc-nav button:hover,.fc.tac .tx-bar button:hover{background:var(--blue);color:#04060b}
+.fc.tac .sc-nav button:focus-visible,.fc.tac .tx-bar button:focus-visible{outline:1px solid #fff;outline-offset:2px}
+.fc.tac .tx-list{position:absolute;left:26px;top:92px;width:284px;font:500 10px var(--mono);color:var(--blue)}
+.fc.tac .tx-cols{display:grid;grid-template-columns:66px 1fr 54px 34px;gap:6px;padding:10px 0 5px;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--line)}
+.fc.tac .tx-cols span:nth-child(n+3){text-align:right}
+.fc.tac .tx-rows{position:relative;max-height:330px;overflow:auto;scrollbar-width:none;border-right:1px solid var(--line)}
+.fc.tac .tx-rows::-webkit-scrollbar{display:none}
+.fc.tac .tx-rows button{all:unset;cursor:pointer;display:grid;grid-template-columns:66px 1fr 54px 34px;gap:6px;align-items:center;width:100%;box-sizing:border-box;padding:4px 6px 4px 0;font:inherit;color:var(--dim);border-bottom:1px solid #12263a}
+.fc.tac .tx-rows button:hover{color:#fff}
+.fc.tac .tx-rows button.on{background:var(--fill);color:#fff}
+.fc.tac .tx-rows button i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--t);margin:0 6px 1px 2px;vertical-align:middle}
+.fc.tac .tx-rows button b{white-space:nowrap}
+.fc.tac .tx-rows button b{font-weight:500;color:var(--blue)}
+.fc.tac .tx-rows button.on b{color:var(--gold)}
+.fc.tac .tx-rows button span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;letter-spacing:.04em;text-transform:uppercase}
+.fc.tac .tx-rows button em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+.fc.tac .tx-bar{position:relative;display:flex;align-items:center;gap:14px;margin-top:14px}
+.fc.tac .tx-bar::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);z-index:0}
+.fc.tac .tx-bar button{position:relative;z-index:1;background:#04060b}
+.fc.tac .tx-bar button:hover{background:var(--blue)}
+.fc.tac .tx-chk{position:relative;z-index:1;margin-left:auto;display:flex;align-items:center;gap:6px;cursor:pointer;background:#04060b;padding-left:8px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.fc.tac .tx-chk input{position:absolute;opacity:0;width:0;height:0}
+.fc.tac .tx-chk i{width:11px;height:11px;border:1px solid var(--blue);box-sizing:border-box}
+.fc.tac .tx-chk input:checked+i{background:var(--blue);box-shadow:inset 0 0 0 2px #04060b}
+.fc.tac .tx-chk input:focus-visible+i{outline:1px solid #fff;outline-offset:2px}
+.fc.tac .sc-read{position:absolute;right:22px;top:92px;width:340px;padding:0;border:0;background:transparent;font:13px/1.5 Inter,system-ui,sans-serif;color:#b7c6d2}
+.fc.tac .sc-read .tx-sec b{font:600 20px/1.15 var(--head);letter-spacing:.02em;text-transform:none;color:#fff;margin-top:2px}
+.fc.tac .sc-read-k{color:var(--gold)!important}
+.fc.tac .sc-read-s{font:500 9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+.fc.tac .sc-data{margin:12px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fc.tac .sc-data div{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid #12263a}
+.fc.tac .sc-data div:last-child{border-bottom:0}
+.fc.tac .sc-data span{font:500 8px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.fc.tac .sc-data b{font:500 12px var(--mono);color:#fff;font-variant-numeric:tabular-nums}
+.fc.tac .sc-data b.hot{color:var(--gold)}.fc.tac .sc-data b.ok{color:var(--ok)}
+.fc.tac .sc-read-pic{margin:12px 0 10px;height:118px;border:1px solid var(--line);background:#070b12;box-shadow:0 0 0 3px #04060b,0 0 0 4px var(--line)}
+.fc.tac .sc-read-p{min-height:0}
+.fc.tac .sc-read-a{margin-top:12px;gap:6px}
+.fc.tac .sc-read-a a{padding:0 12px;height:24px;line-height:22px;border:1px solid var(--blue);border-radius:3px;background:var(--fill);color:var(--blue);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.fc.tac .sc-read-a a:hover{background:var(--blue);color:#04060b}
+.fc.tac .tx-log{position:absolute;left:326px;right:394px;bottom:40px;font:500 10px/1.6 var(--mono);color:var(--dim)}
+.fc.tac .tx-log-in{margin-top:6px;min-height:58px}
+.fc.tac .tx-log-in div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc.tac .tx-log-in div:last-child{color:var(--blue)}
+.fc.tac .tx-log-in div:last-child::after{content:"_";animation:owb 1s steps(2) infinite}
+.fc.tac .sc-foot{left:26px;right:22px;bottom:14px;color:var(--dim)}
+.fc.tac .sc-foot a{color:var(--blue)}
+.fc.tac .sc-foot a:hover{color:var(--gold)}
+@container site (max-width:640px){
+  .fc.tac .sc{height:640px}
+  .fc.tac .tx-rail{display:none}
+  .fc.tac .tx-head{left:14px;right:14px;top:14px;grid-template-columns:1fr auto;gap:12px}
+  .fc.tac .tx-head-r{display:none}
+  .fc.tac .tx-head .tx-sec b{font-size:11px}
+  .fc.tac .sc-nav{margin-top:8px}
+  .fc.tac .sc-nav button{min-width:28px;height:22px;line-height:22px;padding:0 8px;font-size:9px}
+  .fc.tac .tx-list,.fc.tac .tx-log{display:none}
+  .fc.tac .sc-read{left:14px;right:14px;top:auto;bottom:40px;width:auto;padding:0}
+  .fc.tac .sc-read .tx-sec b{font-size:18px}
+  .fc.tac .sc-data{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;border-bottom:0}
+  .fc.tac .sc-data div:last-child{border-bottom:1px solid #12263a}
+  .fc.tac .sc-read-pic{float:right;width:112px;height:72px;margin:10px 0 6px 12px}
+  .fc.tac .sc-read-p{font-size:12.5px;margin-top:10px}
+  .fc.tac .sc-foot{left:14px;right:14px;bottom:12px}
+}
+@container site (max-width:640px){
+  .fc .sc-speed{margin-left:0}
+  .fc .sc-rail{display:none}
+}
+
+</style>
+</head>
+<body>
+<div class="o fc cc tac"><div class="sc" tabindex="0" aria-label="A tactical plot of David Allen's work. Click a contact to lock on; arrow keys move between contacts.">
+<canvas class="sc-c"></canvas>
+<aside class="tx-rail"><span>Navigation</span><i class="r1"></i><i class="r2"></i><em></em></aside>
+<header class="tx-head"><div class="tx-sec"><small>DRA-NAV-0001</small><b>Tactical plot</b></div><div class="tx-head-r"><span class="sc-lock">Lock: none</span><span class="sc-eta">No burn</span></div><div class="sc-nav"><button type="button" data-n="home">Home</button><button type="button" data-n="prev" aria-label="Previous">&lsaquo;</button><button type="button" data-n="next" aria-label="Next">&rsaquo;</button></div></header>
+<section class="tx-list"><div class="tx-sec"><small>DRA-TRK-0012</small><b>Contacts</b></div><div class="tx-cols"><span>ID &#9662;</span><span>Name</span><span>Range</span><span>Brg</span></div><div class="tx-rows"></div>
+<div class="tx-bar"><button type="button" data-n="lock">Lock</button><button type="button" data-n="open">Open</button><button type="button" data-n="home">Home</button><label class="tx-chk"><input type="checkbox" class="tx-auto"><i></i>Auto</label></div></section>
+<aside class="sc-read"><div class="tx-sec"><small class="sc-read-k">No lock</small><b class="sc-read-h"></b></div><div class="sc-read-s"></div><div class="sc-read-pic"></div><div class="sc-read-p"></div><div class="sc-read-a"></div></aside>
+<footer class="tx-log"><div class="tx-sec"><small>DRA-SYS-0003</small><b>System terminal</b></div><div class="tx-log-in"></div></footer>
+<div class="sc-foot"><span>Click a contact &middot; arrows cycle &middot; Enter opens</span><span class="sc-foot-r"><a class="sc-link" href="/">davidrallen.com</a><a class="sc-link" href="https://davidrallen.com/resume.pdf" target="_blank" rel="noopener">Resume <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="sc-link" href="https://www.linkedin.com/in/davidallen03264/" target="_blank" rel="noopener">LinkedIn <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="sc-link" href="https://github.com/doctorallen" target="_blank" rel="noopener">GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
+</div></div>
+<script>
+window.FUN = {"role": "Director of Software Engineering", "co": "Fidelity Investments", "intro": "Director of Software Engineering at Fidelity Investments by day. Tools, a game engine and small games by night. Typing commands to see what happens since the 1990s.", "short": "Leading two engineering teams by day. Building tools and small games by night.", "links": [{"t": "Resume", "h": "https://davidrallen.com/resume.pdf"}, {"t": "LinkedIn", "h": "https://www.linkedin.com/in/davidallen03264/"}, {"t": "GitHub", "h": "https://github.com/doctorallen"}], "teams": [{"t": "Investment Tool Development", "d": "Tools for the portfolio managers, quants and traders behind more than $2.5T in fixed income."}, {"t": "User Experience Center of Excellence", "d": "UI components and standards for all of fixed income engineering."}], "projects": [{"id": "deckard", "name": "Deckard", "kind": "VS Code extension", "line": "A local-first second brain for the Markdown notes already in your workspace.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.deckard-notes", "img": "deckard-lockup.svg", "logo": true, "icon": "deckard-lockup.svg", "tint": "#d4922c"}, {"id": "esper", "name": "Esper Themes", "kind": "VS Code themes", "line": "Film-inspired, high-contrast color themes for VS Code.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.esper-themes", "img": "esper-themes-crop.svg", "logo": true, "icon": "esper-themes-crop.svg", "tint": "#9fbfd4"}, {"id": "tycho", "name": "Tycho", "kind": "Game engine", "line": "An engine for small, phone-first pixel games, with Tyrell, a minds engine, inside.", "lt": "Docs", "href": "https://doctorallen.github.io/tycho/", "img": "tycho-lockup.svg", "logo": true, "icon": "tycho-icon.svg", "tint": "#d4922c"}, {"id": "utwd", "name": "Under the White Dragon", "kind": "Side-scroller", "line": "Cyberpunk repair, from a basement under a noodle bar.", "lt": "Play", "href": "https://doctorallen.github.io/under-the-white-dragon/", "img": "g-utwd-skyline.jpg", "logo": false, "icon": "under-the-white-dragon-icon.svg", "tint": "#3fe0d0"}, {"id": "lodestar", "name": "Lodestar", "kind": "Top-down action", "line": "Carry a star's light across a dead world.", "lt": "Play", "href": "https://doctorallen.github.io/Lodestar/", "img": "lodestar-lockup.png", "logo": true, "icon": "lodestar-icon.svg", "tint": "#e8b75a"}, {"id": "merryfolk", "name": "Merryfolk", "kind": "Artificial life", "line": "Artificial life in a Shire-like village.", "lt": "Play", "href": "https://doctorallen.github.io/merryfolk/", "img": "g-merryfolk-hole.jpg", "logo": false, "icon": "merryfolk-icon.svg", "tint": "#8fc46a"}, {"id": "neo", "name": "NEO", "kind": "Roguelite", "line": "A five-minute roguelite in a dungeon of code.", "lt": "Play", "href": "https://doctorallen.github.io/Neo/", "img": "g-neo-wake.jpg", "logo": false, "icon": "neo-icon.svg", "tint": "#4be36b"}], "jobs": [{"w": "2024 \u2013 now", "co": "Fidelity Investments", "r": "Director, Software Engineering", "d": "Leading Investment Tool Development and the User Experience Center of Excellence in fixed income."}, {"w": "2022 \u2013 2024", "co": "Datamura Solutions", "r": "Director of Software Engineering", "d": "Built and led the team behind an operations and analytics platform for a Fortune 500 pharmaceutical company."}, {"w": "2020 \u2013 now", "co": "Esper Innovations", "r": "Founder", "d": "Custom software and consulting for a range of clients."}, {"w": "2019 \u2013 2020", "co": "University of New Hampshire", "r": "Adjunct instructor", "d": "Instructed two cohorts of a six-month full-stack bootcamp."}, {"w": "2012 \u2013 2019", "co": "The Atom Group", "r": "Senior software architect", "d": "Built software for more than 100 clients."}], "beats": [{"y": "1990s", "t": "Terminal Tetris", "d": "Poking around the command line of my mom's Brother word processor, I found Tetris. I've been typing commands just to see what happens ever since."}, {"y": "2004", "t": "My first website", "d": "At fourteen I had strong opinions about a James Bond game and a freewebs.com account. The site was very red, but it was out there, and that turned out to be the part that mattered."}, {"y": "2006", "t": "Hello, world", "d": "Visual Basic class by day, and hours programming games at night after dishwashing shifts. Coming back as the TA and helping classmates through it prepared me to teach a coding bootcamp years later."}, {"y": "2008", "t": "Databases and business", "d": "I started college studying game development, then switched majors for a path I could build a career on. It introduced me to databases and the business side of technology, and I\u2019ve leaned on both ever since."}, {"y": "2012", "t": "Back to code", "d": "My last year at Plymouth State brought four new languages and Vim on purpose. My senior thesis was the first thing I built for real people, and the campus actually used it."}], "base": "../assets/"};
+(function () {
+// C3. Tactical plot, after the UNN / Razorback screens: thin light-blue rules, ID codes over section titles,
+// hex contacts with a dot, an orange tag on the lock, a dash-dot crosshair, square ticks on the frame, a system terminal.
+function tactical(root, host) {
+  const D = window.FUN;
+  const box = root.querySelector('.sc');
+  const cv = root.querySelector('.sc-c');
+  const ctx = cv.getContext('2d');
+  const read = root.querySelector('.sc-read');
+  const rK = read.querySelector('.sc-read-k'), rH = read.querySelector('.sc-read-h'), rS = read.querySelector('.sc-read-s'), rPic = read.querySelector('.sc-read-pic'), rP = read.querySelector('.sc-read-p'), rA = read.querySelector('.sc-read-a');
+  const lock = root.querySelector('.sc-lock');
+  const eta = root.querySelector('.sc-eta');
+  const list = root.querySelector('.tx-rows');
+  const logEl = root.querySelector('.tx-log-in');
+  const auto = root.querySelector('.tx-auto');
+  const ORANGE = '#d4922c', BLUE = '#9ad0ea', LINE = '#2f5f80', DIM = '#4f7a99', GREY = '#8a9aa8', OK = '#7ed37a';
+  const pr = Object.fromEntries(D.projects.map((p) => [p.id, p]));
+  const node = (id, code, grp, x, y, z) => { const p = pr[id]; return { id, code, grp, kind: 'project', name: p.name, k: code, s: p.kind, p: p.line, pic: p.img, logo: p.logo, tint: p.tint, a: [[p.lt, p.href]], px: x, py: y, pz: z }; };
+  const you = { id: 'you', code: 'HOME', grp: 'Reference frame', kind: 'you', name: 'David Allen', k: 'HOME', s: D.role + ' · ' + D.co, p: D.intro, pic: 'headshot.jpg', tint: ORANGE, a: D.links.map((l) => [l.t, l.h]), px: 0, py: 0, pz: 0 };
+  const proj = [
+    node('deckard', 'TLS-01', 'Tools', -150, -60, 40), node('esper', 'TLS-02', 'Tools', -230, 60, -30),
+    node('tycho', 'ENG-01', 'Engine', 175, 115, 60),
+    node('utwd', 'GME-01', 'Games', 230, -40, 90), node('lodestar', 'GME-02', 'Games', 260, 150, 20), node('merryfolk', 'GME-03', 'Games', 90, 210, -40), node('neo', 'GME-04', 'Games', 300, 60, -70),
+  ];
+  const track = [[-290, -230], [-150, -260], [0, -250], [150, -230], [280, -170]];
+  const jobs = D.jobs.slice().reverse().map((j, i) => ({ id: 'job' + i, code: 'STN-0' + (i + 1), grp: 'Transit lane', kind: 'job', name: j.co, k: 'STN-0' + (i + 1), s: j.r + ' · ' + j.w, p: j.d + (j.co === D.co ? ' ' + D.teams.map((t) => t.t).join(' and ') + '.' : ''), tint: GREY, year: j.w.slice(0, 4), px: track[i][0], py: track[i][1], pz: 0 }));
+  const nodes = [you].concat(proj, jobs);
+  const links = [[proj[0], proj[1]], [proj[2], proj[3]], [proj[2], proj[4]], [proj[2], proj[5]], [proj[2], proj[6]]];
+  let cw = 0, ch = 0, dpr = 1, phone = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
+  const TILT = .46, ZS = .85;
+  const layout = () => {
+    phone = cw < 640;
+    A.x = phone ? 14 : 326; A.y = phone ? 70 : 92; A.w = phone ? cw - 28 : cw - 326 - 372; A.h = phone ? ch * .5 - 20 : ch - 92 - 160;
+    C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 6 : 16);
+    K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
+  };
+  const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); };
+  resize();
+  try { new ResizeObserver(resize).observe(box); } catch (e) { window.addEventListener('resize', resize); }
+  let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
+  const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
+  const P = (x, y, z) => { const c = Math.cos(th), s = Math.sin(th); const rx = x * c - y * s, ry = x * s + y * c; return [C.x + rx * K, C.y + ry * K * TILT - (z || 0) * K * ZS]; };
+  const place = () => nodes.forEach((n) => { const [x, y] = P(n.px, n.py, n.pz); const [fx, fy] = P(n.px, n.py, 0); n.x = x; n.y = y; n.fx = fx; n.fy = fy; n.range = Math.hypot(n.px, n.py, n.pz) / 200; n.brg = ((Math.atan2(n.py, n.px) + th) * 180 / Math.PI + 450) % 360; });
+  place();
+  // the contact table
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  if (list) list.innerHTML = nodes.map((n) => '<button type="button" data-id="' + n.id + '"><b><i style="--t:' + n.tint + '"></i>' + n.code + '</b><span>' + esc(n.name) + '</span><em data-r>—</em><em data-b>—</em></button>').join('');
+  const rows = list ? Object.fromEntries([...list.querySelectorAll('button')].map((b) => [b.dataset.id, b])) : {};
+  Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.focus({ preventScroll: true }); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
+  // the readout's key/value rows
+  const data = document.createElement('div'); data.className = 'sc-data';
+  data.innerHTML = '<div><span>Range</span><b data-d="r">—</b></div><div><span>Bearing</span><b data-d="b">—</b></div><div><span>Altitude</span><b data-d="a">—</b></div><div><span>Drive</span><b data-d="e">—</b></div>';
+  rS.after(data);
+  const dR = data.querySelector('[data-d=r]'), dB = data.querySelector('[data-d=b]'), dA = data.querySelector('[data-d=a]'), dE = data.querySelector('[data-d=e]');
+  // the system terminal
+  const log = (s) => { if (!logEl) return; const d = document.createElement('div'); d.textContent = '> ' + s; logEl.appendChild(d); while (logEl.children.length > 4) logEl.removeChild(logEl.firstChild); };
+  log('Nav system online. Frame: HOME. Tracking ' + String(nodes.length - 1).padStart(2, '0') + ' contacts.');
+  const fmtR = (r) => r.toFixed(2) + ' AU';
+  const fmtB = (b) => String(Math.round(b)).padStart(3, '0') + '°';
+  const fmtT = (ms) => { const s = Math.max(0, Math.ceil(ms / 1000)); return '00:' + String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+  const select = (n, quiet) => {
+    if (!n) return;
+    sel = n; ret = 0; autoT = performance.now();
+    lock.textContent = 'Lock: ' + n.code;
+    read.classList.remove('off');
+    rK.textContent = n.code + ' · ' + n.grp; rH.textContent = n.name; rS.textContent = n.s;
+    rPic.className = 'sc-read-pic' + (n.logo ? ' logo' : '') + (n.kind === 'you' ? ' you' : ''); rPic.innerHTML = n.pic ? '<img src="' + (window.FUN.base || 'assets/') + n.pic + '" alt="">' : '';
+    rA.innerHTML = (n.a || []).map(([tx, h]) => '<a href="' + h + '" target="_blank" rel="noopener">' + tx + '</a>').join('');
+    if (typing) clearInterval(typing); let i = 0; rP.textContent = '';
+    typing = setInterval(() => { i += 3; rP.textContent = n.p.slice(0, i); if (i >= n.p.length) { clearInterval(typing); typing = null; rP.textContent = n.p; } }, 16);
+    Object.values(rows).forEach((b) => b.classList.toggle('on', b.dataset.id === n.id));
+    burn = n === you ? null : { n, t0: performance.now(), dur: 1400 + n.range * 900, logged: 0 };
+    if (!quiet) log(n === you ? 'Holding at HOME.' : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn plotted, ETA ' + fmtT(burn.dur) + '.');
+  };
+  const near = (x, y) => { let best = null, bd = 20; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
+  const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
+  cv.addEventListener('pointermove', (ev) => { const [x, y] = pos(ev); hover = near(x, y); cv.style.cursor = hover ? 'pointer' : 'default'; });
+  cv.addEventListener('pointerleave', () => { hover = null; });
+  cv.addEventListener('pointerdown', (ev) => { const [x, y] = pos(ev); const n = near(x, y); box.focus({ preventScroll: true }); if (n) select(n); });
+  const step = (d) => { const i = sel ? nodes.indexOf(sel) : -1; select(nodes[(i + d + nodes.length) % nodes.length]); };
+  box.addEventListener('keydown', (ev) => {
+    if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); step(1); }
+    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); step(-1); }
+    if (ev.key === 'Enter' && sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener');
+  });
+  root.querySelectorAll('.sc-nav button, .tx-bar button').forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.n; if (k === 'prev') step(-1); else if (k === 'next') step(1); else if (k === 'home') select(you); else if (k === 'open') { if (sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener'); } else if (k === 'lock') { if (hover) select(hover); else step(1); }
+    box.focus({ preventScroll: true });
+  }));
+  if (auto) auto.addEventListener('change', () => { autoT = performance.now(); log(auto.checked ? 'Auto-cycle on: next contact every 7 s.' : 'Auto-cycle off.'); });
+  const mono = (sz, w) => (w || '500') + ' ' + sz + 'px "IBM Plex Mono", monospace';
+  const wide = (txt, x, y, align) => { ctx.textAlign = align || 'center'; if ('letterSpacing' in ctx) { ctx.letterSpacing = '0.14em'; ctx.fillText(txt, x, y); ctx.letterSpacing = '0px'; } else ctx.fillText(txt, x, y); };
+  const hex = (x, y, r) => { ctx.beginPath(); for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; const px = x + Math.cos(a) * r, py = y + Math.sin(a) * r; i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); } ctx.closePath(); };
+  const frame = (now) => {
+    if (!cv.isConnected) return;
+    if (cw < 50 || ch < 50) { requestAnimationFrame(frame); return; }
+    t++; th += .0011; place();
+    if (auto && auto.checked && now - autoT > 7000) step(1);
+    nodes.forEach((n) => { const b = rows[n.id]; if (b) { b.querySelector('[data-r]').textContent = n === you ? '—' : fmtR(n.range); b.querySelector('[data-b]').textContent = n === you ? '—' : fmtB(n.brg); } });
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, cw, ch);
+    // plot frame: thin rule, square ticks along the top and bottom edges, corner marks
+    ctx.strokeStyle = LINE; ctx.lineWidth = 1; ctx.strokeRect(A.x + .5, A.y + .5, A.w, A.h);
+    ctx.fillStyle = LINE; for (let x = A.x + 20; x < A.x + A.w - 10; x += 40) { ctx.fillRect(x - 1.5, A.y - 1.5, 3, 3); ctx.fillRect(x - 1.5, A.y + A.h - 1.5, 3, 3); }
+    ctx.strokeStyle = BLUE; ctx.lineWidth = 1.5; const cl = 10;
+    [[A.x, A.y, 1, 1], [A.x + A.w, A.y, -1, 1], [A.x, A.y + A.h, 1, -1], [A.x + A.w, A.y + A.h, -1, -1]].forEach(([x, y, sx, sy]) => { ctx.beginPath(); ctx.moveTo(x, y + sy * cl); ctx.lineTo(x, y); ctx.lineTo(x + sx * cl, y); ctx.stroke(); });
+    ctx.lineWidth = 1;
+    ctx.save(); ctx.beginPath(); ctx.rect(A.x + 1, A.y + 1, A.w - 2, A.h - 2); ctx.clip();
+    // dash-dot crosshair through HOME
+    ctx.strokeStyle = '#ffffff55'; ctx.setLineDash([9, 4, 2, 4]); ctx.beginPath(); ctx.moveTo(A.x, C.y); ctx.lineTo(A.x + A.w, C.y); ctx.moveTo(C.x, A.y); ctx.lineTo(C.x, A.y + A.h); ctx.stroke(); ctx.setLineDash([]);
+    // the plane: grid clipped to the outer ring, range rings, bearing ticks
+    const R = 340;
+    ctx.save(); ctx.beginPath(); ctx.ellipse(C.x, C.y, R * K, R * K * TILT, 0, 0, Math.PI * 2); ctx.clip();
+    ctx.strokeStyle = '#17324a';
+    for (let g = -360; g <= 360; g += (phone ? 90 : 60)) { let [x0, y0] = P(g, -360, 0), [x1, y1] = P(g, 360, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); [x0, y0] = P(-360, g, 0); [x1, y1] = P(360, g, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); }
+    ctx.restore();
+    ctx.font = mono(8); ctx.fillStyle = DIM;
+    [100, 200, 300].forEach((r, i) => { ctx.strokeStyle = i === 2 ? LINE : '#1f4260'; ctx.setLineDash(i === 2 ? [] : [2, 5]); ctx.beginPath(); ctx.ellipse(C.x, C.y, r * K, r * K * TILT, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]); if (!phone || i === 2) wide((r / 200).toFixed(1) + ' AU', C.x + r * K * .72, C.y + r * K * TILT * .72 + 10, 'left'); });
+    for (let d = 0; d < 360; d += 10) { const a = d * Math.PI / 180 + th; const big = d % 90 === 0; const x0 = C.x + Math.cos(a) * R * K, y0 = C.y + Math.sin(a) * R * K * TILT, x1 = C.x + Math.cos(a) * (R + (big ? 14 : 7)) * K, y1 = C.y + Math.sin(a) * (R + (big ? 14 : 7)) * K * TILT; ctx.strokeStyle = big ? BLUE : LINE; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); if (big && !phone) { ctx.fillStyle = DIM; ctx.font = mono(8); wide(String((360 - d) % 360).padStart(3, '0'), C.x + Math.cos(a) * (R + 30) * K, C.y + Math.sin(a) * (R + 30) * K * TILT + 3); } }
+    // grid references, the way the Razorback map scatters them
+    if (!phone) [[-200, 100], [180, -120], [60, 260]].forEach(([gx, gy]) => { const [x, y] = P(gx, gy, 0); ctx.fillStyle = '#4a9ad0'; ctx.fillRect(x - 1.5, y - 1.5, 3, 3); ctx.fillStyle = DIM; ctx.font = mono(7); ctx.textAlign = 'left'; ctx.fillText(String(gx + 500).padStart(4, '0') + ' ' + String(gy + 500).padStart(4, '0'), x + 6, y - 4); });
+    // the transit lane: a grey curve through the stations
+    ctx.strokeStyle = GREY + '99'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(jobs[0].fx, jobs[0].fy);
+    for (let i = 1; i < jobs.length - 1; i++) { const mx = (jobs[i].fx + jobs[i + 1].fx) / 2, my = (jobs[i].fy + jobs[i + 1].fy) / 2; ctx.quadraticCurveTo(jobs[i].fx, jobs[i].fy, mx, my); }
+    ctx.lineTo(jobs[jobs.length - 1].fx, jobs[jobs.length - 1].fy); ctx.stroke();
+    // blue links between related bodies, on the plane
+    ctx.strokeStyle = '#2f5f8088'; links.forEach(([a, b]) => { ctx.beginPath(); ctx.moveTo(a.fx, a.fy); ctx.lineTo(b.fx, b.fy); ctx.stroke(); });
+    // burn plan: straight to the lock; accelerate, flip, decelerate
+    let phase = 'idle', prog = 0;
+    if (burn) {
+      const u = Math.min(1, (now - burn.t0) / burn.dur), n = burn.n, e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      prog = u; phase = u >= 1 ? 'station' : u < .47 ? 'burn' : u < .53 ? 'flip' : 'decel';
+      if (phase === 'flip' && burn.logged < 1) { burn.logged = 1; log('Flip.'); }
+      if (phase === 'station' && burn.logged < 2) { burn.logged = 2; log('On station at ' + n.code + '. Range ' + fmtR(n.range) + '.'); }
+      ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(you.x, you.y); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.setLineDash([]);
+      const mx = (you.x + n.x) / 2, my = (you.y + n.y) / 2, ang = Math.atan2(n.y - you.y, n.x - you.x);
+      ctx.save(); ctx.translate(mx, my); ctx.rotate(ang); ctx.strokeStyle = phase === 'flip' ? '#fff' : ORANGE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(0, 6); ctx.stroke(); ctx.restore();
+      if (!phone) { ctx.font = mono(8); ctx.fillStyle = phase === 'flip' ? '#fff' : DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); }
+      ship.x = you.x + (n.x - you.x) * e; ship.y = you.y + (n.y - you.y) * e; ship.a = ang + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
+      if (eta) { eta.textContent = u < 1 ? (phase === 'flip' ? 'Flip' : (phase === 'decel' ? 'Decel · ETA ' : 'Burn · ETA ') + fmtT(burn.dur * (1 - u))) : 'On station'; eta.classList.toggle('ok', u >= 1); }
+    } else { ship.state = 'docked'; ship.thrust = 0; if (eta) { eta.textContent = sel === you ? 'Holding at home' : 'No burn'; eta.classList.toggle('ok', sel === you); } }
+
+    const dLabel = phase === 'idle' ? (sel === you ? 'Holding' : 'Idle') : phase === 'station' ? 'On station' : phase === 'flip' ? 'Flip' : phase === 'decel' ? 'Decel ' + (3 - 3 * (prog - .5) * 2).toFixed(1) + ' g' : 'Burn ' + (3 * Math.min(1, prog * 2.2)).toFixed(1) + ' g';
+    if (sel) { dR.textContent = sel === you ? '0.00 AU' : fmtR(sel.range); dB.textContent = sel === you ? '—' : fmtB(sel.brg); dA.textContent = sel === you ? '0.00 AU' : ((sel.pz >= 0 ? '+' : '−') + (Math.abs(sel.pz) / 200).toFixed(2) + ' AU'); dE.textContent = dLabel; dE.className = phase === 'station' || phase === 'idle' ? 'ok' : 'hot'; }
+    // bodies: foot, stalk, velocity tick, hex marker, labels; nearest drawn last
+    const litN = hover || sel; let homeQuiet = false;
+    if (litN && litN !== you) { const tw = (litN.kind === 'job' ? 4 : litN.name.length) * 7.2 + 16, flip = litN.x + tw > A.x + A.w; const x0 = flip ? litN.x - tw : litN.x, x1 = x0 + tw, hx0 = you.x, hx1 = you.x + 11 * 7.2 + 16; homeQuiet = x0 < hx1 && x1 > hx0 && Math.abs(litN.y - you.y) < 16; }
+    const homeHidden = homeQuiet && !(litN.x + ((litN.kind === 'job' ? 4 : litN.name.length) * 7.2 + 16) > A.x + A.w);
+    nodes.slice().sort((a, b) => a.fy - b.fy).forEach((n) => {
+      const on = n === sel, hv = n === hover, lit = on || hv;
+      if (n !== you) {
+        ctx.strokeStyle = lit ? ORANGE : LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(n.fx, n.fy); ctx.lineTo(n.x, n.y); ctx.stroke();
+        ctx.fillStyle = lit ? ORANGE : LINE; ctx.beginPath(); ctx.ellipse(n.fx, n.fy, 2.5, 2.5 * TILT, 0, 0, Math.PI * 2); ctx.fill();
+        const va = Math.atan2(n.py, n.px) + th + Math.PI / 2; const vx = Math.cos(va) * K, vy = Math.sin(va) * K * TILT, vl = 10 + n.range * 4; ctx.strokeStyle = lit ? ORANGE : '#2f5f80'; ctx.beginPath(); ctx.moveTo(n.x + vx * 9, n.y + vy * 9); ctx.lineTo(n.x + vx * (9 + vl), n.y + vy * (9 + vl)); ctx.stroke();
+      }
+      if (n === you) {
+        // the station: a turning ring with spokes and docking arms on the plane, a hub, and a tower with a beacon
+        const rot = t * .004, col = lit ? ORANGE : BLUE;
+        ctx.strokeStyle = LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(n.x, n.y, 32, 32 * TILT, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.ellipse(n.x, n.y, 22, 22 * TILT, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.lineWidth = 1; for (let k = 0; k < 6; k++) { const a = rot + k * Math.PI / 3; const ex = Math.cos(a), ey = Math.sin(a) * TILT; ctx.beginPath(); ctx.moveTo(n.x + ex * 6, n.y + ey * 6); ctx.lineTo(n.x + ex * 22, n.y + ey * 22); ctx.stroke(); if (k % 2 === 0) { ctx.fillStyle = col; ctx.fillRect(n.x + ex * 27 - 2.5, n.y + ey * 27 - 1.5, 5, 3); } }
+        ctx.fillStyle = '#04060b'; ctx.beginPath(); ctx.ellipse(n.x, n.y, 7, 7 * TILT + 1.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.stroke();
+        ctx.fillStyle = ORANGE; ctx.beginPath(); ctx.arc(n.x, n.y, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(n.x, n.y - 3); ctx.lineTo(n.x, n.y - 24); ctx.stroke(); ctx.fillStyle = (t >> 4) & 1 ? '#fff' : ORANGE; ctx.fillRect(n.x - 1.5, n.y - 27, 3, 3);
+      } else {
+        hex(n.x, n.y, 7); ctx.fillStyle = '#04060b'; ctx.fill(); ctx.strokeStyle = on ? ORANGE : hv ? '#fff' : n.kind === 'job' ? GREY : BLUE; ctx.lineWidth = on ? 1.5 : 1; ctx.stroke();
+        ctx.fillStyle = n.kind === 'job' ? GREY : n.tint; ctx.beginPath(); ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2); ctx.fill();
+      }
+      const tw = (n.kind === 'job' ? 4 : n.name.length) * 7.2 + 16, flip = n.x + tw > A.x + A.w;
+      // a lit label that would flip across HOME goes underneath the marker instead
+      const below = n !== you && flip && (n.x - tw < C.x + 70);
+      const lx = below ? n.x : n.x + (n === you ? 30 : flip ? -12 : 12), al = below ? 'center' : flip ? 'right' : 'left', ly = below ? n.y + 24 : n.y + 5;
+      if (on) {
+        // the orange tag, like the Razorback's selected contact
+        ctx.font = mono(9, '600'); const w = ctx.measureText(n.code).width + 12; const tx = below ? n.x - w / 2 : flip ? n.x - 12 - w : n.x + 12, ty = below ? n.y + 10 : n.y - 19;
+        ctx.fillStyle = ORANGE; ctx.fillRect(tx, ty, w, 13); ctx.fillStyle = '#04060b'; ctx.textAlign = 'left'; ctx.fillText(n.code, tx + 6, ty + 10);
+      } else if (!phone || n === you) { ctx.font = mono(8); ctx.fillStyle = hv ? '#fff' : DIM; wide(n.code, lx, n.y - 8, al); }
+      ctx.font = mono(9); ctx.fillStyle = lit ? '#fff' : n.kind === 'job' ? GREY : BLUE;
+      if (n.kind === 'job') { if (!phone || lit) wide(n.year, lx, below ? ly + 12 : ly, al); }
+      else if ((!phone || lit || n === you) && !(n === you && homeHidden && !lit)) wide(n.name.toUpperCase(), lx, below ? ly + 12 : ly, al);
+    });
+    // lock brackets
+    if (sel) {
+      ret = Math.min(1, ret + .06);
+      const r = 14 + (34 - 14) * (1 - ret); ctx.strokeStyle = ORANGE; ctx.lineWidth = 1.2;
+      [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([sx, sy]) => { ctx.beginPath(); ctx.moveTo(sel.x + sx * r, sel.y + sy * (r - 6)); ctx.lineTo(sel.x + sx * r, sel.y + sy * r); ctx.lineTo(sel.x + sx * (r - 6), sel.y + sy * r); ctx.stroke(); });
+    }
+    // the ship, on top of everything, only while it is under way; it fades out on arrival
+    if (burn && ship.state === 'burn') ship.fade = 1; else if (ship.fade > 0) ship.fade = Math.max(0, ship.fade - .08);
+    if (ship.fade > 0) {
+      ctx.save(); ctx.globalAlpha = ship.fade; ctx.translate(ship.x, ship.y); ctx.rotate(ship.a); ctx.scale(.9, .9);
+      if (ship.thrust > 0 && ship.state === 'burn') { const fl = (8 + 4 * Math.sin(t * .7)) * ship.thrust; ctx.fillStyle = ORANGE + '66'; ctx.beginPath(); ctx.moveTo(-8, -2.5); ctx.lineTo(-8 - fl * 1.5, 0); ctx.lineTo(-8, 2.5); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#ffe2a8'; ctx.beginPath(); ctx.moveTo(-8, -1.2); ctx.lineTo(-8 - fl, 0); ctx.lineTo(-8, 1.2); ctx.closePath(); ctx.fill(); }
+      ctx.fillStyle = '#0a0d14'; ctx.strokeStyle = ORANGE; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(2, -3); ctx.lineTo(-6, -3); ctx.lineTo(-8, -1.5); ctx.lineTo(-8, 1.5); ctx.lineTo(-6, 3); ctx.lineTo(2, 3); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.moveTo(6, 0); ctx.lineTo(2, -1.3); ctx.lineTo(2, 1.3); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    ctx.restore();
+    // top-right of the plot: tracking readout, like the fire-control screen
+    ctx.font = mono(9); ctx.textAlign = 'right'; ctx.fillStyle = BLUE; ctx.fillText((sel && sel !== you ? sel.range.toFixed(2) : '0.00'), A.x + A.w - 10, A.y + 16); ctx.font = mono(7); ctx.fillStyle = DIM; wide('TRACKING ' + String(nodes.length - 1).padStart(2, '0'), A.x + A.w - 10, A.y + 27, 'right');
+    ctx.textAlign = 'left'; ctx.fillStyle = DIM; ctx.font = mono(7); wide('DRA-NAV-0001', A.x + 10, A.y + 14, 'left');
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+  read.classList.add('off');
+  setTimeout(() => { if (!sel && cv.isConnected) select(you, true); }, 700);
+}
+
+  tactical(document.querySelector('.o'), document.body);
+})();
+</script>
+</body>
+</html>
