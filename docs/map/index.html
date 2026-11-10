@@ -239,6 +239,36 @@ body{overflow:hidden}
 .ship-opt span{display:block;font:13px/1.45 Inter,system-ui,sans-serif;color:#9ba4af;margin-top:4px}
 @media (max-width:720px){.ship-pick{grid-template-columns:repeat(2,1fr)}}
 
+/* a phone on its side: short and wide */
+.fc.tac .sc.short .tx-rail,.fc.tac .sc.short .tx-log,.fc.tac .sc.short .sc-foot{display:none}
+.fc.tac .sc.short .tx-head{left:14px;right:14px;top:6px;grid-template-columns:1fr auto;gap:10px}
+.fc.tac .sc.short .tx-head .tx-sec{padding-top:10px}
+.fc.tac .sc.short .tx-head .tx-sec b{font-size:11px}
+.fc.tac .sc.short .sc-nav{margin-top:4px;gap:6px;pointer-events:auto}
+.fc.tac .sc.short .sc-nav button{min-width:44px;height:34px;line-height:34px;padding:0 10px;font-size:10px}
+.fc.tac .sc.short .sc-nav .tx-listbtn{display:inline-block}
+.fc.tac .sc.short .tx-list{display:none;position:absolute;left:0;right:0;top:48px;bottom:0;width:auto;z-index:8;background:#04060b;padding:4px 14px 16px;overflow:auto;-webkit-overflow-scrolling:touch}
+.fc.tac .sc.short.list-open .tx-list{display:block}
+.fc.tac .sc.short.list-open .tx-listbtn{background:#9ad0ea;color:#04060b}
+.fc.tac .sc.short .tx-head{z-index:9}
+.fc.tac .sc.short .tx-list .tx-sec{display:none}
+.fc.tac .sc.short .tx-cols{grid-template-columns:66px 1fr 64px 44px;padding:8px 10px 6px}
+.fc.tac .sc.short .tx-rows{max-height:none;border-right:0;columns:2;column-gap:24px}
+.fc.tac .sc.short .tx-rows button{grid-template-columns:66px 1fr 64px 44px;min-height:40px;padding:0 10px;font-size:11px;break-inside:avoid}
+.fc.tac .sc.short .tx-bar{margin-top:12px;gap:10px}
+.fc.tac .sc.short .tx-bar::before{display:none}
+.fc.tac .sc.short .tx-bar button{height:36px;line-height:36px;flex:1;text-align:center}
+.fc.tac .sc.short .tx-chk{height:36px;padding:0 8px}
+.fc.tac .sc.short .sc-read{left:60%;right:12px;top:44px;bottom:8px;width:auto;padding:8px 0 0 8px;overflow:auto;-webkit-overflow-scrolling:touch;font-size:12.5px;line-height:1.45}
+.fc.tac .sc.short .sc-read .tx-sec b{font-size:16px}
+.fc.tac .sc.short .sc-read-s{font-size:8px;margin-top:3px}
+.fc.tac .sc.short .sc-read-pic{float:right;width:104px;height:66px;margin:8px 0 4px 10px}
+.fc.tac .sc.short .sc-read-p{margin-top:8px}
+.fc.tac .sc.short .sc-read-items{margin-top:6px}
+.fc.tac .sc.short .sc-read-items div{padding:6px 0}
+.fc.tac .sc.short .sc-read-a{margin-top:10px;gap:6px}
+.fc.tac .sc.short .sc-read-a a{height:34px;line-height:32px;padding:0 14px;font-size:10px}
+
 </style>
 </head>
 <body>
@@ -332,24 +362,33 @@ function tactical(root, host) {
   const logs = D.beats.map((b, i) => ({ id: 'log' + i, code: 'LOG-0' + (i + 1), grp: 'Flight log', kind: 'log', name: b.t, k: 'LOG-0' + (i + 1), s: 'Flight log · ' + b.y, p: b.d, tint: GREY, year: b.y, px: trail[i][0], py: trail[i][1], pz: 0 }));
   const nodes = [you].concat(proj, jobs, logs);
   const links = [[proj[0], proj[1]], [proj[2], proj[3]], [proj[2], proj[4]], [proj[2], proj[5]], [proj[2], proj[6]]];
-  let cw = 0, ch = 0, dpr = 1, phone = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
+  const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let cw = 0, ch = 0, dpr = 1, phone = false, short = false, dense = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
   let TILT = .46, ZS = .85;
   const PV = { on: false, kx: 1, ky: 1, pp: 0 };
   const layout = () => {
-    phone = cw < 640;
-    A.x = phone ? 14 : 326; A.y = phone ? 70 : 92; A.w = phone ? cw - 28 : cw - 326 - 372;
-    // phones: the same tilt as the desktop plane, no perspective; the frame is only as tall as the plane needs
-    PV.on = phone; PV.pp = 0; PV.kx = (A.w / 2 - 22) / 340;
-    const tiltP = .46; PV.ky = PV.kx * tiltP; TILT = .46; ZS = phone ? 1.1 : .85;
-    A.h = phone ? Math.min(ch * .56, Math.round(2 * 340 * PV.ky + 190)) : ch - 92 - 160;
-    C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 22 : 16);
-    K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
+    phone = cw < 640; short = !phone && ch < 520; dense = phone || short;
+    if (short) {
+      // a phone on its side: the plot takes the left three fifths, full height; the entry sits on the right
+      A.x = 14; A.y = 50; A.w = Math.round(cw * .6) - 24; A.h = ch - 50 - 12;
+      PV.on = false; TILT = .46; ZS = .85;
+      C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + 8;
+      K = Math.min(A.w / 720, A.h / 400) * .98;
+    } else {
+      A.x = phone ? 14 : 326; A.y = phone ? 70 : 92; A.w = phone ? cw - 28 : cw - 326 - 372;
+      // phones: the same tilt as the desktop plane, no perspective; the frame is only as tall as the plane needs
+      PV.on = phone; PV.pp = 0; PV.kx = (A.w / 2 - 22) / 340;
+      const tiltP = .46; PV.ky = PV.kx * tiltP; TILT = .46; ZS = phone ? 1.1 : .85;
+      A.h = phone ? Math.min(ch * .56, Math.round(2 * 340 * PV.ky + 190)) : ch - 92 - 160;
+      C.x = A.x + A.w / 2; C.y = A.y + A.h / 2 + (phone ? 22 : 16);
+      K = Math.min(A.w / 720, A.h / 420) * (phone ? .9 : .98);
+    }
+    box.classList.toggle('short', short);
   };
   const resize = () => { cw = box.clientWidth; ch = box.clientHeight; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = cw * dpr; cv.height = ch * dpr; cv.style.width = cw + 'px'; cv.style.height = ch + 'px'; layout(); if (phone) { read.style.top = (A.y + A.h + 14) + 'px'; read.style.bottom = 'auto'; } else { read.style.top = ''; read.style.bottom = ''; } };
   resize();
   try { new ResizeObserver(resize).observe(box); } catch (e) { window.addEventListener('resize', resize); }
   let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
-  const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
   // on phones the same tilted plane, seen from higher up and with a little perspective, so it fills a tall frame
@@ -395,7 +434,7 @@ function tactical(root, host) {
     if (V.s > 1 && (n.x < A.x + 30 || n.x > A.x + A.w - 30 || n.y < A.y + 40 || n.y > A.y + A.h - 30)) { V.x += C.x - n.x; V.y += C.y - n.y; clampV(); }
     if (!quiet) log(n === you ? 'Holding at HOME.' : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn plotted, ETA ' + fmtT(burn.dur) + '.');
   };
-  const near = (x, y) => { let best = null, bd = phone ? 30 : 20; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
+  const near = (x, y) => { let best = null, bd = fine ? 20 : 30; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
   const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
   const ptrs = new Map(); let pinch = null, drag = null, lastTap = 0;
   cv.style.touchAction = 'none';
@@ -464,13 +503,13 @@ function tactical(root, host) {
     const R = 340;
     ctx.save(); ring(R); ctx.clip();
     ctx.strokeStyle = '#17324a';
-    for (let g = -360; g <= 360; g += (phone ? 90 : 60)) { let [x0, y0] = P(g, -360, 0), [x1, y1] = P(g, 360, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); [x0, y0] = P(-360, g, 0); [x1, y1] = P(360, g, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); }
+    for (let g = -360; g <= 360; g += (dense ? 90 : 60)) { let [x0, y0] = P(g, -360, 0), [x1, y1] = P(g, 360, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); [x0, y0] = P(-360, g, 0); [x1, y1] = P(360, g, 0); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); }
     ctx.restore();
     ctx.font = mono(8); ctx.fillStyle = DIM;
-    [100, 200, 300].forEach((r, i) => { ctx.strokeStyle = i === 2 ? LINE : '#1f4260'; ctx.setLineDash(i === 2 ? [] : [2, 5]); ring(r); ctx.stroke(); ctx.setLineDash([]); if (!phone || i === 2) { const [lx, ly] = P(r * .72 * Math.cos(.8 - th), r * .72 * Math.sin(.8 - th), 0); wide((r / 200).toFixed(1) + ' AU', lx, ly + 10, 'left'); } });
-    for (let d = 0; d < 360; d += 10) { const a = d * Math.PI / 180; const big = d % 90 === 0; const [x0, y0] = P(Math.cos(a) * R, Math.sin(a) * R, 0), [x1, y1] = P(Math.cos(a) * (R + (big ? 14 : 7)), Math.sin(a) * (R + (big ? 14 : 7)), 0); ctx.strokeStyle = big ? BLUE : LINE; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); if (big && !phone) { const [tx, ty] = P(Math.cos(a) * (R + 30), Math.sin(a) * (R + 30), 0); ctx.fillStyle = DIM; ctx.font = mono(8); wide(String((360 - d) % 360).padStart(3, '0'), tx, ty + 3); } }
+    [100, 200, 300].forEach((r, i) => { ctx.strokeStyle = i === 2 ? LINE : '#1f4260'; ctx.setLineDash(i === 2 ? [] : [2, 5]); ring(r); ctx.stroke(); ctx.setLineDash([]); if (!dense || i === 2) { const [lx, ly] = P(r * .72 * Math.cos(.8 - th), r * .72 * Math.sin(.8 - th), 0); wide((r / 200).toFixed(1) + ' AU', lx, ly + 10, 'left'); } });
+    for (let d = 0; d < 360; d += 10) { const a = d * Math.PI / 180; const big = d % 90 === 0; const [x0, y0] = P(Math.cos(a) * R, Math.sin(a) * R, 0), [x1, y1] = P(Math.cos(a) * (R + (big ? 14 : 7)), Math.sin(a) * (R + (big ? 14 : 7)), 0); ctx.strokeStyle = big ? BLUE : LINE; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); if (big && !dense) { const [tx, ty] = P(Math.cos(a) * (R + 30), Math.sin(a) * (R + 30), 0); ctx.fillStyle = DIM; ctx.font = mono(8); wide(String((360 - d) % 360).padStart(3, '0'), tx, ty + 3); } }
     // grid references, the way the Razorback map scatters them
-    if (!phone) [[-200, 100], [180, -120], [60, 260]].forEach(([gx, gy]) => { const [x, y] = P(gx, gy, 0); ctx.fillStyle = '#4a9ad0'; ctx.fillRect(x - 1.5, y - 1.5, 3, 3); ctx.fillStyle = DIM; ctx.font = mono(7); ctx.textAlign = 'left'; ctx.fillText(String(gx + 500).padStart(4, '0') + ' ' + String(gy + 500).padStart(4, '0'), x + 6, y - 4); });
+    if (!dense) [[-200, 100], [180, -120], [60, 260]].forEach(([gx, gy]) => { const [x, y] = P(gx, gy, 0); ctx.fillStyle = '#4a9ad0'; ctx.fillRect(x - 1.5, y - 1.5, 3, 3); ctx.fillStyle = DIM; ctx.font = mono(7); ctx.textAlign = 'left'; ctx.fillText(String(gx + 500).padStart(4, '0') + ' ' + String(gy + 500).padStart(4, '0'), x + 6, y - 4); });
     // the flight log: a dotted trail along the rim that runs into the career lane at STN-01
     { const pts = logs.map((n) => [n.fx, n.fy]).concat([[jobs[0].fx, jobs[0].fy]]); ctx.strokeStyle = GREY + '66'; ctx.setLineDash([1, 4]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length - 1; i++) { const mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2; ctx.quadraticCurveTo(pts[i][0], pts[i][1], mx, my); } ctx.lineTo(pts[pts.length - 1][0], pts[pts.length - 1][1]); ctx.stroke(); ctx.setLineDash([]); }
     // the transit lane: a grey curve through the stations
@@ -489,7 +528,7 @@ function tactical(root, host) {
       ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(you.x, you.y); ctx.lineTo(n.x, n.y); ctx.stroke(); ctx.setLineDash([]);
       const mx = (you.x + n.x) / 2, my = (you.y + n.y) / 2, ang = Math.atan2(n.y - you.y, n.x - you.x);
       ctx.save(); ctx.translate(mx, my); ctx.rotate(ang); ctx.strokeStyle = phase === 'flip' ? '#fff' : ORANGE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(0, 6); ctx.stroke(); ctx.restore();
-      if (!phone) { ctx.font = mono(8); ctx.fillStyle = phase === 'flip' ? '#fff' : DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); }
+      if (!dense) { ctx.font = mono(8); ctx.fillStyle = phase === 'flip' ? '#fff' : DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); }
       ship.x = you.x + (n.x - you.x) * e; ship.y = you.y + (n.y - you.y) * e; ship.a = ang + (u >= .5 ? Math.PI : 0); ship.thrust = u < 1 ? (phase === 'flip' ? .2 : 1) : 0; ship.state = u >= 1 ? 'parked' : 'burn';
       if (eta) { eta.textContent = u < 1 ? (phase === 'flip' ? 'Flip' : (phase === 'decel' ? 'Decel · ETA ' : 'Burn · ETA ') + fmtT(burn.dur * (1 - u))) : 'On station'; eta.classList.toggle('ok', u >= 1); }
     } else { ship.state = 'docked'; ship.thrust = 0; if (eta) { eta.textContent = sel === you ? 'Holding at home' : 'No burn'; eta.classList.toggle('ok', sel === you); } }
@@ -529,10 +568,10 @@ function tactical(root, host) {
         // the orange tag, like the Razorback's selected contact
         ctx.font = mono(9, '600'); const w = ctx.measureText(n.code).width + 12; const tx = below ? n.x - w / 2 : flip ? n.x - 12 - w : n.x + 12, ty = below ? n.y + 10 : n.y - 19;
         ctx.fillStyle = ORANGE; ctx.fillRect(tx, ty, w, 13); ctx.fillStyle = '#04060b'; ctx.textAlign = 'left'; ctx.fillText(n.code, tx + 6, ty + 10);
-      } else if (!phone || n === you) { ctx.font = mono(8); ctx.fillStyle = hv ? '#fff' : DIM; wide(n.code, lx, n.y - 8, al); }
+      } else if (!dense || n === you) { ctx.font = mono(8); ctx.fillStyle = hv ? '#fff' : DIM; wide(n.code, lx, n.y - 8, al); }
       ctx.font = mono(9); ctx.fillStyle = lit ? '#fff' : n.kind === 'job' || n.kind === 'log' ? GREY : BLUE;
-      if (n.kind === 'job' || n.kind === 'log') { if (!phone || lit) wide(n.year, lx, below ? ly + 12 : ly, al); }
-      else if ((!phone || lit || n === you) && !(n === you && homeHidden && !lit)) wide(n.name.toUpperCase(), lx, below ? ly + 12 : ly, al);
+      if (n.kind === 'job' || n.kind === 'log') { if (!dense || lit) wide(n.year, lx, below ? ly + 12 : ly, al); }
+      else if ((!dense || lit || n === you) && !(n === you && homeHidden && !lit)) wide(n.name.toUpperCase(), lx, below ? ly + 12 : ly, al);
     });
     // lock brackets
     if (sel) {
@@ -556,7 +595,7 @@ function tactical(root, host) {
       ctx.font = mono(7); ctx.fillStyle = DIM; wide('TRACKING ' + String(nodes.length - 1).padStart(2, '0'), bx, by + rows.length * lh + 2, 'right');
     }
     ctx.textAlign = 'left'; ctx.fillStyle = DIM; ctx.font = mono(7); wide('DRA-NAV-0001', A.x + 10, A.y + 14, 'left');
-    if (phone && !V.used) wide('PINCH TO ZOOM', A.x + 10, A.y + A.h - 10, 'left'); else if (V.s > 1.01) { wide('ZOOM ' + V.s.toFixed(1) + '× · DOUBLE-TAP RESETS', A.x + 10, A.y + A.h - 10, 'left'); }
+    if (dense && !fine && !V.used) wide('PINCH TO ZOOM', A.x + 10, A.y + A.h - 10, 'left'); else if (V.s > 1.01) { wide('ZOOM ' + V.s.toFixed(1) + '× · DOUBLE-TAP RESETS', A.x + 10, A.y + A.h - 10, 'left'); }
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
