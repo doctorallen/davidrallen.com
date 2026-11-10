@@ -127,9 +127,11 @@ body{overflow:hidden}
 .fc.tac .sc-lock{color:var(--blue)}
 .fc.tac .sc-eta{color:var(--gold)}.fc.tac .sc-eta.ok{color:var(--ok)}
 .fc.tac .sc-nav{margin:12px 0 0;gap:6px}
-.fc.tac .sc-nav button,.fc.tac .tx-bar button{all:unset;cursor:pointer;min-width:30px;height:24px;padding:0 10px;border:1px solid var(--blue);border-radius:3px;background:var(--fill);color:var(--blue);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:24px;box-sizing:border-box}
+.fc.tac button,.fc.tac a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.fc.tac .sc-nav button,.fc.tac .tx-bar button{all:unset;cursor:pointer;min-width:32px;height:28px;padding:0 12px;border:1px solid var(--blue);border-radius:3px;background:var(--fill);color:var(--blue);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:28px;box-sizing:border-box;touch-action:manipulation}
 .fc.tac .sc-nav button:hover,.fc.tac .tx-bar button:hover{background:var(--blue);color:#04060b}
 .fc.tac .sc-nav button:focus-visible,.fc.tac .tx-bar button:focus-visible{outline:1px solid #fff;outline-offset:2px}
+.fc.tac .sc-nav .tx-listbtn{display:none}
 .fc.tac .tx-list{position:absolute;left:26px;top:92px;width:284px;font:500 10px var(--mono);color:var(--blue)}
 .fc.tac .tx-cols{display:grid;grid-template-columns:66px 1fr 54px 34px;gap:6px;padding:10px 0 5px;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--line)}
 .fc.tac .tx-cols span:nth-child(n+3){text-align:right}
@@ -179,19 +181,43 @@ body{overflow:hidden}
 @container site (max-width:640px){
   .fc.tac .sc{height:640px}
   .fc.tac .tx-rail{display:none}
-  .fc.tac .tx-head{left:14px;right:14px;top:14px;grid-template-columns:1fr auto;gap:12px}
-  .fc.tac .tx-head-r{display:none}
+  .fc.tac .tx-head{left:14px;right:14px;top:12px;grid-template-columns:1fr auto;gap:10px;align-items:start}
   .fc.tac .tx-head .tx-sec b{font-size:11px}
-  .fc.tac .sc-nav{margin-top:8px}
-  .fc.tac .sc-nav button{min-width:28px;height:22px;line-height:22px;padding:0 8px;font-size:9px}
-  .fc.tac .tx-list,.fc.tac .tx-log{display:none}
-  .fc.tac .sc-read{left:14px;right:14px;top:auto;bottom:40px;width:auto;padding:0}
-  .fc.tac .sc-read .tx-sec b{font-size:18px}
-  .fc.tac .sc-data{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;border-bottom:0}
+  .fc.tac .tx-head-r{grid-column:1;grid-row:2;text-align:left;padding-top:0;font-size:8px;letter-spacing:.12em}
+  .fc.tac .tx-head-r span{display:inline;margin:0 10px 0 0}
+  .fc.tac .sc-nav{grid-column:2;grid-row:1/3;margin:6px 0 0;gap:6px;pointer-events:auto}
+  .fc.tac .sc-nav button{min-width:44px;height:40px;line-height:40px;padding:0 10px;font-size:10px}
+  .fc.tac .sc-nav .tx-listbtn{display:inline-block}
+  .fc.tac .tx-head{z-index:9}
+  .fc.tac .tx-list{display:none;position:absolute;left:0;right:0;top:70px;bottom:0;width:auto;z-index:8;background:#04060b;padding:8px 14px 20px;overflow:auto;-webkit-overflow-scrolling:touch}
+  .fc.tac .sc.list-open .tx-listbtn{background:var(--blue);color:#04060b}
+  .fc.tac .sc.list-open .tx-list{display:block}
+  .fc.tac .tx-cols{grid-template-columns:62px 1fr 60px 40px;padding:14px 10px 8px;font-size:8px}
+  .fc.tac .tx-rows{max-height:none;border-right:0}
+  .fc.tac .tx-rows button{grid-template-columns:62px 1fr 60px 40px;min-height:46px;padding:0 10px;font-size:11px;border-bottom:1px solid #12263a}
+  .fc.tac .tx-rows button span{font-size:11px}
+  .fc.tac .tx-bar{margin-top:18px;gap:10px}
+  .fc.tac .tx-bar button{height:40px;line-height:40px;flex:1;text-align:center}
+  .fc.tac .tx-bar::before{display:none}
+  .fc.tac .tx-chk{height:40px;padding:0 8px;font-size:9px}
+  .fc.tac .tx-chk i{width:16px;height:16px}
+  .fc.tac .tx-log{display:none}
+  .fc.tac .sc-read{left:14px;right:14px;top:auto;bottom:44px;width:auto;padding:0;font-size:14px}
+  .fc.tac .sc-read .tx-sec b{font-size:19px}
+  .fc.tac .sc-read-s{font-size:9px}
+  .fc.tac .sc-data{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;border-bottom:0;margin-top:10px}
+  .fc.tac .sc-data div{padding:7px 0}
   .fc.tac .sc-data div:last-child{border-bottom:1px solid #12263a}
-  .fc.tac .sc-read-pic{float:right;width:112px;height:72px;margin:10px 0 6px 12px}
-  .fc.tac .sc-read-p{font-size:12.5px;margin-top:10px}
-  .fc.tac .sc-foot{left:14px;right:14px;bottom:12px}
+  .fc.tac .sc-data b{font-size:13px}
+  .fc.tac .sc-read-pic{float:right;width:116px;height:74px;margin:12px 0 6px 12px}
+  .fc.tac .sc-read-p{margin-top:12px;line-height:1.5}
+  .fc.tac .sc-read-a{margin-top:12px;gap:8px}
+  .fc.tac .sc-read-a a{height:40px;line-height:38px;padding:0 18px;font-size:11px;min-width:96px;text-align:center}
+  .fc.tac .sc-foot{left:14px;right:14px;bottom:0;height:44px;align-items:center;font-size:9px}
+  .fc.tac .sc-foot>span:first-child{display:none}
+  .fc.tac .sc-foot-r{display:flex;gap:4px;width:100%;justify-content:space-between}
+  .fc.tac .sc-foot a{display:inline-block;padding:12px 6px;font-size:9px}
+}
 }
 @container site (max-width:640px){
   .fc .sc-speed{margin-left:0}
@@ -204,7 +230,7 @@ body{overflow:hidden}
 <div class="o fc cc tac"><div class="sc" tabindex="0" aria-label="A tactical plot of David Allen's work. Click a contact to lock on; arrow keys move between contacts.">
 <canvas class="sc-c"></canvas>
 <aside class="tx-rail"><span>Navigation</span><i class="r1"></i><i class="r2"></i><em></em></aside>
-<header class="tx-head"><div class="tx-sec"><small>DRA-NAV-0001</small><b>Tactical plot</b></div><div class="tx-head-r"><span class="sc-lock">Lock: none</span><span class="sc-eta">No burn</span></div><div class="sc-nav"><button type="button" data-n="home">Home</button><button type="button" data-n="prev" aria-label="Previous">&lsaquo;</button><button type="button" data-n="next" aria-label="Next">&rsaquo;</button></div></header>
+<header class="tx-head"><div class="tx-sec"><small>DRA-NAV-0001</small><b>Tactical plot</b></div><div class="tx-head-r"><span class="sc-lock">Lock: none</span><span class="sc-eta">No burn</span></div><div class="sc-nav"><button type="button" data-n="list" class="tx-listbtn" aria-label="Contacts">List</button><button type="button" data-n="home">Home</button><button type="button" data-n="prev" aria-label="Previous">&lsaquo;</button><button type="button" data-n="next" aria-label="Next">&rsaquo;</button></div></header>
 <section class="tx-list"><div class="tx-sec"><small>DRA-TRK-0012</small><b>Contacts</b></div><div class="tx-cols"><span>ID &#9662;</span><span>Name</span><span>Range</span><span>Brg</span></div><div class="tx-rows"></div>
 <div class="tx-bar"><button type="button" data-n="lock">Lock</button><button type="button" data-n="open">Open</button><button type="button" data-n="home">Home</button><label class="tx-chk"><input type="checkbox" class="tx-auto"><i></i>Auto</label></div></section>
 <aside class="sc-read"><div class="tx-sec"><small class="sc-read-k">No lock</small><b class="sc-read-h"></b></div><div class="sc-read-s"></div><div class="sc-read-pic"></div><div class="sc-read-p"></div><div class="sc-read-a"></div></aside>
@@ -212,7 +238,7 @@ body{overflow:hidden}
 <div class="sc-foot"><span>Click a contact &middot; arrows cycle &middot; Enter opens</span><span class="sc-foot-r"><a class="sc-link" href="/">davidrallen.com</a><a class="sc-link" href="https://davidrallen.com/resume.pdf" target="_blank" rel="noopener">Resume <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="sc-link" href="https://www.linkedin.com/in/davidallen03264/" target="_blank" rel="noopener">LinkedIn <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="sc-link" href="https://github.com/doctorallen" target="_blank" rel="noopener">GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
 </div></div>
 <script>
-window.FUN = {"role": "Director of Software Engineering", "co": "Fidelity Investments", "intro": "Director of Software Engineering at Fidelity Investments by day. Tools, a game engine and small games by night. Typing commands to see what happens since the 1990s.", "short": "Leading two engineering teams by day. Building tools and small games by night.", "links": [{"t": "Resume", "h": "https://davidrallen.com/resume.pdf"}, {"t": "LinkedIn", "h": "https://www.linkedin.com/in/davidallen03264/"}, {"t": "GitHub", "h": "https://github.com/doctorallen"}], "teams": [{"t": "Investment Tool Development", "d": "Tools for the portfolio managers, quants and traders behind more than $2.5T in fixed income."}, {"t": "User Experience Center of Excellence", "d": "UI components and standards for all of fixed income engineering."}], "projects": [{"id": "deckard", "name": "Deckard", "kind": "VS Code extension", "line": "A local-first second brain for the Markdown notes already in your workspace.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.deckard-notes", "img": "deckard-lockup.svg", "logo": true, "icon": "deckard-lockup.svg", "tint": "#d4922c"}, {"id": "esper", "name": "Esper Themes", "kind": "VS Code themes", "line": "Film-inspired, high-contrast color themes for VS Code.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.esper-themes", "img": "esper-themes-crop.svg", "logo": true, "icon": "esper-themes-crop.svg", "tint": "#9fbfd4"}, {"id": "tycho", "name": "Tycho", "kind": "Game engine", "line": "An engine for small, phone-first pixel games, with Tyrell, a minds engine, inside.", "lt": "Docs", "href": "https://doctorallen.github.io/tycho/", "img": "tycho-lockup.svg", "logo": true, "icon": "tycho-icon.svg", "tint": "#d4922c"}, {"id": "utwd", "name": "Under the White Dragon", "kind": "Side-scroller", "line": "Cyberpunk repair, from a basement under a noodle bar.", "lt": "Play", "href": "https://doctorallen.github.io/under-the-white-dragon/", "img": "g-utwd-skyline.jpg", "logo": false, "icon": "under-the-white-dragon-icon.svg", "tint": "#3fe0d0"}, {"id": "lodestar", "name": "Lodestar", "kind": "Top-down action", "line": "Carry a star's light across a dead world.", "lt": "Play", "href": "https://doctorallen.github.io/Lodestar/", "img": "lodestar-lockup.png", "logo": true, "icon": "lodestar-icon.svg", "tint": "#e8b75a"}, {"id": "merryfolk", "name": "Merryfolk", "kind": "Artificial life", "line": "Artificial life in a Shire-like village.", "lt": "Play", "href": "https://doctorallen.github.io/merryfolk/", "img": "g-merryfolk-hole.jpg", "logo": false, "icon": "merryfolk-icon.svg", "tint": "#8fc46a"}, {"id": "neo", "name": "NEO", "kind": "Roguelite", "line": "A five-minute roguelite in a dungeon of code.", "lt": "Play", "href": "https://doctorallen.github.io/Neo/", "img": "g-neo-wake.jpg", "logo": false, "icon": "neo-icon.svg", "tint": "#4be36b"}], "jobs": [{"w": "2024 \u2013 now", "co": "Fidelity Investments", "r": "Director, Software Engineering", "d": "Leading Investment Tool Development and the User Experience Center of Excellence in fixed income."}, {"w": "2022 \u2013 2024", "co": "Datamura Solutions", "r": "Director of Software Engineering", "d": "Built and led the team behind an operations and analytics platform for a Fortune 500 pharmaceutical company."}, {"w": "2020 \u2013 now", "co": "Esper Innovations", "r": "Founder", "d": "Custom software and consulting for a range of clients."}, {"w": "2019 \u2013 2020", "co": "University of New Hampshire", "r": "Adjunct instructor", "d": "Instructed two cohorts of a six-month full-stack bootcamp."}, {"w": "2012 \u2013 2019", "co": "The Atom Group", "r": "Senior software architect", "d": "Built software for more than 100 clients."}], "beats": [{"y": "1990s", "t": "Terminal Tetris", "d": "Poking around the command line of my mom's Brother word processor, I found Tetris. I've been typing commands just to see what happens ever since."}, {"y": "2004", "t": "My first website", "d": "At fourteen I had strong opinions about a James Bond game and a freewebs.com account. The site was very red, but it was out there, and that turned out to be the part that mattered."}, {"y": "2006", "t": "Hello, world", "d": "Visual Basic class by day, and hours programming games at night after dishwashing shifts. Coming back as the TA and helping classmates through it prepared me to teach a coding bootcamp years later."}, {"y": "2008", "t": "Databases and business", "d": "I started college studying game development, then switched majors for a path I could build a career on. It introduced me to databases and the business side of technology, and I\u2019ve leaned on both ever since."}, {"y": "2012", "t": "Back to code", "d": "My last year at Plymouth State brought four new languages and Vim on purpose. My senior thesis was the first thing I built for real people, and the campus actually used it."}], "base": "../assets/"};
+window.FUN = {"role": "Director of Software Engineering", "co": "Fidelity Investments", "intro": "Writing software since 2005, from Flash games to more than a hundred client projects. I lead two teams in fixed income: Investment Tool Development and the User Experience Center of Excellence.", "links": [{"t": "Resume", "h": "https://davidrallen.com/resume.pdf"}, {"t": "LinkedIn", "h": "https://www.linkedin.com/in/davidallen03264/"}, {"t": "GitHub", "h": "https://github.com/doctorallen"}], "teams": [{"t": "Investment Tool Development", "d": "Tools for the portfolio managers, quants and traders behind more than $2.5T in fixed income."}, {"t": "User Experience Center of Excellence", "d": "UI components and standards for all of fixed income engineering."}], "projects": [{"id": "deckard", "name": "Deckard", "kind": "VS Code extension", "line": "A local-first second brain for the Markdown notes already in your workspace.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.deckard-notes", "img": "deckard-lockup.svg", "logo": true, "icon": "deckard-lockup.svg", "tint": "#d4922c"}, {"id": "esper", "name": "Esper Themes", "kind": "VS Code themes", "line": "Film-inspired, high-contrast color themes for VS Code.", "lt": "Marketplace", "href": "https://marketplace.visualstudio.com/items?itemName=esperinnovations.esper-themes", "img": "esper-themes-crop.svg", "logo": true, "icon": "esper-themes-crop.svg", "tint": "#9fbfd4"}, {"id": "tycho", "name": "Tycho", "kind": "Game engine", "line": "An engine for small, phone-first pixel games, with Tyrell, a minds engine, inside.", "lt": "Docs", "href": "https://doctorallen.github.io/tycho/", "img": "tycho-lockup.svg", "logo": true, "icon": "tycho-icon.svg", "tint": "#d4922c"}, {"id": "utwd", "name": "Under the White Dragon", "kind": "Side-scroller", "line": "Cyberpunk repair, from a basement under a noodle bar.", "lt": "Play", "href": "https://doctorallen.github.io/under-the-white-dragon/", "img": "g-utwd-skyline.jpg", "logo": false, "icon": "under-the-white-dragon-icon.svg", "tint": "#3fe0d0"}, {"id": "lodestar", "name": "Lodestar", "kind": "Top-down action", "line": "Carry a star's light across a dead world.", "lt": "Play", "href": "https://doctorallen.github.io/Lodestar/", "img": "lodestar-lockup.png", "logo": true, "icon": "lodestar-icon.svg", "tint": "#e8b75a"}, {"id": "merryfolk", "name": "Merryfolk", "kind": "Artificial life", "line": "Artificial life in a Shire-like village.", "lt": "Play", "href": "https://doctorallen.github.io/merryfolk/", "img": "g-merryfolk-hole.jpg", "logo": false, "icon": "merryfolk-icon.svg", "tint": "#8fc46a"}, {"id": "neo", "name": "NEO", "kind": "Roguelite", "line": "A five-minute roguelite in a dungeon of code.", "lt": "Play", "href": "https://doctorallen.github.io/Neo/", "img": "g-neo-wake.jpg", "logo": false, "icon": "neo-icon.svg", "tint": "#4be36b"}], "jobs": [{"w": "2024 \u2013 now", "co": "Fidelity Investments", "r": "Director, Software Engineering", "d": "Leading Investment Tool Development and the User Experience Center of Excellence in fixed income."}, {"w": "2022 \u2013 2024", "co": "Datamura Solutions", "r": "Director of Software Engineering", "d": "Built and led the team behind an operations and analytics platform for a Fortune 500 pharmaceutical company."}, {"w": "2020 \u2013 now", "co": "Esper Innovations", "r": "Founder", "d": "Custom software and consulting for a range of clients."}, {"w": "2019 \u2013 2020", "co": "University of New Hampshire", "r": "Adjunct instructor", "d": "Instructed two cohorts of a six-month full-stack bootcamp."}, {"w": "2012 \u2013 2019", "co": "The Atom Group", "r": "Senior software architect", "d": "Built software for more than 100 clients."}], "base": "../assets/"};
 (function () {
 // C3. Tactical plot, after the UNN / Razorback screens: thin light-blue rules, ID codes over section titles,
 // hex contacts with a dot, an orange tag on the lock, a dash-dot crosshair, square ticks on the frame, a system terminal.
@@ -238,7 +264,7 @@ function tactical(root, host) {
     node('utwd', 'GME-01', 'Games', 230, -40, 90), node('lodestar', 'GME-02', 'Games', 260, 150, 20), node('merryfolk', 'GME-03', 'Games', 90, 210, -40), node('neo', 'GME-04', 'Games', 300, 60, -70),
   ];
   const track = [[-290, -230], [-150, -260], [0, -250], [150, -230], [280, -170]];
-  const jobs = D.jobs.slice().reverse().map((j, i) => ({ id: 'job' + i, code: 'STN-0' + (i + 1), grp: 'Transit lane', kind: 'job', name: j.co, k: 'STN-0' + (i + 1), s: j.r + ' · ' + j.w, p: j.d + (j.co === D.co ? ' ' + D.teams.map((t) => t.t).join(' and ') + '.' : ''), tint: GREY, year: j.w.slice(0, 4), px: track[i][0], py: track[i][1], pz: 0 }));
+  const jobs = D.jobs.slice().reverse().map((j, i) => ({ id: 'job' + i, code: 'STN-0' + (i + 1), grp: 'Transit lane', kind: 'job', name: j.co, k: 'STN-0' + (i + 1), s: j.r + ' · ' + j.w, p: j.co === D.co ? 'I lead two teams in fixed income. ' + D.teams.map((t) => t.t + ': ' + t.d.charAt(0).toLowerCase() + t.d.slice(1)).join(' ') : j.d, tint: GREY, year: j.w.slice(0, 4), px: track[i][0], py: track[i][1], pz: 0 }));
   const nodes = [you].concat(proj, jobs);
   const links = [[proj[0], proj[1]], [proj[2], proj[3]], [proj[2], proj[4]], [proj[2], proj[5]], [proj[2], proj[6]]];
   let cw = 0, ch = 0, dpr = 1, phone = false, K = 1, C = { x: 0, y: 0 }, A = { x: 0, y: 0, w: 0, h: 0 };
@@ -261,7 +287,7 @@ function tactical(root, host) {
   const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   if (list) list.innerHTML = nodes.map((n) => '<button type="button" data-id="' + n.id + '"><b><i style="--t:' + n.tint + '"></i>' + n.code + '</b><span>' + esc(n.name) + '</span><em data-r>—</em><em data-b>—</em></button>').join('');
   const rows = list ? Object.fromEntries([...list.querySelectorAll('button')].map((b) => [b.dataset.id, b])) : {};
-  Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.focus({ preventScroll: true }); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
+  Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.classList.remove('list-open'); box.focus({ preventScroll: true }); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
   // the readout's key/value rows
   const data = document.createElement('div'); data.className = 'sc-data';
   data.innerHTML = '<div><span>Range</span><b data-d="r">—</b></div><div><span>Bearing</span><b data-d="b">—</b></div><div><span>Altitude</span><b data-d="a">—</b></div><div><span>Drive</span><b data-d="e">—</b></div>';
@@ -287,7 +313,7 @@ function tactical(root, host) {
     burn = n === you ? null : { n, t0: performance.now(), dur: 1400 + n.range * 900, logged: 0 };
     if (!quiet) log(n === you ? 'Holding at HOME.' : 'Lock ' + n.code + ' ' + n.name.toUpperCase() + '. Burn plotted, ETA ' + fmtT(burn.dur) + '.');
   };
-  const near = (x, y) => { let best = null, bd = 20; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
+  const near = (x, y) => { let best = null, bd = phone ? 30 : 20; nodes.forEach((n) => { const d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } }); return best; };
   const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
   cv.addEventListener('pointermove', (ev) => { const [x, y] = pos(ev); hover = near(x, y); cv.style.cursor = hover ? 'pointer' : 'default'; });
   cv.addEventListener('pointerleave', () => { hover = null; });
@@ -299,7 +325,7 @@ function tactical(root, host) {
     if (ev.key === 'Enter' && sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener');
   });
   root.querySelectorAll('.sc-nav button, .tx-bar button').forEach((b) => b.addEventListener('click', () => {
-    const k = b.dataset.n; if (k === 'prev') step(-1); else if (k === 'next') step(1); else if (k === 'home') select(you); else if (k === 'open') { if (sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener'); } else if (k === 'lock') { if (hover) select(hover); else step(1); }
+    const k = b.dataset.n; if (k === 'prev') step(-1); else if (k === 'next') step(1); else if (k === 'home') select(you); else if (k === 'list') { box.classList.toggle('list-open'); return; } else if (k === 'open') { if (sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener'); } else if (k === 'lock') { if (hover) select(hover); else step(1); }
     box.focus({ preventScroll: true });
   }));
   if (auto) auto.addEventListener('change', () => { autoT = performance.now(); log(auto.checked ? 'Auto-cycle on: next contact every 7 s.' : 'Auto-cycle off.'); });
