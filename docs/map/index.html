@@ -107,7 +107,10 @@ body{overflow:hidden}
 .fc .sc-rail-x button i{font-style:normal;text-align:right;color:#56677a;font-variant-numeric:tabular-nums}
 .fc .sc-rail-x button.on i{color:var(--gold)}
 /* tactical: after the UNN console and the Razorback map */
-.fc.tac{--blue:#9ad0ea;--line:#2f5f80;--dim:#4f7a99;--fill:#9ad0ea22;--ok:#7ed37a;background:#04060b}
+.fc.tac{--blue:#9ad0ea;--line:#2f5f80;--dim:#4f7a99;--fill:#9ad0ea22;--ok:#7ed37a;background:#04060b;-webkit-tap-highlight-color:transparent}
+.fc.tac .sc,.fc.tac .sc *{-webkit-tap-highlight-color:transparent}
+.fc.tac .sc:focus,.fc.tac .sc:focus-visible{box-shadow:none;outline:none}
+.fc.tac .sc-c{user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .fc.tac .sc{height:720px}
 .fc.tac .sc-c{position:absolute;inset:0}
 .fc.tac .tx-sec{position:relative;padding-top:12px}
@@ -279,6 +282,8 @@ function tactical(root, host) {
   resize();
   try { new ResizeObserver(resize).observe(box); } catch (e) { window.addEventListener('resize', resize); }
   let th = .6, sel = null, hover = null, ret = 0, t = 0, typing = null, burn = null, autoT = 0;
+  const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const focusBox = () => { if (fine) box.focus({ preventScroll: true }); };
   const ship = { x: 0, y: 0, a: -Math.PI / 2, thrust: 0, state: 'docked', fade: 0 };
   const P = (x, y, z) => { const c = Math.cos(th), s = Math.sin(th); const rx = x * c - y * s, ry = x * s + y * c; return [C.x + rx * K, C.y + ry * K * TILT - (z || 0) * K * ZS]; };
   const place = () => nodes.forEach((n) => { const [x, y] = P(n.px, n.py, n.pz); const [fx, fy] = P(n.px, n.py, 0); n.x = x; n.y = y; n.fx = fx; n.fy = fy; n.range = Math.hypot(n.px, n.py, n.pz) / 200; n.brg = ((Math.atan2(n.py, n.px) + th) * 180 / Math.PI + 450) % 360; });
@@ -287,7 +292,7 @@ function tactical(root, host) {
   const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   if (list) list.innerHTML = nodes.map((n) => '<button type="button" data-id="' + n.id + '"><b><i style="--t:' + n.tint + '"></i>' + n.code + '</b><span>' + esc(n.name) + '</span><em data-r>—</em><em data-b>—</em></button>').join('');
   const rows = list ? Object.fromEntries([...list.querySelectorAll('button')].map((b) => [b.dataset.id, b])) : {};
-  Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.classList.remove('list-open'); box.focus({ preventScroll: true }); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
+  Object.values(rows).forEach((b) => { b.addEventListener('click', () => { select(nodes.find((n) => n.id === b.dataset.id)); box.classList.remove('list-open'); focusBox(); }); b.addEventListener('mouseenter', () => { hover = nodes.find((n) => n.id === b.dataset.id) || null; }); b.addEventListener('mouseleave', () => { hover = null; }); });
   // the readout's key/value rows
   const data = document.createElement('div'); data.className = 'sc-data';
   data.innerHTML = '<div><span>Range</span><b data-d="r">—</b></div><div><span>Bearing</span><b data-d="b">—</b></div><div><span>Altitude</span><b data-d="a">—</b></div><div><span>Drive</span><b data-d="e">—</b></div>';
@@ -317,7 +322,7 @@ function tactical(root, host) {
   const pos = (ev) => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cw / r.width), (ev.clientY - r.top) * (ch / r.height)]; };
   cv.addEventListener('pointermove', (ev) => { const [x, y] = pos(ev); hover = near(x, y); cv.style.cursor = hover ? 'pointer' : 'default'; });
   cv.addEventListener('pointerleave', () => { hover = null; });
-  cv.addEventListener('pointerdown', (ev) => { const [x, y] = pos(ev); const n = near(x, y); box.focus({ preventScroll: true }); if (n) select(n); });
+  cv.addEventListener('pointerdown', (ev) => { const [x, y] = pos(ev); const n = near(x, y); focusBox(); if (n) select(n); });
   const step = (d) => { const i = sel ? nodes.indexOf(sel) : -1; select(nodes[(i + d + nodes.length) % nodes.length]); };
   box.addEventListener('keydown', (ev) => {
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); step(1); }
@@ -326,7 +331,7 @@ function tactical(root, host) {
   });
   root.querySelectorAll('.sc-nav button, .tx-bar button').forEach((b) => b.addEventListener('click', () => {
     const k = b.dataset.n; if (k === 'prev') step(-1); else if (k === 'next') step(1); else if (k === 'home') select(you); else if (k === 'list') { box.classList.toggle('list-open'); return; } else if (k === 'open') { if (sel && sel.a && sel.a.length) window.open(sel.a[0][1], '_blank', 'noopener'); } else if (k === 'lock') { if (hover) select(hover); else step(1); }
-    box.focus({ preventScroll: true });
+    focusBox();
   }));
   if (auto) auto.addEventListener('change', () => { autoT = performance.now(); log(auto.checked ? 'Auto-cycle on: next contact every 7 s.' : 'Auto-cycle off.'); });
   const mono = (sz, w) => (w || '500') + ' ' + sz + 'px "IBM Plex Mono", monospace';
