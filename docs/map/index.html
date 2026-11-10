@@ -687,7 +687,6 @@ function tactical(root, host) {
         dEta = fmtT(ship.eta * 1000);
         // the plan
         ctx.strokeStyle = ORANGE + 'aa'; ctx.setLineDash([3, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(hx, hy); ship.path.forEach((q) => { const [x, y] = S(q); ctx.lineTo(x, y); }); ctx.stroke(); ctx.setLineDash([]);
-        ship.flips.forEach((f) => { const [mx, my] = S(f), [tx, ty] = S({ x: f.x + f.vx * .05, y: f.y + f.vy * .05, z: f.z + f.vz * .05 }), ang = Math.atan2(ty - my, tx - mx); ctx.save(); ctx.translate(mx, my); ctx.rotate(ang); ctx.strokeStyle = ORANGE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(0, 6); ctx.stroke(); ctx.restore(); if (!dense) { ctx.font = mono(8); ctx.fillStyle = DIM; wide('FLIP', mx + Math.cos(ang + Math.PI / 2) * 14, my + Math.sin(ang + Math.PI / 2) * 14 + 3); } });
       }
     } else { ship.last = 0; ship.hdg = null; ship.thrust = 0; if (ship.state !== 'parked') ship.state = 'docked'; }
     if (eta) { eta.textContent = phase === 'idle' ? (sel === you ? 'Holding at home' : 'No burn') : phase === 'station' ? 'On station' : (phase === 'flip' ? 'Flip' : phase === 'coast' ? 'Coast' : phase === 'decel' ? 'Decel' : 'Burn') + ' · ETA ' + dEta; eta.classList.toggle('ok', phase === 'idle' || phase === 'station'); }
