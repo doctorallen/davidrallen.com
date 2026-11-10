@@ -390,7 +390,7 @@ const SHIPS = (() => {
   };
 })();
 window.SHIPS = SHIPS;
-window.drawShip = (ctx, k, thrust, t) => (SHIPS[k] || SHIPS.dart)(ctx, thrust, t);
+window.drawShip = (ctx, k, thrust, t) => (SHIPS[k] || SHIPS.pinnace)(ctx, thrust, t);
 // What sits at HOME. Each draws at the origin on the tilted plane; TILT flattens anything that lies on the plane.
 const HOMES = (() => {
   const O = '#d4922c', BLUE = '#9ad0ea', LINE = '#2f5f80', BG = '#04060b';
@@ -542,7 +542,7 @@ function tactical(root, host) {
   const fmtB = (b) => String(Math.round(b)).padStart(3, '0') + '°';
   const fmtT = (ms) => { const s = Math.max(0, Math.ceil(ms / 1000)); return '00:' + String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
   const select = (n, quiet) => {
-    if (!n) return;
+    if (!n || n === sel) return; // already locked, or already on the way: carry on
     sel = n; ret = 0; autoT = performance.now();
     if (lock) lock.textContent = 'Lock: ' + n.code;
     read.classList.remove('off');
@@ -708,7 +708,7 @@ function tactical(root, host) {
     if (burn && ship.state === 'burn') ship.fade = 1; else if (ship.fade > 0) ship.fade = Math.max(0, ship.fade - .08);
     if (ship.fade > 0) {
       ctx.save(); ctx.globalAlpha = ship.fade; ctx.translate(ship.x, ship.y); ctx.rotate(ship.a); ctx.scale(.9, .9);
-      window.drawShip(ctx, window.SHIP || 'dart', ship.state === 'burn' ? ship.thrust : 0, t);
+      window.drawShip(ctx, window.SHIP || 'pinnace', ship.state === 'burn' ? ship.thrust : 0, t);
       ctx.restore();
     }
     ctx.restore();
